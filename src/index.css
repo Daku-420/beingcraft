@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-brand-primary: #6E001B;
+    --color-brand-accent: #FFEDA0;
+    --color-text-primary: #111111;
+    --color-text-secondary: #475569;
+    --color-border: #E2E8F0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+
+  body {
+    font-family: 'Source Sans 3', 'Source Sans Pro', sans-serif;
+    color: #111111;
+    background-color: #FFFFFF;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+/* Custom Utilities matching Being Craft design language */
+.btn-pill-primary {
+  @apply inline-flex items-center justify-center font-medium transition-all duration-200 rounded-full px-6 py-2.5 bg-brand-maroon text-white hover:bg-brand-gold hover:text-black shadow-sm active:scale-95;
+}
+
+.btn-pill-outline {
+  @apply inline-flex items-center justify-center font-medium transition-all duration-200 rounded-full px-6 py-2.5 border-2 border-brand-maroon text-brand-maroon hover:bg-brand-gold hover:border-brand-gold hover:text-black active:scale-95;
+}
+
+.btn-pill-accent {
+  @apply inline-flex items-center justify-center font-medium transition-all duration-200 rounded-full px-6 py-2.5 bg-brand-gold text-black hover:bg-white hover:text-brand-maroon shadow-sm active:scale-95;
+}
+
+/* Subtle scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #6E001B;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #520014;
+}
+
+/* Pulse animation for stock indicator */
+@keyframes pulseGreen {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.animate-pulse-green {
+  animation: pulseGreen 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
