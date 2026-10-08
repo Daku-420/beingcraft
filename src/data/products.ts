@@ -49,25 +49,25 @@ export const EDITORIAL_STORIES = [
     title: 'THE BEAUTY OF WOOD',
     subtitle: 'Seasoned Grain & Generational Carving',
     description: 'From the heartlands of Saharanpur and Shekhawati, master wood turners shape seasoned Indian Sheesham and reclaimed Teak using heirloom chisels. Every grain variation tells of decades weathered under the Indian sun.',
-    image: 'https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&w=1000&q=80',
-    link: '/shop?category=Wood%20Craft',
-    cta: 'Explore Wood Craft'
+    image: '/products/wood%20crafts/handcrafted%20traditional%20wooden%20Buddha%20head%20statue/01.jpg',
+    link: '/shop?category=Wood%20Crafts',
+    cta: 'Explore Wood Crafts'
   },
   {
-    title: 'CARVED IN STONE',
-    subtitle: 'Pietra Dura & Agra Jali Traditions',
-    description: 'Inheriting the precise stone craftsmanship of Mughal and Rajasthani master artisans, our carvers hand-chisel delicate soapstone lattices and embed semi-precious lapis lazuli into pristine white Makrana marble.',
-    image: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1000&q=80',
-    link: '/shop?category=Stone%20Craft',
-    cta: 'Explore Stone Craft'
-  },
-  {
-    title: 'THE WARMTH OF BRASS',
+    title: 'THE WARMTH OF BRASS & METAL',
     subtitle: 'Lost-Wax Sand Casting of Peetal Nagri',
     description: 'In the narrow guild alleys of Moradabad, molten virgin brass is poured into custom clay and sand molds. Each bell, diya, and idol undergoes hours of hand-filing, emery buffing, and natural patination to radiate warmth for lifetimes.',
-    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=80',
+    image: '/products/metal%20crafts/Round%20Cutwork%20Brass%20Diya%20set%20of%203/01.jpg',
     link: '/shop?category=Brass%20%26%20Metal',
     cta: 'Explore Brass & Metal'
+  },
+  {
+    title: 'PURE HEIRLOOM DINING',
+    subtitle: 'Ayurvedic Bronze & Serving Vessels',
+    description: 'Experience mindful dining with hand-beaten bronze Kansa dinnerware, hammered copper carafes, and handcrafted natural wood serving platters shaped for generational family gatherings.',
+    image: '/products/wood%20crafts/handcrafted%20round%20wooden%20tree%20bark%20serving%20platter/20.1.jpg',
+    link: '/shop?category=Dining%20%26%20Kitchen',
+    cta: 'Explore Dining & Kitchen'
   }
 ];
 
@@ -76,31 +76,31 @@ export const GIFTING_OCCASIONS = [
     title: 'Housewarming (Griha Pravesh)',
     slug: 'housewarming',
     description: 'Auspicious Urlis, Ganesha idols, and brass door torans to bless new dwellings.',
-    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80'
+    image: '/products/metal%20crafts/Radha%20Krishna%20under%20a%20Kalpavriksha%20Tree%20Statue/01.jpg'
   },
   {
     title: 'Wedding Celebrations',
     slug: 'wedding',
     description: 'Pure Kansa dining dinnerware sets and heirloom vintage decorative chests.',
-    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80'
+    image: '/products/wood%20crafts/handcrafted%20round%20wooden%20tree%20bark%20serving%20platter/20.1.jpg'
   },
   {
     title: 'Festive & Diwali Gifting',
     slug: 'festive',
     description: 'Handcrafted peacock hanging diyas, akhand deepaks, and luxury gift hampers.',
-    image: 'https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=600&q=80'
+    image: '/products/metal%20crafts/Round%20Cutwork%20Brass%20Diya%20set%20of%203/01.jpg'
   },
   {
     title: 'Corporate & Memento Gifting',
     slug: 'corporate',
-    description: 'Hand-carved marble coasters, brass pocket watch curios, and desk decor.',
-    image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80'
+    description: 'Handcrafted wooden organizers, brass pocket watch curios, and desk decor.',
+    image: '/products/wood%20crafts/Coconut%20Shell%20Wristlet%20Wallet/01.jpg'
   },
   {
     title: 'Luxury Heritage Heirlooms',
     slug: 'luxury',
-    description: 'Masterwork lost-wax Nataraja bronzes and limited artisan sculptures.',
-    image: 'https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80'
+    description: 'Masterwork lost-wax bronze sculptures and limited artisan collectibles.',
+    image: '/products/metal%20crafts/Antique%20Silver%20Peacock%20Panchmukhi%20Diya%20Stand/01.jpg'
   }
 ];
 
@@ -109,31 +109,25 @@ export const MATERIALS_LIST = [
     name: 'Wood',
     label: 'Natural Wood',
     desc: 'Sheesham & Teak',
-    image: 'https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&w=400&q=80'
-  },
-  {
-    name: 'Stone',
-    label: 'Hand-Carved Stone',
-    desc: 'Makrana Marble & Soapstone',
-    image: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=400&q=80'
+    image: '/products/wood%20crafts/Coconut%20Shell%20Wristlet%20Wallet/01.jpg'
   },
   {
     name: 'Brass',
     label: 'Solid Brass',
     desc: 'Virgin Cast Metal',
-    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=400&q=80'
+    image: '/products/metal%20crafts/Round%20Cutwork%20Brass%20Diya%20set%20of%203/01.jpg'
   },
   {
     name: 'Bronze',
     label: 'Pure Kansa / Bronze',
     desc: 'Ayurvedic Bell Metal',
-    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=400&q=80'
+    image: '/products/metal%20crafts/Antique%20Silver%20Peacock%20Panchmukhi%20Diya%20Stand/01.jpg'
   },
   {
     name: 'Metal',
     label: 'Antique Metal & Iron',
     desc: 'Lost-wax & Hand-beaten',
-    image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=400&q=80'
+    image: '/products/metal%20crafts/Radha%20Krishna%20under%20a%20Kalpavriksha%20Tree%20Statue/01.jpg'
   }
 ];
 

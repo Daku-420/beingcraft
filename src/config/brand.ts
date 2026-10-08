@@ -33,7 +33,7 @@ export interface BrandConfig {
 export const BRAND: BrandConfig = {
   name: "BeingCraft",
   tagline: "HANDCRAFTED HERITAGE",
-  subtitle: "Handcrafted Indian Wood, Stone, Brass, Metal & Traditional Heritage Decor",
+  subtitle: "Handcrafted Indian Wood, Brass, Metal & Traditional Heritage Decor",
   phone: "+91-7900827796",
   email: "info@beingcraft.com",
   supportHours: "Mon - Sat: 10:00 AM - 7:00 PM IST",

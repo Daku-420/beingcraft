@@ -39,7 +39,7 @@ export const WishlistPage: React.FC = () => {
               </span>
             </h1>
             <p className="text-xs sm:text-sm text-charcoal-600 mt-1">
-              Keep track of traditional metal, wood, and stone pieces you cherish.
+              Keep track of traditional metal, wood, and brass pieces you cherish.
             </p>
           </div>
 

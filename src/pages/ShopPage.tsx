@@ -53,7 +53,6 @@ export const ShopPage: React.FC = () => {
   const materials = [
     { id: 'all', label: 'All Materials' },
     { id: 'wood', label: 'Natural Wood (Sheesham/Teak)' },
-    { id: 'stone', label: 'Stone (Marble/Soapstone)' },
     { id: 'brass', label: 'Solid Virgin Brass' },
     { id: 'bronze', label: 'Pure Kansa / Bell Metal' },
     { id: 'metal', label: 'Wrought Iron / Antique Alloy' },
@@ -88,9 +87,6 @@ export const ShopPage: React.FC = () => {
         } else if (catLower === 'wood craft' || catLower === 'wood crafts') {
           const isWood = prodCatLower.includes('wood') || product.material.toLowerCase().includes('wood') || product.material.toLowerCase().includes('sheesham') || product.material.toLowerCase().includes('teak');
           if (!isWood) return false;
-        } else if (catLower === 'stone craft') {
-          const isStone = prodCatLower.includes('stone') || product.material.toLowerCase().includes('stone') || product.material.toLowerCase().includes('marble') || product.material.toLowerCase().includes('soapstone');
-          if (!isStone) return false;
         } else if (catLower === 'brass & metal') {
           const isMetal = prodCatLower.includes('brass') || prodCatLower.includes('metal') || prodCatLower.includes('idol') || prodCatLower.includes('vintage') || prodCatLower.includes('urli') || prodCatLower.includes('diya');
           if (!isMetal) return false;
@@ -150,7 +146,6 @@ export const ShopPage: React.FC = () => {
       if (selectedMaterial !== 'all') {
         const mat = product.material.toLowerCase();
         if (selectedMaterial === 'wood' && !mat.includes('wood') && !mat.includes('sheesham') && !mat.includes('teak')) return false;
-        if (selectedMaterial === 'stone' && !mat.includes('stone') && !mat.includes('marble') && !mat.includes('soapstone') && !mat.includes('sandstone')) return false;
         if (selectedMaterial === 'brass' && !mat.includes('brass')) return false;
         if (selectedMaterial === 'bronze' && !mat.includes('kansa') && !mat.includes('bronze') && !mat.includes('bell metal')) return false;
         if (selectedMaterial === 'metal' && !mat.includes('iron') && !mat.includes('alloy') && !mat.includes('dhokra') && !mat.includes('metal')) return false;
@@ -253,11 +248,11 @@ export const ShopPage: React.FC = () => {
             </h1>
             <p className="text-xs sm:text-sm text-charcoal-600 mt-1.5 max-w-2xl leading-relaxed">
               {isWishlistOnly
-                ? 'Your handpicked selection of heirloom brass items, carved wood panels, and stone sculptures.'
+                ? 'Your handpicked selection of heirloom brass items, carved wood panels, and dining sets.'
                 : selectedCategory
                 ? TAXONOMY_CATEGORIES.find((c) => c.name === selectedCategory || c.name.toLowerCase().includes(selectedCategory.toLowerCase()) || selectedCategory.toLowerCase().includes(c.name.toLowerCase()))?.description ||
                   'Explore genuine Indian handcrafted artifacts made with generational integrity.'
-                : 'Explore our comprehensive catalog of virgin brass idols, hand-chiseled marble inlays, and seasoned timber decor.'}
+                : 'Explore our comprehensive catalog of virgin brass idols, artisanal tableware, and seasoned timber decor.'}
             </p>
           </div>
 

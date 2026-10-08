@@ -132,7 +132,7 @@ export const HomePage: React.FC = () => {
 
             <p className="text-sm sm:text-lg text-white/80 max-w-xl mx-auto lg:mx-0 font-light leading-relaxed">
               Discover authentic Indian handcrafted objects of character—pure virgin brass sculptures,
-              hand-carved Sheesham jharokhas, and Agra marble inlays, shaped by generational master artisans.
+              hand-carved Sheesham decor, and heirloom artisanal dining, shaped by generational master artisans.
             </p>
 
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
@@ -660,14 +660,14 @@ export const HomePage: React.FC = () => {
             </h2>
 
             <p className="text-sm text-white/80 leading-relaxed font-light">
-              Indian metalwork, stone carving, and timber craft are not assembly-line tasks. They are
-              ancestral invocations where master hands mold red-hot bronze, sculpt white Makrana marble,
-              and chisel seasoned Sheesham rosewood with techniques passed down over four centuries.
+              Indian metalwork, dining heirlooms, and timber craft are not assembly-line tasks. They are
+              ancestral invocations where master hands mold red-hot bronze, turn seasoned Sheesham rosewood,
+              and finish ritual objects with techniques passed down over four centuries.
             </p>
 
             <p className="text-sm text-white/80 leading-relaxed font-light">
               By bringing a {BRAND.name} artifact into your sanctuary, you sustain the indigenous guilds of
-              Moradabad, Bastar, Saharanpur, and Agra—ensuring our ancient artistic wisdom thrives in the
+              Moradabad, Bastar, and Saharanpur—ensuring our ancient artistic wisdom thrives in the
               modern world.
             </p>
 
@@ -987,7 +987,7 @@ export const HomePage: React.FC = () => {
           {[
             { img: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=500&q=80', label: 'Urli in Courtyard' },
             { img: 'https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&w=500&q=80', label: 'Sheesham Decor' },
-            { img: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=500&q=80', label: 'Marble & Idols' },
+            { img: '/products/metal%20crafts/Round%20Cutwork%20Brass%20Diya%20set%20of%203/01.jpg', label: 'Brass Idols & Accents' },
             { img: 'https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=500&q=80', label: 'Festive Diya Light' },
             { img: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=500&q=80', label: 'Kansa Dinnerware' },
             { img: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=500&q=80', label: 'Tree of Life Art' }

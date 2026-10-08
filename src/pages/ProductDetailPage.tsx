@@ -501,7 +501,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug }) =>
                 Centuries-Old Guild Craftsmanship
               </h3>
               <p>
-                Our metal, stone, and wood pieces are crafted in accordance with traditional Indian Shilpa
+                Our metal, brass, and wood pieces are crafted in accordance with traditional Indian Shilpa
                 Shastra guidelines. We use 100% solid virgin metals and sustainably sourced timber,
                 rejecting inferior scrap fillers and synthetic composites.
               </p>
@@ -511,7 +511,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug }) =>
                     Raw Material Purity
                   </h4>
                   <p className="text-xs text-charcoal-600">
-                    Solid brass, pure copper, natural Sheesham rosewood, and authentic white Makrana marble.
+                    Solid brass, pure copper, Bell metal bronze, and seasoned Sheesham rosewood.
                   </p>
                 </div>
                 <div className="p-4 rounded-xl bg-surface-cream border border-surface-border">
