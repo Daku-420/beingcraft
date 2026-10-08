@@ -11,20 +11,20 @@ export interface TaxonomyCategory {
 
 export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
   {
-    name: 'Wood Craft',
-    slug: 'wood-craft',
+    name: 'Home Decor',
+    slug: 'home-decor',
+    tagline: 'Objects that give your space a story',
+    description: 'Hand-beaten tree of life wall art, ornate jharokha mirrors, and evocative artisanal centerpieces.',
+    image: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80',
+    subcategories: ['Wall Décor', 'Table Décor', 'Sculptures', 'Decorative Objects'],
+  },
+  {
+    name: 'Wood Crafts',
+    slug: 'wood-crafts',
     tagline: 'Natural textures shaped by skilled hands',
     description: 'Aged Sheesham and reclaimed Teak meticulously hand-carved by hereditary Indian woodworkers.',
     image: 'https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&w=800&q=80',
     subcategories: ['Wooden Décor', 'Sculptures', 'Utility & Storage', 'Wooden Art', 'Trays & Boxes'],
-  },
-  {
-    name: 'Stone Craft',
-    slug: 'stone-craft',
-    tagline: 'Timeless forms carved in stone',
-    description: 'Centuries-old Makrana marble inlay, soapstone jali filigree, and serene sandstone sculptures.',
-    image: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=800&q=80',
-    subcategories: ['Stone Sculptures', 'Stone Décor', 'Figurines', 'Traditional Stone Art'],
   },
   {
     name: 'Brass & Metal',
@@ -35,28 +35,12 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     subcategories: ['Brass Décor', 'Brass Idols', 'Antique Metal', 'Vintage Pieces', 'Pooja Essentials'],
   },
   {
-    name: 'Home Decor',
-    slug: 'home-decor',
-    tagline: 'Objects that give your space a story',
-    description: 'Hand-beaten tree of life wall art, ornate jharokha mirrors, and evocative artisanal centerpieces.',
-    image: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80',
-    subcategories: ['Wall Décor', 'Table Décor', 'Sculptures', 'Decorative Objects'],
-  },
-  {
     name: 'Dining & Kitchen',
     slug: 'dining-and-kitchen',
     tagline: 'Pure heirloom dining and ritual serving',
     description: 'Ayurvedic pure Kansa bronze thalis, hand-hammered pure copper vessels, and brass spice chests.',
     image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80',
     subcategories: ['Serving Pieces', 'Trays', 'Bowls', 'Kitchen Décor', 'Dining Accessories'],
-  },
-  {
-    name: 'Collections',
-    slug: 'collections',
-    tagline: 'Curated heritage for meaningful spaces',
-    description: 'Limited artisan releases, seasonal festive treasures, and certified heirloom creations.',
-    image: 'https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=800&q=80',
-    subcategories: ['New Arrivals', 'Best Sellers', 'Festive Collection', 'Heritage Collection', 'Artisan Collection', 'Gifts'],
   }
 ];
 
@@ -235,198 +219,759 @@ export const CATEGORIES: { name: ProductCategory; slug: string; description: str
 
 export const INITIAL_PRODUCTS: Product[] = [
   {
-    "id": "wood-chakla-belan",
-    "name": "Traditional Indian Handcrafted Wooden Chakla Belan Set",
-    "slug": "traditional-indian-handcrafted-wooden-chakla-belan-set",
-    "sku": "BC-WD-001",
-    "category": "Wood Craft",
-    "subCategory": "Utility & Storage",
-    "collection": "Heritage Collection",
-    "badge": "BESTSELLER",
-    "price": 699,
-    "originalPrice": 1199,
-    "material": "Natural Seasoned Sheesham Wood (Indian Rosewood)",
-    "shortDescription": "Classic wooden rolling board (Chakla) and rolling pin (Belan) turned by skilled Saharanpur wood artisans.",
-    "description": "Elevate your culinary heritage with this authentic handcrafted Chakla Belan set. Masterfully turned from a single solid block of seasoned Sheesham wood, it features a smooth mirror-sanded finish, non-slip base stability, and ergonomic rolling balance designed for effortless rotis and parathas.",
-    "highlights": [
-      "Turned from seasoned single-piece Sheesham hardwood",
-      "Heavy stable base preventing slips during rolling",
-      "Ergonomic smooth-rolling Belan with tapered grips",
-      "Food-safe 100% natural oil polish, zero chemical varnishes"
-    ],
-    "dimensions": {
-      "length": 25,
-      "width": 25,
-      "height": 5,
-      "unit": "cm"
-    },
-    "weightKg": 1.4,
-    "colorFinish": "Rich Natural Walnut Grain",
-    "stock": 28,
-    "featured": true,
-    "bestseller": true,
-    "newArrival": false,
-    "rating": 4.9,
-    "reviewCount": 34,
-    "tags": [
-      "chakla belan",
-      "wooden roti maker",
-      "sheesham wood",
-      "kitchen utility",
-      "handcrafted rolling pin",
-      "wood craft"
-    ],
-    "images": [
-      "/products/wooden-chakla-belan-set/6.1.jpg",
-      "/products/wooden-chakla-belan-set/6.2.jpg",
-      "/products/wooden-chakla-belan-set/6.3.jpg",
-      "/products/wooden-chakla-belan-set/71idctzhppl.jpg"
-    ],
-    "discountPercent": 42,
-    "inStock": true,
-    "isCancellable": true,
-    "isReturnable": true,
-    "returnWindowDays": 7,
-    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
-    "returnPolicy": "7 days replacement or return if received damaged or defective.",
-    "reviews": [
-      {
-        "userName": "Aarav Sharma",
-        "userCity": "Jaipur",
-        "rating": 5,
-        "date": "2026-09-14",
-        "title": "Stunning authentic craft",
-        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-chakla-belan-1"
-      },
-      {
-        "userName": "Pooja Mehta",
-        "userCity": "Mumbai",
-        "rating": 5,
-        "date": "2026-09-18",
-        "title": "Pure artisan perfection",
-        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-chakla-belan-2"
-      }
-    ],
-    "careInstructions": [
-      "Wipe clean with a soft, dry cotton cloth after daily use",
-      "Avoid prolonged soaking in water or washing in dishwashers",
-      "Periodically condition with food-grade coconut or mineral oil to maintain luster",
-      "Keep away from direct heat sources and extreme direct sunlight to prevent warping"
-    ]
-  },
-  {
-    "id": "wood-spatula-set",
-    "name": "Handcrafted 7-Piece Premium Wooden Spatula and Cooking Spoon Set",
-    "slug": "handcrafted-7-piece-premium-wooden-spatula-and-cooking-spoon-set",
-    "sku": "BC-WD-002",
-    "category": "Wood Craft",
-    "subCategory": "Utility & Storage",
-    "collection": "Best Sellers",
-    "badge": "BESTSELLER",
-    "price": 449,
-    "originalPrice": 899,
-    "material": "Eco-Friendly Solid Sheesham & Teak Wood",
-    "shortDescription": "Complete 7-piece non-stick friendly wooden kitchen toolset including palta, kadchi, slotted spoon, and stirrers.",
-    "description": "A culinary essential for wholesome traditional cooking. This 7-piece handcrafted wooden spatula and spoon set is carved from heat-resistant natural hardwood. Completely safe for non-stick cookware and cast iron pans, they will never scratch surfaces or leach harmful toxins into your hot food.",
-    "highlights": [
-      "Includes Palta Turner, Long-Handle Spoon, Kadchi, Slotted Spoon & Serving Spoons",
-      "100% scratch-free protection for non-stick & enamel cookware",
-      "Heat resistant with comfortable anti-burn handles",
-      "Natural oil finish with integrated hanging hole loops"
-    ],
-    "dimensions": {
-      "length": 32,
-      "width": 8,
-      "height": 4,
-      "unit": "cm"
-    },
-    "weightKg": 0.65,
-    "colorFinish": "Warm Honey Brown",
-    "stock": 35,
-    "featured": true,
-    "bestseller": true,
-    "newArrival": false,
-    "rating": 4.8,
-    "reviewCount": 42,
-    "tags": [
-      "wooden spatula",
-      "cooking spoons",
-      "wooden palta",
-      "non stick spoons",
-      "sheesham spoon set",
-      "wood craft"
-    ],
-    "images": [
-      "/products/wooden-spatula-spoon-set/01-palta-turner.jpg",
-      "/products/wooden-spatula-spoon-set/02-long-handle-frying-spoon.jpg",
-      "/products/wooden-spatula-spoon-set/03-kadchi.jpg",
-      "/products/wooden-spatula-spoon-set/04-rice-serving-spoon.jpg",
-      "/products/wooden-spatula-spoon-set/05-slotted-spoon.jpg",
-      "/products/wooden-spatula-spoon-set/06-spatula.jpg",
-      "/products/wooden-spatula-spoon-set/07-strainer-spoon.jpg",
-      "/products/wooden-spatula-spoon-set/all-set-with-details.jpg",
-      "/products/wooden-spatula-spoon-set/all-set.jpg"
-    ],
-    "discountPercent": 50,
-    "inStock": true,
-    "isCancellable": true,
-    "isReturnable": true,
-    "returnWindowDays": 7,
-    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
-    "returnPolicy": "7 days replacement or return if received damaged or defective.",
-    "reviews": [
-      {
-        "userName": "Aarav Sharma",
-        "userCity": "Jaipur",
-        "rating": 5,
-        "date": "2026-09-14",
-        "title": "Stunning authentic craft",
-        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-spatula-set-1"
-      },
-      {
-        "userName": "Pooja Mehta",
-        "userCity": "Mumbai",
-        "rating": 5,
-        "date": "2026-09-18",
-        "title": "Pure artisan perfection",
-        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-spatula-set-2"
-      }
-    ],
-    "careInstructions": [
-      "Wipe clean with a soft, dry cotton cloth after daily use",
-      "Avoid prolonged soaking in water or washing in dishwashers",
-      "Periodically condition with food-grade coconut or mineral oil to maintain luster",
-      "Keep away from direct heat sources and extreme direct sunlight to prevent warping"
-    ]
-  },
-  {
-    "id": "wood-tea-coasters",
-    "name": "Handcrafted 6-Piece Wooden Tea Coaster Set with Matching Holder",
-    "slug": "handcrafted-6-piece-wooden-tea-coaster-set-with-a-matching-holder",
-    "sku": "BC-WD-003",
-    "category": "Wood Craft",
-    "subCategory": "Trays & Boxes",
+    "id": "coconut-shell-wristlet-wallet",
+    "name": "Coconut Shell Wristlet Wallet",
+    "slug": "coconut-shell-wristlet-wallet",
+    "sku": "BC-WD-100",
+    "category": "Wood Crafts",
+    "subCategory": "Artisanal Bags & Wearables",
     "collection": "Artisan Collection",
     "badge": "HANDCRAFTED",
     "price": 319,
-    "originalPrice": 599,
-    "material": "Pure Sheesham Wood with Protective Sealant",
-    "shortDescription": "Artisan hand-finished 6 wooden tea coasters neatly organized in an elegant matching open wooden box holder.",
-    "description": "Protect your tabletops in artisanal elegance with this 6-piece wooden coaster set. Carved from distinctively grained Indian Sheesham wood, each coaster is sanded smooth and heat-treated to resist moisture stains from steaming chai cups and chilled glasses. Includes a tailored wooden stand for clutter-free tabletop presentation.",
+    "originalPrice": 489,
+    "discountPercent": 35,
+    "description": "Handmade from genuine discarded coconut shells that are buffed to a silky luster, lined with soft fabric, and fitted with a zip and wristlet cord. A triumphant statement of eco-sustainable tribal fashion.",
+    "shortDescription": "Handcrafted eco-friendly Coconut Shell wristlet purse with secure zipper.",
     "highlights": [
-      "Set of 6 square coasters plus dedicated organizer caddy",
-      "Absorbs heat and shields dining tables from condensation rings",
-      "Hand-rubbed smooth finish highlighting natural wood rings",
-      "Compact footprint ideal for coffee tables, desks, and dining spaces"
+      "Crafted from 100% upcycled real coconut shell",
+      "Smooth water-resistant polished exterior with unique organic contour",
+      "Secure zipper closure with comfortable wrist carrying loop"
     ],
+    "material": "Reclaimed Polished Natural Coconut Shell with Cotton Lining & Zipper",
+    "dimensions": {
+      "length": 13,
+      "width": 13,
+      "height": 9,
+      "unit": "cm"
+    },
+    "weightKg": 0.19,
+    "colorFinish": "Smooth Buffed Natural Coconut Shell Texture",
+    "stock": 26,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.7,
+    "reviewCount": 39,
+    "tags": [
+      "coconut shell wristlet wallet",
+      "wood crafts",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/wood crafts/Coconut Shell Wristlet Wallet/01.jpg",
+      "/products/wood crafts/Coconut Shell Wristlet Wallet/02.jpg",
+      "/products/wood crafts/Coconut Shell Wristlet Wallet/03.jpg",
+      "/products/wood crafts/Coconut Shell Wristlet Wallet/04.jpg",
+      "/products/wood crafts/Coconut Shell Wristlet Wallet/05.jpg",
+      "/products/wood crafts/Coconut Shell Wristlet Wallet/06.jpg",
+      "/products/wood crafts/Coconut Shell Wristlet Wallet/07.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-coconut-shell-wristlet-wallet-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-coconut-shell-wristlet-wallet-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "diabetes-control-glass-made-from-jamun-wood",
+    "name": "Diabetes Control Glass Made From Jamun Wood",
+    "slug": "diabetes-control-glass-made-from-jamun-wood",
+    "sku": "BC-WD-101",
+    "category": "Dining & Kitchen",
+    "subCategory": "Ayurvedic Health Utensils",
+    "collection": "Artisan Collection",
+    "badge": "BESTSELLER",
+    "price": 399,
+    "originalPrice": 609,
+    "discountPercent": 34,
+    "description": "Based on traditional Ayurvedic remedies, filling this natural Jamun wood glass with water overnight allows herbal juices and bioactive compounds to infuse into the water, helping maintain natural blood sugar balance.",
+    "shortDescription": "Authentic Ayurvedic Diabetes Control herbal glass carved from pure Jamun wood.",
+    "highlights": [
+      "Carved from 100% pure authentic medicinal Jamun wood",
+      "Traditional Ayurvedic vessel used for overnight water infusion",
+      "Completely natural, unpolished and chemical-free",
+      "Eco-friendly holistic wellness drinking glass"
+    ],
+    "material": "100% Pure Natural Seasoned Jamun Wood (Syzygium cumini)",
+    "dimensions": {
+      "length": 8,
+      "width": 8,
+      "height": 14,
+      "unit": "cm"
+    },
+    "weightKg": 0.28,
+    "colorFinish": "Natural Untreated Herbal Wood Grain",
+    "stock": 27,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": true,
+    "rating": 4.8,
+    "reviewCount": 40,
+    "tags": [
+      "diabetes control glass made from jamun wood",
+      "dining & kitchen",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/wood crafts/Diabetes Control Glass made from Jamun wood/12.1.jpg",
+      "/products/wood crafts/Diabetes Control Glass made from Jamun wood/12.2.jpg",
+      "/products/wood crafts/Diabetes Control Glass made from Jamun wood/12.3.jpg",
+      "/products/wood crafts/Diabetes Control Glass made from Jamun wood/12.4.jpg",
+      "/products/wood crafts/Diabetes Control Glass made from Jamun wood/12.5.jpg",
+      "/products/wood crafts/Diabetes Control Glass made from Jamun wood/61-iAPnQogL._SX679_.jpg",
+      "/products/wood crafts/Diabetes Control Glass made from Jamun wood/612TV1vF70L._SX679_.jpg",
+      "/products/wood crafts/Diabetes Control Glass made from Jamun wood/61aqWxVSlNL._SX679_.jpg",
+      "/products/wood crafts/Diabetes Control Glass made from Jamun wood/7149HwFE2fL._SX679_.jpg",
+      "/products/wood crafts/Diabetes Control Glass made from Jamun wood/71ccfSaQaHL._SX679_.jpg",
+      "/products/wood crafts/Diabetes Control Glass made from Jamun wood/71lO33IgH3L._SX679_.jpg",
+      "/products/wood crafts/Diabetes Control Glass made from Jamun wood/71mCQlpk++L._SL1500_.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-diabetes-control-glass-made-from-jamun-wood-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-diabetes-control-glass-made-from-jamun-wood-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "geometric-wooden-handle-stainless-steel-mug",
+    "name": "Geometric Wooden Handle Stainless Steel Mug",
+    "slug": "geometric-wooden-handle-stainless-steel-mug",
+    "sku": "BC-WD-102",
+    "category": "Dining & Kitchen",
+    "subCategory": "Drinkware & Coffee Mugs",
+    "collection": "Artisan Collection",
+    "badge": "HANDCRAFTED",
+    "price": 599,
+    "originalPrice": 919,
+    "discountPercent": 35,
+    "description": "Blending industrial steel durability with handcrafted organic warmth, this modern coffee mug features double-wall insulation and a hand-shaped faceted wooden handle.",
+    "shortDescription": "Modern insulated steel coffee mug with a faceted geometric wooden handle.",
+    "highlights": [
+      "Faceted geometric solid wood handle stays cool to the touch",
+      "Double-wall food-grade steel keeps coffee piping hot",
+      "Contemporary Scandinavian-Indian fusion aesthetic"
+    ],
+    "material": "Brushed Stainless Steel with Geometric Carved Wooden Grip",
+    "dimensions": {
+      "length": 13,
+      "width": 9,
+      "height": 11,
+      "unit": "cm"
+    },
+    "weightKg": 0.32,
+    "colorFinish": "Matte Steel & Rich Teak Handle",
+    "stock": 28,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.8,
+    "reviewCount": 41,
+    "tags": [
+      "geometric wooden handle stainless steel mug",
+      "dining & kitchen",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/wood crafts/Geometric Wooden Handle Stainless Steel Mug/10.1.jpg",
+      "/products/wood crafts/Geometric Wooden Handle Stainless Steel Mug/10.10.jpg",
+      "/products/wood crafts/Geometric Wooden Handle Stainless Steel Mug/10.2.jpg",
+      "/products/wood crafts/Geometric Wooden Handle Stainless Steel Mug/10.3.jpg",
+      "/products/wood crafts/Geometric Wooden Handle Stainless Steel Mug/10.4.jpg",
+      "/products/wood crafts/Geometric Wooden Handle Stainless Steel Mug/10.5.jpg",
+      "/products/wood crafts/Geometric Wooden Handle Stainless Steel Mug/10.6.jpg",
+      "/products/wood crafts/Geometric Wooden Handle Stainless Steel Mug/10.7.jpg",
+      "/products/wood crafts/Geometric Wooden Handle Stainless Steel Mug/10.8.jpg",
+      "/products/wood crafts/Geometric Wooden Handle Stainless Steel Mug/10.9.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-geometric-wooden-handle-stainless-steel-mug-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-geometric-wooden-handle-stainless-steel-mug-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "good-morning-engraved-wooden-mug",
+    "name": "Good Morning Engraved Wooden Mug",
+    "slug": "good-morning-engraved-wooden-mug",
+    "sku": "BC-WD-103",
+    "category": "Dining & Kitchen",
+    "subCategory": "Drinkware & Coffee Mugs",
+    "collection": "Artisan Collection",
+    "badge": "NEW",
+    "price": 279,
+    "originalPrice": 429,
+    "discountPercent": 35,
+    "description": "Start every day on an uplifting note. Handcrafted from fine wood and engraved with 'Good Morning', this mug pairs charming rustic style with daily drinking convenience.",
+    "shortDescription": "Good Morning engraved artisan wooden coffee mug with stainless steel liner.",
+    "highlights": [
+      "Engraved artisan quote brings morning positivity",
+      "Hygienic stainless steel liner for hot chai or coffee",
+      "Thoughtful gift for family, friends, and colleagues"
+    ],
+    "material": "Artisan Hardwood with Food-Safe Steel Core",
+    "dimensions": {
+      "length": 14,
+      "width": 10,
+      "height": 12,
+      "unit": "cm"
+    },
+    "weightKg": 0.38,
+    "colorFinish": "Warm Caramel Wood Finish with Laser Engraving",
+    "stock": 29,
+    "inStock": true,
+    "featured": false,
+    "bestseller": true,
+    "newArrival": false,
+    "rating": 4.9,
+    "reviewCount": 42,
+    "tags": [
+      "good morning engraved wooden mug",
+      "dining & kitchen",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/wood crafts/Good Morning Engraved Wooden Mug/15.1.jpg",
+      "/products/wood crafts/Good Morning Engraved Wooden Mug/15.2.jpg",
+      "/products/wood crafts/Good Morning Engraved Wooden Mug/15.3.jpg",
+      "/products/wood crafts/Good Morning Engraved Wooden Mug/15.4.jpg",
+      "/products/wood crafts/Good Morning Engraved Wooden Mug/15.5.png",
+      "/products/wood crafts/Good Morning Engraved Wooden Mug/15.6.png",
+      "/products/wood crafts/Good Morning Engraved Wooden Mug/15.7.png",
+      "/products/wood crafts/Good Morning Engraved Wooden Mug/15.8.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-good-morning-engraved-wooden-mug-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-good-morning-engraved-wooden-mug-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "handcrafted-wooden-hair-comb-set",
+    "name": "Handcrafted Wooden Hair Comb Set",
+    "slug": "handcrafted-wooden-hair-comb-set",
+    "sku": "BC-WD-104",
+    "category": "Wood Crafts",
+    "subCategory": "Personal Care & Hair Accessories",
+    "collection": "Artisan Collection",
+    "badge": "BESTSELLER",
+    "price": 199,
+    "originalPrice": 299,
+    "discountPercent": 33,
+    "description": "Unlike plastic combs that create static frizz and hair breakage, this hand-carved wooden comb glides effortlessly through hair, gently massaging the scalp and stimulating natural hair oils.",
+    "shortDescription": "Handcrafted dual-tooth wooden hair comb set for anti-static natural hair care.",
+    "highlights": [
+      "100% natural herbal wood prevents static electricity and hair damage",
+      "Seamless rounded teeth gently stimulate scalp acupressure points",
+      "Natural wood fibers distribute conditioning scalp oils evenly"
+    ],
+    "material": "100% Pure Natural Seasoned Sheesham / Neem Wood",
+    "dimensions": {
+      "length": 19,
+      "width": 5,
+      "height": 1,
+      "unit": "cm"
+    },
+    "weightKg": 0.08,
+    "colorFinish": "Natural Unvarnished Wood with Smooth Buffed Teeth",
+    "stock": 30,
+    "inStock": true,
+    "featured": true,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.6,
+    "reviewCount": 43,
+    "tags": [
+      "handcrafted wooden hair comb set",
+      "wood crafts",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/wood crafts/Handcrafted Wooden Hair Comb Set/5.1.png",
+      "/products/wood crafts/Handcrafted Wooden Hair Comb Set/5.2.png",
+      "/products/wood crafts/Handcrafted Wooden Hair Comb Set/5.3.jpg",
+      "/products/wood crafts/Handcrafted Wooden Hair Comb Set/5.5.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-handcrafted-wooden-hair-comb-set-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-handcrafted-wooden-hair-comb-set-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "lavaux-designs-acacia-wood-small-bowl-se",
+    "name": "Lavaux Designs Acacia Wood Small Bowl Se",
+    "slug": "lavaux-designs-acacia-wood-small-bowl-se",
+    "sku": "BC-WD-105",
+    "category": "Dining & Kitchen",
+    "subCategory": "Serving Bowls",
+    "collection": "Artisan Collection",
+    "badge": "HANDCRAFTED",
+    "price": 149,
+    "originalPrice": 229,
+    "discountPercent": 35,
+    "description": "Crafted from durable eco-friendly Acacia hardwood, these small serving bowls add understated organic elegance to your dining spread. Perfect for sauces, olives, and condiments.",
+    "shortDescription": "Lavaux Designs handcrafted small Acacia wood bowl set for dips, nuts, and snacks.",
+    "highlights": [
+      "Dense water-resistant Acacia wood construction",
+      "Smooth rounded rims with tactile silky finish",
+      "Versatile dipping, appetizer, and snack size"
+    ],
+    "material": "Sustainable Natural Acacia Wood",
+    "dimensions": {
+      "length": 14,
+      "width": 14,
+      "height": 6,
+      "unit": "cm"
+    },
+    "weightKg": 0.35,
+    "colorFinish": "Natural Honey Acacia Grains",
+    "stock": 31,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.7,
+    "reviewCount": 44,
+    "tags": [
+      "lavaux designs acacia wood small bowl se",
+      "dining & kitchen",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/wood crafts/LAVAUX DESIGNS Acacia wood small bowl se/8.1.jpg",
+      "/products/wood crafts/LAVAUX DESIGNS Acacia wood small bowl se/8.2.jpg",
+      "/products/wood crafts/LAVAUX DESIGNS Acacia wood small bowl se/8.3.jpg",
+      "/products/wood crafts/LAVAUX DESIGNS Acacia wood small bowl se/8.4.jpg",
+      "/products/wood crafts/LAVAUX DESIGNS Acacia wood small bowl se/8.5.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-lavaux-designs-acacia-wood-small-bowl-se-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-lavaux-designs-acacia-wood-small-bowl-se-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "traditional-wooden-catapult",
+    "name": "Traditional Wooden Catapult",
+    "slug": "traditional-wooden-catapult",
+    "sku": "BC-WD-106",
+    "category": "Wood Crafts",
+    "subCategory": "Traditional Games & Folk Crafts",
+    "collection": "Artisan Collection",
+    "badge": "HANDCRAFTED",
+    "price": 149,
+    "originalPrice": 229,
+    "discountPercent": 35,
+    "description": "Revisit nostalgic childhood village memories with this handcrafted wooden catapult (Gulel). Carved from naturally branched hardwood forks with strong elastic latex bands and genuine leather pouch.",
+    "shortDescription": "Traditional Indian handcrafted wooden catapult (Gulel) with natural ergonomic fork.",
+    "highlights": [
+      "Hand-carved from sturdy natural hardwood fork",
+      "High-tensile rubber elastic bands with real leather ammo cup",
+      "Classic folk craft toy and rustic nostalgic collector's item"
+    ],
+    "material": "Seasoned Hardwood Fork with Heavy-Duty Latex Bands & Leather Pouch",
+    "dimensions": {
+      "length": 19,
+      "width": 9,
+      "height": 3,
+      "unit": "cm"
+    },
+    "weightKg": 0.18,
+    "colorFinish": "Natural Wood Bark & Smooth Sanded Grip",
+    "stock": 32,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.8,
+    "reviewCount": 45,
+    "tags": [
+      "traditional wooden catapult",
+      "wood crafts",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/wood crafts/Traditional Wooden Catapult/04.jpg",
+      "/products/wood crafts/Traditional Wooden Catapult/2.0.jpg",
+      "/products/wood crafts/Traditional Wooden Catapult/2.1.jpg",
+      "/products/wood crafts/Traditional Wooden Catapult/2.2.jpg",
+      "/products/wood crafts/Traditional Wooden Catapult/2.3.jpg",
+      "/products/wood crafts/Traditional Wooden Catapult/2.4.jpg",
+      "/products/wood crafts/Traditional Wooden Catapult/2.5.jpg",
+      "/products/wood crafts/Traditional Wooden Catapult/2.6.jpg",
+      "/products/wood crafts/Traditional Wooden Catapult/2.7.jpg",
+      "/products/wood crafts/Traditional Wooden Catapult/2.8.jpg",
+      "/products/wood crafts/Traditional Wooden Catapult/31qB4FnnjxL.jpg",
+      "/products/wood crafts/Traditional Wooden Catapult/41NGCoxKeFL.jpg",
+      "/products/wood crafts/Traditional Wooden Catapult/41hOa8vLl2L.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-traditional-wooden-catapult-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-traditional-wooden-catapult-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "vintage-ornate-pocket-watch",
+    "name": "Vintage Ornate Pocket Watch",
+    "slug": "vintage-ornate-pocket-watch",
+    "sku": "BC-WD-107",
+    "category": "Wood Crafts",
+    "subCategory": "Vintage Curios & Pocket Watches",
+    "collection": "Heritage Collection",
+    "badge": "BESTSELLER",
+    "price": 349,
+    "originalPrice": 539,
+    "discountPercent": 35,
+    "description": "Evoking Victorian railway elegance, this handcrafted pocket watch features deeply embossed casing, vintage Roman numeral dial, and a sturdy 32cm vest chain with clip.",
+    "shortDescription": "Handcrafted vintage ornate pocket watch with matching chain & filigree fob.",
+    "highlights": [
+      "Precision Japanese quartz movement keeps accurate time",
+      "Intricately embossed collector's casing with push-button release",
+      "Includes heavy brass vest chain with belt clip",
+      "Distinctive heritage heirloom gift for watch aficionados"
+    ],
+    "material": "Antique Brass & Bronze Alloy with Mechanical Quartz Movement",
+    "dimensions": {
+      "length": 5,
+      "width": 5,
+      "height": 1.5,
+      "unit": "cm"
+    },
+    "weightKg": 0.12,
+    "colorFinish": "Antiqued Bronze Patina with Engraved Relief",
+    "stock": 33,
+    "inStock": true,
+    "featured": false,
+    "bestseller": true,
+    "newArrival": true,
+    "rating": 4.8,
+    "reviewCount": 46,
+    "tags": [
+      "vintage ornate pocket watch",
+      "wood crafts",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/wood crafts/Vintage Ornate Pocket Watch/4.1.jpg",
+      "/products/wood crafts/Vintage Ornate Pocket Watch/4.2.jpg",
+      "/products/wood crafts/Vintage Ornate Pocket Watch/4.3.jpg",
+      "/products/wood crafts/Vintage Ornate Pocket Watch/4.4.jpg",
+      "/products/wood crafts/Vintage Ornate Pocket Watch/4.5.jpg",
+      "/products/wood crafts/Vintage Ornate Pocket Watch/4.6.jpg",
+      "/products/wood crafts/Vintage Ornate Pocket Watch/4.7.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-vintage-ornate-pocket-watch-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-vintage-ornate-pocket-watch-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "vintage-textured-pocket-watch",
+    "name": "Vintage Textured Pocket Watch",
+    "slug": "vintage-textured-pocket-watch",
+    "sku": "BC-WD-108",
+    "category": "Wood Crafts",
+    "subCategory": "Vintage Curios & Pocket Watches",
+    "collection": "Heritage Collection",
+    "badge": "HANDCRAFTED",
+    "price": 349,
+    "originalPrice": 539,
+    "discountPercent": 35,
+    "description": "Evoking Victorian railway elegance, this handcrafted pocket watch features deeply embossed casing, vintage Roman numeral dial, and a sturdy 32cm vest chain with clip.",
+    "shortDescription": "Handcrafted vintage ornate pocket watch with matching chain & filigree fob.",
+    "highlights": [
+      "Precision Japanese quartz movement keeps accurate time",
+      "Intricately embossed collector's casing with push-button release",
+      "Includes heavy brass vest chain with belt clip",
+      "Distinctive heritage heirloom gift for watch aficionados"
+    ],
+    "material": "Antique Brass & Bronze Alloy with Mechanical Quartz Movement",
+    "dimensions": {
+      "length": 5,
+      "width": 5,
+      "height": 1.5,
+      "unit": "cm"
+    },
+    "weightKg": 0.12,
+    "colorFinish": "Antiqued Bronze Patina with Engraved Relief",
+    "stock": 34,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.9,
+    "reviewCount": 47,
+    "tags": [
+      "vintage textured pocket watch",
+      "wood crafts",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/wood crafts/Vintage Textured Pocket Watch/5.1.jpg",
+      "/products/wood crafts/Vintage Textured Pocket Watch/5.2.jpg",
+      "/products/wood crafts/Vintage Textured Pocket Watch/5.3.jpg",
+      "/products/wood crafts/Vintage Textured Pocket Watch/5.4.jpg",
+      "/products/wood crafts/Vintage Textured Pocket Watch/5.5.jpg",
+      "/products/wood crafts/Vintage Textured Pocket Watch/5.6.jpg",
+      "/products/wood crafts/Vintage Textured Pocket Watch/5.7.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-vintage-textured-pocket-watch-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-vintage-textured-pocket-watch-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "handcrafted-6-piece-wooden-tea-coaster-set-with-a-matching",
+    "name": "Handcrafted 6-piece Wooden Tea Coaster Set with a Matching",
+    "slug": "handcrafted-6-piece-wooden-tea-coaster-set-with-a-matching",
+    "sku": "BC-WD-109",
+    "category": "Dining & Kitchen",
+    "subCategory": "Drink Coasters & Bar Accessories",
+    "collection": "Artisan Collection",
+    "badge": "HANDCRAFTED",
+    "price": 319,
+    "originalPrice": 489,
+    "discountPercent": 35,
+    "description": "Protect your dining and coffee tables in style with this 6-piece wooden coaster set. Each coaster is hand-buffed with heat-resistant polish and nests neatly inside a custom handcrafted stand.",
+    "shortDescription": "Handcrafted 6-piece wooden tea coaster set housed in a matching artisan holder.",
+    "highlights": [
+      "Includes 6 round coasters and 1 compact holding stand",
+      "Protects wooden and glass surfaces from heat rings and stains",
+      "Subtle brass wire inlay detailing on coasters",
+      "Compact footprint perfect for study and living room tables"
+    ],
+    "material": "Handcrafted Seasoned Sheesham Wood",
     "dimensions": {
       "length": 11,
       "width": 11,
@@ -434,1113 +979,3935 @@ export const INITIAL_PRODUCTS: Product[] = [
       "unit": "cm"
     },
     "weightKg": 0.45,
-    "colorFinish": "Deep Sheesham Wood Grain",
-    "stock": 40,
-    "featured": false,
-    "bestseller": true,
-    "newArrival": false,
-    "rating": 4.7,
-    "reviewCount": 29,
-    "tags": [
-      "tea coasters",
-      "wooden coasters",
-      "cup mat",
-      "dining accessories",
-      "table decor",
-      "wood craft"
-    ],
-    "images": [
-      "/products/wooden-tea-coaster-set/01.jpg",
-      "/products/wooden-tea-coaster-set/02.jpg",
-      "/products/wooden-tea-coaster-set/03.jpg",
-      "/products/wooden-tea-coaster-set/04.jpg",
-      "/products/wooden-tea-coaster-set/05.jpg"
-    ],
-    "discountPercent": 47,
+    "colorFinish": "Rich Walnut Stain with Brass Inlays",
+    "stock": 35,
     "inStock": true,
-    "isCancellable": true,
-    "isReturnable": true,
-    "returnWindowDays": 7,
-    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
-    "returnPolicy": "7 days replacement or return if received damaged or defective.",
-    "reviews": [
-      {
-        "userName": "Aarav Sharma",
-        "userCity": "Jaipur",
-        "rating": 5,
-        "date": "2026-09-14",
-        "title": "Stunning authentic craft",
-        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-tea-coasters-1"
-      },
-      {
-        "userName": "Pooja Mehta",
-        "userCity": "Mumbai",
-        "rating": 5,
-        "date": "2026-09-18",
-        "title": "Pure artisan perfection",
-        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-tea-coasters-2"
-      }
-    ],
-    "careInstructions": [
-      "Wipe clean with a soft, dry cotton cloth after daily use",
-      "Avoid prolonged soaking in water or washing in dishwashers",
-      "Periodically condition with food-grade coconut or mineral oil to maintain luster",
-      "Keep away from direct heat sources and extreme direct sunlight to prevent warping"
-    ]
-  },
-  {
-    "id": "wood-sheesham-bowls",
-    "name": "Handcrafted Premium Sheesham Wood Serving Bowl Set (Set of 2)",
-    "slug": "handcrafted-premium-sheesham-wood-serving-bowl-set-of-2",
-    "sku": "BC-WD-004",
-    "category": "Wood Craft",
-    "subCategory": "Utility & Storage",
-    "collection": "Artisan Collection",
-    "badge": "HANDCRAFTED",
-    "price": 249,
-    "originalPrice": 499,
-    "material": "Seasoned Indian Sheesham Wood",
-    "shortDescription": "Pair of rustic hand-turned wooden serving bowls perfect for dry fruits, snacks, salads, and festive nibbles.",
-    "description": "Present your dry fruits, freshly roasted snacks, and salads with authentic rustic charm. Hand-lathed from sustainably sourced solid Sheesham wood, each bowl showcases vibrant swirl grains and deep organic tones. Treated with food-safe plant oils for safe, lasting entertaining.",
-    "highlights": [
-      "Pack of 2 beautifully turned bowls with curved rims",
-      "Food grade natural wax & oil protection",
-      "Lightweight yet durable and drop-resistant",
-      "Ideal for dry fruits, dips, mouth fresheners, and table centerpieces"
-    ],
-    "dimensions": {
-      "length": 15,
-      "width": 15,
-      "height": 6,
-      "unit": "cm"
-    },
-    "weightKg": 0.5,
-    "colorFinish": "Glossy Honey Rosewood",
-    "stock": 26,
-    "featured": false,
-    "bestseller": false,
-    "newArrival": true,
-    "rating": 4.8,
-    "reviewCount": 19,
-    "tags": [
-      "wooden bowls",
-      "sheesham bowl",
-      "serving bowls",
-      "dry fruit bowl",
-      "snack bowl",
-      "wood craft"
-    ],
-    "images": [
-      "/products/sheesham-wood-serving-bowl-set/7.1.jpg",
-      "/products/sheesham-wood-serving-bowl-set/7.2.jpg",
-      "/products/sheesham-wood-serving-bowl-set/7.3.jpg",
-      "/products/sheesham-wood-serving-bowl-set/7.4.jpg"
-    ],
-    "discountPercent": 50,
-    "inStock": true,
-    "isCancellable": true,
-    "isReturnable": true,
-    "returnWindowDays": 7,
-    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
-    "returnPolicy": "7 days replacement or return if received damaged or defective.",
-    "reviews": [
-      {
-        "userName": "Aarav Sharma",
-        "userCity": "Jaipur",
-        "rating": 5,
-        "date": "2026-09-14",
-        "title": "Stunning authentic craft",
-        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-sheesham-bowls-1"
-      },
-      {
-        "userName": "Pooja Mehta",
-        "userCity": "Mumbai",
-        "rating": 5,
-        "date": "2026-09-18",
-        "title": "Pure artisan perfection",
-        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-sheesham-bowls-2"
-      }
-    ],
-    "careInstructions": [
-      "Wipe clean with a soft, dry cotton cloth after daily use",
-      "Avoid prolonged soaking in water or washing in dishwashers",
-      "Periodically condition with food-grade coconut or mineral oil to maintain luster",
-      "Keep away from direct heat sources and extreme direct sunlight to prevent warping"
-    ]
-  },
-  {
-    "id": "wood-viking-mug",
-    "name": "Handcrafted Traditional Viking-Style Wooden Beer Mug",
-    "slug": "handcrafted-traditional-viking-style-wooden-beer-mug",
-    "sku": "BC-WD-005",
-    "category": "Wood Craft",
-    "subCategory": "Utility & Storage",
-    "collection": "Heritage Collection",
-    "badge": "LIMITED",
-    "price": 429,
-    "originalPrice": 799,
-    "material": "Solid Hardwood with Carved Handle",
-    "shortDescription": "Heirloom style medieval Viking wooden barrel tankard mug with heavy carved handle and rustic banded design.",
-    "description": "Channel historic craftsmanship with this handcrafted Viking-style wooden barrel mug. Carved by master wood turners with ribbed barrel staves and an ergonomic solid grip handle. The insulated natural wooden wall keeps cold beverages chilled and hot beverages warm longer than glass.",
-    "highlights": [
-      "Medieval wooden tankard design with rustic barrel banding",
-      "Sturdy ergonomic handle carved for a secure one-hand grip",
-      "Natural wood insulation keeps brews cooler for longer",
-      "Unique collector piece for home bars, themed gifts, and gatherings"
-    ],
-    "dimensions": {
-      "length": 16,
-      "width": 11,
-      "height": 14,
-      "unit": "cm"
-    },
-    "weightKg": 0.42,
-    "colorFinish": "Antique Rustic Oak Finish",
-    "stock": 18,
     "featured": true,
     "bestseller": false,
-    "newArrival": true,
-    "rating": 4.9,
-    "reviewCount": 23,
+    "newArrival": false,
+    "rating": 4.6,
+    "reviewCount": 48,
     "tags": [
-      "wooden mug",
-      "viking beer mug",
-      "wooden tankard",
-      "barware",
-      "wooden cup",
-      "wood craft"
+      "handcrafted 6 piece wooden tea coaster set with a matching",
+      "dining & kitchen",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
     ],
     "images": [
-      "/products/viking-style-wooden-beer-mug/01.jpg",
-      "/products/viking-style-wooden-beer-mug/02.jpg",
-      "/products/viking-style-wooden-beer-mug/03.jpg",
-      "/products/viking-style-wooden-beer-mug/04.jpg",
-      "/products/viking-style-wooden-beer-mug/05.jpg",
-      "/products/viking-style-wooden-beer-mug/06.jpg",
-      "/products/viking-style-wooden-beer-mug/07.jpg"
-    ],
-    "discountPercent": 46,
-    "inStock": true,
-    "isCancellable": true,
-    "isReturnable": true,
-    "returnWindowDays": 7,
-    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
-    "returnPolicy": "7 days replacement or return if received damaged or defective.",
-    "reviews": [
-      {
-        "userName": "Aarav Sharma",
-        "userCity": "Jaipur",
-        "rating": 5,
-        "date": "2026-09-14",
-        "title": "Stunning authentic craft",
-        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-viking-mug-1"
-      },
-      {
-        "userName": "Pooja Mehta",
-        "userCity": "Mumbai",
-        "rating": 5,
-        "date": "2026-09-18",
-        "title": "Pure artisan perfection",
-        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-viking-mug-2"
-      }
+      "/products/wood crafts/handcrafted 6-piece wooden tea coaster set with a matching/01.jpg",
+      "/products/wood crafts/handcrafted 6-piece wooden tea coaster set with a matching/02.jpg",
+      "/products/wood crafts/handcrafted 6-piece wooden tea coaster set with a matching/03.jpg",
+      "/products/wood crafts/handcrafted 6-piece wooden tea coaster set with a matching/04.jpg",
+      "/products/wood crafts/handcrafted 6-piece wooden tea coaster set with a matching/05.jpg"
     ],
     "careInstructions": [
-      "Wipe clean with a soft, dry cotton cloth after daily use",
-      "Avoid prolonged soaking in water or washing in dishwashers",
-      "Periodically condition with food-grade coconut or mineral oil to maintain luster",
-      "Keep away from direct heat sources and extreme direct sunlight to prevent warping"
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-handcrafted-6-piece-wooden-tea-coaster-set-with-a-matching-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-handcrafted-6-piece-wooden-tea-coaster-set-with-a-matching-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
     ]
   },
   {
-    "id": "wood-buddha-statue",
-    "name": "Handcrafted Traditional Wooden Buddha Head Statue",
-    "slug": "handcrafted-traditional-wooden-buddha-head-statue",
-    "sku": "BC-WD-006",
-    "category": "Wood Craft",
-    "subCategory": "Sculptures",
-    "collection": "Heritage Collection",
-    "badge": "HANDCRAFTED",
-    "price": 499,
-    "originalPrice": 999,
-    "material": "Hand-Carved Seasoned Hardwood",
-    "shortDescription": "Serene meditative Buddha head sculpture intricately hand-chiseled from single piece seasoned wood.",
-    "description": "Infuse your living space with tranquility, balance, and mindful serenity. This contemplative Buddha head idol is delicately chiseled by hereditary Indian wood artisans, capturing gentle facial contours, coiled ushnisha curls, and a peaceful meditative expression. Perfect for altar, mantelpiece, or study desk.",
+    "id": "handcrafted-7-piece-premium-wooden-spatula-and-cooking-spoon-set",
+    "name": "Handcrafted 7-piece Premium Wooden Spatula and Cooking Spoon Set",
+    "slug": "handcrafted-7-piece-premium-wooden-spatula-and-cooking-spoon-set",
+    "sku": "BC-WD-110",
+    "category": "Dining & Kitchen",
+    "subCategory": "Culinary Spoons & Ladles",
+    "collection": "Artisan Collection",
+    "badge": "BESTSELLER",
+    "price": 449,
+    "originalPrice": 689,
+    "discountPercent": 35,
+    "description": "An indispensable 7-piece artisanal spoon set including turner (palta), deep frying spoon, soup kadchi, rice server, slotted spoon, and stirring spatulas. Gentle on non-stick cookware and heat-resistant.",
+    "shortDescription": "Handmade 7-piece wooden ladle, palta, and frying spoon set for non-stick cooking.",
     "highlights": [
-      "Single-piece hand-carved wood sculpture with fine chisel details",
-      "Brings calming Zen harmony and positive Vastu energy to interiors",
-      "Stable flat wooden pedestal base for secure placement",
-      "Hand-waxed matte finish preserving natural grain texture"
+      "Complete 7-piece culinary utility set for frying, stirring & serving",
+      "Gentle curved edges protect non-stick pans from scratching",
+      "Naturally heat resistant handles never conduct burning heat",
+      "Single-piece seamless wood construction prevents food trapped in joints"
     ],
+    "material": "Premium Solid Sheesham Wood",
     "dimensions": {
-      "length": 10,
-      "width": 9,
-      "height": 20,
+      "length": 32,
+      "width": 8,
+      "height": 2,
       "unit": "cm"
     },
     "weightKg": 0.6,
-    "colorFinish": "Natural Matte Antique Brown",
-    "stock": 22,
-    "featured": true,
+    "colorFinish": "Natural Wood Tone with Food-Grade Oil",
+    "stock": 36,
+    "inStock": true,
+    "featured": false,
     "bestseller": false,
-    "newArrival": true,
-    "rating": 4.9,
-    "reviewCount": 31,
+    "newArrival": false,
+    "rating": 4.7,
+    "reviewCount": 49,
     "tags": [
-      "wooden buddha",
-      "buddha head statue",
-      "wood carving",
-      "sculpture",
-      "meditation decor",
-      "wood craft"
+      "handcrafted 7 piece premium wooden spatula and cooking spoon set",
+      "dining & kitchen",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
     ],
     "images": [
-      "/products/wooden-buddha-head-statue/01.jpg",
-      "/products/wooden-buddha-head-statue/02.jpg",
-      "/products/wooden-buddha-head-statue/03.jpg",
-      "/products/wooden-buddha-head-statue/04.jpg",
-      "/products/wooden-buddha-head-statue/05.jpg"
-    ],
-    "discountPercent": 50,
-    "inStock": true,
-    "isCancellable": true,
-    "isReturnable": true,
-    "returnWindowDays": 7,
-    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
-    "returnPolicy": "7 days replacement or return if received damaged or defective.",
-    "reviews": [
-      {
-        "userName": "Aarav Sharma",
-        "userCity": "Jaipur",
-        "rating": 5,
-        "date": "2026-09-14",
-        "title": "Stunning authentic craft",
-        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-buddha-statue-1"
-      },
-      {
-        "userName": "Pooja Mehta",
-        "userCity": "Mumbai",
-        "rating": 5,
-        "date": "2026-09-18",
-        "title": "Pure artisan perfection",
-        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-buddha-statue-2"
-      }
+      "/products/wood crafts/handcrafted 7-piece premium wooden spatula and cooking spoon set/01. Palta Turner.jpg",
+      "/products/wood crafts/handcrafted 7-piece premium wooden spatula and cooking spoon set/02. Long Handle Frying Spoon.jpg",
+      "/products/wood crafts/handcrafted 7-piece premium wooden spatula and cooking spoon set/03. Kadchi.jpg",
+      "/products/wood crafts/handcrafted 7-piece premium wooden spatula and cooking spoon set/04. Rice Serving Spoon.jpg",
+      "/products/wood crafts/handcrafted 7-piece premium wooden spatula and cooking spoon set/05. Slotted Spoon.jpg",
+      "/products/wood crafts/handcrafted 7-piece premium wooden spatula and cooking spoon set/06. Spatula.jpg",
+      "/products/wood crafts/handcrafted 7-piece premium wooden spatula and cooking spoon set/07. Strainer Spoon.jpg",
+      "/products/wood crafts/handcrafted 7-piece premium wooden spatula and cooking spoon set/All Set With Details.jpg",
+      "/products/wood crafts/handcrafted 7-piece premium wooden spatula and cooking spoon set/All Set.jpg"
     ],
     "careInstructions": [
-      "Wipe clean with a soft, dry cotton cloth after daily use",
-      "Avoid prolonged soaking in water or washing in dishwashers",
-      "Periodically condition with food-grade coconut or mineral oil to maintain luster",
-      "Keep away from direct heat sources and extreme direct sunlight to prevent warping"
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-handcrafted-7-piece-premium-wooden-spatula-and-cooking-spoon-set-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-handcrafted-7-piece-premium-wooden-spatula-and-cooking-spoon-set-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
     ]
   },
   {
-    "id": "wood-incense-burner-box",
-    "name": "Handcrafted Traditional Wooden Coffin Incense Burner Box",
-    "slug": "handcrafted-traditional-wooden-coffin-incense-burner-box",
-    "sku": "BC-WD-007",
-    "category": "Wood Craft",
-    "subCategory": "Wooden D\u00e9cor",
+    "id": "handcrafted-dual-tone-wooden-tic-tac-toe-board-game",
+    "name": "Handcrafted Dual-tone Wooden Tic-tac-toe Board Game",
+    "slug": "handcrafted-dual-tone-wooden-tic-tac-toe-board-game",
+    "sku": "BC-WD-111",
+    "category": "Wood Crafts",
+    "subCategory": "Traditional Games & Puzzles",
     "collection": "Artisan Collection",
-    "badge": "HANDCRAFTED",
-    "price": 299,
-    "originalPrice": 599,
-    "material": "Carved Sheesham Wood with Brass Inlay Accents",
-    "shortDescription": "Ornate carved wooden incense holder box with bottom storage drawer for agarbatti sticks and brass inlay stars.",
-    "description": "A sacred and aromatic addition to any pooja room, yoga sanctuary, or living room. This traditional coffin-style incense burner features delicate lattice fretwork (jali) that allows fragrant smoke ribbons to drift gracefully into the room while catching all ash safely inside. Includes a secret bottom sliding drawer to store unburnt incense sticks.",
+    "badge": "NEW",
+    "price": 149,
+    "originalPrice": 229,
+    "discountPercent": 35,
+    "description": "Ditch digital screens with this heirloom wooden Tic-Tac-Toe board game. Hand-turned brass-inlaid X and O game tokens fit neatly into individual square grid pockets for hours of tactical fun.",
+    "shortDescription": "Handcrafted dual-tone wooden Tic-Tac-Toe (XOX) travel board game with brass inlay.",
     "highlights": [
-      "Intricate jali latticework lid diffuses fragrant incense smoke safely",
-      "Catches 100% of falling ash inside without tabletop mess",
-      "Hidden bottom drawer holds extra agarbatti sticks and dhoop cones",
-      "Dual side brass eyelets support two burning sticks simultaneously"
+      "Solid hardwood playing board with golden brass inlays",
+      "Heavy sculpted wooden X and O tokens",
+      "Tactile tabletop coffee table decor that guests love to pick up and play"
     ],
+    "material": "Dual-Tone Solid Sheesham & Haldu Wood with Brass Inlay",
     "dimensions": {
-      "length": 30,
-      "width": 5.5,
-      "height": 6,
+      "length": 12,
+      "width": 12,
+      "height": 3.5,
       "unit": "cm"
     },
-    "weightKg": 0.38,
-    "colorFinish": "Warm Sheesham with Brass Motifs",
-    "stock": 32,
+    "weightKg": 0.28,
+    "colorFinish": "Rich Walnut and Natural Blonde Contrast with Brass Inlay",
+    "stock": 37,
+    "inStock": true,
     "featured": false,
     "bestseller": true,
     "newArrival": false,
     "rating": 4.8,
-    "reviewCount": 27,
+    "reviewCount": 50,
     "tags": [
-      "incense burner",
-      "agarbatti stand",
-      "wooden coffin box",
-      "dhoop burner",
-      "pooja decor",
-      "wood craft"
+      "handcrafted dual tone wooden tic tac toe board game",
+      "wood crafts",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
     ],
     "images": [
-      "/products/wooden-coffin-incense-burner-box/01.jpg",
-      "/products/wooden-coffin-incense-burner-box/02.webp",
-      "/products/wooden-coffin-incense-burner-box/03.jpg",
-      "/products/wooden-coffin-incense-burner-box/04.jpg",
-      "/products/wooden-coffin-incense-burner-box/05.jpg",
-      "/products/wooden-coffin-incense-burner-box/06.jpg",
-      "/products/wooden-coffin-incense-burner-box/07.jpg",
-      "/products/wooden-coffin-incense-burner-box/08.webp",
-      "/products/wooden-coffin-incense-burner-box/09.jpg",
-      "/products/wooden-coffin-incense-burner-box/10.jpg",
-      "/products/wooden-coffin-incense-burner-box/11.jpg",
-      "/products/wooden-coffin-incense-burner-box/11.webp",
-      "/products/wooden-coffin-incense-burner-box/12.webp",
-      "/products/wooden-coffin-incense-burner-box/13.jpg",
-      "/products/wooden-coffin-incense-burner-box/vaaree-assured-v6.png"
-    ],
-    "discountPercent": 50,
-    "inStock": true,
-    "isCancellable": true,
-    "isReturnable": true,
-    "returnWindowDays": 7,
-    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
-    "returnPolicy": "7 days replacement or return if received damaged or defective.",
-    "reviews": [
-      {
-        "userName": "Aarav Sharma",
-        "userCity": "Jaipur",
-        "rating": 5,
-        "date": "2026-09-14",
-        "title": "Stunning authentic craft",
-        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-incense-burner-box-1"
-      },
-      {
-        "userName": "Pooja Mehta",
-        "userCity": "Mumbai",
-        "rating": 5,
-        "date": "2026-09-18",
-        "title": "Pure artisan perfection",
-        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-incense-burner-box-2"
-      }
+      "/products/wood crafts/handcrafted dual-tone wooden Tic-Tac-Toe board game/32.1.jpg",
+      "/products/wood crafts/handcrafted dual-tone wooden Tic-Tac-Toe board game/4inch-xox-game.jpeg"
     ],
     "careInstructions": [
-      "Wipe clean with a soft, dry cotton cloth after daily use",
-      "Avoid prolonged soaking in water or washing in dishwashers",
-      "Periodically condition with food-grade coconut or mineral oil to maintain luster",
-      "Keep away from direct heat sources and extreme direct sunlight to prevent warping"
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-handcrafted-dual-tone-wooden-tic-tac-toe-board-game-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-handcrafted-dual-tone-wooden-tic-tac-toe-board-game-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
     ]
   },
   {
-    "id": "wood-hair-comb-set",
-    "name": "Handcrafted Natural Wooden Hair Comb Set",
-    "slug": "handcrafted-wooden-hair-comb",
-    "sku": "BC-WD-008",
-    "category": "Wood Craft",
-    "subCategory": "Utility & Storage",
-    "collection": "New Arrivals",
-    "badge": "NEW",
-    "price": 199,
-    "originalPrice": 399,
-    "material": "Pure Herbal Neem & Sheesham Wood",
-    "shortDescription": "Wide-tooth and fine-tooth anti-static wooden combs for gentle detangling, scalp massage, and hair health.",
-    "description": "Embrace ancient Ayurvedic hair wellness. Unlike plastic combs that generate static charge, cause micro-tears, and break hair cuticles, these smooth hand-buffed wooden teeth gently massage the scalp, stimulate blood micro-circulation, and distribute natural scalp oils evenly from roots to tips.",
+    "id": "handcrafted-flat-wooden-cooking-spatula",
+    "name": "Handcrafted Flat Wooden Cooking Spatula",
+    "slug": "handcrafted-flat-wooden-cooking-spatula",
+    "sku": "BC-WD-112",
+    "category": "Dining & Kitchen",
+    "subCategory": "Cooking Spoons",
+    "collection": "Artisan Collection",
+    "badge": "HANDCRAFTED",
+    "price": 109,
+    "originalPrice": 159,
+    "discountPercent": 31,
+    "description": "A single-piece solid wood flat spatula designed for effortless wok stirring, dosa tossing, and pan frying without harming non-stick coatings.",
+    "shortDescription": "Handmade flat wooden cooking spatula for stirring, sautéing, and flipping.",
     "highlights": [
-      "100% anti-static wood eliminates frizz and hair flyaways",
-      "Seamless rounded teeth prevent scalp scratches and split ends",
-      "Naturally antibacterial Neem & seasoned Sheesham hardwood",
-      "Compact and lightweight for everyday grooming and travel kits"
+      "Ultra-smooth beveled edge for easy scraping and turning",
+      "Lightweight ergonomic grip for daily kitchen tasks",
+      "100% heat safe and biodegradable"
     ],
+    "material": "Natural Seasoned Teak / Sheesham",
     "dimensions": {
-      "length": 18,
-      "width": 5,
-      "height": 1,
+      "length": 30,
+      "width": 6,
+      "height": 1.5,
       "unit": "cm"
     },
     "weightKg": 0.12,
-    "colorFinish": "Raw Natural Polished Wood",
-    "stock": 50,
+    "colorFinish": "Natural Untreated Wood Glow",
+    "stock": 38,
+    "inStock": true,
     "featured": false,
     "bestseller": false,
-    "newArrival": true,
-    "rating": 4.7,
-    "reviewCount": 38,
+    "newArrival": false,
+    "rating": 4.8,
+    "reviewCount": 51,
     "tags": [
-      "wooden comb",
-      "neem comb",
-      "hair care",
-      "ayurvedic grooming",
-      "wide tooth comb",
-      "wood craft"
+      "handcrafted flat wooden cooking spatula",
+      "dining & kitchen",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
     ],
     "images": [
-      "/products/wooden-hair-comb-set/5.1.png",
-      "/products/wooden-hair-comb-set/5.2.png",
-      "/products/wooden-hair-comb-set/5.3.jpg",
-      "/products/wooden-hair-comb-set/5.5.jpg"
-    ],
-    "discountPercent": 50,
-    "inStock": true,
-    "isCancellable": true,
-    "isReturnable": true,
-    "returnWindowDays": 7,
-    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
-    "returnPolicy": "7 days replacement or return if received damaged or defective.",
-    "reviews": [
-      {
-        "userName": "Aarav Sharma",
-        "userCity": "Jaipur",
-        "rating": 5,
-        "date": "2026-09-14",
-        "title": "Stunning authentic craft",
-        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-hair-comb-set-1"
-      },
-      {
-        "userName": "Pooja Mehta",
-        "userCity": "Mumbai",
-        "rating": 5,
-        "date": "2026-09-18",
-        "title": "Pure artisan perfection",
-        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-hair-comb-set-2"
-      }
+      "/products/wood crafts/handcrafted flat wooden cooking spatula/01.jpg",
+      "/products/wood crafts/handcrafted flat wooden cooking spatula/02.jpg",
+      "/products/wood crafts/handcrafted flat wooden cooking spatula/03.jpg",
+      "/products/wood crafts/handcrafted flat wooden cooking spatula/04.jpg"
     ],
     "careInstructions": [
-      "Wipe clean with a soft, dry cotton cloth after daily use",
-      "Avoid prolonged soaking in water or washing in dishwashers",
-      "Periodically condition with food-grade coconut or mineral oil to maintain luster",
-      "Keep away from direct heat sources and extreme direct sunlight to prevent warping"
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-handcrafted-flat-wooden-cooking-spatula-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-handcrafted-flat-wooden-cooking-spatula-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
     ]
   },
   {
-    "id": "wood-tic-tac-toe",
-    "name": "Handcrafted Dual-Tone Wooden Tic-Tac-Toe Board Game",
-    "slug": "handcrafted-dual-tone-wooden-tic-tac-toe-board-game",
-    "sku": "BC-WD-009",
-    "category": "Wood Craft",
-    "subCategory": "Wooden D\u00e9cor",
+    "id": "handcrafted-premium-sheesham-wood-serving-bowl-set",
+    "name": "Handcrafted Premium Sheesham Wood Serving Bowl Set",
+    "slug": "handcrafted-premium-sheesham-wood-serving-bowl-set",
+    "sku": "BC-WD-113",
+    "category": "Dining & Kitchen",
+    "subCategory": "Serving Bowls & Tableware",
     "collection": "Artisan Collection",
-    "badge": "HANDCRAFTED",
-    "price": 149,
-    "originalPrice": 299,
-    "material": "Solid Teak & Sheesham Hardwood Pieces",
-    "shortDescription": "Classic 4-inch wooden coffee table X & O puzzle game with dual-tone brass and wood tokens.",
-    "description": "A timeless parlor game that doubles as an eye-catching coffee table accent. Crafted by skilled toy artisans using solid natural wood, the grid holds 9 precision-carved game blocks. Perfect for quick family entertainment, screen-free playtime, and thoughtful desk gifts.",
+    "badge": "BESTSELLER",
+    "price": 249,
+    "originalPrice": 379,
+    "discountPercent": 34,
+    "description": "Sculpted from aged Sheesham timber, this 2-piece handcrafted bowl set celebrates nature's organic grain patterns. Ideal for serving artisan breads, salads, nuts, and festive delicacies.",
+    "shortDescription": "Pair of artisanal Sheesham wood serving bowls for salads, gravies, and dry snacks.",
     "highlights": [
-      "Compact 4-inch square format ideal for coffee tables & office desks",
-      "Dual-tone X and O blocks crafted with contrasting wood hues",
-      "Screen-free tactile fun for children, adults, and party guests",
-      "Smooth splinter-free hand sanding with child-safe natural wax"
+      "Set of 2 handcrafted wooden serving bowls",
+      "Carved from dense, moisture-resistant Sheesham",
+      "Food-safe natural beeswax coating",
+      "Rich conversational centerpiece for heirloom dining"
     ],
+    "material": "Pure Seasoned Sheesham Wood",
     "dimensions": {
-      "length": 10,
-      "width": 10,
-      "height": 3,
+      "length": 16,
+      "width": 16,
+      "height": 7,
       "unit": "cm"
     },
-    "weightKg": 0.22,
-    "colorFinish": "Dual-Tone Honey Teak & Dark Rosewood",
-    "stock": 45,
+    "weightKg": 0.55,
+    "colorFinish": "Deep Walnut Natural Grain",
+    "stock": 39,
+    "inStock": true,
     "featured": false,
     "bestseller": false,
+    "newArrival": true,
+    "rating": 4.9,
+    "reviewCount": 52,
+    "tags": [
+      "handcrafted premium sheesham wood serving bowl set",
+      "dining & kitchen",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/wood crafts/handcrafted premium Sheesham wood serving bowl set/7.1.jpg",
+      "/products/wood crafts/handcrafted premium Sheesham wood serving bowl set/7.2.jpg",
+      "/products/wood crafts/handcrafted premium Sheesham wood serving bowl set/7.3.jpg",
+      "/products/wood crafts/handcrafted premium Sheesham wood serving bowl set/7.4.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-handcrafted-premium-sheesham-wood-serving-bowl-set-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-handcrafted-premium-sheesham-wood-serving-bowl-set-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "handcrafted-premium-wooden-cutwork-serving-tray",
+    "name": "Handcrafted Premium Wooden Cutwork Serving Tray",
+    "slug": "handcrafted-premium-wooden-cutwork-serving-tray",
+    "sku": "BC-WD-114",
+    "category": "Dining & Kitchen",
+    "subCategory": "Serving Trays",
+    "collection": "Artisan Collection",
+    "badge": "HANDCRAFTED",
+    "price": 199,
+    "originalPrice": 299,
+    "discountPercent": 33,
+    "description": "A refined minimalist wooden serving tray designed for high tea, morning coffee, and cocktail service. Strong joinery and smooth handles make serving seamless.",
+    "shortDescription": "Premium solid wooden serving tray with ergonomic carry cutouts.",
+    "highlights": [
+      "Sturdy solid wood base with spill-proof raised perimeter",
+      "Integrated ergonomic cut-out handles for effortless carrying",
+      "Durable wipe-clean finish resists moisture and tea drips"
+    ],
+    "material": "Aged Sheesham Timber",
+    "dimensions": {
+      "length": 35,
+      "width": 24,
+      "height": 4.5,
+      "unit": "cm"
+    },
+    "weightKg": 0.75,
+    "colorFinish": "Smooth Natural Grain Matte Polish",
+    "stock": 40,
+    "inStock": true,
+    "featured": true,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.6,
+    "reviewCount": 53,
+    "tags": [
+      "handcrafted premium wooden cutwork serving tray",
+      "dining & kitchen",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/wood crafts/handcrafted premium wooden cutwork serving tray/01.jpg",
+      "/products/wood crafts/handcrafted premium wooden cutwork serving tray/02.jpg",
+      "/products/wood crafts/handcrafted premium wooden cutwork serving tray/03.jpg",
+      "/products/wood crafts/handcrafted premium wooden cutwork serving tray/04.jpg",
+      "/products/wood crafts/handcrafted premium wooden cutwork serving tray/05.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-handcrafted-premium-wooden-cutwork-serving-tray-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-handcrafted-premium-wooden-cutwork-serving-tray-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "handcrafted-premium-wooden-serving-tray",
+    "name": "Handcrafted Premium Wooden Serving Tray",
+    "slug": "handcrafted-premium-wooden-serving-tray",
+    "sku": "BC-WD-115",
+    "category": "Dining & Kitchen",
+    "subCategory": "Serving Trays",
+    "collection": "Artisan Collection",
+    "badge": "NEW",
+    "price": 149,
+    "originalPrice": 229,
+    "discountPercent": 35,
+    "description": "A refined minimalist wooden serving tray designed for high tea, morning coffee, and cocktail service. Strong joinery and smooth handles make serving seamless.",
+    "shortDescription": "Premium solid wooden serving tray with ergonomic carry cutouts.",
+    "highlights": [
+      "Sturdy solid wood base with spill-proof raised perimeter",
+      "Integrated ergonomic cut-out handles for effortless carrying",
+      "Durable wipe-clean finish resists moisture and tea drips"
+    ],
+    "material": "Aged Sheesham Timber",
+    "dimensions": {
+      "length": 35,
+      "width": 24,
+      "height": 4.5,
+      "unit": "cm"
+    },
+    "weightKg": 0.75,
+    "colorFinish": "Smooth Natural Grain Matte Polish",
+    "stock": 41,
+    "inStock": true,
+    "featured": false,
+    "bestseller": true,
+    "newArrival": false,
+    "rating": 4.7,
+    "reviewCount": 54,
+    "tags": [
+      "handcrafted premium wooden serving tray",
+      "dining & kitchen",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/wood crafts/handcrafted premium wooden serving tray/01.jpg",
+      "/products/wood crafts/handcrafted premium wooden serving tray/02.jpg",
+      "/products/wood crafts/handcrafted premium wooden serving tray/03.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-handcrafted-premium-wooden-serving-tray-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-handcrafted-premium-wooden-serving-tray-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "handcrafted-round-wooden-tree-bark-serving-platter",
+    "name": "Handcrafted Round Wooden Tree Bark Serving Platter",
+    "slug": "handcrafted-round-wooden-tree-bark-serving-platter",
+    "sku": "BC-WD-116",
+    "category": "Dining & Kitchen",
+    "subCategory": "Platters & Trays",
+    "collection": "Artisan Collection",
+    "badge": "BESTSELLER",
+    "price": 299,
+    "originalPrice": 459,
+    "discountPercent": 35,
+    "description": "Showcasing raw natural bark edges and concentric annual tree rings, this rustic live-edge platter turns appetizers, cheeses, finger snacks, and desserts into culinary artistry.",
+    "shortDescription": "Rustic circular live-edge wooden tree bark serving platter and cheese board.",
+    "highlights": [
+      "Authentic preserved live-edge raw wood bark border",
+      "Smooth food-safe serving surface",
+      "Elevates charcuterie boards, cheese courses, and canapés",
+      "Each platter features unique natural grain and ring contours"
+    ],
+    "material": "Natural Raw Log Tree Bark with Solid Wood Core",
+    "dimensions": {
+      "length": 28,
+      "width": 28,
+      "height": 3.5,
+      "unit": "cm"
+    },
+    "weightKg": 0.85,
+    "colorFinish": "Rustic Raw Bark Edge with Sanded Core",
+    "stock": 42,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.8,
+    "reviewCount": 55,
+    "tags": [
+      "handcrafted round wooden tree bark serving platter",
+      "dining & kitchen",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/wood crafts/handcrafted round wooden tree bark serving platter/20.1.jpg",
+      "/products/wood crafts/handcrafted round wooden tree bark serving platter/20.2.jpg",
+      "/products/wood crafts/handcrafted round wooden tree bark serving platter/20.3.png",
+      "/products/wood crafts/handcrafted round wooden tree bark serving platter/20.4.jpg",
+      "/products/wood crafts/handcrafted round wooden tree bark serving platter/20.5.jpg",
+      "/products/wood crafts/handcrafted round wooden tree bark serving platter/20.6.jpg",
+      "/products/wood crafts/handcrafted round wooden tree bark serving platter/20.7.png"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-handcrafted-round-wooden-tree-bark-serving-platter-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-handcrafted-round-wooden-tree-bark-serving-platter-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "handcrafted-traditional-viking-style-wooden-beer-mug",
+    "name": "Handcrafted Traditional Viking-style Wooden Beer Mug",
+    "slug": "handcrafted-traditional-viking-style-wooden-beer-mug",
+    "sku": "BC-WD-117",
+    "category": "Dining & Kitchen",
+    "subCategory": "Drinkware & Steins",
+    "collection": "Artisan Collection",
+    "badge": "HANDCRAFTED",
+    "price": 429,
+    "originalPrice": 659,
+    "discountPercent": 35,
+    "description": "Channel ancient feast halls with this rustic Viking-style beer stein. Hand-carved from seasoned wood with a hygienic food-grade stainless steel cup inside that keeps your brews frosty cold.",
+    "shortDescription": "Handcrafted Viking-style wooden beer mug with insulated steel interior.",
+    "highlights": [
+      "Rust-proof stainless steel inner cup retains icy beverage temperature",
+      "Solid wooden exterior carved in barrel aesthetic",
+      "Ergonomic sturdy handle for confident grip",
+      "Generous 500ml holding capacity"
+    ],
+    "material": "Seasoned Hardwood with Food-Grade Stainless Steel Inner Liner",
+    "dimensions": {
+      "length": 16,
+      "width": 12,
+      "height": 14,
+      "unit": "cm"
+    },
+    "weightKg": 0.58,
+    "colorFinish": "Rustic Barrel Stave Wood with Carved Handle",
+    "stock": 43,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.8,
+    "reviewCount": 56,
+    "tags": [
+      "handcrafted traditional viking style wooden beer mug",
+      "dining & kitchen",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/wood crafts/handcrafted traditional Viking-style wooden beer mug/01.jpg",
+      "/products/wood crafts/handcrafted traditional Viking-style wooden beer mug/02.jpg",
+      "/products/wood crafts/handcrafted traditional Viking-style wooden beer mug/03.jpg",
+      "/products/wood crafts/handcrafted traditional Viking-style wooden beer mug/04.jpg",
+      "/products/wood crafts/handcrafted traditional Viking-style wooden beer mug/05.jpg",
+      "/products/wood crafts/handcrafted traditional Viking-style wooden beer mug/06.jpg",
+      "/products/wood crafts/handcrafted traditional Viking-style wooden beer mug/07.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-handcrafted-traditional-viking-style-wooden-beer-mug-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-handcrafted-traditional-viking-style-wooden-beer-mug-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "handcrafted-traditional-wooden-buddha-head-statue",
+    "name": "Handcrafted Traditional Wooden Buddha Head Statue",
+    "slug": "handcrafted-traditional-wooden-buddha-head-statue",
+    "sku": "BC-WD-118",
+    "category": "Home Decor",
+    "subCategory": "Statues & Sculptures",
+    "collection": "Artisan Collection",
+    "badge": "HANDCRAFTED",
+    "price": 499,
+    "originalPrice": 769,
+    "discountPercent": 35,
+    "description": "Carved with sublime meditative expression, curly ushnisha topknot, and elongated earlobes, this solid wooden Buddha head sculpture radiates serenity, mindfulness, and zen balance.",
+    "shortDescription": "Handcrafted traditional wooden Buddha head statue with meditative serene countenance.",
+    "highlights": [
+      "Chiseled from a single solid piece of seasoned timber",
+      "Sublime serene expression promotes calm and focused energy",
+      "Ideal for study desks, meditation spaces, and living room consoles"
+    ],
+    "material": "Hand-Carved Single Block Kadam / Sheesham Wood",
+    "dimensions": {
+      "length": 12,
+      "width": 10,
+      "height": 18,
+      "unit": "cm"
+    },
+    "weightKg": 0.65,
+    "colorFinish": "Antique Matte Wood Patina",
+    "stock": 44,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.9,
+    "reviewCount": 57,
+    "tags": [
+      "handcrafted traditional wooden buddha head statue",
+      "home decor",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/wood crafts/handcrafted traditional wooden Buddha head statue/01.jpg",
+      "/products/wood crafts/handcrafted traditional wooden Buddha head statue/02.jpg",
+      "/products/wood crafts/handcrafted traditional wooden Buddha head statue/03.jpg",
+      "/products/wood crafts/handcrafted traditional wooden Buddha head statue/04.jpg",
+      "/products/wood crafts/handcrafted traditional wooden Buddha head statue/05.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-handcrafted-traditional-wooden-buddha-head-statue-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-handcrafted-traditional-wooden-buddha-head-statue-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "handcrafted-traditional-wooden-coffin-incense-burner-box",
+    "name": "Handcrafted Traditional Wooden Coffin Incense Burner Box",
+    "slug": "handcrafted-traditional-wooden-coffin-incense-burner-box",
+    "sku": "BC-WD-119",
+    "category": "Home Decor",
+    "subCategory": "Incense Burners & Aromatherapy",
+    "collection": "Artisan Collection",
+    "badge": "BESTSELLER",
+    "price": 399,
+    "originalPrice": 609,
+    "discountPercent": 34,
+    "description": "This famous coffin-style incense box catches all falling ash inside while aromatic smoke billows gracefully through ornate lattice lid carvings. Features a secret lower storage compartment for unburnt sticks.",
+    "shortDescription": "Handcrafted traditional wooden coffin incense burner box with hidden storage compartment.",
+    "highlights": [
+      "Catches 100% of burning ash—no more messy table cleanups",
+      "Integrated storage cavity at base holds up to 25 extra incense sticks",
+      "Dual-purpose: holds both incense sticks (agarbatti) and dhoop cones",
+      "Intricate brass star and moon inlays adorn the wooden exterior"
+    ],
+    "material": "Solid Sheesham Wood with Brass Inlay Stars",
+    "dimensions": {
+      "length": 31,
+      "width": 6,
+      "height": 7,
+      "unit": "cm"
+    },
+    "weightKg": 0.42,
+    "colorFinish": "Hand-Polished Antique Walnut Finish",
+    "stock": 25,
+    "inStock": true,
+    "featured": true,
+    "bestseller": true,
     "newArrival": true,
     "rating": 4.6,
     "reviewCount": 18,
     "tags": [
-      "tic tac toe",
-      "wooden board game",
-      "coffee table game",
-      "x and o game",
-      "wooden toy",
-      "wood craft"
+      "handcrafted traditional wooden coffin incense burner box",
+      "home decor",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
     ],
     "images": [
-      "/products/wooden-tic-tac-toe/32.1.jpg",
-      "/products/wooden-tic-tac-toe/4inch-xox-game.jpeg"
-    ],
-    "discountPercent": 50,
-    "inStock": true,
-    "isCancellable": true,
-    "isReturnable": true,
-    "returnWindowDays": 7,
-    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
-    "returnPolicy": "7 days replacement or return if received damaged or defective.",
-    "reviews": [
-      {
-        "userName": "Aarav Sharma",
-        "userCity": "Jaipur",
-        "rating": 5,
-        "date": "2026-09-14",
-        "title": "Stunning authentic craft",
-        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-tic-tac-toe-1"
-      },
-      {
-        "userName": "Pooja Mehta",
-        "userCity": "Mumbai",
-        "rating": 5,
-        "date": "2026-09-18",
-        "title": "Pure artisan perfection",
-        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-tic-tac-toe-2"
-      }
+      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/01.jpg",
+      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/02.webp",
+      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/03.jpg",
+      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/04.jpg",
+      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/05.jpg",
+      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/06.jpg",
+      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/07.jpg",
+      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/08.webp",
+      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/09.jpg",
+      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/10.jpg",
+      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/11.jpg",
+      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/11.webp",
+      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/12.webp",
+      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/13.jpg",
+      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/Vaaree-Assured-v6.png"
     ],
     "careInstructions": [
-      "Wipe clean with a soft, dry cotton cloth after daily use",
-      "Avoid prolonged soaking in water or washing in dishwashers",
-      "Periodically condition with food-grade coconut or mineral oil to maintain luster",
-      "Keep away from direct heat sources and extreme direct sunlight to prevent warping"
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-handcrafted-traditional-wooden-coffin-incense-burner-box-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-handcrafted-traditional-wooden-coffin-incense-burner-box-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
     ]
   },
   {
-    "id": "wood-catapult",
-    "name": "Traditional Wooden Catapult (Desi Gulel)",
-    "slug": "traditional-wooden-catapult",
-    "sku": "BC-WD-010",
-    "category": "Wood Craft",
-    "subCategory": "Wooden Art",
-    "collection": "New Arrivals",
-    "badge": "NEW",
-    "price": 149,
-    "originalPrice": 299,
-    "material": "Natural Y-Fork Hardwood with Durable Elastic Bands",
-    "shortDescription": "Nostalgic handmade Indian wooden slingshot (Gulel) carved from sturdy tree branch fork.",
-    "description": "Relive nostalgic childhood memories with this authentic handmade Indian catapult (Gulel). Carved from sturdy naturally forked wood, sanded smooth for a comfortable grip, and fitted with high-tensile elastic rubber straps and a reinforced faux-leather pouch.",
+    "id": "handcrafted-wooden-ashok-stambh",
+    "name": "Handcrafted Wooden Ashok Stambh",
+    "slug": "handcrafted-wooden-ashok-stambh",
+    "sku": "BC-WD-120",
+    "category": "Home Decor",
+    "subCategory": "Heritage Showpieces & Sculptures",
+    "collection": "Artisan Collection",
+    "badge": "HANDCRAFTED",
+    "price": 599,
+    "originalPrice": 919,
+    "discountPercent": 35,
+    "description": "An authentic woodcraft tribute to the Lion Capital of Ashoka, the National Emblem of India. Master artisans hand-carve the four roaring lions, Ashoka Chakra, and circular abacus with meticulous precision.",
+    "shortDescription": "Handcrafted wooden Ashoka Stambh (Lion Capital of Ashoka) desk showpiece.",
     "highlights": [
-      "Carved from natural fork branch for maximum structural strength",
-      "High-elasticity durable latex bands with leather launch pouch",
-      "Ergonomic hand-contoured grip for steady aiming practice",
-      "Nostalgic traditional Indian toy and outdoor recreational handicraft"
+      "Intricately carved four Asiatic lions and Ashoka Chakra wheels",
+      "Symbol of truth, courage, and constitutional sovereignty",
+      "Prestigious desk showpiece for offices, libraries, and study rooms"
     ],
+    "material": "Handcrafted Fine Grain Sheesham Wood",
     "dimensions": {
-      "length": 18,
-      "width": 9,
-      "height": 3,
+      "length": 10,
+      "width": 10,
+      "height": 24,
       "unit": "cm"
     },
-    "weightKg": 0.15,
-    "colorFinish": "Natural Smooth Sanded Timber",
-    "stock": 35,
+    "weightKg": 0.72,
+    "colorFinish": "Natural Walnut Lustre with Chiseled Relief",
+    "stock": 26,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.7,
+    "reviewCount": 19,
+    "tags": [
+      "handcrafted wooden ashok stambh",
+      "home decor",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/wood crafts/handcrafted wooden Ashok Stambh/19.1.jpg",
+      "/products/wood crafts/handcrafted wooden Ashok Stambh/19.2.jpg",
+      "/products/wood crafts/handcrafted wooden Ashok Stambh/19.3.jpg",
+      "/products/wood crafts/handcrafted wooden Ashok Stambh/19.4.jpg",
+      "/products/wood crafts/handcrafted wooden Ashok Stambh/19.5.jpg",
+      "/products/wood crafts/handcrafted wooden Ashok Stambh/19.6.jpg",
+      "/products/wood crafts/handcrafted wooden Ashok Stambh/19.7.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-handcrafted-wooden-ashok-stambh-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-handcrafted-wooden-ashok-stambh-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "handcrafted-wooden-cartoon-ladybug-yo-yo-spinner-toy",
+    "name": "Handcrafted Wooden Cartoon Ladybug Yo-yo Spinner Toy",
+    "slug": "handcrafted-wooden-cartoon-ladybug-yo-yo-spinner-toy",
+    "sku": "BC-WD-121",
+    "category": "Wood Crafts",
+    "subCategory": "Traditional Toys & Folk Craft",
+    "collection": "Artisan Collection",
+    "badge": "HANDCRAFTED",
+    "price": 109,
+    "originalPrice": 159,
+    "discountPercent": 31,
+    "description": "A delightful wooden spinning yo-yo hand-painted in joyful ladybug colors. Perfectly weighted for smooth gravity-defying tricks and screen-free developmental play for kids of all ages.",
+    "shortDescription": "Handcrafted wooden cartoon ladybug yo-yo spinner toy for kids.",
+    "highlights": [
+      "Smooth child-safe rounded wood edges with non-toxic colors",
+      "Balanced center axle for responsive spinning and recoil",
+      "Nostalgic folk craft toy encouraging hand-eye coordination"
+    ],
+    "material": "Natural Seasoned Wood with Non-Toxic Hand Paint",
+    "dimensions": {
+      "length": 6,
+      "width": 6,
+      "height": 3.5,
+      "unit": "cm"
+    },
+    "weightKg": 0.09,
+    "colorFinish": "Vibrant Red & Black Ladybug Hand-Painted Motif",
+    "stock": 27,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.8,
+    "reviewCount": 20,
+    "tags": [
+      "handcrafted wooden cartoon ladybug yo yo spinner toy",
+      "wood crafts",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/wood crafts/handcrafted wooden cartoon ladybug yo-yo spinner toy/01.jpg",
+      "/products/wood crafts/handcrafted wooden cartoon ladybug yo-yo spinner toy/02.jpg",
+      "/products/wood crafts/handcrafted wooden cartoon ladybug yo-yo spinner toy/03.jpg",
+      "/products/wood crafts/handcrafted wooden cartoon ladybug yo-yo spinner toy/04.jpg",
+      "/products/wood crafts/handcrafted wooden cartoon ladybug yo-yo spinner toy/05.jpg",
+      "/products/wood crafts/handcrafted wooden cartoon ladybug yo-yo spinner toy/06.jpg",
+      "/products/wood crafts/handcrafted wooden cartoon ladybug yo-yo spinner toy/07.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-handcrafted-wooden-cartoon-ladybug-yo-yo-spinner-toy-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-handcrafted-wooden-cartoon-ladybug-yo-yo-spinner-toy-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "handcrafted-wooden-chapati-box",
+    "name": "Handcrafted Wooden Chapati Box",
+    "slug": "handcrafted-wooden-chapati-box",
+    "sku": "BC-WD-122",
+    "category": "Dining & Kitchen",
+    "subCategory": "Roti Storage & Bread Baskets",
+    "collection": "Artisan Collection",
+    "badge": "BESTSELLER",
+    "price": 599,
+    "originalPrice": 919,
+    "discountPercent": 35,
+    "description": "Keep rotis fresh and warm with this heritage wooden chapati box. Crafted with intricate hand-carved floral motifs and a snug lid, it brings royal Indian dining elegance straight to your table.",
+    "shortDescription": "Handcrafted round wooden chapati box (Roti Dabba) with carved lid.",
+    "highlights": [
+      "Insulating solid wood keeps rotis soft and warm naturally",
+      "Hand-carved royal floral lid medallion",
+      "Ample capacity for 15-20 full-sized rotis",
+      "Heirloom Indian dining presentation piece"
+    ],
+    "material": "Hand-Carved Solid Sheesham Wood",
+    "dimensions": {
+      "length": 23,
+      "width": 23,
+      "height": 10,
+      "unit": "cm"
+    },
+    "weightKg": 1.1,
+    "colorFinish": "Antique Brass Inlay & Natural Walnut Polish",
+    "stock": 28,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.8,
+    "reviewCount": 21,
+    "tags": [
+      "handcrafted wooden chapati box",
+      "dining & kitchen",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/wood crafts/handcrafted wooden chapati box/21.1.jpg",
+      "/products/wood crafts/handcrafted wooden chapati box/21.2.jpg",
+      "/products/wood crafts/handcrafted wooden chapati box/21.3.jpg",
+      "/products/wood crafts/handcrafted wooden chapati box/21.4.jpg",
+      "/products/wood crafts/handcrafted wooden chapati box/21.5.jpg",
+      "/products/wood crafts/handcrafted wooden chapati box/homifi-wooden-chapto-handmade-chapati-box-roti-hot-case-chapati-box-casserole-serving-food-for-dinig-table-kitchen-tableware-product-images-orvpvrdbqaf-p605698743-0-202310220441.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-handcrafted-wooden-chapati-box-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-handcrafted-wooden-chapati-box-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "handcrafted-wooden-morning-walking-rule",
+    "name": "Handcrafted Wooden Morning Walking Rule",
+    "slug": "handcrafted-wooden-morning-walking-rule",
+    "sku": "BC-WD-123",
+    "category": "Wood Crafts",
+    "subCategory": "Health & Acupressure Woodcraft",
+    "collection": "Artisan Collection",
+    "badge": "NEW",
+    "price": 199,
+    "originalPrice": 299,
+    "discountPercent": 33,
+    "description": "Designed for morning wellness walks and home reflexology, rolling this ridged hardwood ruler under your feet activates vital acupressure points, boosting blood circulation and relieving fatigue.",
+    "shortDescription": "Handcrafted wooden morning walking ruler with therapeutic acupressure ridges.",
+    "highlights": [
+      "Concentric ribbed ridges stimulate foot reflexology and nerve endings",
+      "Hand-turned from dense hardwood that withstands full body pressure",
+      "Compact daily wellness companion for desk workers and elderly health"
+    ],
+    "material": "Seasoned Solid Hardwood with Acupressure Ridges",
+    "dimensions": {
+      "length": 30,
+      "width": 4.5,
+      "height": 4.5,
+      "unit": "cm"
+    },
+    "weightKg": 0.26,
+    "colorFinish": "Smooth Lathed Natural Wood Finish",
+    "stock": 29,
+    "inStock": true,
+    "featured": false,
+    "bestseller": true,
+    "newArrival": false,
+    "rating": 4.9,
+    "reviewCount": 22,
+    "tags": [
+      "handcrafted wooden morning walking rule",
+      "wood crafts",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/wood crafts/handcrafted wooden morning walking rule/23.1.jpg",
+      "/products/wood crafts/handcrafted wooden morning walking rule/23.2.jpg",
+      "/products/wood crafts/handcrafted wooden morning walking rule/23.3.jpg",
+      "/products/wood crafts/handcrafted wooden morning walking rule/23.4.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-handcrafted-wooden-morning-walking-rule-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-handcrafted-wooden-morning-walking-rule-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "handcrafted-wooden-morning-walking-ruler",
+    "name": "Handcrafted Wooden Morning Walking Ruler",
+    "slug": "handcrafted-wooden-morning-walking-ruler",
+    "sku": "BC-WD-124",
+    "category": "Wood Crafts",
+    "subCategory": "Health & Acupressure Woodcraft",
+    "collection": "Artisan Collection",
+    "badge": "HANDCRAFTED",
+    "price": 199,
+    "originalPrice": 299,
+    "discountPercent": 33,
+    "description": "Designed for morning wellness walks and home reflexology, rolling this ridged hardwood ruler under your feet activates vital acupressure points, boosting blood circulation and relieving fatigue.",
+    "shortDescription": "Handcrafted wooden morning walking ruler with therapeutic acupressure ridges.",
+    "highlights": [
+      "Concentric ribbed ridges stimulate foot reflexology and nerve endings",
+      "Hand-turned from dense hardwood that withstands full body pressure",
+      "Compact daily wellness companion for desk workers and elderly health"
+    ],
+    "material": "Seasoned Solid Hardwood with Acupressure Ridges",
+    "dimensions": {
+      "length": 30,
+      "width": 4.5,
+      "height": 4.5,
+      "unit": "cm"
+    },
+    "weightKg": 0.26,
+    "colorFinish": "Smooth Lathed Natural Wood Finish",
+    "stock": 30,
+    "inStock": true,
+    "featured": true,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.6,
+    "reviewCount": 23,
+    "tags": [
+      "handcrafted wooden morning walking ruler",
+      "wood crafts",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/wood crafts/handcrafted wooden morning walking ruler/22.1.jpg",
+      "/products/wood crafts/handcrafted wooden morning walking ruler/22.2.jpg",
+      "/products/wood crafts/handcrafted wooden morning walking ruler/22.3.jpg",
+      "/products/wood crafts/handcrafted wooden morning walking ruler/22.4.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-handcrafted-wooden-morning-walking-ruler-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-handcrafted-wooden-morning-walking-ruler-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "handcrafted-wooden-mortar-and-pestle-set",
+    "name": "Handcrafted Wooden Mortar and Pestle Set",
+    "slug": "handcrafted-wooden-mortar-and-pestle-set",
+    "sku": "BC-WD-125",
+    "category": "Dining & Kitchen",
+    "subCategory": "Spice Grinders & Mortars",
+    "collection": "Artisan Collection",
+    "badge": "BESTSELLER",
+    "price": 399,
+    "originalPrice": 609,
+    "discountPercent": 34,
+    "description": "Crush fresh ginger, garlic, cardamom, and whole peppercorns the authentic way with this heavy solid wood Okhli Musal set. The deep basin prevents spices from leaping out while pounding.",
+    "shortDescription": "Handcrafted wooden mortar and pestle set (Okhli Musal) for fresh herbs & spices.",
+    "highlights": [
+      "Solid one-piece hardwood withstands daily crushing and pounding",
+      "Deep bowl basin contains seeds, cloves, and whole spices",
+      "Comfort-fit pestle handle maximizes crushing torque",
+      "Preserves natural essential oils and aromas of fresh spices"
+    ],
+    "material": "Dense Seasoned Sheesham Hardwood",
+    "dimensions": {
+      "length": 12,
+      "width": 12,
+      "height": 11,
+      "unit": "cm"
+    },
+    "weightKg": 0.65,
+    "colorFinish": "Smooth Lathed Natural Walnut Polish",
+    "stock": 31,
+    "inStock": true,
     "featured": false,
     "bestseller": false,
     "newArrival": true,
     "rating": 4.7,
-    "reviewCount": 15,
+    "reviewCount": 24,
     "tags": [
-      "wooden catapult",
-      "gulel",
-      "slingshot",
-      "wooden toys",
-      "nostalgic crafts",
-      "wood craft"
+      "handcrafted wooden mortar and pestle set",
+      "dining & kitchen",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
     ],
     "images": [
-      "/products/traditional-wooden-catapult/04.jpg",
-      "/products/traditional-wooden-catapult/2.0.jpg",
-      "/products/traditional-wooden-catapult/2.1.jpg",
-      "/products/traditional-wooden-catapult/2.2.jpg",
-      "/products/traditional-wooden-catapult/2.3.jpg",
-      "/products/traditional-wooden-catapult/2.4.jpg",
-      "/products/traditional-wooden-catapult/2.5.jpg",
-      "/products/traditional-wooden-catapult/2.6.jpg",
-      "/products/traditional-wooden-catapult/2.7.jpg",
-      "/products/traditional-wooden-catapult/2.8.jpg",
-      "/products/traditional-wooden-catapult/31qb4fnnjxl.jpg",
-      "/products/traditional-wooden-catapult/41hoa8vll2l.jpg",
-      "/products/traditional-wooden-catapult/41ngcoxkefl.jpg"
-    ],
-    "discountPercent": 50,
-    "inStock": true,
-    "isCancellable": true,
-    "isReturnable": true,
-    "returnWindowDays": 7,
-    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
-    "returnPolicy": "7 days replacement or return if received damaged or defective.",
-    "reviews": [
-      {
-        "userName": "Aarav Sharma",
-        "userCity": "Jaipur",
-        "rating": 5,
-        "date": "2026-09-14",
-        "title": "Stunning authentic craft",
-        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-catapult-1"
-      },
-      {
-        "userName": "Pooja Mehta",
-        "userCity": "Mumbai",
-        "rating": 5,
-        "date": "2026-09-18",
-        "title": "Pure artisan perfection",
-        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-catapult-2"
-      }
+      "/products/wood crafts/handcrafted wooden mortar and pestle set/11.1.jpg",
+      "/products/wood crafts/handcrafted wooden mortar and pestle set/11.2.jpg",
+      "/products/wood crafts/handcrafted wooden mortar and pestle set/11.3.jpg"
     ],
     "careInstructions": [
-      "Wipe clean with a soft, dry cotton cloth after daily use",
-      "Avoid prolonged soaking in water or washing in dishwashers",
-      "Periodically condition with food-grade coconut or mineral oil to maintain luster",
-      "Keep away from direct heat sources and extreme direct sunlight to prevent warping"
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-handcrafted-wooden-mortar-and-pestle-set-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-handcrafted-wooden-mortar-and-pestle-set-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
     ]
   },
   {
-    "id": "wood-taj-mahal-watch",
-    "name": "India Taj Mahal Vintage Pocket Watch",
-    "slug": "india-taj-mahal-pocket-watch",
-    "sku": "BC-WD-011",
-    "category": "Wood Craft",
-    "subCategory": "Wooden Art",
-    "collection": "Heritage Collection",
-    "badge": "BESTSELLER",
-    "price": 349,
-    "originalPrice": 699,
-    "material": "Antique Bronzed Alloy with Embossed Relief",
-    "shortDescription": "Collectible pocket watch featuring deep relief engraving of the iconic Taj Mahal monument with matching chain.",
-    "description": "A tribute to world wonder architecture and royal vintage horology. This heirloom pocket watch showcases a magnificent 3D high-relief engraving of the Taj Mahal on its flip cover. Powered by a precision quartz movement with a vintage roman numeral dial and detachable vest chain.",
-    "highlights": [
-      "Intricate 3D relief casing of the Taj Mahal architecture",
-      "Precision battery-operated quartz movement with crown push release",
-      "Vintage cream dial with classic Roman numerals & filigree hands",
-      "Comes with a 35cm matching antique curb link pocket chain"
-    ],
-    "dimensions": {
-      "length": 4.8,
-      "width": 4.8,
-      "height": 1.5,
-      "unit": "cm"
-    },
-    "weightKg": 0.08,
-    "colorFinish": "Antique Burnished Bronze",
-    "stock": 30,
-    "featured": true,
-    "bestseller": true,
-    "newArrival": false,
-    "rating": 4.9,
-    "reviewCount": 56,
-    "tags": [
-      "taj mahal watch",
-      "pocket watch",
-      "vintage watch",
-      "antique pocket watch",
-      "heritage curio",
-      "wood craft"
-    ],
-    "images": [
-      "/products/taj-mahal-pocket-watch/2.1.jpg",
-      "/products/taj-mahal-pocket-watch/2.2.jpg",
-      "/products/taj-mahal-pocket-watch/2.3.jpg",
-      "/products/taj-mahal-pocket-watch/2.4.jpg",
-      "/products/taj-mahal-pocket-watch/2.5.jpg",
-      "/products/taj-mahal-pocket-watch/2.6.jpg",
-      "/products/taj-mahal-pocket-watch/2.7.jpg",
-      "/products/taj-mahal-pocket-watch/2.8.jpg"
-    ],
-    "discountPercent": 50,
-    "inStock": true,
-    "isCancellable": true,
-    "isReturnable": true,
-    "returnWindowDays": 7,
-    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
-    "returnPolicy": "7 days replacement or return if received damaged or defective.",
-    "reviews": [
-      {
-        "userName": "Aarav Sharma",
-        "userCity": "Jaipur",
-        "rating": 5,
-        "date": "2026-09-14",
-        "title": "Stunning authentic craft",
-        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-taj-mahal-watch-1"
-      },
-      {
-        "userName": "Pooja Mehta",
-        "userCity": "Mumbai",
-        "rating": 5,
-        "date": "2026-09-18",
-        "title": "Pure artisan perfection",
-        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-taj-mahal-watch-2"
-      }
-    ],
-    "careInstructions": [
-      "Keep away from direct water immersion and high humidity environments",
-      "Wipe clean with a soft microfiber jewelry cloth",
-      "Uses standard LR66 / 377 button cell battery, easily replaceable at any watchmaker",
-      "Store in a dry velvet pouch or jewelry box when not in use"
-    ]
-  },
-  {
-    "id": "wood-anchor-watch",
-    "name": "Stylish Nautical Anchor Vintage Pocket Watch",
-    "slug": "stylish-anchor-pocket-watch",
-    "sku": "BC-WD-012",
-    "category": "Wood Craft",
-    "subCategory": "Wooden Art",
+    "id": "handcrafted-wooden-nesting-bowl-set-with-floral-inlay-work",
+    "name": "Handcrafted Wooden Nesting Bowl Set with Floral Inlay Work",
+    "slug": "handcrafted-wooden-nesting-bowl-set-with-floral-inlay-work",
+    "sku": "BC-WD-126",
+    "category": "Dining & Kitchen",
+    "subCategory": "Serving Bowls",
     "collection": "Artisan Collection",
     "badge": "HANDCRAFTED",
-    "price": 349,
-    "originalPrice": 699,
-    "material": "Antique Brass Alloy with Maritime Relief",
-    "shortDescription": "Maritime nautical themed pocket watch with embossed mariner anchor crest and rope filigree.",
-    "description": "Inspired by vintage voyages and seafaring heritage. This handsome pocket watch features a raised maritime ship anchor emblem encircled by naval ropes. Press the top crown to snap open the front case and reveal a crisp vintage analog dial.",
+    "price": 159,
+    "originalPrice": 239,
+    "discountPercent": 33,
+    "description": "This exquisite set of nesting wooden bowls features smooth hand-turned wood with joyful floral enamel artwork inside. Ideal for serving dry fruits, chips, candies, and festival snacks.",
+    "shortDescription": "Handcrafted nested wooden bowl set adorned with floral hand-inlay work.",
     "highlights": [
-      "High-relief mariner anchor emblem with maritime border",
-      "Snap-open hunter case lid with spring-loaded crown latch",
-      "Accurate quartz movement with easy battery replacement",
-      "Includes matching antique necklace / waistcoat chain"
+      "Space-saving nesting design for easy storage",
+      "Vibrant food-safe decorative interior glaze",
+      "Perfect for festive Diwali dry fruit and snack presentations"
     ],
+    "material": "Solid Mango & Sheesham Wood with Floral Enamel Inlay",
     "dimensions": {
-      "length": 4.8,
-      "width": 4.8,
-      "height": 1.5,
+      "length": 18,
+      "width": 18,
+      "height": 8,
       "unit": "cm"
     },
-    "weightKg": 0.08,
-    "colorFinish": "Nautical Antique Brass",
-    "stock": 28,
+    "weightKg": 0.65,
+    "colorFinish": "Natural Wood Exterior with Artisanal Floral Interior",
+    "stock": 32,
+    "inStock": true,
     "featured": false,
     "bestseller": false,
-    "newArrival": true,
+    "newArrival": false,
     "rating": 4.8,
-    "reviewCount": 22,
+    "reviewCount": 25,
     "tags": [
-      "anchor watch",
-      "pocket watch",
-      "nautical pocket watch",
-      "vintage curio",
-      "maritime gift",
-      "wood craft"
+      "handcrafted wooden nesting bowl set with floral inlay work",
+      "dining & kitchen",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
     ],
     "images": [
-      "/products/stylish-anchor-pocket-watch/1.1.jpg",
-      "/products/stylish-anchor-pocket-watch/1.3.jpg",
-      "/products/stylish-anchor-pocket-watch/1.5.jpg",
-      "/products/stylish-anchor-pocket-watch/1.6.jpg",
-      "/products/stylish-anchor-pocket-watch/w1.jpg",
-      "/products/stylish-anchor-pocket-watch/w4.jpg",
-      "/products/stylish-anchor-pocket-watch/w5.jpg",
-      "/products/stylish-anchor-pocket-watch/w6.jpg"
-    ],
-    "discountPercent": 50,
-    "inStock": true,
-    "isCancellable": true,
-    "isReturnable": true,
-    "returnWindowDays": 7,
-    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
-    "returnPolicy": "7 days replacement or return if received damaged or defective.",
-    "reviews": [
-      {
-        "userName": "Aarav Sharma",
-        "userCity": "Jaipur",
-        "rating": 5,
-        "date": "2026-09-14",
-        "title": "Stunning authentic craft",
-        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-anchor-watch-1"
-      },
-      {
-        "userName": "Pooja Mehta",
-        "userCity": "Mumbai",
-        "rating": 5,
-        "date": "2026-09-18",
-        "title": "Pure artisan perfection",
-        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-anchor-watch-2"
-      }
+      "/products/wood crafts/handcrafted wooden nesting bowl set with floral inlay work/9.1.jpg",
+      "/products/wood crafts/handcrafted wooden nesting bowl set with floral inlay work/9.2.jpg",
+      "/products/wood crafts/handcrafted wooden nesting bowl set with floral inlay work/9.3.jpg"
     ],
     "careInstructions": [
-      "Keep away from direct water immersion and high humidity environments",
-      "Wipe clean with a soft microfiber jewelry cloth",
-      "Uses standard LR66 / 377 button cell battery, easily replaceable at any watchmaker",
-      "Store in a dry velvet pouch or jewelry box when not in use"
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-handcrafted-wooden-nesting-bowl-set-with-floral-inlay-work-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-handcrafted-wooden-nesting-bowl-set-with-floral-inlay-work-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
     ]
   },
   {
-    "id": "wood-ladakh-motorcycle-watch",
-    "name": "Ladakh Motorcycle Adventurer Pocket Watch",
-    "slug": "ladakh-motorcycle-pocket-watch",
-    "sku": "BC-WD-013",
-    "category": "Wood Craft",
-    "subCategory": "Wooden Art",
-    "collection": "New Arrivals",
+    "id": "handcrafted-wooden-pyramid-incense-box-burner",
+    "name": "Handcrafted Wooden Pyramid Incense Box Burner",
+    "slug": "handcrafted-wooden-pyramid-incense-box-burner",
+    "sku": "BC-WD-127",
+    "category": "Home Decor",
+    "subCategory": "Incense Burners & Aromatherapy",
+    "collection": "Artisan Collection",
     "badge": "NEW",
-    "price": 349,
-    "originalPrice": 699,
-    "material": "Embossed Antique Bronze Metal",
-    "shortDescription": "Commemorative expedition pocket watch depicting a vintage cruiser motorcycle against the Ladakh mountains.",
-    "description": "Designed for wanderers and motorcycle enthusiasts. This unique pocket watch features an embossed cruiser motorcycle set against Himalayan mountain peaks. An ode to high-altitude passes, open highways, and adventurous spirit, complete with pocket vest chain.",
+    "price": 249,
+    "originalPrice": 379,
+    "discountPercent": 34,
+    "description": "Shaped as a sacred pyramid with delicate fretwork on all four faces, this burner gently channels dhoop smoke upward in mystical aromatic plumes while shielding furniture from hot embers.",
+    "shortDescription": "Handcrafted wooden pyramid dhoop & incense box burner with openwork fretwork.",
     "highlights": [
-      "Detailed 3D motorcycle engraving inspired by Ladakh road trips",
-      "Protective full hunter lid with top release push button",
-      "High reliability quartz movement with crisp white dial",
-      "A distinctive collectible gift for riders and travelers"
+      "Architectural pyramid structure directs fragrance evenly across rooms",
+      "Safe enclosed burning chamber protects children and pets from open flame",
+      "Latticed fretwork creates captivating dancing shadows in dim lighting"
     ],
+    "material": "Solid Sheesham Wood with Carved Jali Panels",
     "dimensions": {
-      "length": 4.8,
-      "width": 4.8,
-      "height": 1.5,
+      "length": 12,
+      "width": 12,
+      "height": 16,
       "unit": "cm"
     },
-    "weightKg": 0.08,
-    "colorFinish": "Rugged Antique Bronze",
-    "stock": 32,
+    "weightKg": 0.35,
+    "colorFinish": "Warm Honey Amber Polish",
+    "stock": 33,
+    "inStock": true,
     "featured": false,
-    "bestseller": false,
-    "newArrival": true,
+    "bestseller": true,
+    "newArrival": false,
     "rating": 4.8,
     "reviewCount": 26,
     "tags": [
-      "motorcycle watch",
-      "ladakh watch",
-      "biker pocket watch",
-      "adventurer gift",
-      "vintage watch",
-      "wood craft"
+      "handcrafted wooden pyramid incense box burner",
+      "home decor",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
     ],
     "images": [
-      "/products/ladakh-motorcycle-pocket-watch/3.1.jpg",
-      "/products/ladakh-motorcycle-pocket-watch/3.2.jpg",
-      "/products/ladakh-motorcycle-pocket-watch/w1.jpg",
-      "/products/ladakh-motorcycle-pocket-watch/w2.jpg",
-      "/products/ladakh-motorcycle-pocket-watch/w3.jpg",
-      "/products/ladakh-motorcycle-pocket-watch/w4.jpg",
-      "/products/ladakh-motorcycle-pocket-watch/w5.jpg",
-      "/products/ladakh-motorcycle-pocket-watch/w6.jpg"
-    ],
-    "discountPercent": 50,
-    "inStock": true,
-    "isCancellable": true,
-    "isReturnable": true,
-    "returnWindowDays": 7,
-    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
-    "returnPolicy": "7 days replacement or return if received damaged or defective.",
-    "reviews": [
-      {
-        "userName": "Aarav Sharma",
-        "userCity": "Jaipur",
-        "rating": 5,
-        "date": "2026-09-14",
-        "title": "Stunning authentic craft",
-        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-ladakh-motorcycle-watch-1"
-      },
-      {
-        "userName": "Pooja Mehta",
-        "userCity": "Mumbai",
-        "rating": 5,
-        "date": "2026-09-18",
-        "title": "Pure artisan perfection",
-        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-ladakh-motorcycle-watch-2"
-      }
+      "/products/wood crafts/handcrafted wooden pyramid incense box burner/14.2.jpg",
+      "/products/wood crafts/handcrafted wooden pyramid incense box burner/14.3.jpg"
     ],
     "careInstructions": [
-      "Keep away from direct water immersion and high humidity environments",
-      "Wipe clean with a soft microfiber jewelry cloth",
-      "Uses standard LR66 / 377 button cell battery, easily replaceable at any watchmaker",
-      "Store in a dry velvet pouch or jewelry box when not in use"
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-handcrafted-wooden-pyramid-incense-box-burner-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-handcrafted-wooden-pyramid-incense-box-burner-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
     ]
   },
   {
-    "id": "wood-vintage-ornate-watch",
-    "name": "Vintage Ornate Victorian Filigree Pocket Watch",
-    "slug": "vintage-ornate-pocket-watch",
-    "sku": "BC-WD-014",
-    "category": "Wood Craft",
-    "subCategory": "Wooden Art",
-    "collection": "Heritage Collection",
-    "badge": "HANDCRAFTED",
+    "id": "india-taj-mahal-pocket-watch",
+    "name": "India Taj Mahal Pocket Watch",
+    "slug": "india-taj-mahal-pocket-watch",
+    "sku": "BC-WD-128",
+    "category": "Wood Crafts",
+    "subCategory": "Vintage Curios & Pocket Watches",
+    "collection": "Artisan Collection",
+    "badge": "BESTSELLER",
     "price": 349,
-    "originalPrice": 699,
-    "material": "Antique Filigree Bronze Alloy",
-    "shortDescription": "Classic Victorian floral filigree pocket watch with hollow-carved see-through case lid.",
-    "description": "Exquisite Victorian floral arabesque openwork adorns this vintage pocket watch. The open filigree lid allows a subtle glimpse of the dial and hands even when closed. Finished in antiqued heirloom bronze with intricate scrollwork covering the rear casing.",
+    "originalPrice": 539,
+    "discountPercent": 35,
+    "description": "Evoking Victorian railway elegance, this handcrafted pocket watch features deeply embossed casing, vintage Roman numeral dial, and a sturdy 32cm vest chain with clip.",
+    "shortDescription": "Handcrafted vintage ornate pocket watch with matching chain & filigree fob.",
     "highlights": [
-      "Open-worked Victorian floral filigree lid with see-through aperture",
-      "Lavish arabesque relief engraving on both front and rear plates",
-      "Smooth quartz caliber with sweeping second hand",
-      "Comes with durable 35cm clip chain for jackets and vests"
+      "Precision Japanese quartz movement keeps accurate time",
+      "Intricately embossed collector's casing with push-button release",
+      "Includes heavy brass vest chain with belt clip",
+      "Distinctive heritage heirloom gift for watch aficionados"
     ],
+    "material": "Antique Brass & Bronze Alloy with Mechanical Quartz Movement",
     "dimensions": {
-      "length": 4.8,
-      "width": 4.8,
+      "length": 5,
+      "width": 5,
       "height": 1.5,
       "unit": "cm"
     },
-    "weightKg": 0.08,
-    "colorFinish": "Victorian Antique Bronze",
-    "stock": 25,
+    "weightKg": 0.12,
+    "colorFinish": "Antiqued Bronze Patina with Engraved Relief",
+    "stock": 34,
+    "inStock": true,
     "featured": false,
-    "bestseller": true,
+    "bestseller": false,
     "newArrival": false,
     "rating": 4.9,
-    "reviewCount": 35,
+    "reviewCount": 27,
     "tags": [
-      "ornate pocket watch",
-      "victorian watch",
-      "filigree watch",
-      "vintage pocket watch",
-      "curio",
-      "wood craft"
+      "india taj mahal pocket watch",
+      "wood crafts",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
     ],
     "images": [
-      "/products/vintage-ornate-pocket-watch/4.1.jpg",
-      "/products/vintage-ornate-pocket-watch/4.2.jpg",
-      "/products/vintage-ornate-pocket-watch/4.3.jpg",
-      "/products/vintage-ornate-pocket-watch/4.4.jpg",
-      "/products/vintage-ornate-pocket-watch/4.5.jpg",
-      "/products/vintage-ornate-pocket-watch/4.6.jpg",
-      "/products/vintage-ornate-pocket-watch/4.7.jpg"
-    ],
-    "discountPercent": 50,
-    "inStock": true,
-    "isCancellable": true,
-    "isReturnable": true,
-    "returnWindowDays": 7,
-    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
-    "returnPolicy": "7 days replacement or return if received damaged or defective.",
-    "reviews": [
-      {
-        "userName": "Aarav Sharma",
-        "userCity": "Jaipur",
-        "rating": 5,
-        "date": "2026-09-14",
-        "title": "Stunning authentic craft",
-        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-vintage-ornate-watch-1"
-      },
-      {
-        "userName": "Pooja Mehta",
-        "userCity": "Mumbai",
-        "rating": 5,
-        "date": "2026-09-18",
-        "title": "Pure artisan perfection",
-        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-vintage-ornate-watch-2"
-      }
+      "/products/wood crafts/india taj mahal pocket watch/2.1.jpg",
+      "/products/wood crafts/india taj mahal pocket watch/2.2.jpg",
+      "/products/wood crafts/india taj mahal pocket watch/2.3.jpg",
+      "/products/wood crafts/india taj mahal pocket watch/2.4.jpg",
+      "/products/wood crafts/india taj mahal pocket watch/2.5.jpg",
+      "/products/wood crafts/india taj mahal pocket watch/2.6.jpg",
+      "/products/wood crafts/india taj mahal pocket watch/2.7.jpg",
+      "/products/wood crafts/india taj mahal pocket watch/2.8.jpg"
     ],
     "careInstructions": [
-      "Keep away from direct water immersion and high humidity environments",
-      "Wipe clean with a soft microfiber jewelry cloth",
-      "Uses standard LR66 / 377 button cell battery, easily replaceable at any watchmaker",
-      "Store in a dry velvet pouch or jewelry box when not in use"
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-india-taj-mahal-pocket-watch-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-india-taj-mahal-pocket-watch-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
     ]
   },
   {
-    "id": "wood-vintage-textured-watch",
-    "name": "Vintage Textured Sunburst Heritage Pocket Watch",
-    "slug": "vintage-textured-pocket-watch",
-    "sku": "BC-WD-015",
-    "category": "Wood Craft",
-    "subCategory": "Wooden Art",
+    "id": "ladakh-motorcycle-pocket-watch",
+    "name": "Ladakh Motorcycle Pocket Watch",
+    "slug": "ladakh-motorcycle-pocket-watch",
+    "sku": "BC-WD-129",
+    "category": "Wood Crafts",
+    "subCategory": "Vintage Curios & Pocket Watches",
     "collection": "Artisan Collection",
     "badge": "HANDCRAFTED",
     "price": 349,
-    "originalPrice": 699,
-    "material": "Antiqued Alloy with Radial Guilloche Texture",
-    "shortDescription": "Timeless textured guilloche-pattern pocket watch with central shield motif and antique patina.",
-    "description": "Understated vintage elegance at its finest. This pocket watch features an intricate geometric guilloche sunburst texture across its outer shell, centered with a classic heraldic cartouche. The warm patinated bronze finish gives it the feel of a cherished family heirloom.",
+    "originalPrice": 539,
+    "discountPercent": 35,
+    "description": "Evoking Victorian railway elegance, this handcrafted pocket watch features deeply embossed casing, vintage Roman numeral dial, and a sturdy 32cm vest chain with clip.",
+    "shortDescription": "Handcrafted vintage ornate pocket watch with matching chain & filigree fob.",
     "highlights": [
-      "Radial sunburst textured engraving with central heraldic shield",
-      "Classic Roman numeral dial with filigree spade hands",
-      "Push-button crown opens cover smoothly to 90 degrees",
-      "Gift-ready timepiece with matching chain"
+      "Precision Japanese quartz movement keeps accurate time",
+      "Intricately embossed collector's casing with push-button release",
+      "Includes heavy brass vest chain with belt clip",
+      "Distinctive heritage heirloom gift for watch aficionados"
     ],
+    "material": "Antique Brass & Bronze Alloy with Mechanical Quartz Movement",
     "dimensions": {
-      "length": 4.8,
-      "width": 4.8,
+      "length": 5,
+      "width": 5,
       "height": 1.5,
       "unit": "cm"
     },
-    "weightKg": 0.08,
-    "colorFinish": "Antique Patinated Bronze",
-    "stock": 24,
+    "weightKg": 0.12,
+    "colorFinish": "Antiqued Bronze Patina with Engraved Relief",
+    "stock": 35,
+    "inStock": true,
+    "featured": true,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.6,
+    "reviewCount": 28,
+    "tags": [
+      "ladakh motorcycle pocket watch",
+      "wood crafts",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/wood crafts/ladakh motorcycle pocket watch/3.1.jpg",
+      "/products/wood crafts/ladakh motorcycle pocket watch/3.2.jpg",
+      "/products/wood crafts/ladakh motorcycle pocket watch/W1.jpg",
+      "/products/wood crafts/ladakh motorcycle pocket watch/W2.jpg",
+      "/products/wood crafts/ladakh motorcycle pocket watch/W3.jpg",
+      "/products/wood crafts/ladakh motorcycle pocket watch/W4.jpg",
+      "/products/wood crafts/ladakh motorcycle pocket watch/W5.jpg",
+      "/products/wood crafts/ladakh motorcycle pocket watch/W6.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-ladakh-motorcycle-pocket-watch-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-ladakh-motorcycle-pocket-watch-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "stylish-anchor-pocket-watch",
+    "name": "Stylish Anchor Pocket Watch",
+    "slug": "stylish-anchor-pocket-watch",
+    "sku": "BC-WD-130",
+    "category": "Wood Crafts",
+    "subCategory": "Vintage Curios & Pocket Watches",
+    "collection": "Artisan Collection",
+    "badge": "HANDCRAFTED",
+    "price": 349,
+    "originalPrice": 539,
+    "discountPercent": 35,
+    "description": "Evoking Victorian railway elegance, this handcrafted pocket watch features deeply embossed casing, vintage Roman numeral dial, and a sturdy 32cm vest chain with clip.",
+    "shortDescription": "Handcrafted vintage ornate pocket watch with matching chain & filigree fob.",
+    "highlights": [
+      "Precision Japanese quartz movement keeps accurate time",
+      "Intricately embossed collector's casing with push-button release",
+      "Includes heavy brass vest chain with belt clip",
+      "Distinctive heritage heirloom gift for watch aficionados"
+    ],
+    "material": "Antique Brass & Bronze Alloy with Mechanical Quartz Movement",
+    "dimensions": {
+      "length": 5,
+      "width": 5,
+      "height": 1.5,
+      "unit": "cm"
+    },
+    "weightKg": 0.12,
+    "colorFinish": "Antiqued Bronze Patina with Engraved Relief",
+    "stock": 36,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.7,
+    "reviewCount": 29,
+    "tags": [
+      "stylish anchor pocket watch",
+      "wood crafts",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/wood crafts/stylish anchor pocket watch/1.1.jpg",
+      "/products/wood crafts/stylish anchor pocket watch/1.3.jpg",
+      "/products/wood crafts/stylish anchor pocket watch/1.5.jpg",
+      "/products/wood crafts/stylish anchor pocket watch/1.6.jpg",
+      "/products/wood crafts/stylish anchor pocket watch/W1.jpg",
+      "/products/wood crafts/stylish anchor pocket watch/W4.jpg",
+      "/products/wood crafts/stylish anchor pocket watch/W5.jpg",
+      "/products/wood crafts/stylish anchor pocket watch/W6.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-stylish-anchor-pocket-watch-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-stylish-anchor-pocket-watch-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "traditional-indian-handcrafted-wooden-chakla-belan-set",
+    "name": "Traditional Indian Handcrafted Wooden Chakla Belan Set",
+    "slug": "traditional-indian-handcrafted-wooden-chakla-belan-set",
+    "sku": "BC-WD-131",
+    "category": "Dining & Kitchen",
+    "subCategory": "Cooking Essentials & Roti Utensils",
+    "collection": "Artisan Collection",
+    "badge": "BESTSELLER",
+    "price": 699,
+    "originalPrice": 1079,
+    "discountPercent": 35,
+    "description": "Crafted from seasoned solid Sheesham hardwood, this classic Chakla Belan set delivers flawless rolling balance for chapatis, puris, and parathas. Features a heavy, non-slip solid base and mirror-smooth ergonomic rolling pin finished with natural food-safe wood oils.",
+    "shortDescription": "Traditional Indian handmade wooden Chakla (rolling board) & Belan (rolling pin) turned by generational artisans.",
+    "highlights": [
+      "Hand-turned from solid single-block seasoned Sheesham",
+      "Weight-balanced base prevents slips during rolling",
+      "Ergonomic tapered Belan handles for smooth rotational motion",
+      "100% food-safe finish with zero chemical varnishes"
+    ],
+    "material": "Seasoned Solid Sheesham Wood (Indian Rosewood)",
+    "dimensions": {
+      "length": 25,
+      "width": 25,
+      "height": 5,
+      "unit": "cm"
+    },
+    "weightKg": 1.4,
+    "colorFinish": "Natural Rich Sheesham Grain with Hand-Wax Polish",
+    "stock": 37,
+    "inStock": true,
+    "featured": false,
+    "bestseller": true,
+    "newArrival": true,
+    "rating": 4.8,
+    "reviewCount": 30,
+    "tags": [
+      "traditional indian handcrafted wooden chakla belan set",
+      "dining & kitchen",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/wood crafts/traditional Indian handcrafted wooden Chakla Belan set/6.1.jpg",
+      "/products/wood crafts/traditional Indian handcrafted wooden Chakla Belan set/6.2.jpg",
+      "/products/wood crafts/traditional Indian handcrafted wooden Chakla Belan set/6.3.jpg",
+      "/products/wood crafts/traditional Indian handcrafted wooden Chakla Belan set/71IdCTzhppL.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-traditional-indian-handcrafted-wooden-chakla-belan-set-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-traditional-indian-handcrafted-wooden-chakla-belan-set-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "traditional-indian-wooden-rolling-pin",
+    "name": "Traditional Indian Wooden Rolling Pin",
+    "slug": "traditional-indian-wooden-rolling-pin",
+    "sku": "BC-WD-132",
+    "category": "Dining & Kitchen",
+    "subCategory": "Cooking Utensils",
+    "collection": "Artisan Collection",
+    "badge": "HANDCRAFTED",
+    "price": 139,
+    "originalPrice": 209,
+    "discountPercent": 33,
+    "description": "Individually lathed by woodcraft artisans, this traditional rolling pin offers exceptional ergonomic comfort and uniform pressure distribution for rolling perfect round rotis.",
+    "shortDescription": "Handcrafted Indian wooden rolling pin (Belan) with balanced grip.",
+    "highlights": [
+      "Balanced center weight for uniform dough thickness",
+      "Smooth sanded friction-free surface",
+      "Made from non-porous naturally antibacterial hardwood",
+      "Long-lasting kitchen essential"
+    ],
+    "material": "Hardwood Sheesham / Teak",
+    "dimensions": {
+      "length": 36,
+      "width": 5,
+      "height": 5,
+      "unit": "cm"
+    },
+    "weightKg": 0.35,
+    "colorFinish": "Warm Honey Wood Polish",
+    "stock": 38,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.8,
+    "reviewCount": 31,
+    "tags": [
+      "traditional indian wooden rolling pin",
+      "dining & kitchen",
+      "wood",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/wood crafts/traditional Indian wooden rolling pin/3.1.jpg",
+      "/products/wood crafts/traditional Indian wooden rolling pin/3.2.jpg",
+      "/products/wood crafts/traditional Indian wooden rolling pin/3.3.jpg",
+      "/products/wood crafts/traditional Indian wooden rolling pin/3.4.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-traditional-indian-wooden-rolling-pin-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-traditional-indian-wooden-rolling-pin-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "antique-lord-krishna-flute-diya-stand",
+    "name": "Antique Lord Krishna Flute Diya Stand",
+    "slug": "antique-lord-krishna-flute-diya-stand",
+    "sku": "BC-MT-133",
+    "category": "Brass & Metal",
+    "subCategory": "Idols & Stand Diyas",
+    "collection": "Festive Collection",
+    "badge": "HANDCRAFTED",
+    "price": 599,
+    "originalPrice": 919,
+    "discountPercent": 35,
+    "description": "A magnificent brass sculpture capturing Lord Krishna in tribhanga posture playing his divine flute, set upon an ornate lotus pedestal with an integrated pooja oil lamp.",
+    "shortDescription": "Handcrafted antique Lord Krishna playing flute brass diya stand.",
+    "highlights": [
+      "Intricately detailed sculpture of Lord Krishna playing bansuri",
+      "Integrated front deepak for daily ghee or oil lighting",
+      "Timeless antique bronze-gold patina adds divine grace",
+      "Heavy stable base prevents tipping"
+    ],
+    "material": "Solid Cast Brass with Antique Patina",
+    "dimensions": {
+      "length": 14,
+      "width": 10,
+      "height": 22,
+      "unit": "cm"
+    },
+    "weightKg": 0.85,
+    "colorFinish": "Antique Vintage Brass Finish",
+    "stock": 39,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.9,
+    "reviewCount": 32,
+    "tags": [
+      "antique lord krishna flute diya stand",
+      "brass & metal",
+      "metal",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/metal crafts/Antique Lord Krishna Flute Diya Stand/01.jpg",
+      "/products/metal crafts/Antique Lord Krishna Flute Diya Stand/02.jpeg",
+      "/products/metal crafts/Antique Lord Krishna Flute Diya Stand/03.jpeg",
+      "/products/metal crafts/Antique Lord Krishna Flute Diya Stand/04.jpg",
+      "/products/metal crafts/Antique Lord Krishna Flute Diya Stand/05.png"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-antique-lord-krishna-flute-diya-stand-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-antique-lord-krishna-flute-diya-stand-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "antique-silver-peacock-panchmukhi-diya-stand",
+    "name": "Antique Silver Peacock Panchmukhi Diya Stand",
+    "slug": "antique-silver-peacock-panchmukhi-diya-stand",
+    "sku": "BC-MT-134",
+    "category": "Brass & Metal",
+    "subCategory": "Stand Diyas & Lamps",
+    "collection": "Festive Collection",
+    "badge": "BESTSELLER",
+    "price": 299,
+    "originalPrice": 459,
+    "discountPercent": 35,
+    "description": "Featuring a crowned Mayura (peacock) finial perched above a five-wick sacred oil reservoir, this oxidized silver diya stand illuminates five cardinal directions simultaneously.",
+    "shortDescription": "Antique silver finish Panchmukhi (5-wick) peacock diya stand.",
+    "highlights": [
+      "Panchmukhi (5 wicks) design for complete directional pooja illumination",
+      "Hand-carved royal peacock archway detailing",
+      "Oxidized antique silver patina creates heritage temple appearance"
+    ],
+    "material": "White Metal Alloy with Antique Silver Oxidized Finish",
+    "dimensions": {
+      "length": 12,
+      "width": 12,
+      "height": 18,
+      "unit": "cm"
+    },
+    "weightKg": 0.48,
+    "colorFinish": "Oxidized Antique Silver Patina",
+    "stock": 40,
+    "inStock": true,
+    "featured": true,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.6,
+    "reviewCount": 33,
+    "tags": [
+      "antique silver peacock panchmukhi diya stand",
+      "brass & metal",
+      "metal",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/metal crafts/Antique Silver Peacock Panchmukhi Diya Stand/01.jpg",
+      "/products/metal crafts/Antique Silver Peacock Panchmukhi Diya Stand/02.jpg",
+      "/products/metal crafts/Antique Silver Peacock Panchmukhi Diya Stand/03.jpg",
+      "/products/metal crafts/Antique Silver Peacock Panchmukhi Diya Stand/04.jpg",
+      "/products/metal crafts/Antique Silver Peacock Panchmukhi Diya Stand/05.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-antique-silver-peacock-panchmukhi-diya-stand-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-antique-silver-peacock-panchmukhi-diya-stand-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "dancing-lord-ganesha-panchmukhi-diya-stand",
+    "name": "Dancing Lord Ganesha Panchmukhi Diya Stand",
+    "slug": "dancing-lord-ganesha-panchmukhi-diya-stand",
+    "sku": "BC-MT-135",
+    "category": "Brass & Metal",
+    "subCategory": "Stand Diyas & Idols",
+    "collection": "Festive Collection",
+    "badge": "NEW",
+    "price": 349,
+    "originalPrice": 539,
+    "discountPercent": 35,
+    "description": "Lord Nritya Ganesha dances gracefully atop an auspicious 5-flame lotus lamp. Lighting the five wicks dispels obstacles, ignorance, and darkness while welcoming prosperity.",
+    "shortDescription": "Dancing Lord Ganesha Panchmukhi 5-wick brass diya stand.",
+    "highlights": [
+      "Sculptural depiction of dancing Ganesha with modak and trishul",
+      "Panchmukhi 5-wick oil dish for elaborate aarti ceremonies",
+      "Stable round pedestal ensures secure altar placement"
+    ],
+    "material": "Pure Cast Brass with Antique Highlights",
+    "dimensions": {
+      "length": 13,
+      "width": 11,
+      "height": 19,
+      "unit": "cm"
+    },
+    "weightKg": 0.55,
+    "colorFinish": "Two-Tone Antique Brass & Copper Tint",
+    "stock": 41,
+    "inStock": true,
+    "featured": false,
+    "bestseller": true,
+    "newArrival": false,
+    "rating": 4.7,
+    "reviewCount": 34,
+    "tags": [
+      "dancing lord ganesha panchmukhi diya stand",
+      "brass & metal",
+      "metal",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/metal crafts/Dancing Lord Ganesha Panchmukhi Diya Stand/01.jpg",
+      "/products/metal crafts/Dancing Lord Ganesha Panchmukhi Diya Stand/02.jpg",
+      "/products/metal crafts/Dancing Lord Ganesha Panchmukhi Diya Stand/03.jpg",
+      "/products/metal crafts/Dancing Lord Ganesha Panchmukhi Diya Stand/04.jpg",
+      "/products/metal crafts/Dancing Lord Ganesha Panchmukhi Diya Stand/05.jpg",
+      "/products/metal crafts/Dancing Lord Ganesha Panchmukhi Diya Stand/06.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-dancing-lord-ganesha-panchmukhi-diya-stand-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-dancing-lord-ganesha-panchmukhi-diya-stand-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "hand-painted-brass-lotus-diya-set-of-3",
+    "name": "Hand-painted Brass Lotus Diya Set of 3",
+    "slug": "hand-painted-brass-lotus-diya-set-of-3",
+    "sku": "BC-MT-136",
+    "category": "Brass & Metal",
+    "subCategory": "Decorative Diyas",
+    "collection": "Heritage Collection",
+    "badge": "HANDCRAFTED",
+    "price": 349,
+    "originalPrice": 539,
+    "discountPercent": 35,
+    "description": "Combining heavy cast brass with colorful Rajasthani Meenakari enamel painting, this set of 3 lotus lamps brings vivid jewel-toned splendor to Diwali and festive celebrations.",
+    "shortDescription": "Set of 3 hand-painted Meenakari brass lotus diyas with vibrant floral artwork.",
+    "highlights": [
+      "Set of 3 hand-painted Meenakari lotus flower diyas",
+      "Rich jewel tones resist heat and wax residue",
+      "Auspicious pooja centerpiece and festive gifting favorite"
+    ],
+    "material": "Solid Brass with Enamel Meenakari Art",
+    "dimensions": {
+      "length": 8,
+      "width": 8,
+      "height": 4.5,
+      "unit": "cm"
+    },
+    "weightKg": 0.36,
+    "colorFinish": "Vibrant Multicolored Floral Meenakari on Brass",
+    "stock": 42,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.8,
+    "reviewCount": 35,
+    "tags": [
+      "hand painted brass lotus diya set of 3",
+      "brass & metal",
+      "metal",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/metal crafts/Hand-Painted Brass Lotus Diya  set of 3/01.jpg",
+      "/products/metal crafts/Hand-Painted Brass Lotus Diya  set of 3/02.jpg",
+      "/products/metal crafts/Hand-Painted Brass Lotus Diya  set of 3/03.jpg",
+      "/products/metal crafts/Hand-Painted Brass Lotus Diya  set of 3/04.jpg",
+      "/products/metal crafts/Hand-Painted Brass Lotus Diya  set of 3/05.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-hand-painted-brass-lotus-diya-set-of-3-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-hand-painted-brass-lotus-diya-set-of-3-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "hand-painted-red-brass-lotus-diya-set-of-3",
+    "name": "Hand-painted Red Brass Lotus Diya Set of 3",
+    "slug": "hand-painted-red-brass-lotus-diya-set-of-3",
+    "sku": "BC-MT-137",
+    "category": "Brass & Metal",
+    "subCategory": "Decorative Diyas",
+    "collection": "Heritage Collection",
+    "badge": "BESTSELLER",
+    "price": 399,
+    "originalPrice": 609,
+    "discountPercent": 34,
+    "description": "Finished in vibrant auspicious vermilion red enamel accented with golden brass petal borders, this set of 3 lotus diyas evokes prosperity, devotion, and festive warmth.",
+    "shortDescription": "Set of 3 hand-painted red brass lotus diyas with auspicious gold accents.",
+    "highlights": [
+      "Set of 3 crimson red lotus oil lamps",
+      "Deep sacred red hue honoring traditional Vedic pooja rituals",
+      "Durable baked enamel finish retains vibrant color"
+    ],
+    "material": "Solid Brass with Crimson Red Enamel",
+    "dimensions": {
+      "length": 7.5,
+      "width": 7.5,
+      "height": 4,
+      "unit": "cm"
+    },
+    "weightKg": 0.28,
+    "colorFinish": "Royal Crimson Red & Gold Trim",
+    "stock": 43,
+    "inStock": true,
     "featured": false,
     "bestseller": false,
     "newArrival": true,
     "rating": 4.8,
-    "reviewCount": 21,
+    "reviewCount": 36,
     "tags": [
-      "textured pocket watch",
-      "vintage watch",
-      "heritage pocket watch",
-      "guilloche watch",
-      "wood craft"
+      "hand painted red brass lotus diya set of 3",
+      "brass & metal",
+      "metal",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
     ],
     "images": [
-      "/products/vintage-textured-pocket-watch/5.1.jpg",
-      "/products/vintage-textured-pocket-watch/5.2.jpg",
-      "/products/vintage-textured-pocket-watch/5.3.jpg",
-      "/products/vintage-textured-pocket-watch/5.4.jpg",
-      "/products/vintage-textured-pocket-watch/5.5.jpg",
-      "/products/vintage-textured-pocket-watch/5.6.jpg",
-      "/products/vintage-textured-pocket-watch/5.7.jpg"
-    ],
-    "discountPercent": 50,
-    "inStock": true,
-    "isCancellable": true,
-    "isReturnable": true,
-    "returnWindowDays": 7,
-    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
-    "returnPolicy": "7 days replacement or return if received damaged or defective.",
-    "reviews": [
-      {
-        "userName": "Aarav Sharma",
-        "userCity": "Jaipur",
-        "rating": 5,
-        "date": "2026-09-14",
-        "title": "Stunning authentic craft",
-        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-vintage-textured-watch-1"
-      },
-      {
-        "userName": "Pooja Mehta",
-        "userCity": "Mumbai",
-        "rating": 5,
-        "date": "2026-09-18",
-        "title": "Pure artisan perfection",
-        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
-        "verifiedPurchase": true,
-        "id": "rev-wood-vintage-textured-watch-2"
-      }
+      "/products/metal crafts/Hand-Painted Red Brass Lotus Diya  set of 3/01.jpg",
+      "/products/metal crafts/Hand-Painted Red Brass Lotus Diya  set of 3/02.jpg",
+      "/products/metal crafts/Hand-Painted Red Brass Lotus Diya  set of 3/03.jpg",
+      "/products/metal crafts/Hand-Painted Red Brass Lotus Diya  set of 3/04.jpg",
+      "/products/metal crafts/Hand-Painted Red Brass Lotus Diya  set of 3/05.jpg",
+      "/products/metal crafts/Hand-Painted Red Brass Lotus Diya  set of 3/06.jpg"
     ],
     "careInstructions": [
-      "Keep away from direct water immersion and high humidity environments",
-      "Wipe clean with a soft microfiber jewelry cloth",
-      "Uses standard LR66 / 377 button cell battery, easily replaceable at any watchmaker",
-      "Store in a dry velvet pouch or jewelry box when not in use"
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-hand-painted-red-brass-lotus-diya-set-of-3-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-hand-painted-red-brass-lotus-diya-set-of-3-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "hexagonal-cutwork-brass-diya-set-of-3",
+    "name": "Hexagonal Cutwork Brass Diya Set of 3",
+    "slug": "hexagonal-cutwork-brass-diya-set-of-3",
+    "sku": "BC-MT-138",
+    "category": "Brass & Metal",
+    "subCategory": "Pooja Diyas & Lamps",
+    "collection": "Heritage Collection",
+    "badge": "HANDCRAFTED",
+    "price": 229,
+    "originalPrice": 349,
+    "discountPercent": 34,
+    "description": "Six-sided sacred hexagonal geometry crafted from pure Moradabad brass. The perforated side panels disperse flame light in six radiant directions, symbolizing auspicious harmony.",
+    "shortDescription": "Set of 3 hexagonal cutwork brass deepaks with delicate lattice apertures.",
+    "highlights": [
+      "Set of 3 hexagonal jali oil lamps",
+      "Auspicious 6-pointed radiance pattern",
+      "Easy to clean with pitambari or lemon juice"
+    ],
+    "material": "Pure Cast Brass",
+    "dimensions": {
+      "length": 7.5,
+      "width": 7.5,
+      "height": 4.5,
+      "unit": "cm"
+    },
+    "weightKg": 0.28,
+    "colorFinish": "Gleaming Antique Gold Polish",
+    "stock": 44,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.9,
+    "reviewCount": 37,
+    "tags": [
+      "hexagonal cutwork brass diya set of 3",
+      "brass & metal",
+      "metal",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/metal crafts/Hexagonal Cutwork Brass Diya  set of 3/01.jpg",
+      "/products/metal crafts/Hexagonal Cutwork Brass Diya  set of 3/02.jpg",
+      "/products/metal crafts/Hexagonal Cutwork Brass Diya  set of 3/03.jpg",
+      "/products/metal crafts/Hexagonal Cutwork Brass Diya  set of 3/04.jpg",
+      "/products/metal crafts/Hexagonal Cutwork Brass Diya  set of 3/05.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-hexagonal-cutwork-brass-diya-set-of-3-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-hexagonal-cutwork-brass-diya-set-of-3-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "kamal-deepam-kamala-diya",
+    "name": "Kamal Deepam Kamala Diya",
+    "slug": "kamal-deepam-kamala-diya",
+    "sku": "BC-MT-139",
+    "category": "Brass & Metal",
+    "subCategory": "Pooja Diyas & Lamps",
+    "collection": "Festive Collection",
+    "badge": "NEW",
+    "price": 59,
+    "originalPrice": 89,
+    "discountPercent": 34,
+    "description": "An authentic South Indian style single-piece brass lotus lamp (Kamal Deepam) featuring tiered petals opening outward to cradle the sacred flame.",
+    "shortDescription": "Traditional Kamal Deepam / Kamala lotus blossom brass diya.",
+    "highlights": [
+      "Single lotus blossom cast brass lamp",
+      "Compact footprint ideal for home mandir shelves and urlis",
+      "Easy maintenance with standard brass polish"
+    ],
+    "material": "Solid Pure Brass",
+    "dimensions": {
+      "length": 7,
+      "width": 7,
+      "height": 3.5,
+      "unit": "cm"
+    },
+    "weightKg": 0.12,
+    "colorFinish": "Golden Brass Glow",
+    "stock": 25,
+    "inStock": true,
+    "featured": true,
+    "bestseller": true,
+    "newArrival": false,
+    "rating": 4.6,
+    "reviewCount": 38,
+    "tags": [
+      "kamal deepam kamala diya",
+      "brass & metal",
+      "metal",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/metal crafts/Kamal Deepam  Kamala Diya/01.jpg",
+      "/products/metal crafts/Kamal Deepam  Kamala Diya/02.jpg",
+      "/products/metal crafts/Kamal Deepam  Kamala Diya/03.jpg",
+      "/products/metal crafts/Kamal Deepam  Kamala Diya/04.jpg",
+      "/products/metal crafts/Kamal Deepam  Kamala Diya/05.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-kamal-deepam-kamala-diya-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-kamal-deepam-kamala-diya-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "lotus-star-leaf-cutwork-brass-diya-set-of-3",
+    "name": "Lotus Star Leaf Cutwork Brass Diya Set of 3",
+    "slug": "lotus-star-leaf-cutwork-brass-diya-set-of-3",
+    "sku": "BC-MT-140",
+    "category": "Brass & Metal",
+    "subCategory": "Pooja Diyas & Lamps",
+    "collection": "Heritage Collection",
+    "badge": "BESTSELLER",
+    "price": 319,
+    "originalPrice": 489,
+    "discountPercent": 35,
+    "description": "Shaped like blooming sacred lotus petals combined with starburst cutouts, this set of 3 brass deepaks infuses your prayer mandir with serene spiritual glow.",
+    "shortDescription": "Set of 3 lotus star leaf cutwork brass diyas with petal-shaped silhouette.",
+    "highlights": [
+      "Set of 3 petal-contoured lotus star diyas",
+      "Deep oil bowl accommodates long-burning cotton wicks",
+      "Auspicious lotus design honoring Goddess Lakshmi"
+    ],
+    "material": "Solid Pure Cast Brass",
+    "dimensions": {
+      "length": 9,
+      "width": 9,
+      "height": 5.5,
+      "unit": "cm"
+    },
+    "weightKg": 0.38,
+    "colorFinish": "Radiant Golden Brass Glow",
+    "stock": 26,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.7,
+    "reviewCount": 39,
+    "tags": [
+      "lotus star leaf cutwork brass diya set of 3",
+      "brass & metal",
+      "metal",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/metal crafts/Lotus  Star Leaf Cutwork Brass Diya  set of 3/01.jpg",
+      "/products/metal crafts/Lotus  Star Leaf Cutwork Brass Diya  set of 3/02.jpg",
+      "/products/metal crafts/Lotus  Star Leaf Cutwork Brass Diya  set of 3/03.jpg",
+      "/products/metal crafts/Lotus  Star Leaf Cutwork Brass Diya  set of 3/04.jpg",
+      "/products/metal crafts/Lotus  Star Leaf Cutwork Brass Diya  set of 3/05.jpg",
+      "/products/metal crafts/Lotus  Star Leaf Cutwork Brass Diya  set of 3/06.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-lotus-star-leaf-cutwork-brass-diya-set-of-3-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-lotus-star-leaf-cutwork-brass-diya-set-of-3-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "lotus-base-brass-kapoor-dani",
+    "name": "Lotus Base Brass Kapoor Dani",
+    "slug": "lotus-base-brass-kapoor-dani",
+    "sku": "BC-MT-141",
+    "category": "Brass & Metal",
+    "subCategory": "Ritual Burners & Pooja Essentials",
+    "collection": "Heritage Collection",
+    "badge": "HANDCRAFTED",
+    "price": 59,
+    "originalPrice": 89,
+    "discountPercent": 34,
+    "description": "Perform soothing camphor aarti with this lotus-pedestal brass Kapoor Dani. Designed with a sturdy base to diffuse fragrant camphor and dhoop smoke through living spaces.",
+    "shortDescription": "Handcrafted lotus base brass Kapoor Dani (camphor burner / dhoop aarti).",
+    "highlights": [
+      "Auspicious lotus base safely contains burning camphor",
+      "Purifies indoor atmosphere and drives away negative energy",
+      "Durable virgin brass construction withstands direct flame heat"
+    ],
+    "material": "Solid Pure Brass",
+    "dimensions": {
+      "length": 11,
+      "width": 8,
+      "height": 6,
+      "unit": "cm"
+    },
+    "weightKg": 0.18,
+    "colorFinish": "Golden Polish with Heat-Resistant Handle",
+    "stock": 27,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.8,
+    "reviewCount": 40,
+    "tags": [
+      "lotus base brass kapoor dani",
+      "brass & metal",
+      "metal",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/metal crafts/Lotus Base Brass Kapoor Dani/01.jpg",
+      "/products/metal crafts/Lotus Base Brass Kapoor Dani/02.jpg",
+      "/products/metal crafts/Lotus Base Brass Kapoor Dani/03.jpg",
+      "/products/metal crafts/Lotus Base Brass Kapoor Dani/04.jpg",
+      "/products/metal crafts/Lotus Base Brass Kapoor Dani/06.jpg",
+      "/products/metal crafts/Lotus Base Brass Kapoor Dani/07.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-lotus-base-brass-kapoor-dani-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-lotus-base-brass-kapoor-dani-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "metal-lord-krishna-playing-flute-under-a-kalpavriksha-tree-statue",
+    "name": "Metal Lord Krishna Playing Flute Under a Kalpavriksha Tree Statue",
+    "slug": "metal-lord-krishna-playing-flute-under-a-kalpavriksha-tree-statue",
+    "sku": "BC-MT-142",
+    "category": "Home Decor",
+    "subCategory": "Idols & Spiritual Figurines",
+    "collection": "Festive Collection",
+    "badge": "HANDCRAFTED",
+    "price": 299,
+    "originalPrice": 459,
+    "discountPercent": 35,
+    "description": "Lord Murli Manohar Krishna plays his enchanting bansuri beneath the holy Kalpavriksha tree while peacocks listen atop the branches. A masterpiece of traditional metal figurine art.",
+    "shortDescription": "Metal Lord Krishna playing flute beneath the sacred Kalpavriksha tree statue.",
+    "highlights": [
+      "Fine lost-wax cast detailing on Krishna's peacock feather crown (Mor Mukut)",
+      "Detailed floral tree branches sheltering the divine flutist",
+      "Perfect centerpiece for living room console, mantle, or home temple"
+    ],
+    "material": "Fine Cast Metal with Antique Brass Coating",
+    "dimensions": {
+      "length": 16,
+      "width": 9,
+      "height": 20,
+      "unit": "cm"
+    },
+    "weightKg": 0.68,
+    "colorFinish": "Antique Brass Glow with Black Shadow Shading",
+    "stock": 28,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.8,
+    "reviewCount": 41,
+    "tags": [
+      "metal lord krishna playing flute under a kalpavriksha tree statue",
+      "home decor",
+      "metal",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/metal crafts/Metal Lord Krishna Playing Flute under a Kalpavriksha Tree statue/01.jpg",
+      "/products/metal crafts/Metal Lord Krishna Playing Flute under a Kalpavriksha Tree statue/02.jpg",
+      "/products/metal crafts/Metal Lord Krishna Playing Flute under a Kalpavriksha Tree statue/03.jpg",
+      "/products/metal crafts/Metal Lord Krishna Playing Flute under a Kalpavriksha Tree statue/04.jpg",
+      "/products/metal crafts/Metal Lord Krishna Playing Flute under a Kalpavriksha Tree statue/05.jpg",
+      "/products/metal crafts/Metal Lord Krishna Playing Flute under a Kalpavriksha Tree statue/06.jpeg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-metal-lord-krishna-playing-flute-under-a-kalpavriksha-tree-statue-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-metal-lord-krishna-playing-flute-under-a-kalpavriksha-tree-statue-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "modern-handcrafted-ganesha-on-rocking-chair-idol",
+    "name": "Modern Handcrafted Ganesha on Rocking Chair Idol",
+    "slug": "modern-handcrafted-ganesha-on-rocking-chair-idol",
+    "sku": "BC-MT-143",
+    "category": "Home Decor",
+    "subCategory": "Idols & Statues",
+    "collection": "Festive Collection",
+    "badge": "BESTSELLER",
+    "price": 399,
+    "originalPrice": 609,
+    "discountPercent": 34,
+    "description": "A delightful contemporary interpretation of Lord Ganesha in a relaxed posture seated comfortably upon a detailed rocking chair, reading a sacred scripture while blessing the household.",
+    "shortDescription": "Modern handcrafted Lord Ganesha relaxing on rocking chair metal idol.",
+    "highlights": [
+      "Whimsical contemporary design blending heritage devotion with modern flair",
+      "Functional gentle rocking motion adds interactive charm",
+      "Captivating conversation starter for living room coffee tables"
+    ],
+    "material": "Fine Cast Metal Alloy",
+    "dimensions": {
+      "length": 14,
+      "width": 9,
+      "height": 16,
+      "unit": "cm"
+    },
+    "weightKg": 0.58,
+    "colorFinish": "Antique Gold and Copper Finish",
+    "stock": 29,
+    "inStock": true,
+    "featured": false,
+    "bestseller": true,
+    "newArrival": true,
+    "rating": 4.9,
+    "reviewCount": 42,
+    "tags": [
+      "modern handcrafted ganesha on rocking chair idol",
+      "home decor",
+      "metal",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/metal crafts/Modern Handcrafted Ganesha on Rocking Chair Idol/01.jpg",
+      "/products/metal crafts/Modern Handcrafted Ganesha on Rocking Chair Idol/02.jpg",
+      "/products/metal crafts/Modern Handcrafted Ganesha on Rocking Chair Idol/03.jpg",
+      "/products/metal crafts/Modern Handcrafted Ganesha on Rocking Chair Idol/04.jpg",
+      "/products/metal crafts/Modern Handcrafted Ganesha on Rocking Chair Idol/05.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-modern-handcrafted-ganesha-on-rocking-chair-idol-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-modern-handcrafted-ganesha-on-rocking-chair-idol-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "modern-handcrafted-pagdi-ganesha-metal-idol",
+    "name": "Modern Handcrafted Pagdi Ganesha Metal Idol",
+    "slug": "modern-handcrafted-pagdi-ganesha-metal-idol",
+    "sku": "BC-MT-144",
+    "category": "Home Decor",
+    "subCategory": "Idols & Statues",
+    "collection": "Festive Collection",
+    "badge": "HANDCRAFTED",
+    "price": 199,
+    "originalPrice": 299,
+    "discountPercent": 33,
+    "description": "Lord Ganesha adorned in a majestic traditional Indian turban (Pagdi) with his right hand raised in the Abhaya Mudra blessing. An auspicious guardian idol for entryways and desks.",
+    "shortDescription": "Modern handcrafted Pagdi Ganesha metal idol adorned with royal turban.",
+    "highlights": [
+      "Royal traditional Pagdi (turban) headwear sculpture",
+      "Abhaya Mudra blessing gesture brings peace and prosperity",
+      "Compact footprint fits desks, car dashboards, and entrance niches"
+    ],
+    "material": "Solid Cast White Metal Brass Alloy",
+    "dimensions": {
+      "length": 12,
+      "width": 8,
+      "height": 15,
+      "unit": "cm"
+    },
+    "weightKg": 0.52,
+    "colorFinish": "Antique Golden Bronze Patina",
+    "stock": 30,
+    "inStock": true,
+    "featured": true,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.6,
+    "reviewCount": 43,
+    "tags": [
+      "modern handcrafted pagdi ganesha metal idol",
+      "home decor",
+      "metal",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/metal crafts/Modern Handcrafted Pagdi Ganesha Metal Idol/01.jpg",
+      "/products/metal crafts/Modern Handcrafted Pagdi Ganesha Metal Idol/02.jpg",
+      "/products/metal crafts/Modern Handcrafted Pagdi Ganesha Metal Idol/03.jpg",
+      "/products/metal crafts/Modern Handcrafted Pagdi Ganesha Metal Idol/04.jpg",
+      "/products/metal crafts/Modern Handcrafted Pagdi Ganesha Metal Idol/05.jpg",
+      "/products/metal crafts/Modern Handcrafted Pagdi Ganesha Metal Idol/06.jpg",
+      "/products/metal crafts/Modern Handcrafted Pagdi Ganesha Metal Idol/07.jpg",
+      "/products/metal crafts/Modern Handcrafted Pagdi Ganesha Metal Idol/08.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-modern-handcrafted-pagdi-ganesha-metal-idol-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-modern-handcrafted-pagdi-ganesha-metal-idol-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "oxidized-metal-elephant-singhasan-with-chatra",
+    "name": "Oxidized Metal Elephant Singhasan with Chatra",
+    "slug": "oxidized-metal-elephant-singhasan-with-chatra",
+    "sku": "BC-MT-145",
+    "category": "Home Decor",
+    "subCategory": "Figurines & Showpieces",
+    "collection": "Artisan Collection",
+    "badge": "HANDCRAFTED",
+    "price": 399,
+    "originalPrice": 609,
+    "discountPercent": 34,
+    "description": "A majestic royal elephant supporting a sacred pedestal throne beneath a carved royal umbrella (Chatra). Often used as a decorative royal seat for placing mini idols or as an opulent showcase figurine.",
+    "shortDescription": "Oxidized metal royal elephant Singhasan (throne) with royal umbrella (Chatra).",
+    "highlights": [
+      "Elephant adorned in royal ceremonial howdah and trunk ornaments",
+      "Removable filigree Chatra umbrella finial",
+      "Perfect sacred platform for Laddu Gopal or small deity idols"
+    ],
+    "material": "Oxidized White Metal with Intricate Filigree",
+    "dimensions": {
+      "length": 15,
+      "width": 10,
+      "height": 17,
+      "unit": "cm"
+    },
+    "weightKg": 0.62,
+    "colorFinish": "Antique Silver-Black Oxidized Finish",
+    "stock": 31,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.7,
+    "reviewCount": 44,
+    "tags": [
+      "oxidized metal elephant singhasan with chatra",
+      "home decor",
+      "metal",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/metal crafts/Oxidized Metal Elephant Singhasan with Chatra/01.jpg",
+      "/products/metal crafts/Oxidized Metal Elephant Singhasan with Chatra/02.jpg",
+      "/products/metal crafts/Oxidized Metal Elephant Singhasan with Chatra/03.jpg",
+      "/products/metal crafts/Oxidized Metal Elephant Singhasan with Chatra/04.jpg",
+      "/products/metal crafts/Oxidized Metal Elephant Singhasan with Chatra/05.jpeg",
+      "/products/metal crafts/Oxidized Metal Elephant Singhasan with Chatra/05.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-oxidized-metal-elephant-singhasan-with-chatra-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-oxidized-metal-elephant-singhasan-with-chatra-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "radha-krishna-under-a-kalpavriksha-tree-statue",
+    "name": "Radha Krishna Under a Kalpavriksha Tree Statue",
+    "slug": "radha-krishna-under-a-kalpavriksha-tree-statue",
+    "sku": "BC-MT-146",
+    "category": "Home Decor",
+    "subCategory": "Idols & Spiritual Figurines",
+    "collection": "Festive Collection",
+    "badge": "BESTSELLER",
+    "price": 299,
+    "originalPrice": 459,
+    "discountPercent": 35,
+    "description": "Depicting the divine eternal lovers Radha and Krishna beneath the sacred Kalpavriksha tree alongside a devoted cow (Kamadhenu), this metal sculpture radiates love, harmony, and celestial blessings.",
+    "shortDescription": "Divine Radha Krishna under the wish-fulfilling Kalpavriksha tree statue.",
+    "highlights": [
+      "Intricately rendered Kalpavriksha tree canopy with lush leaf textures",
+      "Radha and Krishna with flute and Kamadhenu cow at base",
+      "Brings marital harmony, tranquility, and divine energy to homes"
+    ],
+    "material": "Oxidized White Metal Brass Alloy",
+    "dimensions": {
+      "length": 18,
+      "width": 10,
+      "height": 22,
+      "unit": "cm"
+    },
+    "weightKg": 0.78,
+    "colorFinish": "Antique Golden Bronze Patina",
+    "stock": 32,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.8,
+    "reviewCount": 45,
+    "tags": [
+      "radha krishna under a kalpavriksha tree statue",
+      "home decor",
+      "metal",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/metal crafts/Radha Krishna under a Kalpavriksha Tree Statue/01.jpg",
+      "/products/metal crafts/Radha Krishna under a Kalpavriksha Tree Statue/02.jpg",
+      "/products/metal crafts/Radha Krishna under a Kalpavriksha Tree Statue/03.jpg",
+      "/products/metal crafts/Radha Krishna under a Kalpavriksha Tree Statue/04.jpg",
+      "/products/metal crafts/Radha Krishna under a Kalpavriksha Tree Statue/05.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-radha-krishna-under-a-kalpavriksha-tree-statue-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-radha-krishna-under-a-kalpavriksha-tree-statue-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "rose-gold-metallic-leaf-tealight-holder",
+    "name": "Rose Gold Metallic Leaf Tealight Holder",
+    "slug": "rose-gold-metallic-leaf-tealight-holder",
+    "sku": "BC-MT-147",
+    "category": "Home Decor",
+    "subCategory": "Candle Holders & Votives",
+    "collection": "Artisan Collection",
+    "badge": "NEW",
+    "price": 79,
+    "originalPrice": 119,
+    "discountPercent": 34,
+    "description": "Embossed with delicate leaf veining and curled edges, this metallic leaf votive cradles standard tealights, casting a warm golden-pink aura across dinner tables and credenzas.",
+    "shortDescription": "Artisan hand-hammered rose gold metallic leaf tealight candle holder.",
+    "highlights": [
+      "Hand-hammered botanical leaf form with organic veining",
+      "Lustrous rose gold metallic finish reflects candlelight beautifully",
+      "Compact accent for romantic dinners, festivities, and spa corners"
+    ],
+    "material": "Hand-Beaten Iron & Brass Alloy with Rose Gold Foil",
+    "dimensions": {
+      "length": 13,
+      "width": 9,
+      "height": 5,
+      "unit": "cm"
+    },
+    "weightKg": 0.16,
+    "colorFinish": "Luminous Rose Gold Metallic Finish",
+    "stock": 33,
+    "inStock": true,
+    "featured": false,
+    "bestseller": true,
+    "newArrival": false,
+    "rating": 4.8,
+    "reviewCount": 46,
+    "tags": [
+      "rose gold metallic leaf tealight holder",
+      "home decor",
+      "metal",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/metal crafts/Rose Gold Metallic Leaf Tealight Holder/01.jpg",
+      "/products/metal crafts/Rose Gold Metallic Leaf Tealight Holder/02.jpg",
+      "/products/metal crafts/Rose Gold Metallic Leaf Tealight Holder/03.jpg",
+      "/products/metal crafts/Rose Gold Metallic Leaf Tealight Holder/04.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-rose-gold-metallic-leaf-tealight-holder-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-rose-gold-metallic-leaf-tealight-holder-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "round-cutwork-brass-diya-set-of-3",
+    "name": "Round Cutwork Brass Diya Set of 3",
+    "slug": "round-cutwork-brass-diya-set-of-3",
+    "sku": "BC-MT-148",
+    "category": "Brass & Metal",
+    "subCategory": "Pooja Diyas & Lamps",
+    "collection": "Heritage Collection",
+    "badge": "HANDCRAFTED",
+    "price": 259,
+    "originalPrice": 399,
+    "discountPercent": 35,
+    "description": "Cast by Moradabad brass smiths, this set of 3 round diyas features precision lattice cutouts. When lit, glowing flames cast breathtaking floral shadow halos across your prayer altar or festive porch.",
+    "shortDescription": "Set of 3 round cutwork brass diyas creating hypnotic shadow patterns when lit.",
+    "highlights": [
+      "Set of 3 round jali cutwork brass oil lamps",
+      "Intricate side cutouts create radiant starburst reflections",
+      "Solid heavy brass base stays stable and wind-resistant",
+      "Long-burning oil reservoir ideal for Diwali and daily pooja"
+    ],
+    "material": "100% Solid Pure Virgin Brass",
+    "dimensions": {
+      "length": 8,
+      "width": 8,
+      "height": 5,
+      "unit": "cm"
+    },
+    "weightKg": 0.32,
+    "colorFinish": "Traditional Golden Gloss with Etched Cutwork",
+    "stock": 34,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.9,
+    "reviewCount": 47,
+    "tags": [
+      "round cutwork brass diya set of 3",
+      "brass & metal",
+      "metal",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/metal crafts/Round Cutwork Brass Diya set of 3/01.jpg",
+      "/products/metal crafts/Round Cutwork Brass Diya set of 3/02.jpg",
+      "/products/metal crafts/Round Cutwork Brass Diya set of 3/03.jpg",
+      "/products/metal crafts/Round Cutwork Brass Diya set of 3/04.jpg",
+      "/products/metal crafts/Round Cutwork Brass Diya set of 3/05.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-round-cutwork-brass-diya-set-of-3-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-round-cutwork-brass-diya-set-of-3-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "set-of-3-star-leaf-cutwork-brass-diyas",
+    "name": "Set of 3 Star Leaf Cutwork Brass Diyas",
+    "slug": "set-of-3-star-leaf-cutwork-brass-diyas",
+    "sku": "BC-MT-149",
+    "category": "Brass & Metal",
+    "subCategory": "Pooja Diyas & Lamps",
+    "collection": "Heritage Collection",
+    "badge": "BESTSELLER",
+    "price": 349,
+    "originalPrice": 539,
+    "discountPercent": 35,
+    "description": "Elevate your festive illumination with these star-patterned cutwork oil lamps. The thick brass rim prevents overheating while casting delicate starry patterns on walls and floors.",
+    "shortDescription": "Set of 3 star leaf cutwork brass diyas with ornate filigree perforations.",
+    "highlights": [
+      "Set of 3 star-leaf motif brass oil lamps",
+      "Thick brass alloy provides superior thermal tolerance",
+      "Perfect for Diwali, Navratri, and wedding pooja altars"
+    ],
+    "material": "Heavyweight Cast Brass",
+    "dimensions": {
+      "length": 9,
+      "width": 9,
+      "height": 5,
+      "unit": "cm"
+    },
+    "weightKg": 0.4,
+    "colorFinish": "Gleaming Gold Polish",
+    "stock": 35,
+    "inStock": true,
+    "featured": true,
+    "bestseller": false,
+    "newArrival": true,
+    "rating": 4.6,
+    "reviewCount": 48,
+    "tags": [
+      "set of 3 star leaf cutwork brass diyas",
+      "brass & metal",
+      "metal",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/metal crafts/Set of 3 Star Leaf Cutwork Brass Diyas/01.jpg",
+      "/products/metal crafts/Set of 3 Star Leaf Cutwork Brass Diyas/02.jpg",
+      "/products/metal crafts/Set of 3 Star Leaf Cutwork Brass Diyas/03.jpg",
+      "/products/metal crafts/Set of 3 Star Leaf Cutwork Brass Diyas/04.jpg",
+      "/products/metal crafts/Set of 3 Star Leaf Cutwork Brass Diyas/06.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-set-of-3-star-leaf-cutwork-brass-diyas-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-set-of-3-star-leaf-cutwork-brass-diyas-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "square-cutwork-brass-diya-set-of-3",
+    "name": "Square Cutwork Brass Diya Set of 3",
+    "slug": "square-cutwork-brass-diya-set-of-3",
+    "sku": "BC-MT-150",
+    "category": "Brass & Metal",
+    "subCategory": "Pooja Diyas & Lamps",
+    "collection": "Heritage Collection",
+    "badge": "HANDCRAFTED",
+    "price": 279,
+    "originalPrice": 429,
+    "discountPercent": 35,
+    "description": "A striking geometric variation of traditional oil lamps, this set of 3 square brass diyas features ornate cutout lattices that project mesmerizing geometric shadows during evening prayers.",
+    "shortDescription": "Set of 3 square cutwork brass pooja diyas with decorative lattice filigree.",
+    "highlights": [
+      "Set of 3 square filigree brass lamps",
+      "Modern architectural geometric profile with traditional heritage craft",
+      "Pure virgin brass ensures decades of festive use without tarnishing easily"
+    ],
+    "material": "Solid Pure Virgin Brass",
+    "dimensions": {
+      "length": 8,
+      "width": 8,
+      "height": 5,
+      "unit": "cm"
+    },
+    "weightKg": 0.35,
+    "colorFinish": "Polished Golden Luster",
+    "stock": 36,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.7,
+    "reviewCount": 49,
+    "tags": [
+      "square cutwork brass diya set of 3",
+      "brass & metal",
+      "metal",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/metal crafts/Square Cutwork Brass Diya  set of 3/01.jpg",
+      "/products/metal crafts/Square Cutwork Brass Diya  set of 3/02.jpg",
+      "/products/metal crafts/Square Cutwork Brass Diya  set of 3/03.jpg",
+      "/products/metal crafts/Square Cutwork Brass Diya  set of 3/04.jpg",
+      "/products/metal crafts/Square Cutwork Brass Diya  set of 3/05.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-square-cutwork-brass-diya-set-of-3-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-square-cutwork-brass-diya-set-of-3-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "sun-dial-pooja-diya-set-of-3",
+    "name": "Sun Dial Pooja Diya Set of 3",
+    "slug": "sun-dial-pooja-diya-set-of-3",
+    "sku": "BC-MT-151",
+    "category": "Brass & Metal",
+    "subCategory": "Pooja Diyas & Lamps",
+    "collection": "Festive Collection",
+    "badge": "NEW",
+    "price": 429,
+    "originalPrice": 659,
+    "discountPercent": 35,
+    "description": "Inspired by the celestial sun dial (Surya Yantra), these 3 brass lamps feature radiated fluted edges that mimic blazing sun rays around a sacred central flame.",
+    "shortDescription": "Set of 3 sun dial inspired brass pooja diyas with solar ray motifs.",
+    "highlights": [
+      "Set of 3 Surya-inspired sun dial oil lamps",
+      "Scalloped sunbeam borders guide flame reflection upwards",
+      "Solid heavy brass construction for generational prayer rituals"
+    ],
+    "material": "Pure Virgin Brass",
+    "dimensions": {
+      "length": 10,
+      "width": 10,
+      "height": 6,
+      "unit": "cm"
+    },
+    "weightKg": 0.48,
+    "colorFinish": "Heritage Golden Luster",
+    "stock": 37,
+    "inStock": true,
+    "featured": false,
+    "bestseller": true,
+    "newArrival": false,
+    "rating": 4.8,
+    "reviewCount": 50,
+    "tags": [
+      "sun dial pooja diya set of 3",
+      "brass & metal",
+      "metal",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/metal crafts/Sun Dial Pooja Diya  set of 3/01.jpg",
+      "/products/metal crafts/Sun Dial Pooja Diya  set of 3/02.jpg",
+      "/products/metal crafts/Sun Dial Pooja Diya  set of 3/03.jpg",
+      "/products/metal crafts/Sun Dial Pooja Diya  set of 3/04.jpg",
+      "/products/metal crafts/Sun Dial Pooja Diya  set of 3/05.jpg",
+      "/products/metal crafts/Sun Dial Pooja Diya  set of 3/06.jpg",
+      "/products/metal crafts/Sun Dial Pooja Diya  set of 3/07.jpg",
+      "/products/metal crafts/Sun Dial Pooja Diya  set of 3/08.jpg",
+      "/products/metal crafts/Sun Dial Pooja Diya  set of 3/09.jpg",
+      "/products/metal crafts/Sun Dial Pooja Diya  set of 3/10.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-sun-dial-pooja-diya-set-of-3-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-sun-dial-pooja-diya-set-of-3-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "the-azure-bloom-diya-set-of-4",
+    "name": "The Azure Bloom Diya Set of 4",
+    "slug": "the-azure-bloom-diya-set-of-4",
+    "sku": "BC-MT-152",
+    "category": "Brass & Metal",
+    "subCategory": "Decorative Diyas",
+    "collection": "Festive Collection",
+    "badge": "BESTSELLER",
+    "price": 399,
+    "originalPrice": 609,
+    "discountPercent": 34,
+    "description": "Inspired by royal Persian-Indian turquoise glazes, this set of 4 Azure Bloom lamps features vibrant oceanic blue enamel paired with bright golden metal borders.",
+    "shortDescription": "The Azure Bloom set of 4 multicolor hand-glazed floral diyas.",
+    "highlights": [
+      "Set of 4 artisan Azure Bloom multicolor floral lamps",
+      "Vibrant enamel finish glows brilliantly under evening candlelight",
+      "Stunning decorative addition for festive rangolis and dining setups"
+    ],
+    "material": "Cast Metal Brass Alloy with Glazed Azure Enamel",
+    "dimensions": {
+      "length": 9,
+      "width": 9,
+      "height": 5,
+      "unit": "cm"
+    },
+    "weightKg": 0.46,
+    "colorFinish": "Azure Turquoise Blue with Golden Accents",
+    "stock": 38,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.8,
+    "reviewCount": 51,
+    "tags": [
+      "the azure bloom diya set of 4",
+      "brass & metal",
+      "metal",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/metal crafts/The Azure Bloom Diya set of 4/01.jpg",
+      "/products/metal crafts/The Azure Bloom Diya set of 4/02.jpeg",
+      "/products/metal crafts/The Azure Bloom Diya set of 4/03.jpeg",
+      "/products/metal crafts/The Azure Bloom Diya set of 4/04.jpg",
+      "/products/metal crafts/The Azure Bloom Diya set of 4/05.jpg",
+      "/products/metal crafts/The Azure Bloom Diya set of 4/06.jpg",
+      "/products/metal crafts/The Azure Bloom Diya set of 4/08.jpg",
+      "/products/metal crafts/The Azure Bloom Diya set of 4/09.jpg",
+      "/products/metal crafts/The Azure Bloom Diya set of 4/10.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-the-azure-bloom-diya-set-of-4-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-the-azure-bloom-diya-set-of-4-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "traditional-brass-shankh-diya-set-of-3",
+    "name": "Traditional Brass Shankh Diya Set of 3",
+    "slug": "traditional-brass-shankh-diya-set-of-3",
+    "sku": "BC-MT-153",
+    "category": "Brass & Metal",
+    "subCategory": "Sacred Pooja Diyas",
+    "collection": "Heritage Collection",
+    "badge": "HANDCRAFTED",
+    "price": 349,
+    "originalPrice": 539,
+    "discountPercent": 35,
+    "description": "Crafted in the auspicious contour of the sacred conch shell (Shankha), this set of 3 brass diyas invokes spiritual purity and tranquility during home prayers and rituals.",
+    "shortDescription": "Set of 3 traditional brass Shankh (conch shell) sacred pooja diyas.",
+    "highlights": [
+      "Set of 3 Shankh-shaped brass oil lamps",
+      "Auspicious conch shell design associated with Lakshmi and Vishnu",
+      "Natural ergonomic wick spout provides clean directional flame"
+    ],
+    "material": "Pure Virgin Cast Brass",
+    "dimensions": {
+      "length": 10,
+      "width": 7,
+      "height": 5,
+      "unit": "cm"
+    },
+    "weightKg": 0.42,
+    "colorFinish": "Polished Golden Brass",
+    "stock": 39,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.9,
+    "reviewCount": 52,
+    "tags": [
+      "traditional brass shankh diya set of 3",
+      "brass & metal",
+      "metal",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/metal crafts/Traditional Brass Shankh Diya set of 3/01.jpg",
+      "/products/metal crafts/Traditional Brass Shankh Diya set of 3/02.jpg",
+      "/products/metal crafts/Traditional Brass Shankh Diya set of 3/03.jpg",
+      "/products/metal crafts/Traditional Brass Shankh Diya set of 3/04.jpg",
+      "/products/metal crafts/Traditional Brass Shankh Diya set of 3/05.jpg",
+      "/products/metal crafts/Traditional Brass Shankh Diya set of 3/06.jpg",
+      "/products/metal crafts/Traditional Brass Shankh Diya set of 3/07.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-traditional-brass-shankh-diya-set-of-3-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-traditional-brass-shankh-diya-set-of-3-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "traditional-brass-sudarshana-chakra-diya-set-of-3",
+    "name": "Traditional Brass Sudarshana Chakra Diya Set of 3",
+    "slug": "traditional-brass-sudarshana-chakra-diya-set-of-3",
+    "sku": "BC-MT-154",
+    "category": "Brass & Metal",
+    "subCategory": "Sacred Pooja Diyas",
+    "collection": "Heritage Collection",
+    "badge": "HANDCRAFTED",
+    "price": 399,
+    "originalPrice": 609,
+    "discountPercent": 34,
+    "description": "Modeled after the protective cosmic discus of Lord Vishnu, this set of 3 Sudarshana Chakra lamps features serrated wheel rims and sacred emblems to bring divine protection and peace.",
+    "shortDescription": "Set of 3 traditional brass Sudarshana Chakra sacred deepaks.",
+    "highlights": [
+      "Set of 3 Sudarshana Chakra deepaks",
+      "Sacred Vaishnava symbolism representing the victory of light over dark",
+      "Thick heavy brass casting with long-lasting polished sheen"
+    ],
+    "material": "Pure Virgin Cast Brass",
+    "dimensions": {
+      "length": 9,
+      "width": 9,
+      "height": 5,
+      "unit": "cm"
+    },
+    "weightKg": 0.45,
+    "colorFinish": "Golden Mirror Finish",
+    "stock": 40,
+    "inStock": true,
+    "featured": true,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.6,
+    "reviewCount": 53,
+    "tags": [
+      "traditional brass sudarshana chakra diya set of 3",
+      "brass & metal",
+      "metal",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/metal crafts/Traditional Brass Sudarshana Chakra Diya  set of 3/01.jpg",
+      "/products/metal crafts/Traditional Brass Sudarshana Chakra Diya  set of 3/02.jpg",
+      "/products/metal crafts/Traditional Brass Sudarshana Chakra Diya  set of 3/03.jpg",
+      "/products/metal crafts/Traditional Brass Sudarshana Chakra Diya  set of 3/04.jpg",
+      "/products/metal crafts/Traditional Brass Sudarshana Chakra Diya  set of 3/05.jpg",
+      "/products/metal crafts/Traditional Brass Sudarshana Chakra Diya  set of 3/06.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-traditional-brass-sudarshana-chakra-diya-set-of-3-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-traditional-brass-sudarshana-chakra-diya-set-of-3-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "vastu-brass-tortoise-on-a-glass-plate",
+    "name": "Vastu Brass Tortoise on a Glass Plate",
+    "slug": "vastu-brass-tortoise-on-a-glass-plate",
+    "sku": "BC-MT-155",
+    "category": "Home Decor",
+    "subCategory": "Vastu & Feng Shui Accents",
+    "collection": "Heritage Collection",
+    "badge": "BESTSELLER",
+    "price": 399,
+    "originalPrice": 609,
+    "discountPercent": 34,
+    "description": "According to Vedic Vastu and Feng Shui traditions, placing a brass tortoise in water in the North direction attracts wealth, longevity, career growth, and removes negative energy from home and office.",
+    "shortDescription": "Vastu auspicious brass tortoise (Kurma) resting upon a clear glass plate.",
+    "highlights": [
+      "Solid virgin brass tortoise with inscribed yantra carapace",
+      "Accompanied by a heavy beveled glass water bowl",
+      "Auspicious Vastu tool for career prosperity and longevity"
+    ],
+    "material": "Solid Pure Virgin Brass with Beveled Glass Dish",
+    "dimensions": {
+      "length": 14,
+      "width": 14,
+      "height": 4,
+      "unit": "cm"
+    },
+    "weightKg": 0.45,
+    "colorFinish": "Golden Brass Turtle with Clear Glass Plate",
+    "stock": 41,
+    "inStock": true,
+    "featured": false,
+    "bestseller": true,
+    "newArrival": true,
+    "rating": 4.7,
+    "reviewCount": 54,
+    "tags": [
+      "vastu brass tortoise on a glass plate",
+      "home decor",
+      "metal",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/metal crafts/Vastu Brass Tortoise on a Glass Plate/01.jpg",
+      "/products/metal crafts/Vastu Brass Tortoise on a Glass Plate/02.jpg",
+      "/products/metal crafts/Vastu Brass Tortoise on a Glass Plate/03.jpg",
+      "/products/metal crafts/Vastu Brass Tortoise on a Glass Plate/04.jpg",
+      "/products/metal crafts/Vastu Brass Tortoise on a Glass Plate/05.jpg",
+      "/products/metal crafts/Vastu Brass Tortoise on a Glass Plate/06.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-vastu-brass-tortoise-on-a-glass-plate-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-vastu-brass-tortoise-on-a-glass-plate-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "zen-chime-or-shop-entry-bell",
+    "name": "Zen Chime Or Shop Entry Bell",
+    "slug": "zen-chime-or-shop-entry-bell",
+    "sku": "BC-MT-156",
+    "category": "Brass & Metal",
+    "subCategory": "Bells & Chimes",
+    "collection": "Artisan Collection",
+    "badge": "HANDCRAFTED",
+    "price": 299,
+    "originalPrice": 459,
+    "discountPercent": 35,
+    "description": "Emitting a sweet, resonant and harmonic chime whenever doors open, this handcrafted brass bell attaches effortlessly to door frames via magnetic and adhesive mounts.",
+    "shortDescription": "Artisan solid brass shopkeeper's entry bell / Zen chime with wooden mount.",
+    "highlights": [
+      "Tuned solid brass clapper produces clear, soothing harmonic tone",
+      "Dual mounting: magnetic backing for metal doors and adhesive pad for wood",
+      "Brings Zen peace, positive vastu vibes, and alert notification to shops & homes"
+    ],
+    "material": "Solid Cast Bell Brass with Wooden Mounting Block",
+    "dimensions": {
+      "length": 8,
+      "width": 5,
+      "height": 10,
+      "unit": "cm"
+    },
+    "weightKg": 0.32,
+    "colorFinish": "Vintage Brass Bell with Walnut Magnet Mount",
+    "stock": 42,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.8,
+    "reviewCount": 55,
+    "tags": [
+      "zen chime or shop entry bell",
+      "brass & metal",
+      "metal",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/metal crafts/Zen chime or shop entry bell/01.jpg",
+      "/products/metal crafts/Zen chime or shop entry bell/02.jpg",
+      "/products/metal crafts/Zen chime or shop entry bell/03.jpeg",
+      "/products/metal crafts/Zen chime or shop entry bell/04.jpg",
+      "/products/metal crafts/Zen chime or shop entry bell/05.jpg",
+      "/products/metal crafts/Zen chime or shop entry bell/06.jpeg",
+      "/products/metal crafts/Zen chime or shop entry bell/07.jpg",
+      "/products/metal crafts/Zen chime or shop entry bell/09.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-zen-chime-or-shop-entry-bell-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-zen-chime-or-shop-entry-bell-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "ecraftindia-loving-golden-swan-couple-figurine",
+    "name": "Ecraftindia Loving Golden Swan Couple Figurine",
+    "slug": "ecraftindia-loving-golden-swan-couple-figurine",
+    "sku": "BC-MT-157",
+    "category": "Home Decor",
+    "subCategory": "Showpieces & Figurines",
+    "collection": "Artisan Collection",
+    "badge": "HANDCRAFTED",
+    "price": 399,
+    "originalPrice": 609,
+    "discountPercent": 34,
+    "description": "Depicting two graceful swans with their curved necks intertwined to form a subtle heart shape, this elegant golden sculpture symbolizes enduring love, fidelity, and marital harmony.",
+    "shortDescription": "eCraftIndia loving golden swan couple figurine symbolizing eternal romance.",
+    "highlights": [
+      "Twin swans forming a romantic heart silhouette",
+      "Gleaming mirror gold electroplated coating resists oxidation",
+      "Acclaimed anniversary and wedding celebration gift"
+    ],
+    "material": "Fine Cast Metal with 24K Gold Tone Electroplating",
+    "dimensions": {
+      "length": 18,
+      "width": 9,
+      "height": 23,
+      "unit": "cm"
+    },
+    "weightKg": 0.72,
+    "colorFinish": "Brilliant Golden Luster with Textural Etching",
+    "stock": 43,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.8,
+    "reviewCount": 56,
+    "tags": [
+      "ecraftindia loving golden swan couple figurine",
+      "home decor",
+      "metal",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/metal crafts/eCraftIndia Loving Golden Swan Couple Figurine/01.jpg",
+      "/products/metal crafts/eCraftIndia Loving Golden Swan Couple Figurine/02.jpg",
+      "/products/metal crafts/eCraftIndia Loving Golden Swan Couple Figurine/03.jpg",
+      "/products/metal crafts/eCraftIndia Loving Golden Swan Couple Figurine/04.jpg",
+      "/products/metal crafts/eCraftIndia Loving Golden Swan Couple Figurine/05.jpg",
+      "/products/metal crafts/eCraftIndia Loving Golden Swan Couple Figurine/06.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-ecraftindia-loving-golden-swan-couple-figurine-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-ecraftindia-loving-golden-swan-couple-figurine-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
+    ]
+  },
+  {
+    "id": "esplanade-brass-ganesha-wall-hanging-deepak-with-bells",
+    "name": "Esplanade Brass Ganesha Wall Hanging Deepak with Bells",
+    "slug": "esplanade-brass-ganesha-wall-hanging-deepak-with-bells",
+    "sku": "BC-MT-158",
+    "category": "Home Decor",
+    "subCategory": "Wall Decor & Hangings",
+    "collection": "Heritage Collection",
+    "badge": "BESTSELLER",
+    "price": 499,
+    "originalPrice": 769,
+    "discountPercent": 35,
+    "description": "A grand solid brass wall sconce featuring Lord Ganesha seated inside a Prabhavali arch, with a projecting oil diya and dangling musical temple bells below that chime gently in breezes.",
+    "shortDescription": "eSplanade heavy brass Ganesha wall hanging deepak with hanging musical bells.",
+    "highlights": [
+      "Cast from heavy virgin brass by master temple artisans",
+      "Features dangling brass bells that tinkle with natural air movement",
+      "Integrated wall mounting bracket on reverse",
+      "Magnificent entryway and pooja room statement piece"
+    ],
+    "material": "100% Solid Pure Virgin Brass",
+    "dimensions": {
+      "length": 14,
+      "width": 10,
+      "height": 24,
+      "unit": "cm"
+    },
+    "weightKg": 1.1,
+    "colorFinish": "Hand-Polished Antique Brass Luster",
+    "stock": 44,
+    "inStock": true,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": false,
+    "rating": 4.9,
+    "reviewCount": 57,
+    "tags": [
+      "esplanade brass ganesha wall hanging deepak with bells",
+      "home decor",
+      "metal",
+      "handcrafted",
+      "indian artisan",
+      "beingcraft"
+    ],
+    "images": [
+      "/products/metal crafts/eSplanade Brass Ganesha Wall Hanging Deepak with Bells/01.jpg",
+      "/products/metal crafts/eSplanade Brass Ganesha Wall Hanging Deepak with Bells/02.jpg",
+      "/products/metal crafts/eSplanade Brass Ganesha Wall Hanging Deepak with Bells/03.jpg",
+      "/products/metal crafts/eSplanade Brass Ganesha Wall Hanging Deepak with Bells/04.jpeg",
+      "/products/metal crafts/eSplanade Brass Ganesha Wall Hanging Deepak with Bells/05.jpeg",
+      "/products/metal crafts/eSplanade Brass Ganesha Wall Hanging Deepak with Bells/06.jpg"
+    ],
+    "careInstructions": [
+      "Wipe gently with a soft dry cotton cloth to preserve sheen.",
+      "Avoid harsh abrasive cleaners and chemical bleaches.",
+      "Keep away from direct continuous rain or moisture immersion."
+    ],
+    "reviews": [
+      {
+        "id": "rev-esplanade-brass-ganesha-wall-hanging-deepak-with-bells-1",
+        "userName": "Ananya Sharma",
+        "userCity": "New Delhi",
+        "rating": 5,
+        "date": "15 days ago",
+        "title": "Outstanding craftsmanship & authenticity",
+        "comment": "The finish is breathtaking! Packed with exceptional care and reached on time. Truly feels like a generational heritage piece.",
+        "verifiedPurchase": true
+      },
+      {
+        "id": "rev-esplanade-brass-ganesha-wall-hanging-deepak-with-bells-2",
+        "userName": "Vikramaditya Rao",
+        "userCity": "Bengaluru",
+        "rating": 5,
+        "date": "1 month ago",
+        "title": "Genuine solid material",
+        "comment": "Delighted with the heavy solid feel. You can immediately feel the weight of real artisanal work.",
+        "verifiedPurchase": true
+      }
     ]
   }
 ];
-
 
 export const INITIAL_COUPONS: Coupon[] = [
   {
@@ -1565,3 +4932,4 @@ export const INITIAL_COUPONS: Coupon[] = [
     description: "Save 15% on premium brass & bronze collections above ₹4,999",
   },
 ];
+

@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
+__pycache__/
+*.pyc
 
 # Editor directories and files
 .vscode/*
@@ -32,3 +34,5 @@ dist-ssr
 # Local database / test order data
 server/data/
 
+# Junction alias for local public products folder
+public/being craft products/

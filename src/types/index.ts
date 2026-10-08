@@ -1,5 +1,6 @@
 export type ProductCategory =
   | 'Wood Craft'
+  | 'Wood Crafts'
   | 'Stone Craft'
   | 'Brass & Metal'
   | 'Home Decor'

@@ -83,7 +83,9 @@ export const ShopPage: React.FC = () => {
         const prodCatLower = product.category.toLowerCase();
         const prodSubLower = (product.subCategory || '').toLowerCase();
 
-        if (catLower === 'wood craft') {
+        if (prodCatLower === catLower) {
+          // Direct match passes category filter
+        } else if (catLower === 'wood craft' || catLower === 'wood crafts') {
           const isWood = prodCatLower.includes('wood') || product.material.toLowerCase().includes('wood') || product.material.toLowerCase().includes('sheesham') || product.material.toLowerCase().includes('teak');
           if (!isWood) return false;
         } else if (catLower === 'stone craft') {
@@ -253,7 +255,7 @@ export const ShopPage: React.FC = () => {
               {isWishlistOnly
                 ? 'Your handpicked selection of heirloom brass items, carved wood panels, and stone sculptures.'
                 : selectedCategory
-                ? TAXONOMY_CATEGORIES.find((c) => c.name === selectedCategory)?.description ||
+                ? TAXONOMY_CATEGORIES.find((c) => c.name === selectedCategory || c.name.toLowerCase().includes(selectedCategory.toLowerCase()) || selectedCategory.toLowerCase().includes(c.name.toLowerCase()))?.description ||
                   'Explore genuine Indian handcrafted artifacts made with generational integrity.'
                 : 'Explore our comprehensive catalog of virgin brass idols, hand-chiseled marble inlays, and seasoned timber decor.'}
             </p>
