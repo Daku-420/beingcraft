@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import {
   Sparkles,
   ArrowRight,
   ShieldCheck,
   Truck,
   RotateCcw,
+  ChevronLeft,
   ChevronRight,
   Star,
   Quote,
@@ -30,6 +31,45 @@ export const HomePage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'all' | 'bestsellers' | 'newArrivals' | 'festive'>('all');
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [newsletterSubscribed, setNewsletterSubscribed] = useState(false);
+
+  // Curated diverse showcase products for the hero slideshow
+  const heroShowcaseProducts = useMemo(() => {
+    if (products.length === 0) return [];
+    const categories = ['Wood Crafts', 'Brass & Metal', 'Home Decor', 'Dining & Kitchen'];
+    const curated: typeof products = [];
+    categories.forEach((cat) => {
+      const match = products.filter((p) => p.category === cat);
+      curated.push(...match.slice(0, 2));
+    });
+    if (curated.length < 4) {
+      return products.slice(0, 8);
+    }
+    return curated;
+  }, [products]);
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isSlidePaused, setIsSlidePaused] = useState(false);
+
+  // Auto-change slideshow every 3.8 seconds unless hovered
+  useEffect(() => {
+    if (heroShowcaseProducts.length <= 1 || isSlidePaused) return;
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroShowcaseProducts.length);
+    }, 3800);
+    return () => clearInterval(interval);
+  }, [heroShowcaseProducts.length, isSlidePaused]);
+
+  const activeProduct = heroShowcaseProducts[currentSlide] || products[0];
+
+  const handlePrevSlide = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    setCurrentSlide((prev) => (prev - 1 + heroShowcaseProducts.length) % heroShowcaseProducts.length);
+  };
+
+  const handleNextSlide = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    setCurrentSlide((prev) => (prev + 1) % heroShowcaseProducts.length);
+  };
 
   // Filtered lists
   const bestsellers = products.filter((p) => p.bestseller).slice(0, 8);
@@ -128,32 +168,117 @@ export const HomePage: React.FC = () => {
             </div>
           </div>
 
-          {/* Hero Showcase Card */}
+          {/* Hero Showcase Card / Auto-playing Slideshow */}
           <div className="lg:col-span-5 hidden lg:block">
-            {products.length > 0 ? (
-              <div className="relative mx-auto max-w-sm rounded-2xl overflow-hidden shadow-2xl border-2 border-brand-gold/40 bg-white/5 backdrop-blur-md p-3 group">
-                <img
-                  src={getSafeImageUrl(products[0]?.images?.[0])}
-                  alt={products[0].name}
-                  onError={handleImageError}
-                  className="w-full aspect-[4/5] object-cover rounded-xl group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-charcoal-900/95 backdrop-blur-md border border-brand-gold/30 text-white shadow-2xl">
-                  <span className="text-[10px] uppercase font-bold text-brand-gold tracking-widest block">
-                    Featured Handcrafted Creation
-                  </span>
-                  <h4 className="font-heading font-semibold text-sm mt-0.5 line-clamp-1">
-                    {products[0].name}
+            {heroShowcaseProducts.length > 0 && activeProduct ? (
+              <div
+                onMouseEnter={() => setIsSlidePaused(true)}
+                onMouseLeave={() => setIsSlidePaused(false)}
+                onClick={() => navigate(`/product/${activeProduct.slug}`)}
+                className="relative mx-auto max-w-sm rounded-2xl overflow-hidden shadow-2xl border-2 border-brand-gold/40 bg-white/5 backdrop-blur-md p-3 group cursor-pointer transition-all duration-300 hover:border-brand-gold hover:shadow-brand-gold/20"
+              >
+                {/* Image Aspect Frame with Smooth Cross-fade */}
+                <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-charcoal-900">
+                  {heroShowcaseProducts.map((prod, idx) => (
+                    <div
+                      key={prod.id}
+                      className={`absolute inset-0 transition-all duration-700 ease-in-out ${
+                        idx === currentSlide
+                          ? 'opacity-100 scale-100 pointer-events-auto'
+                          : 'opacity-0 scale-105 pointer-events-none'
+                      }`}
+                    >
+                      <img
+                        src={getSafeImageUrl(prod.images?.[0])}
+                        alt={prod.name}
+                        onError={handleImageError}
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                      />
+                    </div>
+                  ))}
+
+                  {/* Gentle gradient vignette */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/30 pointer-events-none" />
+
+                  {/* Category Pill Tag */}
+                  <div className="absolute top-3 left-3 flex items-center gap-1.5 z-20 bg-charcoal-900/85 backdrop-blur-md px-3 py-1 rounded-full border border-brand-gold/30 text-[10px] font-bold text-white tracking-widest uppercase">
+                    <span className="w-2 h-2 rounded-full bg-brand-gold animate-pulse" />
+                    <span>{activeProduct.category}</span>
+                  </div>
+
+                  {/* Slideshow Progress / Navigation Dots */}
+                  <div className="absolute top-3 right-3 flex items-center gap-1.5 z-20 bg-charcoal-900/85 backdrop-blur-md px-2.5 py-1.5 rounded-full border border-white/10">
+                    {heroShowcaseProducts.map((_, i) => (
+                      <button
+                        key={i}
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setCurrentSlide(i);
+                        }}
+                        className={`h-1.5 rounded-full transition-all duration-300 ${
+                          i === currentSlide
+                            ? 'w-5 bg-brand-gold'
+                            : 'w-1.5 bg-white/40 hover:bg-white/80'
+                        }`}
+                        aria-label={`Go to slide ${i + 1}`}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Manual Arrow Controls (Fade in on hover) */}
+                  <button
+                    type="button"
+                    onClick={handlePrevSlide}
+                    className="absolute left-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-charcoal-900/85 hover:bg-brand-gold text-white hover:text-black flex items-center justify-center backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-200 z-20 shadow-lg border border-white/20 active:scale-90"
+                    aria-label="Previous Creation"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleNextSlide}
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-charcoal-900/85 hover:bg-brand-gold text-white hover:text-black flex items-center justify-center backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-200 z-20 shadow-lg border border-white/20 active:scale-90"
+                    aria-label="Next Creation"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
+
+                {/* Floating Product Details Info Bar */}
+                <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-charcoal-900/95 backdrop-blur-md border border-brand-gold/30 text-white shadow-2xl z-20 transition-all duration-300">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] uppercase font-bold text-brand-gold tracking-widest block">
+                      Featured Handcrafted Creation
+                    </span>
+                    <span className="text-[10px] font-mono text-white/50">
+                      {currentSlide + 1} / {heroShowcaseProducts.length}
+                    </span>
+                  </div>
+                  <h4 className="font-heading font-semibold text-sm mt-0.5 line-clamp-1 transition-all">
+                    {activeProduct.name}
                   </h4>
                   <div className="flex items-center justify-between mt-2 pt-2 border-t border-white/10">
-                    <span className="text-base font-bold text-brand-gold">
-                      ₹{products[0].price.toLocaleString('en-IN')}.00
-                    </span>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-base font-bold text-brand-gold">
+                        ₹{activeProduct.price.toLocaleString('en-IN')}.00
+                      </span>
+                      {activeProduct.originalPrice > activeProduct.price && (
+                        <span className="text-xs text-white/40 line-through">
+                          ₹{activeProduct.originalPrice.toLocaleString('en-IN')}
+                        </span>
+                      )}
+                    </div>
                     <button
-                      onClick={() => navigate(`/product/${products[0].slug}`)}
-                      className="text-xs font-semibold text-white hover:text-brand-gold flex items-center gap-1"
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        navigate(`/product/${activeProduct.slug}`);
+                      }}
+                      className="text-xs font-semibold text-white hover:text-brand-gold flex items-center gap-1 group/btn"
                     >
-                      View Details <ChevronRight className="w-3 h-3" />
+                      <span>View Details</span>
+                      <ChevronRight className="w-3 h-3 group-hover/btn:translate-x-0.5 transition-transform" />
                     </button>
                   </div>
                 </div>
