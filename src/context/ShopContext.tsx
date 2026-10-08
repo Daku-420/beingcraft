@@ -51,7 +51,11 @@ interface ShopContextType {
   // Orders
   orders: Order[];
   createOrder: (orderData: Omit<Order, 'id' | 'orderNumber' | 'createdAt'>) => Order;
+  syncOrder: (order: Order) => void;
   updateOrderStatus: (orderId: string, status: Order['orderStatus']) => void;
+  deleteOrder: (orderId: string) => void;
+  clearAllOrders: () => void;
+  resetAdminData: () => void;
   getOrderById: (orderId: string) => Order | undefined;
 
   // Search & Navigation modal
@@ -59,6 +63,10 @@ interface ShopContextType {
   setIsSearchOpen: (open: boolean) => void;
   searchQuery: string;
   setSearchQuery: (query: string) => void;
+
+  // Quick View Modal
+  quickViewProduct: Product | null;
+  setQuickViewProduct: (product: Product | null) => void;
 
   // Toast notifications
   toasts: ToastMessage[];
@@ -72,12 +80,38 @@ interface ShopContextType {
 
 export const ShopContext = createContext<ShopContextType | undefined>(undefined);
 
+const isSystemGenerated = (id?: string): boolean => {
+  if (!id) return true;
+  return id.startsWith('auracraft-') || id.startsWith('prod-');
+};
+
 export const ShopProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  // 1. Products state (persisted)
+  // Migration check to ensure clean slate reset
+  const MIGRATION_KEY = 'beingcraft_reset_all_data_v5';
+  const hasResetRun = typeof window !== 'undefined' && localStorage.getItem(MIGRATION_KEY) === 'true';
+
+  if (typeof window !== 'undefined' && !hasResetRun) {
+    localStorage.setItem(MIGRATION_KEY, 'true');
+    localStorage.removeItem('beingcraft_products');
+    localStorage.removeItem('auracraft_products');
+    localStorage.removeItem('beingcraft_orders');
+    localStorage.removeItem('auracraft_orders');
+    localStorage.removeItem('beingcraft_cart');
+    localStorage.removeItem('beingcraft_wishlist');
+    fetch('/api/orders/all', { method: 'DELETE' }).catch(() => {});
+  }
+
+  // 1. Products state (persisted, defaults to INITIAL_PRODUCTS)
   const [products, setProducts] = useState<Product[]>(() => {
-    const saved = localStorage.getItem('beingcraft_products') || localStorage.getItem('auracraft_products');
+    if (typeof window === 'undefined') return INITIAL_PRODUCTS;
+    const saved = localStorage.getItem('beingcraft_products');
     if (saved) {
-      try { return JSON.parse(saved); } catch (e) { console.error(e); }
+      try {
+        const parsed: Product[] = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      } catch (e) {
+        console.error(e);
+      }
     }
     return INITIAL_PRODUCTS;
   });
@@ -88,9 +122,16 @@ export const ShopProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   // 2. Cart state (persisted)
   const [cart, setCart] = useState<CartItem[]>(() => {
-    const saved = localStorage.getItem('beingcraft_cart') || localStorage.getItem('auracraft_cart');
+    const saved = localStorage.getItem('beingcraft_cart');
     if (saved) {
-      try { return JSON.parse(saved); } catch (e) { console.error(e); }
+      try {
+        const parsed: CartItem[] = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          return parsed.filter((item) => item.product && !isSystemGenerated(item.product.id));
+        }
+      } catch (e) {
+        console.error(e);
+      }
     }
     return [];
   });
@@ -101,9 +142,16 @@ export const ShopProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   // 3. Wishlist state (persisted)
   const [wishlist, setWishlist] = useState<string[]>(() => {
-    const saved = localStorage.getItem('beingcraft_wishlist') || localStorage.getItem('auracraft_wishlist');
+    const saved = localStorage.getItem('beingcraft_wishlist');
     if (saved) {
-      try { return JSON.parse(saved); } catch (e) { console.error(e); }
+      try {
+        const parsed: string[] = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          return parsed.filter((id) => !isSystemGenerated(id));
+        }
+      } catch (e) {
+        console.error(e);
+      }
     }
     return [];
   });
@@ -125,6 +173,25 @@ export const ShopProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     localStorage.setItem('beingcraft_orders', JSON.stringify(orders));
   }, [orders]);
 
+  useEffect(() => {
+    fetch('/api/orders')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (data && data.success && Array.isArray(data.orders)) {
+          setOrders((prev) => {
+            const map = new Map<string, Order>();
+            // Server orders take precedence
+            data.orders.forEach((o: Order) => map.set(o.id, o));
+            prev.forEach((o) => {
+              if (!map.has(o.id)) map.set(o.id, o);
+            });
+            return Array.from(map.values());
+          });
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   // 5. Coupons & discounts
   const [coupons] = useState<Coupon[]>(INITIAL_COUPONS);
   const [appliedCoupon, setAppliedCoupon] = useState<Coupon | null>(null);
@@ -133,6 +200,7 @@ export const ShopProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [isCartDrawerOpen, setIsCartDrawerOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
 
   // 7. Lightweight SPA Hash / Route tracker
@@ -314,11 +382,59 @@ export const ShopProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     return newOrder;
   };
 
+  const syncOrder = (order: Order) => {
+    setOrders((prev) => {
+      const idx = prev.findIndex((o) => o.id === order.id || o.orderNumber === order.orderNumber);
+      if (idx > -1) {
+        const updated = [...prev];
+        updated[idx] = order;
+        return updated;
+      }
+      return [order, ...prev];
+    });
+  };
+
   const updateOrderStatus = (orderId: string, status: Order['orderStatus']) => {
     setOrders((prev) =>
       prev.map((ord) => (ord.id === orderId ? { ...ord, orderStatus: status } : ord))
     );
+    fetch(`/api/orders/${orderId}/status`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status }),
+    }).catch(() => {});
     showToast(`Order status updated to ${status}`);
+  };
+
+  const deleteOrder = (orderId: string) => {
+    setOrders((prev) => prev.filter((o) => o.id !== orderId && o.orderNumber !== orderId));
+    fetch(`/api/orders/${orderId}`, {
+      method: 'DELETE',
+    }).catch(() => {});
+    showToast('Order removed from records', 'info');
+  };
+
+  const clearAllOrders = () => {
+    setOrders([]);
+    fetch('/api/orders/all', {
+      method: 'DELETE',
+    }).catch(() => {});
+    showToast('All orders cleared', 'info');
+  };
+
+  const resetAdminData = () => {
+    setProducts([]);
+    setOrders([]);
+    setCart([]);
+    setWishlist([]);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('beingcraft_products', JSON.stringify([]));
+      localStorage.setItem('beingcraft_orders', JSON.stringify([]));
+      localStorage.setItem('beingcraft_cart', JSON.stringify([]));
+      localStorage.setItem('beingcraft_wishlist', JSON.stringify([]));
+    }
+    fetch('/api/orders/all', { method: 'DELETE' }).catch(() => {});
+    showToast('Admin data reset to clean slate. 0 items, 0 orders.', 'info');
   };
 
   const getOrderById = (orderId: string) => orders.find((o) => o.id === orderId || o.orderNumber === orderId);
@@ -353,12 +469,18 @@ export const ShopProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         finalTotal,
         orders,
         createOrder,
+        syncOrder,
         updateOrderStatus,
+        deleteOrder,
+        clearAllOrders,
+        resetAdminData,
         getOrderById,
         isSearchOpen,
         setIsSearchOpen,
         searchQuery,
         setSearchQuery,
+        quickViewProduct,
+        setQuickViewProduct,
         toasts,
         showToast,
         removeToast,

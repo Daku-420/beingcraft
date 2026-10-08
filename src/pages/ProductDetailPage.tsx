@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Star,
   ShoppingBag,
@@ -12,10 +12,11 @@ import {
   Minus,
   Sparkles,
   Share2,
-  Check
+  Award
 } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { ProductCard } from '../components/ProductCard';
+import { BRAND } from '../config/brand';
 
 interface ProductDetailPageProps {
   slug: string;
@@ -27,13 +28,54 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug }) =>
 
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
-  const [activeTab, setActiveTab] = useState<'description' | 'specs' | 'care' | 'reviews'>('description');
+  const [activeTab, setActiveTab] = useState<'description' | 'craftsmanship' | 'specs' | 'care' | 'shipping' | 'returns' | 'reviews'>('description');
   const [pincode, setPincode] = useState('');
   const [deliveryEstimate, setDeliveryEstimate] = useState<string | null>(null);
   const [newReviewAuthor, setNewReviewAuthor] = useState('');
   const [newReviewRating, setNewReviewRating] = useState(5);
   const [newReviewComment, setNewReviewComment] = useState('');
   const [reviewSubmitted, setReviewSubmitted] = useState(false);
+  const [showStickyBar, setShowStickyBar] = useState(false);
+
+  // Monitor scroll for sticky mobile purchase bar
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show sticky bar after scrolling past 350px
+      setShowStickyBar(window.scrollY > 350);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  if (!product) {
+    return (
+      <div className="max-w-4xl mx-auto px-4 py-20 text-center space-y-4">
+        <div className="w-16 h-16 rounded-full bg-brand-maroon-subtle text-brand-maroon mx-auto flex items-center justify-center">
+          <ShoppingBag className="w-8 h-8" />
+        </div>
+        <h1 className="font-heading font-extrabold text-2xl sm:text-3xl text-charcoal-900">
+          Handcrafted Creation Not Found
+        </h1>
+        <p className="text-sm text-charcoal-600 max-w-md mx-auto">
+          The requested item is not currently available in our catalog. Browse our handcrafted collections or add new pieces via the admin panel.
+        </p>
+        <div className="pt-4 flex justify-center gap-4">
+          <button
+            onClick={() => navigate('/shop')}
+            className="btn-pill-primary text-xs px-6 py-2.5 font-bold shadow"
+          >
+            Explore Catalog
+          </button>
+          <button
+            onClick={() => navigate('/')}
+            className="btn-pill-outline text-xs px-6 py-2.5 font-semibold"
+          >
+            Back to Home
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   const isWishlisted = isInWishlist(product.id);
 
@@ -81,10 +123,14 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug }) =>
     .filter((p) => p.category === product.category && p.id !== product.id)
     .slice(0, 4);
 
+  const youMayAlsoLike = products
+    .filter((p) => p.id !== product.id && (p.bestseller || p.featured))
+    .slice(0, 4);
+
   const hasDiscount = product.originalPrice > product.price;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12 pb-24 lg:pb-16">
       {/* 1. Breadcrumbs */}
       <nav className="text-xs text-charcoal-500 flex flex-wrap items-center gap-1.5">
         <a
@@ -109,351 +155,539 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug }) =>
           {product.category}
         </a>
         <span>/</span>
-        <span className="text-charcoal-900 font-medium truncate max-w-xs">{product.name}</span>
+        <span className="text-charcoal-900 font-semibold truncate max-w-xs">{product.name}</span>
       </nav>
 
-      {/* 2. Main Product Hero (50% Gallery / 50% Details) */}
+      {/* 2. Main Product Showcase: Gallery + Details */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-        {/* Left: Gallery */}
-        <div className="lg:col-span-6 space-y-4">
-          <div className="relative aspect-square bg-surface-muted rounded-2xl overflow-hidden border border-surface-border shadow-sm">
+        {/* LEFT: Large Product Gallery */}
+        <div className="lg:col-span-7 space-y-4">
+          <div className="relative aspect-square sm:aspect-[4/3] rounded-2xl overflow-hidden bg-surface-muted border border-surface-border shadow-md">
             <img
               src={product.images[activeImageIndex] || product.images[0]}
               alt={product.name}
               className="w-full h-full object-cover object-center transition-all duration-300"
             />
-            {hasDiscount && (
-              <span className="absolute top-4 left-4 bg-brand-maroon text-white text-xs font-bold px-3 py-1 rounded-full shadow uppercase tracking-wide">
-                Sale!
-              </span>
-            )}
+
+            {/* Badges */}
+            <div className="absolute top-4 left-4 flex flex-col gap-1.5 z-10">
+              {product.badge && (
+                <span className="bg-charcoal-900 border border-brand-gold/40 text-brand-gold text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">
+                  {product.badge}
+                </span>
+              )}
+              {hasDiscount && (
+                <span className="bg-brand-maroon text-white text-xs font-bold px-3 py-1 rounded-full shadow uppercase tracking-wide">
+                  Save {product.discountPercent}%
+                </span>
+              )}
+            </div>
+
+            {/* Share button */}
             <button
-              onClick={() => toggleWishlist(product.id)}
-              className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/85 backdrop-blur-sm shadow hover:bg-white text-charcoal-800 flex items-center justify-center transition-colors"
-              aria-label="Wishlist"
+              onClick={handleShare}
+              className="absolute top-4 right-4 p-2.5 rounded-full bg-white/90 hover:bg-white text-charcoal-700 hover:text-brand-maroon shadow-md transition-colors"
+              title="Share Product"
+              aria-label="Share"
             >
-              <Heart className={`w-5 h-5 ${isWishlisted ? 'fill-red-600 text-red-600' : ''}`} />
+              <Share2 className="w-4 h-4" />
             </button>
           </div>
 
-          {/* Thumbnails list */}
+          {/* Thumbnails */}
           {product.images.length > 1 && (
             <div className="flex gap-3 overflow-x-auto pb-2">
               {product.images.map((img, idx) => (
                 <button
                   key={idx}
                   onClick={() => setActiveImageIndex(idx)}
-                  className={`w-20 h-20 rounded-xl overflow-hidden border-2 shrink-0 transition-all ${
+                  className={`relative w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden shrink-0 border-2 transition-all ${
                     activeImageIndex === idx
                       ? 'border-brand-maroon shadow-md scale-105'
-                      : 'border-surface-border opacity-70 hover:opacity-100'
+                      : 'border-surface-border hover:border-brand-maroon/40'
                   }`}
                 >
-                  <img src={img} alt={`Thumbnail ${idx + 1}`} className="w-full h-full object-cover" />
+                  <img src={img} alt="" className="w-full h-full object-cover" />
                 </button>
               ))}
             </div>
           )}
+
+          {/* Craft Heritage Highlight Banner */}
+          <div className="p-4 rounded-xl bg-surface-cream border border-surface-border flex items-center gap-3 text-xs text-charcoal-700">
+            <Sparkles className="w-5 h-5 text-brand-maroon shrink-0" />
+            <div>
+              <span className="font-bold text-charcoal-900">Authentic Handcrafted Lineage: </span>
+              Cast & hand-finished by master generational guild craftsmen. No two handmade objects are ever 100% identical.
+            </div>
+          </div>
         </div>
 
-        {/* Right: Summary */}
-        <div className="lg:col-span-6 space-y-5">
+        {/* RIGHT: Product Meta & Purchase Controls */}
+        <div className="lg:col-span-5 space-y-5">
           <div>
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-brand-maroon uppercase tracking-wider">
-                {product.category} {product.subCategory && `• ${product.subCategory}`}
+            {/* Category & SKU */}
+            <div className="flex items-center justify-between text-xs text-charcoal-500 mb-1.5">
+              <span className="font-bold uppercase tracking-widest text-brand-maroon">
+                {product.category}
               </span>
-              <button
-                onClick={handleShare}
-                className="text-xs text-charcoal-500 hover:text-brand-maroon flex items-center gap-1"
-                title="Share this product"
-              >
-                <Share2 className="w-3.5 h-3.5" />
-                <span>Share</span>
-              </button>
+              <span className="text-[11px] font-mono">SKU: {product.sku}</span>
             </div>
 
-            <h1 className="font-heading font-extrabold text-2xl sm:text-3xl text-charcoal-900 mt-1.5 leading-snug">
+            {/* Title */}
+            <h1 className="font-heading font-extrabold text-2xl sm:text-3xl text-charcoal-900 leading-snug">
               {product.name}
             </h1>
 
-            {/* Rating & SKU */}
-            <div className="flex items-center gap-4 mt-2 text-xs text-charcoal-500">
-              <div className="flex items-center gap-1.5">
-                <div className="flex text-brand-amber">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className={`w-3.5 h-3.5 ${
-                        i < Math.floor(product.rating) ? 'fill-brand-amber text-brand-amber' : 'text-gray-300'
-                      }`}
-                    />
-                  ))}
-                </div>
-                <span className="font-semibold text-charcoal-800">{product.rating}</span>
-                <span>({product.reviewCount || 24} reviews)</span>
+            {/* Star Rating & Reviews */}
+            <div className="flex items-center gap-2 mt-2">
+              <div className="flex text-brand-amber">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className={`w-4 h-4 ${
+                      i < Math.floor(product.rating)
+                        ? 'fill-brand-amber text-brand-amber'
+                        : 'text-gray-300'
+                    }`}
+                  />
+                ))}
               </div>
-              <span>•</span>
-              <span>SKU: <strong className="text-charcoal-700">{product.sku}</strong></span>
+              <span className="text-xs font-bold text-charcoal-800">{product.rating}</span>
+              <span className="text-xs text-charcoal-500">
+                • {product.reviewCount || 12} Verified Customer Reviews
+              </span>
             </div>
           </div>
 
           {/* Pricing */}
-          <div className="p-4 bg-surface-cream rounded-xl border border-surface-border flex items-baseline gap-3">
-            <span className="font-heading font-extrabold text-2xl sm:text-3xl text-brand-maroon">
-              ₹{product.price.toLocaleString('en-IN')}.00
-            </span>
-            {hasDiscount && (
-              <>
-                <span className="text-sm text-charcoal-400 line-through">
+          <div className="p-4 rounded-xl bg-surface-muted/60 border border-surface-border space-y-1">
+            <div className="flex items-baseline gap-3">
+              <span className="font-heading font-extrabold text-3xl text-charcoal-900">
+                ₹{product.price.toLocaleString('en-IN')}.00
+              </span>
+              {hasDiscount && (
+                <span className="text-base text-charcoal-400 line-through">
                   ₹{product.originalPrice.toLocaleString('en-IN')}.00
                 </span>
-                <span className="text-xs font-bold bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-full">
-                  {product.discountPercent}% OFF
-                </span>
-              </>
-            )}
+              )}
+            </div>
+            <p className="text-[11px] text-charcoal-500">
+              Inclusive of all taxes • Free shipping applies at checkout on orders above ₹{BRAND.shipping.freeShippingThreshold}
+            </p>
           </div>
 
           {/* Short Description */}
-          <p className="text-sm text-charcoal-600 leading-relaxed">
-            {product.shortDescription}
+          <p className="text-xs sm:text-sm text-charcoal-600 leading-relaxed font-light">
+            {product.shortDescription || product.description}
           </p>
 
-          {/* Stock Indicator */}
-          <div className="flex items-center gap-2 text-xs font-semibold">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse-green" />
-            <span className="text-emerald-800">
-              Availability: {product.stock} items in stock (Dispatches within 24 Hours)
-            </span>
+          {/* Key Product Highlights (from Admin Portal) */}
+          {product.highlights && product.highlights.length > 0 && (
+            <div className="p-3.5 rounded-xl bg-amber-50/60 border border-amber-200/80 space-y-2">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-amber-900 flex items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5 text-amber-700" /> Key Product Highlights
+              </span>
+              <ul className="space-y-1.5 text-xs text-charcoal-700">
+                {product.highlights.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-maroon mt-1.5 shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* Specifications Highlight Pills */}
+          <div className="grid grid-cols-2 gap-2.5 text-xs">
+            <div className="p-2.5 bg-white border border-surface-border rounded-lg">
+              <span className="text-[10px] text-charcoal-400 uppercase font-bold block">Material</span>
+              <span className="font-semibold text-charcoal-900 text-xs">{product.material}</span>
+            </div>
+            <div className="p-2.5 bg-white border border-surface-border rounded-lg">
+              <span className="text-[10px] text-charcoal-400 uppercase font-bold block">Weight</span>
+              <span className="font-semibold text-charcoal-900 text-xs">{product.weightKg} kg (Solid Build)</span>
+            </div>
+            <div className="p-2.5 bg-white border border-surface-border rounded-lg">
+              <span className="text-[10px] text-charcoal-400 uppercase font-bold block">Dimensions</span>
+              <span className="font-semibold text-charcoal-900 text-xs">
+                {product.dimensions.length}×{product.dimensions.width}×{product.dimensions.height} {product.dimensions.unit}
+              </span>
+            </div>
+            <div className="p-2.5 bg-white border border-surface-border rounded-lg">
+              <span className="text-[10px] text-charcoal-400 uppercase font-bold block">Finish</span>
+              <span className="font-semibold text-charcoal-900 text-xs truncate block">{product.colorFinish}</span>
+            </div>
           </div>
 
-          {/* Quantity & CTA Buttons */}
+          {/* Quantity, Add to Cart & Buy Now */}
           <div className="space-y-3 pt-2">
-            <div className="flex items-center gap-4">
-              <div className="flex items-center border border-surface-border rounded-full bg-surface-muted px-3 py-1.5">
+            <div className="flex items-center gap-3">
+              {/* Quantity selector */}
+              <div className="flex items-center border border-surface-border rounded-full bg-white shadow-sm">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="p-1 hover:text-brand-maroon transition-colors"
+                  className="p-2.5 text-charcoal-600 hover:text-brand-maroon transition-colors"
                   aria-label="Decrease quantity"
                 >
                   <Minus className="w-3.5 h-3.5" />
                 </button>
-                <span className="text-sm font-semibold px-4 min-w-[32px] text-center">
+                <span className="w-10 text-center text-xs font-bold text-charcoal-900">
                   {quantity}
                 </span>
                 <button
-                  onClick={() => setQuantity(Math.min(product.stock, quantity + 1))}
-                  className="p-1 hover:text-brand-maroon transition-colors"
+                  onClick={() => setQuantity(quantity + 1)}
+                  className="p-2.5 text-charcoal-600 hover:text-brand-maroon transition-colors"
                   aria-label="Increase quantity"
                 >
                   <Plus className="w-3.5 h-3.5" />
                 </button>
               </div>
 
+              {/* Add to Cart button */}
               <button
                 onClick={handleAddToCart}
-                className="flex-1 btn-pill-primary py-3 text-sm font-bold flex items-center justify-center gap-2 shadow"
+                className="flex-1 btn-pill-primary py-3 text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-md"
               >
                 <ShoppingBag className="w-4 h-4" />
-                <span>Add to Cart</span>
+                <span>Add to Cart • ₹{(product.price * quantity).toLocaleString('en-IN')}</span>
+              </button>
+
+              {/* Wishlist toggle */}
+              <button
+                onClick={() => toggleWishlist(product.id)}
+                className={`w-12 h-12 rounded-full border border-surface-border flex items-center justify-center transition-colors shadow-sm ${
+                  isWishlisted
+                    ? 'bg-red-50 text-red-600 border-red-200'
+                    : 'bg-white text-charcoal-600 hover:text-brand-maroon hover:bg-surface-muted'
+                }`}
+                aria-label="Wishlist"
+              >
+                <Heart className={`w-5 h-5 ${isWishlisted ? 'fill-red-600' : ''}`} />
               </button>
             </div>
 
+            {/* Buy Now Direct Button */}
             <button
               onClick={handleBuyNow}
-              className="w-full btn-pill-accent py-3 text-sm font-bold shadow hover:shadow-md transition-all"
+              className="w-full btn-pill-accent py-3 text-xs sm:text-sm font-bold shadow-md"
             >
-              Buy It Now (Fast Indian Checkout)
+              Buy It Now (Express Checkout)
             </button>
           </div>
 
-          {/* Pincode Delivery Check */}
-          <div className="p-4 rounded-xl border border-surface-border bg-surface-muted/50 space-y-2">
-            <label className="text-xs font-bold uppercase tracking-wider text-charcoal-800 flex items-center gap-1.5">
+          {/* Pincode Delivery Estimator */}
+          <div className="p-4 rounded-xl border border-surface-border bg-white shadow-sm space-y-2">
+            <div className="flex items-center gap-2 text-xs font-bold text-charcoal-900">
               <Truck className="w-4 h-4 text-brand-maroon" />
-              <span>Check Delivery to Your Pincode</span>
-            </label>
-            <form onSubmit={checkPincode} className="flex gap-2">
+              <span>Check Delivery & Cash on Delivery</span>
+            </div>
+            <form onSubmit={checkPincode} className="flex gap-2 text-xs">
               <input
                 type="text"
-                placeholder="Enter 6-digit Pincode (e.g. 110001)"
                 maxLength={6}
                 value={pincode}
                 onChange={(e) => setPincode(e.target.value)}
-                className="flex-1 text-xs px-3 py-2 border border-surface-border rounded-lg focus:outline-none focus:border-brand-maroon"
+                placeholder="Enter 6-digit Pincode..."
+                className="flex-1 px-3 py-2 border border-surface-border rounded-lg bg-surface-muted/40 focus:outline-none focus:border-brand-maroon font-mono"
               />
               <button
                 type="submit"
-                className="px-4 py-2 bg-charcoal-900 hover:bg-brand-maroon text-white text-xs font-semibold rounded-lg transition-colors"
+                className="btn-pill-primary px-4 py-2 text-xs font-bold"
               >
                 Check
               </button>
             </form>
             {deliveryEstimate && (
-              <p className="text-xs font-medium text-emerald-800 flex items-center gap-1 pt-1">
-                <Check className="w-3.5 h-3.5" />
-                <span>{deliveryEstimate}</span>
+              <p className="text-xs text-emerald-700 font-semibold pt-1 flex items-center gap-1">
+                <CheckCircle2 className="w-3.5 h-3.5 inline" /> {deliveryEstimate}
               </p>
             )}
           </div>
 
-          {/* Micro Trust Matrix */}
-          <div className="grid grid-cols-2 gap-3 pt-2 text-xs text-charcoal-600">
+          {/* Cancellation & Return Policies Summary */}
+          <div className="p-3.5 rounded-xl bg-surface-muted/60 border border-surface-border space-y-2 text-xs">
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-charcoal-900 flex items-center gap-1.5">
+                <RotateCcw className="w-3.5 h-3.5 text-brand-maroon" /> Cancellation & Returns
+              </span>
+              <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full ${
+                product.isReturnable !== false ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'
+              }`}>
+                {product.isReturnable !== false ? `${product.returnWindowDays || 7}-Day Replacement / Return` : 'Final Sale / Non-Returnable'}
+              </span>
+            </div>
+            <p className="text-charcoal-600 text-[11px] leading-relaxed">
+              {product.returnPolicy || 'Items can be returned or replaced within the return window if received damaged, defective, or significantly different from description.'}
+            </p>
+            <div className="pt-1.5 border-t border-surface-border/70 flex items-center justify-between text-[11px]">
+              <span className="text-charcoal-500">Order Cancellation:</span>
+              <span className="font-semibold text-charcoal-800">
+                {product.isCancellable !== false ? (product.cancellationPolicy || 'Permitted prior to dispatch') : 'Non-cancellable once order is confirmed'}
+              </span>
+            </div>
+          </div>
+
+          {/* Trust Value Points */}
+          <div className="grid grid-cols-2 gap-3 pt-2 text-xs text-charcoal-600 border-t border-surface-border">
             <div className="flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-brand-maroon shrink-0" />
-              <span>100% Authentic Brass Guarantee</span>
+              <span>Multi-Layer Breakage-Proof Transit</span>
             </div>
             <div className="flex items-center gap-2">
               <RotateCcw className="w-4 h-4 text-brand-maroon shrink-0" />
-              <span>7-Day Return / Replacement</span>
+              <span>{product.returnWindowDays || 7}-Day Easy Replacement</span>
             </div>
             <div className="flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-brand-maroon shrink-0" />
-              <span>Handcrafted in Moradabad, India</span>
+              <Award className="w-4 h-4 text-brand-maroon shrink-0" />
+              <span>Certified Virgin Raw Materials</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-brand-maroon shrink-0" />
-              <span>Cash on Delivery Available</span>
+              <Truck className="w-4 h-4 text-brand-maroon shrink-0" />
+              <span>Dispatched in 24–48 Hours</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* 3. Detailed Tabs (Description, Specifications, Care, Reviews) */}
-      <div className="pt-8 border-t border-surface-border">
-        {/* Tab Buttons */}
-        <div className="flex border-b border-surface-border overflow-x-auto gap-4 sm:gap-8">
-          <button
-            onClick={() => setActiveTab('description')}
-            className={`py-3 text-sm font-heading font-semibold border-b-2 transition-colors whitespace-nowrap ${
-              activeTab === 'description'
-                ? 'border-brand-maroon text-brand-maroon'
-                : 'border-transparent text-charcoal-500 hover:text-charcoal-900'
-            }`}
-          >
-            Product Description
-          </button>
-          <button
-            onClick={() => setActiveTab('specs')}
-            className={`py-3 text-sm font-heading font-semibold border-b-2 transition-colors whitespace-nowrap ${
-              activeTab === 'specs'
-                ? 'border-brand-maroon text-brand-maroon'
-                : 'border-transparent text-charcoal-500 hover:text-charcoal-900'
-            }`}
-          >
-            Specifications & Dimensions
-          </button>
-          <button
-            onClick={() => setActiveTab('care')}
-            className={`py-3 text-sm font-heading font-semibold border-b-2 transition-colors whitespace-nowrap ${
-              activeTab === 'care'
-                ? 'border-brand-maroon text-brand-maroon'
-                : 'border-transparent text-charcoal-500 hover:text-charcoal-900'
-            }`}
-          >
-            Artisan Care Instructions
-          </button>
-          <button
-            onClick={() => setActiveTab('reviews')}
-            className={`py-3 text-sm font-heading font-semibold border-b-2 transition-colors whitespace-nowrap ${
-              activeTab === 'reviews'
-                ? 'border-brand-maroon text-brand-maroon'
-                : 'border-transparent text-charcoal-500 hover:text-charcoal-900'
-            }`}
-          >
-            Customer Reviews ({product.reviews?.length || product.reviewCount || 12})
-          </button>
+      {/* 3. Editorial Tabs (Description, Craftsmanship, Specs, Care, Shipping, Returns, Reviews) */}
+      <div className="pt-8 border-t border-surface-border space-y-6">
+        <div className="flex gap-2 border-b border-surface-border overflow-x-auto pb-px">
+          {[
+            { id: 'description', label: 'Artisan Story & Details' },
+            { id: 'craftsmanship', label: 'Craftsmanship & Materials' },
+            { id: 'specs', label: 'Specifications & Dimensions' },
+            { id: 'care', label: 'Care Instructions' },
+            { id: 'shipping', label: 'Shipping & Packaging' },
+            { id: 'returns', label: 'Cancellation & Returns' },
+            { id: 'reviews', label: `Reviews (${product.reviews.length})` },
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id as any)}
+              className={`pb-3 px-4 text-xs sm:text-sm font-bold whitespace-nowrap transition-colors border-b-2 ${
+                activeTab === tab.id
+                  ? 'border-brand-maroon text-brand-maroon'
+                  : 'border-transparent text-charcoal-500 hover:text-charcoal-800'
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
         </div>
 
-        {/* Tab Content */}
-        <div className="py-6 text-sm text-charcoal-700 leading-relaxed max-w-4xl">
+        {/* Tab Contents */}
+        <div className="bg-white p-6 sm:p-8 rounded-2xl border border-surface-border shadow-sm min-h-[220px]">
           {activeTab === 'description' && (
-            <div className="space-y-4">
+            <div className="space-y-4 max-w-3xl text-xs sm:text-sm text-charcoal-700 leading-relaxed font-light">
+              <h3 className="font-heading font-bold text-base sm:text-lg text-charcoal-900">
+                About this Handcrafted Creation
+              </h3>
               <p>{product.description}</p>
-              <div className="p-4 bg-surface-cream rounded-xl border border-surface-border">
-                <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-brand-maroon mb-1">
-                  Artisan Heritage Note
-                </h4>
-                <p className="text-xs text-charcoal-600">
-                  Because this artifact is individually hand-cast and chased by human hands, slight
-                  variations in texture, weight, and patina are natural hallmarks of authentic metalcraft.
-                </p>
+              <p>
+                Every stroke of chisel, mold impression, and polishing stage reflects the distinctive
+                hand of the maker. Subdued tonal variances and handcrafted textures are hallmarks of
+                authentic heritage production rather than defects.
+              </p>
+            </div>
+          )}
+
+          {activeTab === 'craftsmanship' && (
+            <div className="space-y-4 max-w-3xl text-xs sm:text-sm text-charcoal-700 leading-relaxed">
+              <h3 className="font-heading font-bold text-base sm:text-lg text-charcoal-900">
+                Centuries-Old Guild Craftsmanship
+              </h3>
+              <p>
+                Our metal, stone, and wood pieces are crafted in accordance with traditional Indian Shilpa
+                Shastra guidelines. We use 100% solid virgin metals and sustainably sourced timber,
+                rejecting inferior scrap fillers and synthetic composites.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                <div className="p-4 rounded-xl bg-surface-cream border border-surface-border">
+                  <h4 className="font-heading font-bold text-xs text-brand-maroon uppercase mb-1">
+                    Raw Material Purity
+                  </h4>
+                  <p className="text-xs text-charcoal-600">
+                    Solid brass, pure copper, natural Sheesham rosewood, and authentic white Makrana marble.
+                  </p>
+                </div>
+                <div className="p-4 rounded-xl bg-surface-cream border border-surface-border">
+                  <h4 className="font-heading font-bold text-xs text-brand-maroon uppercase mb-1">
+                    Generational Tooling
+                  </h4>
+                  <p className="text-xs text-charcoal-600">
+                    Hand-chiseled on anvils, hand-filed, and buffed with natural organic emery pastes.
+                  </p>
+                </div>
               </div>
             </div>
           )}
 
           {activeTab === 'specs' && (
-            <div className="border border-surface-border rounded-xl overflow-hidden divide-y divide-surface-border">
-              <div className="grid grid-cols-3 p-3 bg-surface-muted/50 text-xs">
-                <span className="font-semibold text-charcoal-900">Material</span>
-                <span className="col-span-2 text-charcoal-700">{product.material}</span>
-              </div>
-              <div className="grid grid-cols-3 p-3 text-xs">
-                <span className="font-semibold text-charcoal-900">Finish / Color</span>
-                <span className="col-span-2 text-charcoal-700">{product.colorFinish}</span>
-              </div>
-              <div className="grid grid-cols-3 p-3 bg-surface-muted/50 text-xs">
-                <span className="font-semibold text-charcoal-900">Dimensions (L × W × H)</span>
-                <span className="col-span-2 text-charcoal-700">
-                  {product.dimensions.length} × {product.dimensions.width} × {product.dimensions.height} {product.dimensions.unit}
-                </span>
-              </div>
-              <div className="grid grid-cols-3 p-3 text-xs">
-                <span className="font-semibold text-charcoal-900">Net Weight</span>
-                <span className="col-span-2 text-charcoal-700">{product.weightKg} kg</span>
-              </div>
-              <div className="grid grid-cols-3 p-3 bg-surface-muted/50 text-xs">
-                <span className="font-semibold text-charcoal-900">Country of Origin</span>
-                <span className="col-span-2 text-charcoal-700">India (Moradabad Guilds)</span>
-              </div>
-              <div className="grid grid-cols-3 p-3 text-xs">
-                <span className="font-semibold text-charcoal-900">SKU Code</span>
-                <span className="col-span-2 text-charcoal-700">{product.sku}</span>
+            <div className="max-w-2xl space-y-3 text-xs">
+              <h3 className="font-heading font-bold text-base text-charcoal-900 mb-2">
+                Technical Specifications
+              </h3>
+              <div className="divide-y divide-surface-border">
+                <div className="py-2.5 flex justify-between">
+                  <span className="text-charcoal-500">Material Composition</span>
+                  <span className="font-semibold text-charcoal-900">{product.material}</span>
+                </div>
+                <div className="py-2.5 flex justify-between">
+                  <span className="text-charcoal-500">Dimensions (L × W × H)</span>
+                  <span className="font-semibold text-charcoal-900">
+                    {product.dimensions.length} × {product.dimensions.width} × {product.dimensions.height} {product.dimensions.unit}
+                  </span>
+                </div>
+                <div className="py-2.5 flex justify-between">
+                  <span className="text-charcoal-500">Net Weight</span>
+                  <span className="font-semibold text-charcoal-900">{product.weightKg} kg</span>
+                </div>
+                <div className="py-2.5 flex justify-between">
+                  <span className="text-charcoal-500">Surface Finish</span>
+                  <span className="font-semibold text-charcoal-900">{product.colorFinish}</span>
+                </div>
+                <div className="py-2.5 flex justify-between">
+                  <span className="text-charcoal-500">Country of Origin</span>
+                  <span className="font-semibold text-charcoal-900">India (Bharat)</span>
+                </div>
               </div>
             </div>
           )}
 
           {activeTab === 'care' && (
-            <div className="space-y-3">
-              <h4 className="font-heading font-bold text-sm text-charcoal-900">
-                Preserving Handcrafted Brass & Antique Finishes
-              </h4>
-              <ul className="space-y-2 text-xs text-charcoal-600 list-disc pl-5">
+            <div className="max-w-2xl space-y-4 text-xs sm:text-sm text-charcoal-700">
+              <h3 className="font-heading font-bold text-base text-charcoal-900">
+                Preserving Your Heirloom
+              </h3>
+              <ul className="space-y-2 list-disc pl-5">
                 {product.careInstructions.map((inst, i) => (
                   <li key={i}>{inst}</li>
                 ))}
-                <li>For natural brass items, exposure to air over months develops an authentic vintage patina. If you prefer high shine, rub with traditional Pitambari or tamarind paste and rinse dry immediately.</li>
+                <li>Keep dry and away from continuous rain or direct damp soil.</li>
+                <li>Avoid harsh chemical wire brushes or bleach-based cleansers.</li>
               </ul>
+            </div>
+          )}
+
+          {activeTab === 'shipping' && (
+            <div className="max-w-3xl space-y-4 text-xs sm:text-sm text-charcoal-700 leading-relaxed">
+              <h3 className="font-heading font-bold text-base text-charcoal-900">
+                Breakage-Proof Transit Guarantee
+              </h3>
+              <p>
+                Every heavy brass sculpture, delicate marble inlay coaster, and carved timber artifact is
+                encased in high-density customized foam padding, triple-layer bubble wrap, and rigid
+                corrugated outer boxing.
+              </p>
+              <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs">
+                <strong>Zero-Damage Guarantee:</strong> In the rare event of transit damage, simply share an
+                unboxing photo or video with our team within 7 days and we will dispatch a replacement immediately.
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'returns' && (
+            <div className="max-w-3xl space-y-6 text-xs sm:text-sm text-charcoal-700 leading-relaxed">
+              <div>
+                <h3 className="font-heading font-bold text-base sm:text-lg text-charcoal-900 mb-2">
+                  Cancellation & Return Policies
+                </h3>
+                <p className="text-charcoal-600">
+                  We stand by the master craftsmanship of our generational artisans. Here are our complete transparent policies for this creation:
+                </p>
+              </div>
+
+              {/* Order Cancellation */}
+              <div className="p-4 rounded-xl bg-surface-cream border border-surface-border space-y-2">
+                <div className="flex items-center justify-between">
+                  <h4 className="font-heading font-bold text-xs uppercase text-brand-maroon tracking-wider">
+                    1. Order Cancellation Policy
+                  </h4>
+                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                    product.isCancellable !== false ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'
+                  }`}>
+                    {product.isCancellable !== false ? 'Cancellable' : 'Final Order'}
+                  </span>
+                </div>
+                <p className="text-xs text-charcoal-700">
+                  {product.cancellationPolicy || (
+                    product.isCancellable !== false
+                      ? 'You can cancel your order free of charge before the item has been packed and handed over to our courier partner (typically within 24 hours of placement). Once dispatched, cancellation is no longer possible, but standard return/replacement guidelines apply.'
+                      : 'Because each piece is custom-prepared or packed immediately upon order confirmation, cancellation is not permitted for this product.'
+                  )}
+                </p>
+              </div>
+
+              {/* Return & Replacement */}
+              <div className="p-4 rounded-xl bg-surface-cream border border-surface-border space-y-2">
+                <div className="flex items-center justify-between">
+                  <h4 className="font-heading font-bold text-xs uppercase text-brand-maroon tracking-wider">
+                    2. Return & Replacement Policy ({product.returnWindowDays || 7}-Day Window)
+                  </h4>
+                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                    product.isReturnable !== false ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'
+                  }`}>
+                    {product.isReturnable !== false ? `${product.returnWindowDays || 7}-Day Return Window` : 'Non-Returnable'}
+                  </span>
+                </div>
+                <p className="text-xs text-charcoal-700">
+                  {product.returnPolicy || (
+                    product.isReturnable !== false
+                      ? `We offer a hassle-free ${product.returnWindowDays || 7}-day return and replacement guarantee from the date of delivery. If your item arrives damaged, defective, or noticeably different from our catalog pictures, we will arrange a reverse pickup and issue an immediate replacement or full refund.`
+                      : 'This artisanal creation is considered a final sale and is non-returnable unless received damaged or defective in transit.'
+                  )}
+                </p>
+                <div className="pt-2 text-[11px] text-charcoal-600 border-t border-surface-border space-y-1">
+                  <p><strong>Eligibility Guidelines:</strong></p>
+                  <ul className="list-disc pl-5 space-y-0.5">
+                    <li>The product must be unused, in its original authentic condition with tags and artisan certificates intact.</li>
+                    <li>Please preserve the original custom box and foam packaging for reverse courier transit.</li>
+                    <li>For transit damage claims, please contact our support team at {BRAND.email} or WhatsApp {BRAND.phone} with short unboxing photos.</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           )}
 
           {activeTab === 'reviews' && (
             <div className="space-y-8">
-              {/* Existing Reviews */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-surface-border pb-4">
+                <div>
+                  <h3 className="font-heading font-bold text-base sm:text-lg text-charcoal-900">
+                    Customer Feedback
+                  </h3>
+                  <p className="text-xs text-charcoal-500">
+                    Real reviews from collectors and home decorators across India.
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="flex text-brand-amber">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-brand-amber text-brand-amber" />
+                    ))}
+                  </div>
+                  <span className="font-bold text-sm text-charcoal-900">{product.rating} out of 5</span>
+                </div>
+              </div>
+
+              {/* Review List */}
               <div className="space-y-4">
                 {product.reviews && product.reviews.length > 0 ? (
                   product.reviews.map((rev) => (
-                    <div key={rev.id} className="p-4 bg-surface-muted rounded-xl border border-surface-border">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          <span className="font-bold text-xs text-charcoal-900">{rev.userName}</span>
-                          <span className="text-[11px] text-charcoal-400">({rev.userCity})</span>
-                          {rev.verifiedPurchase && (
-                            <span className="text-[10px] text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded font-semibold">
-                              Verified Purchase
-                            </span>
-                          )}
-                        </div>
-                        <span className="text-[11px] text-charcoal-400">{rev.date}</span>
+                    <div key={rev.id} className="p-4 rounded-xl bg-surface-muted/40 border border-surface-border space-y-1.5">
+                      <div className="flex items-center justify-between text-xs">
+                        <span className="font-bold text-charcoal-900">{rev.userName} ({rev.userCity})</span>
+                        <span className="text-[10px] text-charcoal-400">{rev.date}</span>
                       </div>
-                      <div className="flex text-brand-amber gap-0.5 my-1.5">
+                      <div className="flex text-brand-amber gap-0.5">
                         {[...Array(5)].map((_, i) => (
                           <Star key={i} className={`w-3 h-3 ${i < rev.rating ? 'fill-brand-amber' : 'text-gray-300'}`} />
                         ))}
                       </div>
                       <h5 className="font-semibold text-xs text-charcoal-900">{rev.title}</h5>
-                      <p className="text-xs text-charcoal-600 mt-1">{rev.comment}</p>
+                      <p className="text-xs text-charcoal-600">{rev.comment}</p>
                     </div>
                   ))
                 ) : (
@@ -528,18 +762,23 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug }) =>
         </div>
       </div>
 
-      {/* 4. Related Products Section */}
+      {/* 4. Related Products & "You May Also Like" */}
       {relatedProducts.length > 0 && (
-        <div className="pt-10 border-t border-surface-border">
+        <div className="pt-8 border-t border-surface-border">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="font-heading font-bold text-xl sm:text-2xl text-charcoal-900">
-              Related Handcrafted Products
-            </h2>
+            <div>
+              <span className="text-xs font-bold uppercase tracking-widest text-brand-maroon block mb-0.5">
+                Harmonious Pairings
+              </span>
+              <h2 className="font-heading font-bold text-xl sm:text-2xl text-charcoal-900">
+                Related Handcrafted Creations
+              </h2>
+            </div>
             <button
               onClick={() => navigate(`/shop?category=${encodeURIComponent(product.category)}`)}
-              className="text-xs font-semibold text-brand-maroon hover:underline flex items-center gap-1"
+              className="text-xs font-bold text-brand-maroon hover:underline flex items-center gap-1"
             >
-              View More in {product.category} <ChevronRight className="w-3.5 h-3.5" />
+              View More <ChevronRight className="w-3.5 h-3.5" />
             </button>
           </div>
 
@@ -548,6 +787,63 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug }) =>
               <ProductCard key={p.id} product={p} />
             ))}
           </div>
+        </div>
+      )}
+
+      {/* You May Also Like Section */}
+      {youMayAlsoLike.length > 0 && (
+        <div className="pt-8 border-t border-surface-border">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-widest text-brand-maroon block mb-0.5">
+                Curated Recommendations
+              </span>
+              <h2 className="font-heading font-bold text-xl sm:text-2xl text-charcoal-900">
+                You May Also Like
+              </h2>
+            </div>
+            <button
+              onClick={() => navigate('/shop')}
+              className="text-xs font-bold text-brand-maroon hover:underline flex items-center gap-1"
+            >
+              Explore All <ChevronRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6">
+            {youMayAlsoLike.map((p) => (
+              <ProductCard key={p.id} product={p} />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* 5. Sticky Purchase CTA Bar on Mobile (Appears on scroll) */}
+      {showStickyBar && (
+        <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-surface-border p-3 flex items-center justify-between gap-3 shadow-2xl animate-in slide-in-from-bottom-2 duration-200">
+          <div className="flex items-center gap-2.5 min-w-0 flex-1">
+            <img
+              src={product.images[0]}
+              alt={product.name}
+              className="w-11 h-11 rounded-lg object-cover border border-surface-border shrink-0"
+            />
+            <div className="min-w-0">
+              <h4 className="font-heading font-semibold text-xs text-charcoal-900 truncate">
+                {product.name}
+              </h4>
+              <span className="font-bold text-xs text-brand-maroon">
+                ₹{product.price.toLocaleString('en-IN')}.00
+              </span>
+            </div>
+          </div>
+
+          <button
+            onClick={handleAddToCart}
+            className="btn-pill-primary py-2.5 px-4 text-xs font-bold shrink-0 flex items-center gap-1.5 shadow"
+          >
+            <ShoppingBag className="w-3.5 h-3.5" />
+            <span>Add to Cart</span>
+          </button>
         </div>
       )}
     </div>

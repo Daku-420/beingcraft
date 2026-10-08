@@ -26,13 +26,20 @@ import {
 } from './pages/PolicyPages';
 import { AdminCMSPage } from './pages/AdminCMSPage';
 
+import { WishlistPage } from './pages/WishlistPage';
+import { QuickViewModal } from './components/QuickViewModal';
+
 const MainRouter: React.FC = () => {
   const { currentPath } = useShop();
 
   // Parse path without query string
   const cleanPath = currentPath.split('?')[0];
 
-  // Route: /product/:slug
+  // Route: /products/:slug or /product/:slug (Clean SEO URL support)
+  if (cleanPath.startsWith('/products/')) {
+    const slug = cleanPath.replace('/products/', '');
+    return <ProductDetailPage slug={slug} />;
+  }
   if (cleanPath.startsWith('/product/')) {
     const slug = cleanPath.replace('/product/', '');
     return <ProductDetailPage slug={slug} />;
@@ -47,6 +54,8 @@ const MainRouter: React.FC = () => {
   switch (cleanPath) {
     case '/shop':
       return <ShopPage />;
+    case '/wishlist':
+      return <WishlistPage />;
     case '/cart':
       return <CartPage />;
     case '/checkout':
@@ -85,6 +94,7 @@ export const AppContent: React.FC = () => {
       <Footer />
       <SideCartDrawer />
       <SearchModal />
+      <QuickViewModal />
       <ScrollToTop />
       <ToastContainer />
     </div>

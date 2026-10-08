@@ -1,4 +1,10 @@
 export type ProductCategory =
+  | 'Wood Craft'
+  | 'Stone Craft'
+  | 'Brass & Metal'
+  | 'Home Decor'
+  | 'Dining & Kitchen'
+  | 'Collections'
   | 'Antique Metal Decor'
   | 'Brass Decor'
   | 'Pooja Essentials & Idols'
@@ -8,7 +14,7 @@ export type ProductCategory =
   | 'Candle Holders & Diyas'
   | 'Decorative Trays & Urli'
   | 'Sculptures & Figurines'
-  | 'Dining & Kitchen'
+  | 'Accessories'
   | 'Gifting';
 
 export interface ProductVariant {
@@ -39,11 +45,14 @@ export interface Product {
   sku: string;
   category: ProductCategory;
   subCategory?: string;
+  collection?: 'New Arrivals' | 'Best Sellers' | 'Festive Collection' | 'Heritage Collection' | 'Artisan Collection' | 'Gifts' | string;
+  badge?: 'NEW' | 'BESTSELLER' | 'HANDCRAFTED' | 'LIMITED' | 'SALE' | string;
   price: number;
   originalPrice: number;
   discountPercent: number;
   description: string;
   shortDescription: string;
+  highlights?: string[]; // Key product highlights bullet points
   material: string;
   dimensions: {
     length: number;
@@ -60,6 +69,11 @@ export interface Product {
   newArrival?: boolean;
   tags: string[];
   images: string[];
+  cancellationPolicy?: string; // Order cancellation terms
+  returnPolicy?: string; // Return & replacement terms
+  isCancellable?: boolean;
+  isReturnable?: boolean;
+  returnWindowDays?: number;
   variants?: ProductVariant[];
   careInstructions: string[];
   rating: number;
@@ -95,6 +109,15 @@ export interface ShippingAddress {
 
 export type PaymentMethod = 'upi' | 'card' | 'netbanking' | 'cod';
 
+export type PaymentStatus =
+  | 'CREATED'
+  | 'PAYMENT_INITIATED'
+  | 'PENDING'
+  | 'SUCCESS'
+  | 'FAILED'
+  | 'CANCELLED'
+  | 'EXPIRED';
+
 export interface OrderItem {
   productId: string;
   productName: string;
@@ -122,8 +145,15 @@ export interface Order {
   total: number;
   couponCode?: string;
   paymentMethod: PaymentMethod;
-  paymentStatus: 'paid' | 'pending' | 'cod_pending';
+  paymentStatus: PaymentStatus;
   orderStatus: 'Processing' | 'Confirmed' | 'Shipped' | 'Delivered' | 'Cancelled';
   trackingNumber?: string;
   notes?: string;
+  gatewayOrderId?: string;
+  transactionId?: string;
+  verifiedAt?: string;
+  paymentSignature?: string;
+  paymentMode?: 'production' | 'test' | 'mock';
+  failureReason?: string;
 }
+

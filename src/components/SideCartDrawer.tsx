@@ -244,7 +244,7 @@ export const SideCartDrawer: React.FC = () => {
                       placeholder="Have a coupon? Try WELCOME10"
                       value={couponInput}
                       onChange={(e) => setCouponInput(e.target.value)}
-                      className="w-full text-xs px-3 py-2 border border-surface-border rounded-lg uppercase tracking-wider focus:outline-none focus:border-brand-maroon uppercase"
+                      className="w-full text-xs px-3 py-2 border border-surface-border rounded-lg uppercase tracking-wider focus:outline-none focus:border-brand-maroon"
                     />
                   </div>
                   <button

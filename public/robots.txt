@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /order-confirmation/
+
+Sitemap: https://beingcraft.in/sitemap.xml

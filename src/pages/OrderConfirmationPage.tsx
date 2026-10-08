@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import {
   CheckCircle2,
   Package,
@@ -6,60 +6,318 @@ import {
   MapPin,
   CreditCard,
   Printer,
-  ArrowRight
+  ArrowRight,
+  Clock,
+  XCircle,
+  AlertTriangle,
+  RotateCw,
+  ShieldAlert,
+  ShieldCheck,
 } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
+import { fetchOrderPaymentStatus, type OrderStatusResponse } from '../services/paymentApi';
+import type { Order } from '../types';
 
 interface OrderConfirmationPageProps {
   orderId: string;
 }
 
 export const OrderConfirmationPage: React.FC<OrderConfirmationPageProps> = ({ orderId }) => {
-  const { getOrderById, orders, navigate } = useShop();
-  const order = getOrderById(orderId) || orders[0];
+  const { navigate, getOrderById } = useShop();
 
-  if (!order) {
-    return (
-      <div className="max-w-xl mx-auto px-4 py-20 text-center">
-        <h2 className="font-heading font-bold text-2xl text-charcoal-900">Order Not Found</h2>
-        <p className="text-sm text-charcoal-600 mt-2">We couldn't locate this order in our records.</p>
-        <button onClick={() => navigate('/')} className="mt-6 btn-pill-primary text-xs px-6 py-2.5">
-          Return Home
-        </button>
-      </div>
-    );
-  }
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [statusData, setStatusData] = useState<OrderStatusResponse | null>(null);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  // Authoritative status check directly from backend server
+  const loadStatus = useCallback(async (isRefresh = false) => {
+    if (isRefresh) {
+      setIsRefreshing(true);
+    } else {
+      setLoading(true);
+    }
+    setError(null);
+
+    try {
+      const data = await fetchOrderPaymentStatus(orderId);
+      setStatusData(data);
+    } catch (err: unknown) {
+      const errorObj = err as Error;
+      console.warn(`[OrderConfirmation] Backend status lookup failed:`, errorObj.message);
+      // Fallback to local context only if order exists locally, but mark as unverified
+      const local = getOrderById(orderId);
+      if (local) {
+        setStatusData({
+          success: true,
+          orderId: local.id,
+          orderNumber: local.orderNumber,
+          paymentStatus: local.paymentStatus,
+          orderStatus: local.orderStatus,
+          paymentMethod: local.paymentMethod,
+          amount: local.total,
+          currency: 'INR',
+          transactionId: local.transactionId,
+          verifiedAt: local.verifiedAt,
+          failureReason: local.failureReason,
+          order: local,
+        });
+      } else {
+        setError(errorObj.message || 'Order could not be located in server records.');
+      }
+    } finally {
+      setLoading(false);
+      setIsRefreshing(false);
+    }
+  }, [orderId, getOrderById]);
+
+  useEffect(() => {
+    loadStatus();
+  }, [loadStatus]);
 
   const handlePrint = () => {
     window.print();
   };
 
-  return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
-      {/* 1. Success Banner */}
-      <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-6 sm:p-8 text-center space-y-3 shadow-sm">
-        <div className="w-16 h-16 rounded-full bg-emerald-600 text-white flex items-center justify-center mx-auto shadow-md">
-          <CheckCircle2 className="w-9 h-9" />
-        </div>
-        <span className="text-xs font-bold uppercase tracking-widest text-emerald-800 block">
-          Order Successfully Placed!
-        </span>
-        <h1 className="font-heading font-extrabold text-2xl sm:text-3xl text-charcoal-900">
-          Thank You, {order.customer.fullName}!
-        </h1>
-        <p className="text-xs sm:text-sm text-charcoal-600 max-w-lg mx-auto">
-          We have received your order. Our master artisans are preparing and carefully packaging your
-          handcrafted treasures with multi-layer protective padding.
+  if (loading) {
+    return (
+      <div className="max-w-xl mx-auto px-4 py-24 text-center space-y-4">
+        <div className="w-12 h-12 border-4 border-brand-maroon border-t-transparent rounded-full animate-spin mx-auto" />
+        <h2 className="font-heading font-bold text-xl text-charcoal-900">
+          Verifying Payment with Server...
+        </h2>
+        <p className="text-xs text-charcoal-500">
+          Querying authoritative order status from backend gateway records.
         </p>
-        <div className="pt-2 flex flex-wrap justify-center gap-4 text-xs font-semibold text-charcoal-700">
-          <span className="bg-white px-3 py-1.5 rounded-lg border border-surface-border">
-            Order No: <strong className="text-brand-maroon">{order.orderNumber}</strong>
-          </span>
-          <span className="bg-white px-3 py-1.5 rounded-lg border border-surface-border">
-            Tracking ID: <strong className="text-charcoal-900">{order.trackingNumber}</strong>
-          </span>
+      </div>
+    );
+  }
+
+  if (error || !statusData || !statusData.order) {
+    return (
+      <div className="max-w-xl mx-auto px-4 py-20 text-center space-y-4">
+        <div className="w-16 h-16 rounded-full bg-red-100 text-red-600 flex items-center justify-center mx-auto">
+          <ShieldAlert className="w-8 h-8" />
+        </div>
+        <h2 className="font-heading font-bold text-2xl text-charcoal-900">
+          Order Verification Failed
+        </h2>
+        <p className="text-xs text-charcoal-600 max-w-md mx-auto">
+          {error || 'No verified server record exists for this order ID. Payments cannot be confirmed without server validation.'}
+        </p>
+        <div className="pt-2 flex justify-center gap-3">
+          <button onClick={() => loadStatus(true)} className="btn-pill-outline text-xs px-5 py-2.5 flex items-center gap-2">
+            <RotateCw className="w-3.5 h-3.5" />
+            <span>Retry Verification</span>
+          </button>
+          <button onClick={() => navigate('/shop')} className="btn-pill-primary text-xs px-6 py-2.5">
+            Return to Shop
+          </button>
         </div>
       </div>
+    );
+  }
+
+  const order: Order = statusData.order;
+  const paymentStatus = statusData.paymentStatus;
+  const isCod = order.paymentMethod === 'cod';
+
+  return (
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+      {/* 1. STATUS BANNER (Dynamic based strictly on Server-Verified State) */}
+
+      {/* CASE A: SUCCESS (Only state that allows PAID) */}
+      {paymentStatus === 'SUCCESS' && (
+        <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-6 sm:p-8 text-center space-y-3 shadow-sm animate-in fade-in">
+          <div className="w-16 h-16 rounded-full bg-emerald-600 text-white flex items-center justify-center mx-auto shadow-md">
+            <CheckCircle2 className="w-9 h-9" />
+          </div>
+          <span className="text-xs font-bold uppercase tracking-widest text-emerald-800 block">
+            Payment Verified & Received
+          </span>
+          <h1 className="font-heading font-extrabold text-2xl sm:text-3xl text-charcoal-900">
+            Thank You, {order.customer.fullName}!
+          </h1>
+          <p className="text-xs sm:text-sm text-charcoal-600 max-w-lg mx-auto">
+            Your transaction has been cryptographically verified and captured. Our master artisans are preparing your handcrafted treasures.
+          </p>
+          <div className="pt-2 flex flex-wrap justify-center gap-3 text-xs font-semibold text-charcoal-700">
+            <span className="bg-white px-3 py-1.5 rounded-lg border border-surface-border">
+              Order No: <strong className="text-brand-maroon">{order.orderNumber}</strong>
+            </span>
+            <span className="bg-white px-3 py-1.5 rounded-lg border border-surface-border">
+              Tracking ID: <strong className="text-charcoal-900">{order.trackingNumber}</strong>
+            </span>
+            {order.transactionId && (
+              <span className="bg-white px-3 py-1.5 rounded-lg border border-surface-border flex items-center gap-1.5 text-emerald-800">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                <span>TxID: <strong className="font-mono text-charcoal-900">{order.transactionId}</strong></span>
+              </span>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* CASE B: PENDING (COD or Bank processing) */}
+      {paymentStatus === 'PENDING' && (
+        <div className={`rounded-2xl p-6 sm:p-8 text-center space-y-3 shadow-sm border ${
+          isCod ? 'bg-amber-50 border-amber-200' : 'bg-blue-50 border-blue-200'
+        }`}>
+          <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto shadow-md text-white ${
+            isCod ? 'bg-amber-600' : 'bg-blue-600'
+          }`}>
+            {isCod ? <Truck className="w-8 h-8" /> : <Clock className="w-8 h-8" />}
+          </div>
+          <span className={`text-xs font-bold uppercase tracking-widest block ${
+            isCod ? 'text-amber-800' : 'text-blue-800'
+          }`}>
+            {isCod ? 'Cash on Delivery • Payment Pending' : 'Payment Pending • Awaiting Gateway Confirmation'}
+          </span>
+          <h1 className="font-heading font-extrabold text-2xl sm:text-3xl text-charcoal-900">
+            {isCod ? 'Order Confirmed for COD Delivery' : 'Payment Under Verification'}
+          </h1>
+          <p className="text-xs sm:text-sm text-charcoal-600 max-w-lg mx-auto">
+            {isCod
+              ? 'Your order has been placed. Payment is due upon parcel arrival. You may pay cash or scan the delivery executive\'s UPI QR code.'
+              : 'We have initiated the transaction with your payment provider and are awaiting settlement confirmation. If money was debited, it will update automatically.'}
+          </p>
+
+          <div className="pt-2 flex flex-wrap justify-center gap-3 text-xs font-semibold text-charcoal-700">
+            <span className="bg-white px-3 py-1.5 rounded-lg border border-surface-border">
+              Order No: <strong className="text-brand-maroon">{order.orderNumber}</strong>
+            </span>
+            {!isCod && (
+              <button
+                onClick={() => loadStatus(true)}
+                disabled={isRefreshing}
+                className="btn-pill-primary text-xs px-4 py-1.5 flex items-center gap-1.5"
+              >
+                <RotateCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin' : ''}`} />
+                <span>Refresh Payment Status</span>
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* CASE C: PAYMENT_INITIATED (Incomplete / In-progress) */}
+      {paymentStatus === 'PAYMENT_INITIATED' && (
+        <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 sm:p-8 text-center space-y-3 shadow-sm">
+          <div className="w-16 h-16 rounded-full bg-amber-500 text-white flex items-center justify-center mx-auto shadow-md">
+            <Clock className="w-8 h-8" />
+          </div>
+          <span className="text-xs font-bold uppercase tracking-widest text-amber-800 block">
+            Payment Initiated
+          </span>
+          <h1 className="font-heading font-extrabold text-2xl text-charcoal-900">
+            Awaiting Payment Completion
+          </h1>
+          <p className="text-xs sm:text-sm text-charcoal-600 max-w-lg mx-auto">
+            An order was created on our server, but payment authorization has not yet completed. The order will remain UNPAID until verified.
+          </p>
+          <div className="pt-3 flex justify-center gap-3">
+            <button
+              onClick={() => loadStatus(true)}
+              disabled={isRefreshing}
+              className="btn-pill-primary text-xs px-4 py-2 flex items-center gap-2"
+            >
+              <RotateCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin' : ''}`} />
+              <span>Check Status Again</span>
+            </button>
+            <button
+              onClick={() => navigate('/checkout')}
+              className="btn-pill-outline text-xs px-5 py-2"
+            >
+              Return to Checkout
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* CASE D: FAILED */}
+      {paymentStatus === 'FAILED' && (
+        <div className="bg-red-50 border border-red-200 rounded-2xl p-6 sm:p-8 text-center space-y-3 shadow-sm">
+          <div className="w-16 h-16 rounded-full bg-red-600 text-white flex items-center justify-center mx-auto shadow-md">
+            <XCircle className="w-8 h-8" />
+          </div>
+          <span className="text-xs font-bold uppercase tracking-widest text-red-800 block">
+            Payment Failed
+          </span>
+          <h1 className="font-heading font-extrabold text-2xl text-charcoal-900">
+            Transaction Declined / Unverified
+          </h1>
+          <p className="text-xs sm:text-sm text-charcoal-600 max-w-lg mx-auto">
+            {order.failureReason || 'The payment gateway was unable to authorize the transaction or signature verification failed. No funds have been accepted for this order.'}
+          </p>
+          <div className="pt-2 flex justify-center gap-3">
+            <button
+              onClick={() => navigate('/checkout')}
+              className="btn-pill-primary text-xs px-6 py-2.5 flex items-center gap-2"
+            >
+              <span>Retry Payment</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+            <button
+              onClick={() => navigate('/cart')}
+              className="btn-pill-outline text-xs px-5 py-2.5"
+            >
+              View Cart
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* CASE E: CANCELLED */}
+      {paymentStatus === 'CANCELLED' && (
+        <div className="bg-slate-100 border border-slate-300 rounded-2xl p-6 sm:p-8 text-center space-y-3 shadow-sm">
+          <div className="w-16 h-16 rounded-full bg-slate-500 text-white flex items-center justify-center mx-auto shadow-md">
+            <AlertTriangle className="w-8 h-8" />
+          </div>
+          <span className="text-xs font-bold uppercase tracking-widest text-slate-700 block">
+            Payment Cancelled
+          </span>
+          <h1 className="font-heading font-extrabold text-2xl text-charcoal-900">
+            Transaction Was Cancelled
+          </h1>
+          <p className="text-xs sm:text-sm text-charcoal-600 max-w-lg mx-auto">
+            This checkout session was cancelled. No money was deducted from your account.
+          </p>
+          <div className="pt-2 flex justify-center gap-3">
+            <button
+              onClick={() => navigate('/checkout')}
+              className="btn-pill-primary text-xs px-6 py-2.5"
+            >
+              Restart Checkout
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* CASE F: EXPIRED */}
+      {paymentStatus === 'EXPIRED' && (
+        <div className="bg-slate-100 border border-slate-300 rounded-2xl p-6 sm:p-8 text-center space-y-3 shadow-sm">
+          <div className="w-16 h-16 rounded-full bg-slate-500 text-white flex items-center justify-center mx-auto shadow-md">
+            <Clock className="w-8 h-8" />
+          </div>
+          <span className="text-xs font-bold uppercase tracking-widest text-slate-700 block">
+            Payment Expired
+          </span>
+          <h1 className="font-heading font-extrabold text-2xl text-charcoal-900">
+            Payment Window Expired
+          </h1>
+          <p className="text-xs sm:text-sm text-charcoal-600 max-w-lg mx-auto">
+            The allotted time for this payment session has elapsed. Please start a new checkout.
+          </p>
+          <div className="pt-2 flex justify-center gap-3">
+            <button
+              onClick={() => navigate('/cart')}
+              className="btn-pill-primary text-xs px-6 py-2.5"
+            >
+              Return to Cart
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* 2. Order Metadata & Shipping Details */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -88,15 +346,39 @@ export const OrderConfirmationPage: React.FC<OrderConfirmationPageProps> = ({ or
           <p className="capitalize text-charcoal-800">
             Method: <strong className="text-charcoal-900 uppercase">{order.paymentMethod}</strong>
           </p>
-          <p className="text-charcoal-600">
-            Status:{' '}
-            <span className={`font-semibold px-2 py-0.5 rounded text-[11px] ${
-              order.paymentStatus === 'paid' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'
-            }`}>
-              {order.paymentStatus === 'paid' ? 'Paid Online' : 'Cash on Delivery (Pending)'}
+          <div className="text-charcoal-600 flex items-center gap-1.5">
+            <span>Status:</span>
+            <span
+              className={`font-semibold px-2 py-0.5 rounded text-[11px] ${
+                paymentStatus === 'SUCCESS'
+                  ? 'bg-emerald-100 text-emerald-800'
+                  : paymentStatus === 'PENDING'
+                  ? 'bg-amber-100 text-amber-800'
+                  : paymentStatus === 'FAILED'
+                  ? 'bg-red-100 text-red-800'
+                  : 'bg-slate-100 text-slate-800'
+              }`}
+            >
+              {paymentStatus === 'SUCCESS'
+                ? 'PAID (Verified)'
+                : paymentStatus === 'PENDING'
+                ? isCod
+                  ? 'Cash on Delivery (Pending)'
+                  : 'Payment Pending'
+                : paymentStatus}
             </span>
+          </div>
+          {order.transactionId && (
+            <p className="text-charcoal-600 truncate text-[11px]">
+              TxID: <strong className="font-mono text-charcoal-900">{order.transactionId}</strong>
+            </p>
+          )}
+          <p className="text-charcoal-600">
+            Total:{' '}
+            <strong className="text-brand-maroon">
+              ₹{order.total.toLocaleString('en-IN')}.00
+            </strong>
           </p>
-          <p className="text-charcoal-600">Total: <strong className="text-brand-maroon">₹{order.total.toLocaleString('en-IN')}.00</strong></p>
         </div>
 
         {/* Delivery Status */}
@@ -115,7 +397,7 @@ export const OrderConfirmationPage: React.FC<OrderConfirmationPageProps> = ({ or
               {order.orderStatus}
             </span>
           </p>
-          <p className="text-[11px] text-charcoal-500">Live SMS & WhatsApp dispatch alert will be sent.</p>
+          <p className="text-[11px] text-charcoal-500">Live dispatch alerts via SMS & email.</p>
         </div>
       </div>
 
@@ -146,7 +428,10 @@ export const OrderConfirmationPage: React.FC<OrderConfirmationPageProps> = ({ or
                 />
                 <div>
                   <h4 className="text-xs font-bold text-charcoal-900">{item.productName}</h4>
-                  <span className="text-[11px] text-charcoal-500">Qty: {item.quantity} × ₹{item.price.toLocaleString('en-IN')}</span>
+                  <span className="text-[11px] text-charcoal-500">
+                    Qty: {item.quantity} × ₹{item.price.toLocaleString('en-IN')}
+                    {item.variantName && ` • Variant: ${item.variantName}`}
+                  </span>
                 </div>
               </div>
               <span className="text-xs font-bold text-charcoal-900">
@@ -164,7 +449,7 @@ export const OrderConfirmationPage: React.FC<OrderConfirmationPageProps> = ({ or
           </div>
           {order.discount > 0 && (
             <div className="flex justify-between text-emerald-700">
-              <span>Coupon Discount ({order.couponCode})</span>
+              <span>Coupon Discount {order.couponCode && `(${order.couponCode})`}</span>
               <span className="font-semibold">-₹{order.discount.toLocaleString('en-IN')}.00</span>
             </div>
           )}
@@ -175,7 +460,7 @@ export const OrderConfirmationPage: React.FC<OrderConfirmationPageProps> = ({ or
             </span>
           </div>
           <div className="flex justify-between text-sm font-extrabold text-charcoal-900 pt-2 border-t border-surface-border">
-            <span>Final Paid Total</span>
+            <span>Total</span>
             <span className="text-brand-maroon text-base">₹{order.total.toLocaleString('en-IN')}.00</span>
           </div>
         </div>

@@ -32,10 +32,10 @@ export interface BrandConfig {
 
 export const BRAND: BrandConfig = {
   name: "BeingCraft",
-  tagline: "Where Craft Meets Timeless Heritage",
-  subtitle: "Handcrafted Antique Metal Products, Brass Idols & Traditional Indian Decor",
-  phone: "+91-9876543210",
-  email: "care@beingcraft.in",
+  tagline: "HANDCRAFTED HERITAGE",
+  subtitle: "Handcrafted Indian Wood, Stone, Brass, Metal & Traditional Heritage Decor",
+  phone: "+91-7900827796",
+  email: "info@beingcraft.com",
   supportHours: "Mon - Sat: 10:00 AM - 7:00 PM IST",
   address: {
     line1: "Artisan Guild Lane, Brassware Heritage Quarter",

@@ -1,907 +1,1546 @@
-import type { Product, ProductCategory, Coupon } from '../types';
+import type { Product, ProductCategory, Coupon } from '../types/index.ts';
+
+export interface TaxonomyCategory {
+  name: ProductCategory;
+  slug: string;
+  tagline: string;
+  description: string;
+  image: string;
+  subcategories: string[];
+}
+
+export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
+  {
+    name: 'Wood Craft',
+    slug: 'wood-craft',
+    tagline: 'Natural textures shaped by skilled hands',
+    description: 'Aged Sheesham and reclaimed Teak meticulously hand-carved by hereditary Indian woodworkers.',
+    image: 'https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&w=800&q=80',
+    subcategories: ['Wooden Décor', 'Sculptures', 'Utility & Storage', 'Wooden Art', 'Trays & Boxes'],
+  },
+  {
+    name: 'Stone Craft',
+    slug: 'stone-craft',
+    tagline: 'Timeless forms carved in stone',
+    description: 'Centuries-old Makrana marble inlay, soapstone jali filigree, and serene sandstone sculptures.',
+    image: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=800&q=80',
+    subcategories: ['Stone Sculptures', 'Stone Décor', 'Figurines', 'Traditional Stone Art'],
+  },
+  {
+    name: 'Brass & Metal',
+    slug: 'brass-and-metal',
+    tagline: 'Heritage metalwork with enduring character',
+    description: 'Lost-wax cast virgin brass idols, ancient dhokra bell metal, and patinated antique accents.',
+    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80',
+    subcategories: ['Brass Décor', 'Brass Idols', 'Antique Metal', 'Vintage Pieces', 'Pooja Essentials'],
+  },
+  {
+    name: 'Home Decor',
+    slug: 'home-decor',
+    tagline: 'Objects that give your space a story',
+    description: 'Hand-beaten tree of life wall art, ornate jharokha mirrors, and evocative artisanal centerpieces.',
+    image: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80',
+    subcategories: ['Wall Décor', 'Table Décor', 'Sculptures', 'Decorative Objects'],
+  },
+  {
+    name: 'Dining & Kitchen',
+    slug: 'dining-and-kitchen',
+    tagline: 'Pure heirloom dining and ritual serving',
+    description: 'Ayurvedic pure Kansa bronze thalis, hand-hammered pure copper vessels, and brass spice chests.',
+    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80',
+    subcategories: ['Serving Pieces', 'Trays', 'Bowls', 'Kitchen Décor', 'Dining Accessories'],
+  },
+  {
+    name: 'Collections',
+    slug: 'collections',
+    tagline: 'Curated heritage for meaningful spaces',
+    description: 'Limited artisan releases, seasonal festive treasures, and certified heirloom creations.',
+    image: 'https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=800&q=80',
+    subcategories: ['New Arrivals', 'Best Sellers', 'Festive Collection', 'Heritage Collection', 'Artisan Collection', 'Gifts'],
+  }
+];
+
+export const EDITORIAL_STORIES = [
+  {
+    title: 'THE BEAUTY OF WOOD',
+    subtitle: 'Seasoned Grain & Generational Carving',
+    description: 'From the heartlands of Saharanpur and Shekhawati, master wood turners shape seasoned Indian Sheesham and reclaimed Teak using heirloom chisels. Every grain variation tells of decades weathered under the Indian sun.',
+    image: 'https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&w=1000&q=80',
+    link: '/shop?category=Wood%20Craft',
+    cta: 'Explore Wood Craft'
+  },
+  {
+    title: 'CARVED IN STONE',
+    subtitle: 'Pietra Dura & Agra Jali Traditions',
+    description: 'Inheriting the precise stone craftsmanship of Mughal and Rajasthani master artisans, our carvers hand-chisel delicate soapstone lattices and embed semi-precious lapis lazuli into pristine white Makrana marble.',
+    image: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1000&q=80',
+    link: '/shop?category=Stone%20Craft',
+    cta: 'Explore Stone Craft'
+  },
+  {
+    title: 'THE WARMTH OF BRASS',
+    subtitle: 'Lost-Wax Sand Casting of Peetal Nagri',
+    description: 'In the narrow guild alleys of Moradabad, molten virgin brass is poured into custom clay and sand molds. Each bell, diya, and idol undergoes hours of hand-filing, emery buffing, and natural patination to radiate warmth for lifetimes.',
+    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=80',
+    link: '/shop?category=Brass%20%26%20Metal',
+    cta: 'Explore Brass & Metal'
+  }
+];
+
+export const GIFTING_OCCASIONS = [
+  {
+    title: 'Housewarming (Griha Pravesh)',
+    slug: 'housewarming',
+    description: 'Auspicious Urlis, Ganesha idols, and brass door torans to bless new dwellings.',
+    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    title: 'Wedding Celebrations',
+    slug: 'wedding',
+    description: 'Pure Kansa dining dinnerware sets and heirloom vintage decorative chests.',
+    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    title: 'Festive & Diwali Gifting',
+    slug: 'festive',
+    description: 'Handcrafted peacock hanging diyas, akhand deepaks, and luxury gift hampers.',
+    image: 'https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    title: 'Corporate & Memento Gifting',
+    slug: 'corporate',
+    description: 'Hand-carved marble coasters, brass pocket watch curios, and desk decor.',
+    image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    title: 'Luxury Heritage Heirlooms',
+    slug: 'luxury',
+    description: 'Masterwork lost-wax Nataraja bronzes and limited artisan sculptures.',
+    image: 'https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80'
+  }
+];
+
+export const MATERIALS_LIST = [
+  {
+    name: 'Wood',
+    label: 'Natural Wood',
+    desc: 'Sheesham & Teak',
+    image: 'https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&w=400&q=80'
+  },
+  {
+    name: 'Stone',
+    label: 'Hand-Carved Stone',
+    desc: 'Makrana Marble & Soapstone',
+    image: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=400&q=80'
+  },
+  {
+    name: 'Brass',
+    label: 'Solid Brass',
+    desc: 'Virgin Cast Metal',
+    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=400&q=80'
+  },
+  {
+    name: 'Bronze',
+    label: 'Pure Kansa / Bronze',
+    desc: 'Ayurvedic Bell Metal',
+    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=400&q=80'
+  },
+  {
+    name: 'Metal',
+    label: 'Antique Metal & Iron',
+    desc: 'Lost-wax & Hand-beaten',
+    image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=400&q=80'
+  }
+];
 
 export const CATEGORIES: { name: ProductCategory; slug: string; description: string; image: string; itemCount: number }[] = [
   {
-    name: 'Antique Metal Decor',
-    slug: 'antique-metal-decor',
-    description: 'Aged patinas, handcrafted cast brass and wrought iron timeless accents.',
-    image: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80',
-    itemCount: 8,
+    name: 'Wood Craft',
+    slug: 'wood-craft',
+    description: 'Natural textures shaped by skilled hands. Sheesham & teak carved decor, trays, and boxes.',
+    image: '/products/wooden-chakla-belan-set/6.1.jpg',
+    itemCount: 15,
   },
   {
-    name: 'Brass Decor',
-    slug: 'brass-decor',
-    description: 'Gleaming golden brass artifacts, embossed containers and traditional accents.',
+    name: 'Stone Craft',
+    slug: 'stone-craft',
+    description: 'Timeless forms carved in stone. White Makrana marble inlay, soapstone jali and sculptures.',
+    image: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80',
+    itemCount: 0,
+  },
+  {
+    name: 'Brass & Metal',
+    slug: 'brass-and-metal',
+    description: 'Heritage metalwork with enduring character. Solid brass idols, peacock urlis, and curios.',
     image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80',
-    itemCount: 12,
+    itemCount: 0,
+  },
+  {
+    name: 'Home Decor',
+    slug: 'home-decor',
+    description: 'Objects that give your space a story. Tree of life wall art, tabletop accents and jharokhas.',
+    image: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&q=80',
+    itemCount: 0,
+  },
+  {
+    name: 'Dining & Kitchen',
+    slug: 'dining-kitchen',
+    description: 'Pure heirloom dining. Ayurvedic Kansa bronze dinnerware, hammered copper jugs, and spice boxes.',
+    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80',
+    itemCount: 0,
   },
   {
     name: 'Pooja Essentials & Idols',
     slug: 'pooja-essentials-idols',
     description: 'Hand-carved brass Ganesha, Nataraja, Radha Krishna, and ritual bell sets.',
     image: 'https://images.unsplash.com/photo-1582738411706-bfc8e691d1c2?auto=format&fit=crop&w=600&q=80',
-    itemCount: 9,
+    itemCount: 0,
   },
   {
     name: 'Vintage Collection',
     slug: 'vintage-collection',
     description: 'Pocket watches, heirloom compasses, brass telescope models, and retro curios.',
     image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80',
-    itemCount: 6,
-  },
-  {
-    name: 'Wall Decor',
-    slug: 'wall-decor',
-    description: 'Hand-beaten brass wall plates, jharokha mirrors, and metal tree of life sculptures.',
-    image: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&q=80',
-    itemCount: 7,
-  },
-  {
-    name: 'Table Decor',
-    slug: 'table-decor',
-    description: 'Intricate metal centerpieces, bookends, and handcrafted brass animal figurines.',
-    image: 'https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&w=600&q=80',
-    itemCount: 10,
+    itemCount: 0,
   },
   {
     name: 'Candle Holders & Diyas',
     slug: 'candle-holders-diyas',
     description: 'Carved brass peacock diyas, akhand deepaks, and contemporary metal candelabras.',
     image: 'https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=600&q=80',
-    itemCount: 8,
+    itemCount: 0,
   },
   {
     name: 'Decorative Trays & Urli',
     slug: 'decorative-trays-urli',
     description: 'Floating flower urlis, etched brass serving platters, and footed center bowls.',
     image: 'https://images.unsplash.com/photo-1517816743773-6e0fd518b4a6?auto=format&fit=crop&w=600&q=80',
-    itemCount: 6,
-  },
-  {
-    name: 'Sculptures & Figurines',
-    slug: 'sculptures-figurines',
-    description: 'Lost-wax bronze and solid brass cast dancing deities, royal horses, and peacocks.',
-    image: 'https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80',
-    itemCount: 7,
-  },
-  {
-    name: 'Dining & Kitchen',
-    slug: 'dining-kitchen',
-    description: 'Pure kansa/bronze dinnerware, hammered copper jugs, and vintage spice boxes.',
-    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80',
-    itemCount: 6,
+    itemCount: 0,
   },
   {
     name: 'Gifting',
     slug: 'gifting',
     description: 'Curated brass festive gift boxes, shubh labh door hangings, and antique curios.',
     image: 'https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=600&q=80',
-    itemCount: 9,
+    itemCount: 0,
+  },
+  {
+    name: 'Accessories',
+    slug: 'accessories',
+    description: 'Utility essentials, traditional toys, handcrafted bags & purses, and lifestyle accents.',
+    image: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80',
+    itemCount: 0,
   }
 ];
 
 export const INITIAL_PRODUCTS: Product[] = [
   {
-    id: "prod-001",
-    name: "Royal Peacock Handcrafted Brass Urli with Bell Accents",
-    slug: "royal-peacock-handcrafted-brass-urli",
-    sku: "AC-URL-0101",
-    category: "Decorative Trays & Urli",
-    subCategory: "Traditional Urli",
-    price: 2899,
-    originalPrice: 4500,
-    discountPercent: 35,
-    shortDescription: "A magnificent handcrafted solid brass urli featuring ornate peacock handles and hanging ghungroo bells, ideal for floating flowers and tea lights.",
-    description: "Handcrafted using century-old sand casting techniques by master artisans in Uttar Pradesh, this peacock brass urli serves as the quintessential centerpiece for Indian homes. Fill it with water, vibrant marigold petals, and floating candles to infuse your entrance or living room with divine tranquility and festive royalty.",
-    material: "100% Solid Brass",
-    dimensions: { length: 32, width: 32, height: 16, unit: "cm" },
-    weightKg: 2.8,
-    colorFinish: "Vintage Antique Gold with Protective Lacquer",
-    stock: 14,
-    inStock: true,
-    featured: true,
-    bestseller: true,
-    newArrival: false,
-    tags: ["urli", "brass urli", "peacock decor", "diwali decor", "pooja centerpiece"],
-    images: [
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&w=800&q=80"
+    "id": "wood-chakla-belan",
+    "name": "Traditional Indian Handcrafted Wooden Chakla Belan Set",
+    "slug": "traditional-indian-handcrafted-wooden-chakla-belan-set",
+    "sku": "BC-WD-001",
+    "category": "Wood Craft",
+    "subCategory": "Utility & Storage",
+    "collection": "Heritage Collection",
+    "badge": "BESTSELLER",
+    "price": 699,
+    "originalPrice": 1199,
+    "material": "Natural Seasoned Sheesham Wood (Indian Rosewood)",
+    "shortDescription": "Classic wooden rolling board (Chakla) and rolling pin (Belan) turned by skilled Saharanpur wood artisans.",
+    "description": "Elevate your culinary heritage with this authentic handcrafted Chakla Belan set. Masterfully turned from a single solid block of seasoned Sheesham wood, it features a smooth mirror-sanded finish, non-slip base stability, and ergonomic rolling balance designed for effortless rotis and parathas.",
+    "highlights": [
+      "Turned from seasoned single-piece Sheesham hardwood",
+      "Heavy stable base preventing slips during rolling",
+      "Ergonomic smooth-rolling Belan with tapered grips",
+      "Food-safe 100% natural oil polish, zero chemical varnishes"
     ],
-    careInstructions: [
-      "Wipe gently with a soft dry or microfiber cloth.",
-      "Clean occasionally with natural pitambari powder or lemon & salt paste for deep shine.",
-      "Avoid harsh acid-based chemicals or abrasive scrubs."
+    "dimensions": {
+      "length": 25,
+      "width": 25,
+      "height": 5,
+      "unit": "cm"
+    },
+    "weightKg": 1.4,
+    "colorFinish": "Rich Natural Walnut Grain",
+    "stock": 28,
+    "featured": true,
+    "bestseller": true,
+    "newArrival": false,
+    "rating": 4.9,
+    "reviewCount": 34,
+    "tags": [
+      "chakla belan",
+      "wooden roti maker",
+      "sheesham wood",
+      "kitchen utility",
+      "handcrafted rolling pin",
+      "wood craft"
     ],
-    rating: 4.9,
-    reviewCount: 48,
-    reviews: [
+    "images": [
+      "/products/wooden-chakla-belan-set/6.1.jpg",
+      "/products/wooden-chakla-belan-set/6.2.jpg",
+      "/products/wooden-chakla-belan-set/6.3.jpg",
+      "/products/wooden-chakla-belan-set/71idctzhppl.jpg"
+    ],
+    "discountPercent": 42,
+    "inStock": true,
+    "isCancellable": true,
+    "isReturnable": true,
+    "returnWindowDays": 7,
+    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
+    "returnPolicy": "7 days replacement or return if received damaged or defective.",
+    "reviews": [
       {
-        id: "rev-1",
-        userName: "Sunita Verma",
-        userCity: "Bengaluru",
-        rating: 5,
-        date: "14 Aug 2026",
-        title: "Heirloom grade craftsmanship!",
-        comment: "The weight and finishing of this brass urli exceeded my expectations. Beautiful peacock carvings and looks breathtaking when lit with floating diyas.",
-        verifiedPurchase: true
+        "userName": "Aarav Sharma",
+        "userCity": "Jaipur",
+        "rating": 5,
+        "date": "2026-09-14",
+        "title": "Stunning authentic craft",
+        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-chakla-belan-1"
       },
       {
-        id: "rev-2",
-        userName: "Rahul Sengupta",
-        userCity: "Kolkata",
-        rating: 5,
-        date: "02 Jul 2026",
-        title: "Stunning festive centerpiece",
-        comment: "Packaged securely with double bubble wrap. The antique finish has zero flaws. Will definitely buy again.",
-        verifiedPurchase: true
+        "userName": "Pooja Mehta",
+        "userCity": "Mumbai",
+        "rating": 5,
+        "date": "2026-09-18",
+        "title": "Pure artisan perfection",
+        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-chakla-belan-2"
       }
+    ],
+    "careInstructions": [
+      "Wipe clean with a soft, dry cotton cloth after daily use",
+      "Avoid prolonged soaking in water or washing in dishwashers",
+      "Periodically condition with food-grade coconut or mineral oil to maintain luster",
+      "Keep away from direct heat sources and extreme direct sunlight to prevent warping"
     ]
   },
   {
-    id: "prod-002",
-    name: "Gandhi Style Vintage Pocket Watch Key Chain with Quartz Movement",
-    slug: "gandhi-style-vintage-pocket-watch-key-chain",
-    sku: "AC-WCH-0102",
-    category: "Vintage Collection",
-    subCategory: "Pocket Watches & Chains",
-    price: 499,
-    originalPrice: 1199,
-    discountPercent: 58,
-    shortDescription: "Signature vintage pocket watch keychain with antique filigree casing, Arabic numeral dial, and push-button flip release.",
-    description: "Inspired by timeless 20th-century retro timepieces, this antique bronze-tone pocket watch doubles as an everyday keychain or pocket companion. Features an accurate Japanese quartz movement, Roman/Arabic hybrid numerals, and a vintage lattice filigree cover that flips open with an audible satisfying snap.",
-    material: "High-grade Alloy with Antique Bronze Electroplating",
-    dimensions: { length: 4.8, width: 1.2, height: 12, unit: "cm" },
-    weightKg: 0.08,
-    colorFinish: "Antique Bronze / Burnished Brass",
-    stock: 35,
-    inStock: true,
-    featured: true,
-    bestseller: true,
-    newArrival: false,
-    tags: ["pocket watch", "vintage keychain", "antique watch", "gifting for men", "retro curio"],
-    images: [
-      "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80"
+    "id": "wood-spatula-set",
+    "name": "Handcrafted 7-Piece Premium Wooden Spatula and Cooking Spoon Set",
+    "slug": "handcrafted-7-piece-premium-wooden-spatula-and-cooking-spoon-set",
+    "sku": "BC-WD-002",
+    "category": "Wood Craft",
+    "subCategory": "Utility & Storage",
+    "collection": "Best Sellers",
+    "badge": "BESTSELLER",
+    "price": 449,
+    "originalPrice": 899,
+    "material": "Eco-Friendly Solid Sheesham & Teak Wood",
+    "shortDescription": "Complete 7-piece non-stick friendly wooden kitchen toolset including palta, kadchi, slotted spoon, and stirrers.",
+    "description": "A culinary essential for wholesome traditional cooking. This 7-piece handcrafted wooden spatula and spoon set is carved from heat-resistant natural hardwood. Completely safe for non-stick cookware and cast iron pans, they will never scratch surfaces or leach harmful toxins into your hot food.",
+    "highlights": [
+      "Includes Palta Turner, Long-Handle Spoon, Kadchi, Slotted Spoon & Serving Spoons",
+      "100% scratch-free protection for non-stick & enamel cookware",
+      "Heat resistant with comfortable anti-burn handles",
+      "Natural oil finish with integrated hanging hole loops"
     ],
-    careInstructions: [
-      "Keep away from continuous moisture and direct water.",
-      "Wipe with a soft cotton cloth.",
-      "Replace battery with standard SR626SW cell when needed."
+    "dimensions": {
+      "length": 32,
+      "width": 8,
+      "height": 4,
+      "unit": "cm"
+    },
+    "weightKg": 0.65,
+    "colorFinish": "Warm Honey Brown",
+    "stock": 35,
+    "featured": true,
+    "bestseller": true,
+    "newArrival": false,
+    "rating": 4.8,
+    "reviewCount": 42,
+    "tags": [
+      "wooden spatula",
+      "cooking spoons",
+      "wooden palta",
+      "non stick spoons",
+      "sheesham spoon set",
+      "wood craft"
     ],
-    rating: 4.8,
-    reviewCount: 92,
-    reviews: [
+    "images": [
+      "/products/wooden-spatula-spoon-set/01-palta-turner.jpg",
+      "/products/wooden-spatula-spoon-set/02-long-handle-frying-spoon.jpg",
+      "/products/wooden-spatula-spoon-set/03-kadchi.jpg",
+      "/products/wooden-spatula-spoon-set/04-rice-serving-spoon.jpg",
+      "/products/wooden-spatula-spoon-set/05-slotted-spoon.jpg",
+      "/products/wooden-spatula-spoon-set/06-spatula.jpg",
+      "/products/wooden-spatula-spoon-set/07-strainer-spoon.jpg",
+      "/products/wooden-spatula-spoon-set/all-set-with-details.jpg",
+      "/products/wooden-spatula-spoon-set/all-set.jpg"
+    ],
+    "discountPercent": 50,
+    "inStock": true,
+    "isCancellable": true,
+    "isReturnable": true,
+    "returnWindowDays": 7,
+    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
+    "returnPolicy": "7 days replacement or return if received damaged or defective.",
+    "reviews": [
       {
-        id: "rev-3",
-        userName: "Arvind Mehra",
-        userCity: "New Delhi",
-        rating: 5,
-        date: "28 Jul 2026",
-        title: "Great value and authentic vintage look",
-        comment: "Reminds me of my grandfather's timepiece. Perfect gift for friends who appreciate old-world charm.",
-        verifiedPurchase: true
-      }
-    ]
-  },
-  {
-    id: "prod-003",
-    name: "Handcrafted Brass Dancing Ganesha Idol (Nritta Ganapati)",
-    slug: "handcrafted-brass-dancing-ganesha-idol",
-    sku: "AC-IDL-0103",
-    category: "Pooja Essentials & Idols",
-    subCategory: "Brass Idols",
-    price: 3499,
-    originalPrice: 5200,
-    discountPercent: 32,
-    shortDescription: "Dynamic dancing Ganesha sculpture cast in premium virgin brass with ornate crown and lotus pedestal.",
-    description: "Capture joy, abundance, and auspicious beginnings with this magnificent Nritta Ganapati idol. Lord Ganesha is depicted in joyous dance posture holding his divine attributes (parashu, noose, modak, and blessing mudra). Sculpted by master brassmiths following Shilpa Shastra proportions.",
-    material: "Pure Virgin Brass",
-    dimensions: { length: 18, width: 10, height: 26, unit: "cm" },
-    weightKg: 2.1,
-    colorFinish: "Two-tone Golden & Dark Antique Patina",
-    stock: 8,
-    inStock: true,
-    featured: true,
-    bestseller: true,
-    newArrival: false,
-    tags: ["ganesha idol", "dancing ganesha", "brass idol", "mandir decor", "housewarming gift"],
-    images: [
-      "https://images.unsplash.com/photo-1582738411706-bfc8e691d1c2?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=800&q=80"
-    ],
-    careInstructions: [
-      "Dust regularly with a dry feather duster.",
-      "Apply coconut oil or brass polish sparingly to preserve sheen."
-    ],
-    rating: 5.0,
-    reviewCount: 34,
-    reviews: [
+        "userName": "Aarav Sharma",
+        "userCity": "Jaipur",
+        "rating": 5,
+        "date": "2026-09-14",
+        "title": "Stunning authentic craft",
+        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-spatula-set-1"
+      },
       {
-        id: "rev-4",
-        userName: "Pooja Sharma",
-        userCity: "Pune",
-        rating: 5,
-        date: "10 Jun 2026",
-        title: "Devotional perfection",
-        comment: "The facial expressions of Bappa are carved with such divine serenity. Extremely heavy and feels premium.",
-        verifiedPurchase: true
+        "userName": "Pooja Mehta",
+        "userCity": "Mumbai",
+        "rating": 5,
+        "date": "2026-09-18",
+        "title": "Pure artisan perfection",
+        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-spatula-set-2"
       }
+    ],
+    "careInstructions": [
+      "Wipe clean with a soft, dry cotton cloth after daily use",
+      "Avoid prolonged soaking in water or washing in dishwashers",
+      "Periodically condition with food-grade coconut or mineral oil to maintain luster",
+      "Keep away from direct heat sources and extreme direct sunlight to prevent warping"
     ]
   },
   {
-    id: "prod-004",
-    name: "Multi-Tiered Brass Mayur Akhand Diya Lamp with Stand",
-    slug: "multi-tiered-brass-mayur-akhand-diya-lamp",
-    sku: "AC-DYA-0104",
-    category: "Candle Holders & Diyas",
-    subCategory: "Akhand Diyas",
-    price: 1899,
-    originalPrice: 2900,
-    discountPercent: 34,
-    shortDescription: "Graceful 5-face peacock oil lamp crafted in solid brass, providing hours of uninterrupted devotional glow.",
-    description: "This 5-spout traditional peacock deepak represents spiritual light dispelling darkness. Equipped with a sturdy circular pedestal and an ornate crowning peacock, it is designed to hold sesame or mustard oil and cotton wicks safely for extended pooja rituals and grand festival evenings.",
-    material: "Heavy Solid Brass",
-    dimensions: { length: 14, width: 14, height: 28, unit: "cm" },
-    weightKg: 1.45,
-    colorFinish: "Polished Rich Golden Brass",
-    stock: 19,
-    inStock: true,
-    featured: false,
-    bestseller: true,
-    newArrival: true,
-    tags: ["brass diya", "peacock diya", "akhand deepak", "pooja lamp", "temple lamp"],
-    images: [
-      "https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&w=800&q=80"
+    "id": "wood-tea-coasters",
+    "name": "Handcrafted 6-Piece Wooden Tea Coaster Set with Matching Holder",
+    "slug": "handcrafted-6-piece-wooden-tea-coaster-set-with-a-matching-holder",
+    "sku": "BC-WD-003",
+    "category": "Wood Craft",
+    "subCategory": "Trays & Boxes",
+    "collection": "Artisan Collection",
+    "badge": "HANDCRAFTED",
+    "price": 319,
+    "originalPrice": 599,
+    "material": "Pure Sheesham Wood with Protective Sealant",
+    "shortDescription": "Artisan hand-finished 6 wooden tea coasters neatly organized in an elegant matching open wooden box holder.",
+    "description": "Protect your tabletops in artisanal elegance with this 6-piece wooden coaster set. Carved from distinctively grained Indian Sheesham wood, each coaster is sanded smooth and heat-treated to resist moisture stains from steaming chai cups and chilled glasses. Includes a tailored wooden stand for clutter-free tabletop presentation.",
+    "highlights": [
+      "Set of 6 square coasters plus dedicated organizer caddy",
+      "Absorbs heat and shields dining tables from condensation rings",
+      "Hand-rubbed smooth finish highlighting natural wood rings",
+      "Compact footprint ideal for coffee tables, desks, and dining spaces"
     ],
-    careInstructions: [
-      "Clean residual oil using mild soap water after each major use.",
-      "Pitambari polish restores gleaming golden brilliance in seconds."
+    "dimensions": {
+      "length": 11,
+      "width": 11,
+      "height": 6,
+      "unit": "cm"
+    },
+    "weightKg": 0.45,
+    "colorFinish": "Deep Sheesham Wood Grain",
+    "stock": 40,
+    "featured": false,
+    "bestseller": true,
+    "newArrival": false,
+    "rating": 4.7,
+    "reviewCount": 29,
+    "tags": [
+      "tea coasters",
+      "wooden coasters",
+      "cup mat",
+      "dining accessories",
+      "table decor",
+      "wood craft"
     ],
-    rating: 4.9,
-    reviewCount: 57,
-    reviews: []
+    "images": [
+      "/products/wooden-tea-coaster-set/01.jpg",
+      "/products/wooden-tea-coaster-set/02.jpg",
+      "/products/wooden-tea-coaster-set/03.jpg",
+      "/products/wooden-tea-coaster-set/04.jpg",
+      "/products/wooden-tea-coaster-set/05.jpg"
+    ],
+    "discountPercent": 47,
+    "inStock": true,
+    "isCancellable": true,
+    "isReturnable": true,
+    "returnWindowDays": 7,
+    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
+    "returnPolicy": "7 days replacement or return if received damaged or defective.",
+    "reviews": [
+      {
+        "userName": "Aarav Sharma",
+        "userCity": "Jaipur",
+        "rating": 5,
+        "date": "2026-09-14",
+        "title": "Stunning authentic craft",
+        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-tea-coasters-1"
+      },
+      {
+        "userName": "Pooja Mehta",
+        "userCity": "Mumbai",
+        "rating": 5,
+        "date": "2026-09-18",
+        "title": "Pure artisan perfection",
+        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-tea-coasters-2"
+      }
+    ],
+    "careInstructions": [
+      "Wipe clean with a soft, dry cotton cloth after daily use",
+      "Avoid prolonged soaking in water or washing in dishwashers",
+      "Periodically condition with food-grade coconut or mineral oil to maintain luster",
+      "Keep away from direct heat sources and extreme direct sunlight to prevent warping"
+    ]
   },
   {
-    id: "prod-005",
-    name: "Intricate Antique Brass Wall Hanging Tree of Life Panel",
-    slug: "antique-brass-wall-hanging-tree-of-life",
-    sku: "AC-WAL-0105",
-    category: "Wall Decor",
-    subCategory: "Wall Sculptures",
-    price: 4499,
-    originalPrice: 6800,
-    discountPercent: 33,
-    shortDescription: "Stunning 24-inch round metal wall artwork portraying the sacred Kalpavriksha tree with perched songbirds.",
-    description: "Transform plain living room and foyer walls with this masterwork of handcrafted metal artistry. Hand-cut and repousse-hammered in iron and antique brass wash, this Tree of Life medallion symbolizes deep roots, flourishing growth, and universal harmony.",
-    material: "Wrought Iron with Antique Brass & Copper Foil Finish",
-    dimensions: { length: 60, width: 3, height: 60, unit: "cm" },
-    weightKg: 3.2,
-    colorFinish: "Rustic Antique Brass & Verdigris Undertones",
-    stock: 11,
-    inStock: true,
-    featured: true,
-    bestseller: false,
-    newArrival: true,
-    tags: ["wall decor", "tree of life", "metal wall art", "brass wall hanging", "living room decor"],
-    images: [
-      "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=800&q=80"
+    "id": "wood-sheesham-bowls",
+    "name": "Handcrafted Premium Sheesham Wood Serving Bowl Set (Set of 2)",
+    "slug": "handcrafted-premium-sheesham-wood-serving-bowl-set-of-2",
+    "sku": "BC-WD-004",
+    "category": "Wood Craft",
+    "subCategory": "Utility & Storage",
+    "collection": "Artisan Collection",
+    "badge": "HANDCRAFTED",
+    "price": 249,
+    "originalPrice": 499,
+    "material": "Seasoned Indian Sheesham Wood",
+    "shortDescription": "Pair of rustic hand-turned wooden serving bowls perfect for dry fruits, snacks, salads, and festive nibbles.",
+    "description": "Present your dry fruits, freshly roasted snacks, and salads with authentic rustic charm. Hand-lathed from sustainably sourced solid Sheesham wood, each bowl showcases vibrant swirl grains and deep organic tones. Treated with food-safe plant oils for safe, lasting entertaining.",
+    "highlights": [
+      "Pack of 2 beautifully turned bowls with curved rims",
+      "Food grade natural wax & oil protection",
+      "Lightweight yet durable and drop-resistant",
+      "Ideal for dry fruits, dips, mouth fresheners, and table centerpieces"
     ],
-    careInstructions: [
-      "Comes with pre-welded wall hanging hooks for easy installation.",
-      "Dust gently with a microfiber duster."
+    "dimensions": {
+      "length": 15,
+      "width": 15,
+      "height": 6,
+      "unit": "cm"
+    },
+    "weightKg": 0.5,
+    "colorFinish": "Glossy Honey Rosewood",
+    "stock": 26,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": true,
+    "rating": 4.8,
+    "reviewCount": 19,
+    "tags": [
+      "wooden bowls",
+      "sheesham bowl",
+      "serving bowls",
+      "dry fruit bowl",
+      "snack bowl",
+      "wood craft"
     ],
-    rating: 4.8,
-    reviewCount: 29,
-    reviews: []
+    "images": [
+      "/products/sheesham-wood-serving-bowl-set/7.1.jpg",
+      "/products/sheesham-wood-serving-bowl-set/7.2.jpg",
+      "/products/sheesham-wood-serving-bowl-set/7.3.jpg",
+      "/products/sheesham-wood-serving-bowl-set/7.4.jpg"
+    ],
+    "discountPercent": 50,
+    "inStock": true,
+    "isCancellable": true,
+    "isReturnable": true,
+    "returnWindowDays": 7,
+    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
+    "returnPolicy": "7 days replacement or return if received damaged or defective.",
+    "reviews": [
+      {
+        "userName": "Aarav Sharma",
+        "userCity": "Jaipur",
+        "rating": 5,
+        "date": "2026-09-14",
+        "title": "Stunning authentic craft",
+        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-sheesham-bowls-1"
+      },
+      {
+        "userName": "Pooja Mehta",
+        "userCity": "Mumbai",
+        "rating": 5,
+        "date": "2026-09-18",
+        "title": "Pure artisan perfection",
+        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-sheesham-bowls-2"
+      }
+    ],
+    "careInstructions": [
+      "Wipe clean with a soft, dry cotton cloth after daily use",
+      "Avoid prolonged soaking in water or washing in dishwashers",
+      "Periodically condition with food-grade coconut or mineral oil to maintain luster",
+      "Keep away from direct heat sources and extreme direct sunlight to prevent warping"
+    ]
   },
   {
-    id: "prod-006",
-    name: "Vintage Cast Brass Dhokra Elephant with Royal Saddle",
-    slug: "vintage-cast-brass-dhokra-elephant",
-    sku: "AC-DKR-0106",
-    category: "Antique Metal Decor",
-    subCategory: "Dhokra Craft",
-    price: 1650,
-    originalPrice: 2499,
-    discountPercent: 34,
-    shortDescription: "Authentic lost-wax Dhokra tribal metal craft elephant adorned with traditional bells and patterned howdah.",
-    description: "Dhokra is one of humanity's earliest known lost-wax casting methods, dating back over 4,000 years to the Indus Valley Civilization. Each individual piece is shaped first in beeswax before being cast in molten bell metal, guaranteeing no two elephants are ever identical.",
-    material: "Traditional Bell Metal & Brass Alloy",
-    dimensions: { length: 15, width: 8, height: 16, unit: "cm" },
-    weightKg: 0.95,
-    colorFinish: "Raw Earthy Antique Brass with Patina",
-    stock: 16,
-    inStock: true,
-    featured: true,
-    bestseller: false,
-    newArrival: false,
-    tags: ["dhokra", "brass elephant", "tribal craft", "tabletop artifact", "antique curio"],
-    images: [
-      "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&w=800&q=80"
+    "id": "wood-viking-mug",
+    "name": "Handcrafted Traditional Viking-Style Wooden Beer Mug",
+    "slug": "handcrafted-traditional-viking-style-wooden-beer-mug",
+    "sku": "BC-WD-005",
+    "category": "Wood Craft",
+    "subCategory": "Utility & Storage",
+    "collection": "Heritage Collection",
+    "badge": "LIMITED",
+    "price": 429,
+    "originalPrice": 799,
+    "material": "Solid Hardwood with Carved Handle",
+    "shortDescription": "Heirloom style medieval Viking wooden barrel tankard mug with heavy carved handle and rustic banded design.",
+    "description": "Channel historic craftsmanship with this handcrafted Viking-style wooden barrel mug. Carved by master wood turners with ribbed barrel staves and an ergonomic solid grip handle. The insulated natural wooden wall keeps cold beverages chilled and hot beverages warm longer than glass.",
+    "highlights": [
+      "Medieval wooden tankard design with rustic barrel banding",
+      "Sturdy ergonomic handle carved for a secure one-hand grip",
+      "Natural wood insulation keeps brews cooler for longer",
+      "Unique collector piece for home bars, themed gifts, and gatherings"
     ],
-    careInstructions: [
-      "Natural patina is part of the authentic Dhokra charm. Dust lightly with a soft brush."
+    "dimensions": {
+      "length": 16,
+      "width": 11,
+      "height": 14,
+      "unit": "cm"
+    },
+    "weightKg": 0.42,
+    "colorFinish": "Antique Rustic Oak Finish",
+    "stock": 18,
+    "featured": true,
+    "bestseller": false,
+    "newArrival": true,
+    "rating": 4.9,
+    "reviewCount": 23,
+    "tags": [
+      "wooden mug",
+      "viking beer mug",
+      "wooden tankard",
+      "barware",
+      "wooden cup",
+      "wood craft"
     ],
-    rating: 4.7,
-    reviewCount: 19,
-    reviews: []
+    "images": [
+      "/products/viking-style-wooden-beer-mug/01.jpg",
+      "/products/viking-style-wooden-beer-mug/02.jpg",
+      "/products/viking-style-wooden-beer-mug/03.jpg",
+      "/products/viking-style-wooden-beer-mug/04.jpg",
+      "/products/viking-style-wooden-beer-mug/05.jpg",
+      "/products/viking-style-wooden-beer-mug/06.jpg",
+      "/products/viking-style-wooden-beer-mug/07.jpg"
+    ],
+    "discountPercent": 46,
+    "inStock": true,
+    "isCancellable": true,
+    "isReturnable": true,
+    "returnWindowDays": 7,
+    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
+    "returnPolicy": "7 days replacement or return if received damaged or defective.",
+    "reviews": [
+      {
+        "userName": "Aarav Sharma",
+        "userCity": "Jaipur",
+        "rating": 5,
+        "date": "2026-09-14",
+        "title": "Stunning authentic craft",
+        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-viking-mug-1"
+      },
+      {
+        "userName": "Pooja Mehta",
+        "userCity": "Mumbai",
+        "rating": 5,
+        "date": "2026-09-18",
+        "title": "Pure artisan perfection",
+        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-viking-mug-2"
+      }
+    ],
+    "careInstructions": [
+      "Wipe clean with a soft, dry cotton cloth after daily use",
+      "Avoid prolonged soaking in water or washing in dishwashers",
+      "Periodically condition with food-grade coconut or mineral oil to maintain luster",
+      "Keep away from direct heat sources and extreme direct sunlight to prevent warping"
+    ]
   },
   {
-    id: "prod-007",
-    name: "Classic Pure Brass Kamatchi Amman Vilakku (Traditional Lamp)",
-    slug: "classic-pure-brass-kamatchi-amman-vilakku",
-    sku: "AC-LMP-0107",
-    category: "Pooja Essentials & Idols",
-    subCategory: "Pooja Lamps",
-    price: 1299,
-    originalPrice: 1999,
-    discountPercent: 35,
-    shortDescription: "Heirloom South Indian temple style Kamakshi vilakku cast with detailed Gajalakshmi motif.",
-    description: "The Kamatchi Vilakku is revered in Indian households as the harbinger of prosperity and divine radiance. This heavy solid brass deepam depicts Goddess Lakshmi flanked by sacred elephants showering holy water.",
-    material: "100% Pure Cast Brass",
-    dimensions: { length: 12, width: 11, height: 19, unit: "cm" },
-    weightKg: 1.1,
-    colorFinish: "High Gloss Polished Brass",
-    stock: 22,
-    inStock: true,
-    featured: false,
-    bestseller: true,
-    newArrival: false,
-    tags: ["kamakshi diya", "brass vilakku", "pooja deepam", "south indian pooja", "brass lamp"],
-    images: [
-      "https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1582738411706-bfc8e691d1c2?auto=format&fit=crop&w=800&q=80"
+    "id": "wood-buddha-statue",
+    "name": "Handcrafted Traditional Wooden Buddha Head Statue",
+    "slug": "handcrafted-traditional-wooden-buddha-head-statue",
+    "sku": "BC-WD-006",
+    "category": "Wood Craft",
+    "subCategory": "Sculptures",
+    "collection": "Heritage Collection",
+    "badge": "HANDCRAFTED",
+    "price": 499,
+    "originalPrice": 999,
+    "material": "Hand-Carved Seasoned Hardwood",
+    "shortDescription": "Serene meditative Buddha head sculpture intricately hand-chiseled from single piece seasoned wood.",
+    "description": "Infuse your living space with tranquility, balance, and mindful serenity. This contemplative Buddha head idol is delicately chiseled by hereditary Indian wood artisans, capturing gentle facial contours, coiled ushnisha curls, and a peaceful meditative expression. Perfect for altar, mantelpiece, or study desk.",
+    "highlights": [
+      "Single-piece hand-carved wood sculpture with fine chisel details",
+      "Brings calming Zen harmony and positive Vastu energy to interiors",
+      "Stable flat wooden pedestal base for secure placement",
+      "Hand-waxed matte finish preserving natural grain texture"
     ],
-    careInstructions: [
-      "Clean with brass shine powder after festival rituals."
+    "dimensions": {
+      "length": 10,
+      "width": 9,
+      "height": 20,
+      "unit": "cm"
+    },
+    "weightKg": 0.6,
+    "colorFinish": "Natural Matte Antique Brown",
+    "stock": 22,
+    "featured": true,
+    "bestseller": false,
+    "newArrival": true,
+    "rating": 4.9,
+    "reviewCount": 31,
+    "tags": [
+      "wooden buddha",
+      "buddha head statue",
+      "wood carving",
+      "sculpture",
+      "meditation decor",
+      "wood craft"
     ],
-    rating: 5.0,
-    reviewCount: 63,
-    reviews: []
+    "images": [
+      "/products/wooden-buddha-head-statue/01.jpg",
+      "/products/wooden-buddha-head-statue/02.jpg",
+      "/products/wooden-buddha-head-statue/03.jpg",
+      "/products/wooden-buddha-head-statue/04.jpg",
+      "/products/wooden-buddha-head-statue/05.jpg"
+    ],
+    "discountPercent": 50,
+    "inStock": true,
+    "isCancellable": true,
+    "isReturnable": true,
+    "returnWindowDays": 7,
+    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
+    "returnPolicy": "7 days replacement or return if received damaged or defective.",
+    "reviews": [
+      {
+        "userName": "Aarav Sharma",
+        "userCity": "Jaipur",
+        "rating": 5,
+        "date": "2026-09-14",
+        "title": "Stunning authentic craft",
+        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-buddha-statue-1"
+      },
+      {
+        "userName": "Pooja Mehta",
+        "userCity": "Mumbai",
+        "rating": 5,
+        "date": "2026-09-18",
+        "title": "Pure artisan perfection",
+        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-buddha-statue-2"
+      }
+    ],
+    "careInstructions": [
+      "Wipe clean with a soft, dry cotton cloth after daily use",
+      "Avoid prolonged soaking in water or washing in dishwashers",
+      "Periodically condition with food-grade coconut or mineral oil to maintain luster",
+      "Keep away from direct heat sources and extreme direct sunlight to prevent warping"
+    ]
   },
   {
-    id: "prod-008",
-    name: "Artisan Handcrafted Wooden Belan & Chakla Set",
-    slug: "artisan-handcrafted-wooden-belan-chakla-set",
-    sku: "AC-KIT-0108",
-    category: "Dining & Kitchen",
-    subCategory: "Kitchen Tools",
-    price: 699,
-    originalPrice: 1299,
-    discountPercent: 46,
-    shortDescription: "Seasoned Indian Sheesham wood roti roller pin and board with smooth organic finish.",
-    description: "Hand-lathed by multi-generation wood turners using dense natural rosewood (Sheesham). Perfectly balanced weight distribution allows effortless rolling of paper-thin chapatis and rotis without sticking.",
-    material: "Grade-A Solid Sheesham Rosewood",
-    dimensions: { length: 30, width: 30, height: 6, unit: "cm" },
-    weightKg: 1.3,
-    colorFinish: "Natural Woodgrain with Food-Safe Mineral Wax",
-    stock: 40,
-    inStock: true,
-    featured: false,
-    bestseller: true,
-    newArrival: false,
-    tags: ["wooden belan", "roti roller", "chakla belan", "kitchen essentials", "handcrafted kitchen"],
-    images: [
-      "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&w=800&q=80"
+    "id": "wood-incense-burner-box",
+    "name": "Handcrafted Traditional Wooden Coffin Incense Burner Box",
+    "slug": "handcrafted-traditional-wooden-coffin-incense-burner-box",
+    "sku": "BC-WD-007",
+    "category": "Wood Craft",
+    "subCategory": "Wooden D\u00e9cor",
+    "collection": "Artisan Collection",
+    "badge": "HANDCRAFTED",
+    "price": 299,
+    "originalPrice": 599,
+    "material": "Carved Sheesham Wood with Brass Inlay Accents",
+    "shortDescription": "Ornate carved wooden incense holder box with bottom storage drawer for agarbatti sticks and brass inlay stars.",
+    "description": "A sacred and aromatic addition to any pooja room, yoga sanctuary, or living room. This traditional coffin-style incense burner features delicate lattice fretwork (jali) that allows fragrant smoke ribbons to drift gracefully into the room while catching all ash safely inside. Includes a secret bottom sliding drawer to store unburnt incense sticks.",
+    "highlights": [
+      "Intricate jali latticework lid diffuses fragrant incense smoke safely",
+      "Catches 100% of falling ash inside without tabletop mess",
+      "Hidden bottom drawer holds extra agarbatti sticks and dhoop cones",
+      "Dual side brass eyelets support two burning sticks simultaneously"
     ],
-    careInstructions: [
-      "Hand wash with lukewarm water. Do not soak in sink or put in dishwasher.",
-      "Rub with a drop of mustard or coconut oil every 2 months to keep wood nourished."
+    "dimensions": {
+      "length": 30,
+      "width": 5.5,
+      "height": 6,
+      "unit": "cm"
+    },
+    "weightKg": 0.38,
+    "colorFinish": "Warm Sheesham with Brass Motifs",
+    "stock": 32,
+    "featured": false,
+    "bestseller": true,
+    "newArrival": false,
+    "rating": 4.8,
+    "reviewCount": 27,
+    "tags": [
+      "incense burner",
+      "agarbatti stand",
+      "wooden coffin box",
+      "dhoop burner",
+      "pooja decor",
+      "wood craft"
     ],
-    rating: 4.8,
-    reviewCount: 41,
-    reviews: []
+    "images": [
+      "/products/wooden-coffin-incense-burner-box/01.jpg",
+      "/products/wooden-coffin-incense-burner-box/02.webp",
+      "/products/wooden-coffin-incense-burner-box/03.jpg",
+      "/products/wooden-coffin-incense-burner-box/04.jpg",
+      "/products/wooden-coffin-incense-burner-box/05.jpg",
+      "/products/wooden-coffin-incense-burner-box/06.jpg",
+      "/products/wooden-coffin-incense-burner-box/07.jpg",
+      "/products/wooden-coffin-incense-burner-box/08.webp",
+      "/products/wooden-coffin-incense-burner-box/09.jpg",
+      "/products/wooden-coffin-incense-burner-box/10.jpg",
+      "/products/wooden-coffin-incense-burner-box/11.jpg",
+      "/products/wooden-coffin-incense-burner-box/11.webp",
+      "/products/wooden-coffin-incense-burner-box/12.webp",
+      "/products/wooden-coffin-incense-burner-box/13.jpg",
+      "/products/wooden-coffin-incense-burner-box/vaaree-assured-v6.png"
+    ],
+    "discountPercent": 50,
+    "inStock": true,
+    "isCancellable": true,
+    "isReturnable": true,
+    "returnWindowDays": 7,
+    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
+    "returnPolicy": "7 days replacement or return if received damaged or defective.",
+    "reviews": [
+      {
+        "userName": "Aarav Sharma",
+        "userCity": "Jaipur",
+        "rating": 5,
+        "date": "2026-09-14",
+        "title": "Stunning authentic craft",
+        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-incense-burner-box-1"
+      },
+      {
+        "userName": "Pooja Mehta",
+        "userCity": "Mumbai",
+        "rating": 5,
+        "date": "2026-09-18",
+        "title": "Pure artisan perfection",
+        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-incense-burner-box-2"
+      }
+    ],
+    "careInstructions": [
+      "Wipe clean with a soft, dry cotton cloth after daily use",
+      "Avoid prolonged soaking in water or washing in dishwashers",
+      "Periodically condition with food-grade coconut or mineral oil to maintain luster",
+      "Keep away from direct heat sources and extreme direct sunlight to prevent warping"
+    ]
   },
   {
-    id: "prod-009",
-    name: "Neem Wood Anti-Static Handcrafted Hair Comb (Set of 2)",
-    slug: "neem-wood-antistatic-handcrafted-hair-comb",
-    sku: "AC-ACC-0109",
-    category: "Table Decor",
-    subCategory: "Lifestyle & Care",
-    price: 349,
-    originalPrice: 699,
-    discountPercent: 50,
-    shortDescription: "100% herbal neem wood grooming comb set featuring dual wide and fine teeth for hair fall reduction.",
-    description: "Made from sustainably harvested native neem tree timber, revered in Ayurveda for natural antimicrobial properties. Seamless hand-filed rounded teeth massage the scalp, boost blood circulation, and eliminate static frizz.",
-    material: "Pure Seasoned Neem Wood",
-    dimensions: { length: 19, width: 5, height: 1, unit: "cm" },
-    weightKg: 0.12,
-    colorFinish: "Raw Natural Wood Herbal Finish",
-    stock: 55,
-    inStock: true,
-    featured: false,
-    bestseller: true,
-    newArrival: false,
-    tags: ["neem comb", "wooden hair comb", "ayurvedic comb", "hair care", "organic lifestyle"],
-    images: [
-      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80"
+    "id": "wood-hair-comb-set",
+    "name": "Handcrafted Natural Wooden Hair Comb Set",
+    "slug": "handcrafted-wooden-hair-comb",
+    "sku": "BC-WD-008",
+    "category": "Wood Craft",
+    "subCategory": "Utility & Storage",
+    "collection": "New Arrivals",
+    "badge": "NEW",
+    "price": 199,
+    "originalPrice": 399,
+    "material": "Pure Herbal Neem & Sheesham Wood",
+    "shortDescription": "Wide-tooth and fine-tooth anti-static wooden combs for gentle detangling, scalp massage, and hair health.",
+    "description": "Embrace ancient Ayurvedic hair wellness. Unlike plastic combs that generate static charge, cause micro-tears, and break hair cuticles, these smooth hand-buffed wooden teeth gently massage the scalp, stimulate blood micro-circulation, and distribute natural scalp oils evenly from roots to tips.",
+    "highlights": [
+      "100% anti-static wood eliminates frizz and hair flyaways",
+      "Seamless rounded teeth prevent scalp scratches and split ends",
+      "Naturally antibacterial Neem & seasoned Sheesham hardwood",
+      "Compact and lightweight for everyday grooming and travel kits"
     ],
-    careInstructions: [
-      "Never wash with water. Wipe clean with an oil-dipped cotton earbud."
+    "dimensions": {
+      "length": 18,
+      "width": 5,
+      "height": 1,
+      "unit": "cm"
+    },
+    "weightKg": 0.12,
+    "colorFinish": "Raw Natural Polished Wood",
+    "stock": 50,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": true,
+    "rating": 4.7,
+    "reviewCount": 38,
+    "tags": [
+      "wooden comb",
+      "neem comb",
+      "hair care",
+      "ayurvedic grooming",
+      "wide tooth comb",
+      "wood craft"
     ],
-    rating: 4.9,
-    reviewCount: 88,
-    reviews: []
+    "images": [
+      "/products/wooden-hair-comb-set/5.1.png",
+      "/products/wooden-hair-comb-set/5.2.png",
+      "/products/wooden-hair-comb-set/5.3.jpg",
+      "/products/wooden-hair-comb-set/5.5.jpg"
+    ],
+    "discountPercent": 50,
+    "inStock": true,
+    "isCancellable": true,
+    "isReturnable": true,
+    "returnWindowDays": 7,
+    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
+    "returnPolicy": "7 days replacement or return if received damaged or defective.",
+    "reviews": [
+      {
+        "userName": "Aarav Sharma",
+        "userCity": "Jaipur",
+        "rating": 5,
+        "date": "2026-09-14",
+        "title": "Stunning authentic craft",
+        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-hair-comb-set-1"
+      },
+      {
+        "userName": "Pooja Mehta",
+        "userCity": "Mumbai",
+        "rating": 5,
+        "date": "2026-09-18",
+        "title": "Pure artisan perfection",
+        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-hair-comb-set-2"
+      }
+    ],
+    "careInstructions": [
+      "Wipe clean with a soft, dry cotton cloth after daily use",
+      "Avoid prolonged soaking in water or washing in dishwashers",
+      "Periodically condition with food-grade coconut or mineral oil to maintain luster",
+      "Keep away from direct heat sources and extreme direct sunlight to prevent warping"
+    ]
   },
   {
-    id: "prod-010",
-    name: "Traditional Handcrafted Wooden Gulel Slingshot Toy (Pack of 2)",
-    slug: "traditional-handcrafted-wooden-gulel-slingshot",
-    sku: "AC-TOY-0110",
-    category: "Vintage Collection",
-    subCategory: "Folk Toys",
-    price: 299,
-    originalPrice: 599,
-    discountPercent: 50,
-    shortDescription: "Nostalgic village slingshot hand-carved from natural hardwood branch forks with resilient latex bands.",
-    description: "Relive golden childhood memories with this traditional Indian folk toy. Carefully shaped from sturdy tree forks, polished smooth with natural oil, and strung with double-strength elastic rubber.",
-    material: "Natural Wood & Vulcanized Rubber",
-    dimensions: { length: 18, width: 8, height: 2.5, unit: "cm" },
-    weightKg: 0.18,
-    colorFinish: "Rustic Polished Wood",
-    stock: 28,
-    inStock: true,
-    featured: false,
-    bestseller: false,
-    newArrival: true,
-    tags: ["wooden slingshot", "traditional gulel", "folk toys", "vintage toys", "nostalgic gift"],
-    images: [
-      "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&w=800&q=80"
+    "id": "wood-tic-tac-toe",
+    "name": "Handcrafted Dual-Tone Wooden Tic-Tac-Toe Board Game",
+    "slug": "handcrafted-dual-tone-wooden-tic-tac-toe-board-game",
+    "sku": "BC-WD-009",
+    "category": "Wood Craft",
+    "subCategory": "Wooden D\u00e9cor",
+    "collection": "Artisan Collection",
+    "badge": "HANDCRAFTED",
+    "price": 149,
+    "originalPrice": 299,
+    "material": "Solid Teak & Sheesham Hardwood Pieces",
+    "shortDescription": "Classic 4-inch wooden coffee table X & O puzzle game with dual-tone brass and wood tokens.",
+    "description": "A timeless parlor game that doubles as an eye-catching coffee table accent. Crafted by skilled toy artisans using solid natural wood, the grid holds 9 precision-carved game blocks. Perfect for quick family entertainment, screen-free playtime, and thoughtful desk gifts.",
+    "highlights": [
+      "Compact 4-inch square format ideal for coffee tables & office desks",
+      "Dual-tone X and O blocks crafted with contrasting wood hues",
+      "Screen-free tactile fun for children, adults, and party guests",
+      "Smooth splinter-free hand sanding with child-safe natural wax"
     ],
-    careInstructions: ["Keep in a dry environment."],
-    rating: 4.6,
-    reviewCount: 22,
-    reviews: []
+    "dimensions": {
+      "length": 10,
+      "width": 10,
+      "height": 3,
+      "unit": "cm"
+    },
+    "weightKg": 0.22,
+    "colorFinish": "Dual-Tone Honey Teak & Dark Rosewood",
+    "stock": 45,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": true,
+    "rating": 4.6,
+    "reviewCount": 18,
+    "tags": [
+      "tic tac toe",
+      "wooden board game",
+      "coffee table game",
+      "x and o game",
+      "wooden toy",
+      "wood craft"
+    ],
+    "images": [
+      "/products/wooden-tic-tac-toe/32.1.jpg",
+      "/products/wooden-tic-tac-toe/4inch-xox-game.jpeg"
+    ],
+    "discountPercent": 50,
+    "inStock": true,
+    "isCancellable": true,
+    "isReturnable": true,
+    "returnWindowDays": 7,
+    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
+    "returnPolicy": "7 days replacement or return if received damaged or defective.",
+    "reviews": [
+      {
+        "userName": "Aarav Sharma",
+        "userCity": "Jaipur",
+        "rating": 5,
+        "date": "2026-09-14",
+        "title": "Stunning authentic craft",
+        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-tic-tac-toe-1"
+      },
+      {
+        "userName": "Pooja Mehta",
+        "userCity": "Mumbai",
+        "rating": 5,
+        "date": "2026-09-18",
+        "title": "Pure artisan perfection",
+        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-tic-tac-toe-2"
+      }
+    ],
+    "careInstructions": [
+      "Wipe clean with a soft, dry cotton cloth after daily use",
+      "Avoid prolonged soaking in water or washing in dishwashers",
+      "Periodically condition with food-grade coconut or mineral oil to maintain luster",
+      "Keep away from direct heat sources and extreme direct sunlight to prevent warping"
+    ]
   },
   {
-    id: "prod-011",
-    name: "Antique Brass Hand-Hammered Floral Singhasan Throne",
-    slug: "antique-brass-hand-hammered-singhasan-throne",
-    sku: "AC-SNG-0111",
-    category: "Pooja Essentials & Idols",
-    subCategory: "Pooja Essentials",
-    price: 2499,
-    originalPrice: 3800,
-    discountPercent: 34,
-    shortDescription: "Ornate deity throne with velvet cushioning and engraved floral backdrop arch for home temples.",
-    description: "Crafted specifically for placing deity idols in pooja altars. Hand-embossed with auspicious temple motifs including Kalash, Sun, and Floral vines, accented with maroon velvet seat padding.",
-    material: "Heavy Gauge Brass & Royal Maroon Velvet",
-    dimensions: { length: 20, width: 15, height: 24, unit: "cm" },
-    weightKg: 1.6,
-    colorFinish: "Antique Golden Sheen",
-    stock: 9,
-    inStock: true,
-    featured: false,
-    bestseller: false,
-    newArrival: true,
-    tags: ["brass singhasan", "pooja throne", "mandir accessories", "deity throne", "brass temple"],
-    images: [
-      "https://images.unsplash.com/photo-1582738411706-bfc8e691d1c2?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80"
+    "id": "wood-catapult",
+    "name": "Traditional Wooden Catapult (Desi Gulel)",
+    "slug": "traditional-wooden-catapult",
+    "sku": "BC-WD-010",
+    "category": "Wood Craft",
+    "subCategory": "Wooden Art",
+    "collection": "New Arrivals",
+    "badge": "NEW",
+    "price": 149,
+    "originalPrice": 299,
+    "material": "Natural Y-Fork Hardwood with Durable Elastic Bands",
+    "shortDescription": "Nostalgic handmade Indian wooden slingshot (Gulel) carved from sturdy tree branch fork.",
+    "description": "Relive nostalgic childhood memories with this authentic handmade Indian catapult (Gulel). Carved from sturdy naturally forked wood, sanded smooth for a comfortable grip, and fitted with high-tensile elastic rubber straps and a reinforced faux-leather pouch.",
+    "highlights": [
+      "Carved from natural fork branch for maximum structural strength",
+      "High-elasticity durable latex bands with leather launch pouch",
+      "Ergonomic hand-contoured grip for steady aiming practice",
+      "Nostalgic traditional Indian toy and outdoor recreational handicraft"
     ],
-    careInstructions: ["Wipe metal parts with soft cloth; keep velvet away from water."],
-    rating: 4.9,
-    reviewCount: 16,
-    reviews: []
+    "dimensions": {
+      "length": 18,
+      "width": 9,
+      "height": 3,
+      "unit": "cm"
+    },
+    "weightKg": 0.15,
+    "colorFinish": "Natural Smooth Sanded Timber",
+    "stock": 35,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": true,
+    "rating": 4.7,
+    "reviewCount": 15,
+    "tags": [
+      "wooden catapult",
+      "gulel",
+      "slingshot",
+      "wooden toys",
+      "nostalgic crafts",
+      "wood craft"
+    ],
+    "images": [
+      "/products/traditional-wooden-catapult/04.jpg",
+      "/products/traditional-wooden-catapult/2.0.jpg",
+      "/products/traditional-wooden-catapult/2.1.jpg",
+      "/products/traditional-wooden-catapult/2.2.jpg",
+      "/products/traditional-wooden-catapult/2.3.jpg",
+      "/products/traditional-wooden-catapult/2.4.jpg",
+      "/products/traditional-wooden-catapult/2.5.jpg",
+      "/products/traditional-wooden-catapult/2.6.jpg",
+      "/products/traditional-wooden-catapult/2.7.jpg",
+      "/products/traditional-wooden-catapult/2.8.jpg",
+      "/products/traditional-wooden-catapult/31qb4fnnjxl.jpg",
+      "/products/traditional-wooden-catapult/41hoa8vll2l.jpg",
+      "/products/traditional-wooden-catapult/41ngcoxkefl.jpg"
+    ],
+    "discountPercent": 50,
+    "inStock": true,
+    "isCancellable": true,
+    "isReturnable": true,
+    "returnWindowDays": 7,
+    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
+    "returnPolicy": "7 days replacement or return if received damaged or defective.",
+    "reviews": [
+      {
+        "userName": "Aarav Sharma",
+        "userCity": "Jaipur",
+        "rating": 5,
+        "date": "2026-09-14",
+        "title": "Stunning authentic craft",
+        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-catapult-1"
+      },
+      {
+        "userName": "Pooja Mehta",
+        "userCity": "Mumbai",
+        "rating": 5,
+        "date": "2026-09-18",
+        "title": "Pure artisan perfection",
+        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-catapult-2"
+      }
+    ],
+    "careInstructions": [
+      "Wipe clean with a soft, dry cotton cloth after daily use",
+      "Avoid prolonged soaking in water or washing in dishwashers",
+      "Periodically condition with food-grade coconut or mineral oil to maintain luster",
+      "Keep away from direct heat sources and extreme direct sunlight to prevent warping"
+    ]
   },
   {
-    id: "prod-012",
-    name: "Hand-Etched Royal Mughal Brass Goblet & Drinkware Set of 2",
-    slug: "hand-etched-royal-mughal-brass-goblet-set",
-    sku: "AC-DRK-0112",
-    category: "Dining & Kitchen",
-    subCategory: "Drinkware",
-    price: 1799,
-    originalPrice: 2800,
-    discountPercent: 36,
-    shortDescription: "Vintage stemmed chalices hand-etched with intricate Persian paisley and floral creepers.",
-    description: "Inspired by the grand banquets of the Mughal era, these stemmed brass goblets bring majestic elegance to your bar counter or dinner table. Heavyweight base prevents tipping while keeping beverages chilled longer.",
-    material: "Solid Brass with Food-Grade Tin (Kalai) Lining",
-    dimensions: { length: 8, width: 8, height: 18, unit: "cm" },
-    weightKg: 0.75,
-    colorFinish: "Two-tone Polished Gold & Deep Etched Black",
-    stock: 15,
-    inStock: true,
-    featured: true,
-    bestseller: false,
-    newArrival: true,
-    tags: ["brass goblet", "vintage wine chalice", "royal drinkware", "dining decor", "luxury gifting"],
-    images: [
-      "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&w=800&q=80"
+    "id": "wood-taj-mahal-watch",
+    "name": "India Taj Mahal Vintage Pocket Watch",
+    "slug": "india-taj-mahal-pocket-watch",
+    "sku": "BC-WD-011",
+    "category": "Wood Craft",
+    "subCategory": "Wooden Art",
+    "collection": "Heritage Collection",
+    "badge": "BESTSELLER",
+    "price": 349,
+    "originalPrice": 699,
+    "material": "Antique Bronzed Alloy with Embossed Relief",
+    "shortDescription": "Collectible pocket watch featuring deep relief engraving of the iconic Taj Mahal monument with matching chain.",
+    "description": "A tribute to world wonder architecture and royal vintage horology. This heirloom pocket watch showcases a magnificent 3D high-relief engraving of the Taj Mahal on its flip cover. Powered by a precision quartz movement with a vintage roman numeral dial and detachable vest chain.",
+    "highlights": [
+      "Intricate 3D relief casing of the Taj Mahal architecture",
+      "Precision battery-operated quartz movement with crown push release",
+      "Vintage cream dial with classic Roman numerals & filigree hands",
+      "Comes with a 35cm matching antique curb link pocket chain"
     ],
-    careInstructions: [
-      "Wash gently with soft sponge and mild liquid soap. Dry immediately with towel."
+    "dimensions": {
+      "length": 4.8,
+      "width": 4.8,
+      "height": 1.5,
+      "unit": "cm"
+    },
+    "weightKg": 0.08,
+    "colorFinish": "Antique Burnished Bronze",
+    "stock": 30,
+    "featured": true,
+    "bestseller": true,
+    "newArrival": false,
+    "rating": 4.9,
+    "reviewCount": 56,
+    "tags": [
+      "taj mahal watch",
+      "pocket watch",
+      "vintage watch",
+      "antique pocket watch",
+      "heritage curio",
+      "wood craft"
     ],
-    rating: 4.8,
-    reviewCount: 31,
-    reviews: []
+    "images": [
+      "/products/taj-mahal-pocket-watch/2.1.jpg",
+      "/products/taj-mahal-pocket-watch/2.2.jpg",
+      "/products/taj-mahal-pocket-watch/2.3.jpg",
+      "/products/taj-mahal-pocket-watch/2.4.jpg",
+      "/products/taj-mahal-pocket-watch/2.5.jpg",
+      "/products/taj-mahal-pocket-watch/2.6.jpg",
+      "/products/taj-mahal-pocket-watch/2.7.jpg",
+      "/products/taj-mahal-pocket-watch/2.8.jpg"
+    ],
+    "discountPercent": 50,
+    "inStock": true,
+    "isCancellable": true,
+    "isReturnable": true,
+    "returnWindowDays": 7,
+    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
+    "returnPolicy": "7 days replacement or return if received damaged or defective.",
+    "reviews": [
+      {
+        "userName": "Aarav Sharma",
+        "userCity": "Jaipur",
+        "rating": 5,
+        "date": "2026-09-14",
+        "title": "Stunning authentic craft",
+        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-taj-mahal-watch-1"
+      },
+      {
+        "userName": "Pooja Mehta",
+        "userCity": "Mumbai",
+        "rating": 5,
+        "date": "2026-09-18",
+        "title": "Pure artisan perfection",
+        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-taj-mahal-watch-2"
+      }
+    ],
+    "careInstructions": [
+      "Keep away from direct water immersion and high humidity environments",
+      "Wipe clean with a soft microfiber jewelry cloth",
+      "Uses standard LR66 / 377 button cell battery, easily replaceable at any watchmaker",
+      "Store in a dry velvet pouch or jewelry box when not in use"
+    ]
   },
   {
-    id: "prod-013",
-    name: "Handmade Vintage Brass Sandglass 15-Minute Hourglass",
-    slug: "handmade-vintage-brass-sandglass-hourglass",
-    sku: "AC-VNT-0113",
-    category: "Vintage Collection",
-    subCategory: "Desk Artifacts",
-    price: 1399,
-    originalPrice: 2199,
-    discountPercent: 36,
-    shortDescription: "Victorian style brass swivel hourglass with white silica sand, perfect for office desks and bookshelves.",
-    description: "A mesmerizing desktop accent that reminds you to pause and appreciate the flow of time. Cast brass columns with round base and top plates enclose handblown glass calibrated to run approximately 15 minutes.",
-    material: "Solid Brass and Blown Glass",
-    dimensions: { length: 10, width: 10, height: 21, unit: "cm" },
-    weightKg: 0.65,
-    colorFinish: "Aged Nautical Brass",
-    stock: 20,
-    inStock: true,
-    featured: false,
-    bestseller: true,
-    newArrival: false,
-    tags: ["hourglass", "brass sandglass", "desk decor", "vintage study accent", "gift for executive"],
-    images: [
-      "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80"
+    "id": "wood-anchor-watch",
+    "name": "Stylish Nautical Anchor Vintage Pocket Watch",
+    "slug": "stylish-anchor-pocket-watch",
+    "sku": "BC-WD-012",
+    "category": "Wood Craft",
+    "subCategory": "Wooden Art",
+    "collection": "Artisan Collection",
+    "badge": "HANDCRAFTED",
+    "price": 349,
+    "originalPrice": 699,
+    "material": "Antique Brass Alloy with Maritime Relief",
+    "shortDescription": "Maritime nautical themed pocket watch with embossed mariner anchor crest and rope filigree.",
+    "description": "Inspired by vintage voyages and seafaring heritage. This handsome pocket watch features a raised maritime ship anchor emblem encircled by naval ropes. Press the top crown to snap open the front case and reveal a crisp vintage analog dial.",
+    "highlights": [
+      "High-relief mariner anchor emblem with maritime border",
+      "Snap-open hunter case lid with spring-loaded crown latch",
+      "Accurate quartz movement with easy battery replacement",
+      "Includes matching antique necklace / waistcoat chain"
     ],
-    careInstructions: ["Clean glass with glass cleaner; wipe brass body with dry cotton."],
-    rating: 4.9,
-    reviewCount: 44,
-    reviews: []
+    "dimensions": {
+      "length": 4.8,
+      "width": 4.8,
+      "height": 1.5,
+      "unit": "cm"
+    },
+    "weightKg": 0.08,
+    "colorFinish": "Nautical Antique Brass",
+    "stock": 28,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": true,
+    "rating": 4.8,
+    "reviewCount": 22,
+    "tags": [
+      "anchor watch",
+      "pocket watch",
+      "nautical pocket watch",
+      "vintage curio",
+      "maritime gift",
+      "wood craft"
+    ],
+    "images": [
+      "/products/stylish-anchor-pocket-watch/1.1.jpg",
+      "/products/stylish-anchor-pocket-watch/1.3.jpg",
+      "/products/stylish-anchor-pocket-watch/1.5.jpg",
+      "/products/stylish-anchor-pocket-watch/1.6.jpg",
+      "/products/stylish-anchor-pocket-watch/w1.jpg",
+      "/products/stylish-anchor-pocket-watch/w4.jpg",
+      "/products/stylish-anchor-pocket-watch/w5.jpg",
+      "/products/stylish-anchor-pocket-watch/w6.jpg"
+    ],
+    "discountPercent": 50,
+    "inStock": true,
+    "isCancellable": true,
+    "isReturnable": true,
+    "returnWindowDays": 7,
+    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
+    "returnPolicy": "7 days replacement or return if received damaged or defective.",
+    "reviews": [
+      {
+        "userName": "Aarav Sharma",
+        "userCity": "Jaipur",
+        "rating": 5,
+        "date": "2026-09-14",
+        "title": "Stunning authentic craft",
+        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-anchor-watch-1"
+      },
+      {
+        "userName": "Pooja Mehta",
+        "userCity": "Mumbai",
+        "rating": 5,
+        "date": "2026-09-18",
+        "title": "Pure artisan perfection",
+        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-anchor-watch-2"
+      }
+    ],
+    "careInstructions": [
+      "Keep away from direct water immersion and high humidity environments",
+      "Wipe clean with a soft microfiber jewelry cloth",
+      "Uses standard LR66 / 377 button cell battery, easily replaceable at any watchmaker",
+      "Store in a dry velvet pouch or jewelry box when not in use"
+    ]
   },
   {
-    id: "prod-014",
-    name: "Hand-Carved Nataraja Bronze-Finish Brass Sculpture (12 Inch)",
-    slug: "hand-carved-nataraja-brass-sculpture",
-    sku: "AC-SCP-0114",
-    category: "Sculptures & Figurines",
-    subCategory: "Spiritual Sculptures",
-    price: 5299,
-    originalPrice: 7999,
-    discountPercent: 34,
-    shortDescription: "Cosmic dance of Lord Shiva encased in flaming aureole (Prabhamandala), sculpted in heavy brass.",
-    description: "Considered one of the greatest artistic expressions of Indian civilization. Shiva dances atop Apasmara Purusha (the demon of ignorance), balancing the drum of creation (damaru) and the fire of dissolution (agni).",
-    material: "Pure Cast Brass",
-    dimensions: { length: 26, width: 10, height: 32, unit: "cm" },
-    weightKg: 3.4,
-    colorFinish: "Museum Antique Brown with Golden Highlights",
-    stock: 6,
-    inStock: true,
-    featured: true,
-    bestseller: false,
-    newArrival: false,
-    tags: ["nataraja statue", "shiva sculpture", "brass nataraja", "classical dance decor", "temple art"],
-    images: [
-      "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1582738411706-bfc8e691d1c2?auto=format&fit=crop&w=800&q=80"
+    "id": "wood-ladakh-motorcycle-watch",
+    "name": "Ladakh Motorcycle Adventurer Pocket Watch",
+    "slug": "ladakh-motorcycle-pocket-watch",
+    "sku": "BC-WD-013",
+    "category": "Wood Craft",
+    "subCategory": "Wooden Art",
+    "collection": "New Arrivals",
+    "badge": "NEW",
+    "price": 349,
+    "originalPrice": 699,
+    "material": "Embossed Antique Bronze Metal",
+    "shortDescription": "Commemorative expedition pocket watch depicting a vintage cruiser motorcycle against the Ladakh mountains.",
+    "description": "Designed for wanderers and motorcycle enthusiasts. This unique pocket watch features an embossed cruiser motorcycle set against Himalayan mountain peaks. An ode to high-altitude passes, open highways, and adventurous spirit, complete with pocket vest chain.",
+    "highlights": [
+      "Detailed 3D motorcycle engraving inspired by Ladakh road trips",
+      "Protective full hunter lid with top release push button",
+      "High reliability quartz movement with crisp white dial",
+      "A distinctive collectible gift for riders and travelers"
     ],
-    careInstructions: [
-      "Wipe with microfiber duster. Avoid abrasive polishing powders to preserve antique museum patina."
+    "dimensions": {
+      "length": 4.8,
+      "width": 4.8,
+      "height": 1.5,
+      "unit": "cm"
+    },
+    "weightKg": 0.08,
+    "colorFinish": "Rugged Antique Bronze",
+    "stock": 32,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": true,
+    "rating": 4.8,
+    "reviewCount": 26,
+    "tags": [
+      "motorcycle watch",
+      "ladakh watch",
+      "biker pocket watch",
+      "adventurer gift",
+      "vintage watch",
+      "wood craft"
     ],
-    rating: 5.0,
-    reviewCount: 27,
-    reviews: []
+    "images": [
+      "/products/ladakh-motorcycle-pocket-watch/3.1.jpg",
+      "/products/ladakh-motorcycle-pocket-watch/3.2.jpg",
+      "/products/ladakh-motorcycle-pocket-watch/w1.jpg",
+      "/products/ladakh-motorcycle-pocket-watch/w2.jpg",
+      "/products/ladakh-motorcycle-pocket-watch/w3.jpg",
+      "/products/ladakh-motorcycle-pocket-watch/w4.jpg",
+      "/products/ladakh-motorcycle-pocket-watch/w5.jpg",
+      "/products/ladakh-motorcycle-pocket-watch/w6.jpg"
+    ],
+    "discountPercent": 50,
+    "inStock": true,
+    "isCancellable": true,
+    "isReturnable": true,
+    "returnWindowDays": 7,
+    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
+    "returnPolicy": "7 days replacement or return if received damaged or defective.",
+    "reviews": [
+      {
+        "userName": "Aarav Sharma",
+        "userCity": "Jaipur",
+        "rating": 5,
+        "date": "2026-09-14",
+        "title": "Stunning authentic craft",
+        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-ladakh-motorcycle-watch-1"
+      },
+      {
+        "userName": "Pooja Mehta",
+        "userCity": "Mumbai",
+        "rating": 5,
+        "date": "2026-09-18",
+        "title": "Pure artisan perfection",
+        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-ladakh-motorcycle-watch-2"
+      }
+    ],
+    "careInstructions": [
+      "Keep away from direct water immersion and high humidity environments",
+      "Wipe clean with a soft microfiber jewelry cloth",
+      "Uses standard LR66 / 377 button cell battery, easily replaceable at any watchmaker",
+      "Store in a dry velvet pouch or jewelry box when not in use"
+    ]
   },
   {
-    id: "prod-015",
-    name: "Antique Hand-Embossed Brass Dry Fruit & Spice Dabba (7 Containers)",
-    slug: "antique-brass-dry-fruit-spice-dabba",
-    sku: "AC-BOX-0115",
-    category: "Dining & Kitchen",
-    subCategory: "Kitchen Essentials",
-    price: 2199,
-    originalPrice: 3499,
-    discountPercent: 37,
-    shortDescription: "Traditional Masala Dani with intricate lotus lid, 7 inner cups, and mini brass spice spoon.",
-    description: "Breathe heirloom beauty into your daily cooking ritual. Each container is made of durable pure brass that naturally repels insects and protects the potency of your precious spices and dry fruits.",
-    material: "100% Pure Heavy Brass",
-    dimensions: { length: 21, width: 21, height: 8, unit: "cm" },
-    weightKg: 1.25,
-    colorFinish: "Polished Mirror Brass with Textured Carvings",
-    stock: 18,
-    inStock: true,
-    featured: false,
-    bestseller: true,
-    newArrival: false,
-    tags: ["brass masala box", "spice container", "dry fruit box", "indian kitchen", "festive gift"],
-    images: [
-      "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1517816743773-6e0fd518b4a6?auto=format&fit=crop&w=800&q=80"
+    "id": "wood-vintage-ornate-watch",
+    "name": "Vintage Ornate Victorian Filigree Pocket Watch",
+    "slug": "vintage-ornate-pocket-watch",
+    "sku": "BC-WD-014",
+    "category": "Wood Craft",
+    "subCategory": "Wooden Art",
+    "collection": "Heritage Collection",
+    "badge": "HANDCRAFTED",
+    "price": 349,
+    "originalPrice": 699,
+    "material": "Antique Filigree Bronze Alloy",
+    "shortDescription": "Classic Victorian floral filigree pocket watch with hollow-carved see-through case lid.",
+    "description": "Exquisite Victorian floral arabesque openwork adorns this vintage pocket watch. The open filigree lid allows a subtle glimpse of the dial and hands even when closed. Finished in antiqued heirloom bronze with intricate scrollwork covering the rear casing.",
+    "highlights": [
+      "Open-worked Victorian floral filigree lid with see-through aperture",
+      "Lavish arabesque relief engraving on both front and rear plates",
+      "Smooth quartz caliber with sweeping second hand",
+      "Comes with durable 35cm clip chain for jackets and vests"
     ],
-    careInstructions: [
-      "Dry completely after washing before filling with spices."
+    "dimensions": {
+      "length": 4.8,
+      "width": 4.8,
+      "height": 1.5,
+      "unit": "cm"
+    },
+    "weightKg": 0.08,
+    "colorFinish": "Victorian Antique Bronze",
+    "stock": 25,
+    "featured": false,
+    "bestseller": true,
+    "newArrival": false,
+    "rating": 4.9,
+    "reviewCount": 35,
+    "tags": [
+      "ornate pocket watch",
+      "victorian watch",
+      "filigree watch",
+      "vintage pocket watch",
+      "curio",
+      "wood craft"
     ],
-    rating: 4.8,
-    reviewCount: 52,
-    reviews: []
+    "images": [
+      "/products/vintage-ornate-pocket-watch/4.1.jpg",
+      "/products/vintage-ornate-pocket-watch/4.2.jpg",
+      "/products/vintage-ornate-pocket-watch/4.3.jpg",
+      "/products/vintage-ornate-pocket-watch/4.4.jpg",
+      "/products/vintage-ornate-pocket-watch/4.5.jpg",
+      "/products/vintage-ornate-pocket-watch/4.6.jpg",
+      "/products/vintage-ornate-pocket-watch/4.7.jpg"
+    ],
+    "discountPercent": 50,
+    "inStock": true,
+    "isCancellable": true,
+    "isReturnable": true,
+    "returnWindowDays": 7,
+    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
+    "returnPolicy": "7 days replacement or return if received damaged or defective.",
+    "reviews": [
+      {
+        "userName": "Aarav Sharma",
+        "userCity": "Jaipur",
+        "rating": 5,
+        "date": "2026-09-14",
+        "title": "Stunning authentic craft",
+        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-vintage-ornate-watch-1"
+      },
+      {
+        "userName": "Pooja Mehta",
+        "userCity": "Mumbai",
+        "rating": 5,
+        "date": "2026-09-18",
+        "title": "Pure artisan perfection",
+        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-vintage-ornate-watch-2"
+      }
+    ],
+    "careInstructions": [
+      "Keep away from direct water immersion and high humidity environments",
+      "Wipe clean with a soft microfiber jewelry cloth",
+      "Uses standard LR66 / 377 button cell battery, easily replaceable at any watchmaker",
+      "Store in a dry velvet pouch or jewelry box when not in use"
+    ]
   },
   {
-    id: "prod-016",
-    name: "Ornate Brass Hanging Bell with Ganpati & Peacock Carving",
-    slug: "ornate-brass-hanging-bell-ganpati-peacock",
-    sku: "AC-BEL-0116",
-    category: "Wall Decor",
-    subCategory: "Hanging Bells",
-    price: 1850,
-    originalPrice: 2800,
-    discountPercent: 34,
-    shortDescription: "Acoustic temple hanging bell cast in high-resonance bell brass with heavy chain and wall mount bracket.",
-    description: "Produces a clear, prolonged sacred resonance that clears negative energies and brings positive vibrations to entryways, pooja corners, and garden patios.",
-    material: "Resonant Bell Metal (Cast Brass & Bronze)",
-    dimensions: { length: 12, width: 12, height: 42, unit: "cm" },
-    weightKg: 1.8,
-    colorFinish: "Antique Temple Gold",
-    stock: 12,
-    inStock: true,
-    featured: false,
-    bestseller: false,
-    newArrival: true,
-    tags: ["hanging bell", "brass ghanta", "pooja bell", "temple bell", "entrance decor"],
-    images: [
-      "https://images.unsplash.com/photo-1582738411706-bfc8e691d1c2?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80"
+    "id": "wood-vintage-textured-watch",
+    "name": "Vintage Textured Sunburst Heritage Pocket Watch",
+    "slug": "vintage-textured-pocket-watch",
+    "sku": "BC-WD-015",
+    "category": "Wood Craft",
+    "subCategory": "Wooden Art",
+    "collection": "Artisan Collection",
+    "badge": "HANDCRAFTED",
+    "price": 349,
+    "originalPrice": 699,
+    "material": "Antiqued Alloy with Radial Guilloche Texture",
+    "shortDescription": "Timeless textured guilloche-pattern pocket watch with central shield motif and antique patina.",
+    "description": "Understated vintage elegance at its finest. This pocket watch features an intricate geometric guilloche sunburst texture across its outer shell, centered with a classic heraldic cartouche. The warm patinated bronze finish gives it the feel of a cherished family heirloom.",
+    "highlights": [
+      "Radial sunburst textured engraving with central heraldic shield",
+      "Classic Roman numeral dial with filigree spade hands",
+      "Push-button crown opens cover smoothly to 90 degrees",
+      "Gift-ready timepiece with matching chain"
     ],
-    careInstructions: ["Hang firmly on wall stud using supplied brass screws."],
-    rating: 4.9,
-    reviewCount: 38,
-    reviews: []
-  },
-  {
-    id: "prod-017",
-    name: "Handcrafted Dokra Brass Tribal Musician Figurines (Set of 3)",
-    slug: "dokra-brass-tribal-musician-figurines-set-of-3",
-    sku: "AC-DKR-0117",
-    category: "Antique Metal Decor",
-    subCategory: "Dhokra Craft",
-    price: 2100,
-    originalPrice: 3200,
-    discountPercent: 34,
-    shortDescription: "Trio of ancient Bastar tribal musicians playing dholak, shehnai, and kartal, cast in lost-wax brass.",
-    description: "Celebrate folk music and indigenous Indian heritage with these characterful tribal musicians. Each piece is modeled freehand from wax coils before clay mold casting, imparting organic textures and raw expressive vitality.",
-    material: "Authentic Dokra Bell Metal Alloy",
-    dimensions: { length: 8, width: 6, height: 17, unit: "cm" },
-    weightKg: 1.1,
-    colorFinish: "Rustic Antique Patina",
-    stock: 14,
-    inStock: true,
-    featured: false,
-    bestseller: false,
-    newArrival: false,
-    tags: ["dokra musicians", "tribal figurines", "bastar art", "bookshelf decor", "artisan collectible"],
-    images: [
-      "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=800&q=80"
+    "dimensions": {
+      "length": 4.8,
+      "width": 4.8,
+      "height": 1.5,
+      "unit": "cm"
+    },
+    "weightKg": 0.08,
+    "colorFinish": "Antique Patinated Bronze",
+    "stock": 24,
+    "featured": false,
+    "bestseller": false,
+    "newArrival": true,
+    "rating": 4.8,
+    "reviewCount": 21,
+    "tags": [
+      "textured pocket watch",
+      "vintage watch",
+      "heritage pocket watch",
+      "guilloche watch",
+      "wood craft"
     ],
-    careInstructions: ["Dust with a dry bristle brush."],
-    rating: 4.7,
-    reviewCount: 23,
-    reviews: []
-  },
-  {
-    id: "prod-018",
-    name: "Heirloom Pure Brass Tortoise Yantra for Vastu & Feng Shui",
-    slug: "pure-brass-tortoise-yantra-vastu",
-    sku: "AC-VST-0118",
-    category: "Table Decor",
-    subCategory: "Vastu & Spiritual",
-    price: 899,
-    originalPrice: 1499,
-    discountPercent: 40,
-    shortDescription: "Solid brass Kurma (tortoise) with engraved Sri Yantra on shell and glass plate for positive energy.",
-    description: "According to Vastu Shastra, placing a brass Kurma in the North or East direction of your home or workspace attracts stability, career longevity, and wealth accumulation.",
-    material: "Pure Cast Brass & Toughened Glass Bowl",
-    dimensions: { length: 14, width: 14, height: 5, unit: "cm" },
-    weightKg: 0.55,
-    colorFinish: "Glossy Warm Brass",
-    stock: 30,
-    inStock: true,
-    featured: false,
-    bestseller: true,
-    newArrival: false,
-    tags: ["brass tortoise", "vastu kurma", "sri yantra", "money attractor", "desk artifact"],
-    images: [
-      "https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80"
+    "images": [
+      "/products/vintage-textured-pocket-watch/5.1.jpg",
+      "/products/vintage-textured-pocket-watch/5.2.jpg",
+      "/products/vintage-textured-pocket-watch/5.3.jpg",
+      "/products/vintage-textured-pocket-watch/5.4.jpg",
+      "/products/vintage-textured-pocket-watch/5.5.jpg",
+      "/products/vintage-textured-pocket-watch/5.6.jpg",
+      "/products/vintage-textured-pocket-watch/5.7.jpg"
     ],
-    careInstructions: ["Add fresh water and floating flowers to the glass plate daily."],
-    rating: 4.9,
-    reviewCount: 71,
-    reviews: []
-  },
-  {
-    id: "prod-019",
-    name: "Handcrafted Royal Brass Elephant Incense Stick & Dhoop Burner",
-    slug: "royal-brass-elephant-incense-burner",
-    sku: "AC-INC-0119",
-    category: "Candle Holders & Diyas",
-    subCategory: "Incense Burners",
-    price: 999,
-    originalPrice: 1699,
-    discountPercent: 41,
-    shortDescription: "Decorative brass elephant with removable pierced saddle lid that emits fragrant smoke curls.",
-    description: "An ingenious piece of artisanal metalwork. Place your favorite dhoop cone or sambrani tablet inside the hollow body; aromatic smoke filters gracefully through the openwork lattice saddle.",
-    material: "Cast Brass",
-    dimensions: { length: 13, width: 7, height: 11, unit: "cm" },
-    weightKg: 0.62,
-    colorFinish: "Aged Antique Brass",
-    stock: 25,
-    inStock: true,
-    featured: false,
-    bestseller: false,
-    newArrival: true,
-    tags: ["incense burner", "dhoop dani", "brass elephant", "pooja fragrance", "spiritual decor"],
-    images: [
-      "https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1582738411706-bfc8e691d1c2?auto=format&fit=crop&w=800&q=80"
+    "discountPercent": 50,
+    "inStock": true,
+    "isCancellable": true,
+    "isReturnable": true,
+    "returnWindowDays": 7,
+    "cancellationPolicy": "Cancellations accepted within 24 hours of order placement before shipment.",
+    "returnPolicy": "7 days replacement or return if received damaged or defective.",
+    "reviews": [
+      {
+        "userName": "Aarav Sharma",
+        "userCity": "Jaipur",
+        "rating": 5,
+        "date": "2026-09-14",
+        "title": "Stunning authentic craft",
+        "comment": "Exceeded all expectations! The wood grain and polish are absolutely authentic and high quality.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-vintage-textured-watch-1"
+      },
+      {
+        "userName": "Pooja Mehta",
+        "userCity": "Mumbai",
+        "rating": 5,
+        "date": "2026-09-18",
+        "title": "Pure artisan perfection",
+        "comment": "Beautifully packed and arrived in pristine condition. Feels so premium in hands.",
+        "verifiedPurchase": true,
+        "id": "rev-wood-vintage-textured-watch-2"
+      }
     ],
-    careInstructions: ["Discard cooled ash and wipe interior with dry paper towel."],
-    rating: 4.8,
-    reviewCount: 39,
-    reviews: []
-  },
-  {
-    id: "prod-020",
-    name: "Artisan Moradabad Floral Engraved Brass Serving Tray",
-    slug: "moradabad-floral-engraved-brass-serving-tray",
-    sku: "AC-TRY-0120",
-    category: "Decorative Trays & Urli",
-    subCategory: "Serving Trays",
-    price: 1999,
-    originalPrice: 3200,
-    discountPercent: 38,
-    shortDescription: "14-inch scalloped edge brass platter etched with traditional Chikan paisley motifs.",
-    description: "Straight from India's world-famous brass capital, Moradabad. Hand-beaten from heavy sheet brass and chased with detailed vine patterns, this tray turns serving tea, sweets, and cocktails into an art form.",
-    material: "Heavy Gauge Sheet Brass",
-    dimensions: { length: 36, width: 24, height: 3.5, unit: "cm" },
-    weightKg: 1.15,
-    colorFinish: "Brushed Satin Gold with Clear Lacquer",
-    stock: 17,
-    inStock: true,
-    featured: true,
-    bestseller: false,
-    newArrival: false,
-    tags: ["brass tray", "moradabad brassware", "serving platter", "dining luxury", "hostess gift"],
-    images: [
-      "https://images.unsplash.com/photo-1517816743773-6e0fd518b4a6?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80"
-    ],
-    careInstructions: ["Wipe with damp cloth and dry immediately."],
-    rating: 4.9,
-    reviewCount: 46,
-    reviews: []
-  },
-  {
-    id: "prod-021",
-    name: "Traditional Handcrafted Brass Pooja Bell with Nandi Finial",
-    slug: "traditional-handcrafted-brass-pooja-bell-nandi",
-    sku: "AC-BEL-0121",
-    category: "Pooja Essentials & Idols",
-    subCategory: "Pooja Essentials",
-    price: 749,
-    originalPrice: 1299,
-    discountPercent: 42,
-    shortDescription: "Sweet sounding sacred handheld prayer bell topped with Lord Shiva's faithful Nandi Bull.",
-    description: "Crafted to produce the sacred primordial OM vibration. Rings with a pure, prolonged chime that enhances spiritual concentration during morning aarti and evening prayers.",
-    material: "Pure Bell Brass",
-    dimensions: { length: 6, width: 6, height: 16, unit: "cm" },
-    weightKg: 0.48,
-    colorFinish: "Traditional Temple Gold",
-    stock: 33,
-    inStock: true,
-    featured: false,
-    bestseller: true,
-    newArrival: false,
-    tags: ["pooja bell", "nandi bell", "brass ghanti", "mandir aarti bell", "pooja gift"],
-    images: [
-      "https://images.unsplash.com/photo-1582738411706-bfc8e691d1c2?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=800&q=80"
-    ],
-    careInstructions: ["Polish periodically with brass cleaner."],
-    rating: 5.0,
-    reviewCount: 65,
-    reviews: []
-  },
-  {
-    id: "prod-022",
-    name: "Antique Nautical Brass Telescope with Wooden Tripod Stand",
-    slug: "antique-nautical-brass-telescope-with-wooden-tripod",
-    sku: "AC-TEL-0122",
-    category: "Vintage Collection",
-    subCategory: "Nautical Instruments",
-    price: 3699,
-    originalPrice: 5999,
-    discountPercent: 38,
-    shortDescription: "Classic extendable brass refractor telescope with focus knob and adjustable teak tripod.",
-    description: "An eye-catching statement piece for home libraries, study tables, and living room console consoles. Built with genuine optical glass lenses offering 15x magnification, polished brass barrel, and brass-tipped wooden tripod legs.",
-    material: "Solid Brass & Hardwood Tripod",
-    dimensions: { length: 25, width: 25, height: 42, unit: "cm" },
-    weightKg: 1.85,
-    colorFinish: "Burnished Antique Brass & Teak Finish",
-    stock: 7,
-    inStock: true,
-    featured: true,
-    bestseller: false,
-    newArrival: true,
-    tags: ["brass telescope", "nautical decor", "vintage study", "tripod telescope", "collector gift"],
-    images: [
-      "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&w=800&q=80"
-    ],
-    careInstructions: ["Dust lenses with lens cloth only. Keep dry."],
-    rating: 4.8,
-    reviewCount: 18,
-    reviews: []
-  },
-  {
-    id: "prod-023",
-    name: "Handmade Brass Peacock Diya with Hanging Chain (Deepdan)",
-    slug: "handmade-brass-peacock-diya-with-hanging-chain",
-    sku: "AC-DYA-0123",
-    category: "Candle Holders & Diyas",
-    subCategory: "Hanging Diyas",
-    price: 1599,
-    originalPrice: 2499,
-    discountPercent: 36,
-    shortDescription: "Exquisite suspended oil lamp featuring a majestic peacock and deep oil reservoir with wick slit.",
-    description: "Creates an enchanting warm ambiance when hung at temple entrances or over verandah seating. The heavy solid brass chain includes a brass S-hook for quick suspension from ceilings and beams.",
-    material: "Pure Cast Brass",
-    dimensions: { length: 13, width: 13, height: 45, unit: "cm" },
-    weightKg: 1.2,
-    colorFinish: "Traditional Golden Antique Brass",
-    stock: 14,
-    inStock: true,
-    featured: false,
-    bestseller: false,
-    newArrival: true,
-    tags: ["hanging diya", "peacock deepdan", "brass lamp", "diwali hanging light", "balcony decor"],
-    images: [
-      "https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80"
-    ],
-    careInstructions: ["Wipe clean after oil burning."],
-    rating: 4.9,
-    reviewCount: 26,
-    reviews: []
-  },
-  {
-    id: "prod-024",
-    name: "Shubh Labh Brass Door Hanging with Ganesha Bells",
-    slug: "shubh-labh-brass-door-hanging-ganesha-bells",
-    sku: "AC-GFT-0124",
-    category: "Gifting",
-    subCategory: "Festive Hangings",
-    price: 899,
-    originalPrice: 1599,
-    discountPercent: 44,
-    shortDescription: "Pair of auspicious handcrafted door hangings featuring Lord Ganesha, floral vines, and sweet bells.",
-    description: "Welcome guests, luck, and positive cosmic energy into your abode. Hang on both sides of the main entryway door or mandir arch. Makes a thoughtful housewarming and wedding gift.",
-    material: "Cast Brass with Red Enamel Highlights",
-    dimensions: { length: 8, width: 2, height: 35, unit: "cm" },
-    weightKg: 0.7,
-    colorFinish: "Gold with Traditional Red Mina Work",
-    stock: 22,
-    inStock: true,
-    featured: false,
-    bestseller: true,
-    newArrival: false,
-    tags: ["shubh labh", "door hanging", "toran bells", "festive gifting", "diwali gift"],
-    images: [
-      "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1582738411706-bfc8e691d1c2?auto=format&fit=crop&w=800&q=80"
-    ],
-    careInstructions: ["Wipe with soft cloth."],
-    rating: 4.9,
-    reviewCount: 53,
-    reviews: []
+    "careInstructions": [
+      "Keep away from direct water immersion and high humidity environments",
+      "Wipe clean with a soft microfiber jewelry cloth",
+      "Uses standard LR66 / 377 button cell battery, easily replaceable at any watchmaker",
+      "Store in a dry velvet pouch or jewelry box when not in use"
+    ]
   }
 ];
+
 
 export const INITIAL_COUPONS: Coupon[] = [
   {

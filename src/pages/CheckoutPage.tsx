@@ -6,12 +6,20 @@ import {
   Truck,
   Building2,
   Lock,
-  AlertCircle
+  AlertCircle,
+  XCircle,
+  HelpCircle
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { useShop } from '../context/ShopContext';
-import type { PaymentMethod, ShippingAddress } from '../types';
+import type { PaymentMethod, ShippingAddress, Order } from '../types';
 import { BRAND } from '../config/brand';
+import {
+  createBackendOrder,
+  verifyPaymentWithServer,
+  cancelPaymentOnServer,
+  loadRazorpaySDK,
+} from '../services/paymentApi';
 
 const INDIAN_STATES = [
   'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Goa', 'Gujarat',
@@ -29,7 +37,8 @@ export const CheckoutPage: React.FC = () => {
     appliedCoupon,
     discountAmount,
     finalTotal,
-    createOrder,
+    syncOrder,
+    clearCart,
     navigate,
     showToast,
   } = useShop();
@@ -51,6 +60,17 @@ export const CheckoutPage: React.FC = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
 
+  // Sandbox Test Gateway Modal State (Development / Test Mode only)
+  const [sandboxModalOrder, setSandboxModalOrder] = useState<{
+    orderId: string;
+    orderNumber: string;
+    gatewayOrderId: string;
+    amount: number;
+    amountPaise: number;
+    mockSignatureToken?: string;
+    order: Order;
+  } | null>(null);
+
   if (cart.length === 0) {
     return (
       <div className="max-w-xl mx-auto px-4 py-20 text-center">
@@ -69,11 +89,12 @@ export const CheckoutPage: React.FC = () => {
   const shippingCost = freeShippingProgress.qualifies ? 0 : BRAND.shipping.standardShippingFee;
   const totalAmount = finalTotal + shippingCost;
 
-  const handlePlaceOrder = (e: React.FormEvent) => {
+  // Real Payment Verification Execution Flow
+  const handlePlaceOrder = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg('');
 
-    // Validation
+    // 1. Client-side Form Validation
     if (!fullName.trim() || !phone.trim() || !email.trim() || !addressLine1.trim() || !city.trim() || !pincode.trim()) {
       setErrorMsg('Please fill in all required shipping address fields.');
       return;
@@ -91,8 +112,7 @@ export const CheckoutPage: React.FC = () => {
 
     setIsProcessing(true);
 
-    // Simulate safe Indian payment processing
-    setTimeout(() => {
+    try {
       const shippingAddress: ShippingAddress = {
         fullName,
         phone,
@@ -107,44 +127,232 @@ export const CheckoutPage: React.FC = () => {
       const orderItems = cart.map((item) => ({
         productId: item.product.id,
         productName: item.product.name,
-        productImage: item.product.images[0],
-        variantName: item.selectedVariant?.name,
+        productImage: item.product.images?.[0] || '',
         price: item.selectedVariant ? item.selectedVariant.price : item.product.price,
         quantity: item.quantity,
-        total: (item.selectedVariant ? item.selectedVariant.price : item.product.price) * item.quantity,
+        variantName: item.selectedVariant?.name,
       }));
 
-      const newOrder = createOrder({
+      // 2. Request order creation on BACKEND (Server calculates authoritative pricing)
+      const backendResponse = await createBackendOrder({
         customer: { fullName, phone, email },
         shippingAddress,
         items: orderItems,
-        subtotal: cartSubtotal,
-        discount: discountAmount,
-        shippingFee: shippingCost,
-        total: totalAmount,
-        couponCode: appliedCoupon?.code,
         paymentMethod,
-        paymentStatus: paymentMethod === 'cod' ? 'cod_pending' : 'paid',
-        orderStatus: 'Confirmed',
-        trackingNumber: `EXP-IN-${Math.floor(10000000 + Math.random() * 90000000)}`,
+        couponCode: appliedCoupon?.code,
+        upiVpa: paymentMethod === 'upi' ? upiVpa.trim() : undefined,
       });
 
-      // Celebratory Confetti!
-      try {
-        confetti({
-          particleCount: 100,
-          spread: 70,
-          origin: { y: 0.6 },
-          colors: ['#6E001B', '#FFEDA0', '#FDA256', '#2DA815'],
-        });
-      } catch (err) {
-        console.error(err);
+      const { order, gatewayOrderId, keyId, mockSignatureToken } = backendResponse;
+
+      // 3. Handle Cash on Delivery (COD)
+      if (paymentMethod === 'cod') {
+        setIsProcessing(false);
+        syncOrder(order);
+        clearCart();
+        showToast('Cash on Delivery order confirmed!');
+        navigate(`/order-confirmation/${order.id}`);
+        return;
       }
 
+      // 4. Online Payment: Attempt Razorpay Standard Gateway
+      const isRealRazorpay = keyId && keyId.startsWith('rzp_') && keyId !== 'rzp_test_beingcraft_sandbox';
+
+      if (isRealRazorpay) {
+        const sdkLoaded = await loadRazorpaySDK();
+        if (!sdkLoaded) {
+          throw new Error('Payment gateway SDK failed to load. Please check your connection and retry.');
+        }
+
+        const options = {
+          key: keyId,
+          amount: backendResponse.amountPaise,
+          currency: backendResponse.currency || 'INR',
+          name: BRAND.name,
+          description: `Order ${backendResponse.orderNumber} - Authentic Indian Heritage Crafts`,
+          order_id: gatewayOrderId,
+          prefill: {
+            name: fullName,
+            email,
+            contact: phone,
+            vpa: paymentMethod === 'upi' && upiVpa ? upiVpa : undefined,
+          },
+          notes: {
+            orderId: order.id,
+            orderNumber: order.orderNumber,
+          },
+          theme: {
+            color: '#6E001B', // Brand Maroon
+          },
+          modal: {
+            ondismiss: async () => {
+              setIsProcessing(false);
+              await cancelPaymentOnServer(order.id, 'Customer dismissed gateway modal');
+              setErrorMsg('Payment was cancelled. You have not been charged.');
+              syncOrder({ ...order, paymentStatus: 'CANCELLED' });
+            },
+          },
+          handler: async (response: {
+            razorpay_payment_id: string;
+            razorpay_order_id: string;
+            razorpay_signature: string;
+          }) => {
+            // 5. SERVER-SIDE CRYPTOGRAPHIC VERIFICATION
+            // The frontend does NOT mark as paid. It sends gateway signature to server.
+            try {
+              setIsProcessing(true);
+              const verification = await verifyPaymentWithServer({
+                orderId: order.id,
+                gatewayOrderId: response.razorpay_order_id,
+                paymentId: response.razorpay_payment_id,
+                signature: response.razorpay_signature,
+              });
+
+              if (verification.success && verification.paymentStatus === 'SUCCESS') {
+                // ONLY NOW can order be treated as PAID
+                syncOrder(verification.order);
+                clearCart();
+                try {
+                  confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 },
+                    colors: ['#6E001B', '#FFEDA0', '#FDA256', '#2DA815'],
+                  });
+                } catch {
+                  // ignore confetti failure
+                }
+                showToast('Payment verified successfully!');
+                navigate(`/order-confirmation/${order.id}`);
+              } else {
+                setErrorMsg(verification.message || 'Payment verification failed on server.');
+              }
+            } catch (err: unknown) {
+              const error = err as Error;
+              setErrorMsg(error.message || 'Server verification failed.');
+            } finally {
+              setIsProcessing(false);
+            }
+          },
+        };
+
+        const razorpayInstance = new (window as any).Razorpay(options);
+        razorpayInstance.on('payment.failed', async (response: any) => {
+          setIsProcessing(false);
+          setErrorMsg(`Payment Declined by Bank: ${response.error?.description || 'Transaction failed'}`);
+          await cancelPaymentOnServer(order.id, response.error?.description || 'Gateway declined');
+        });
+
+        razorpayInstance.open();
+        return;
+      }
+
+      // 5. Sandbox / Test Gateway Flow (Safe Development Mode)
+      // When live gateway credentials are not yet configured in local test environment,
+      // present a Sandbox Gateway Interface where real SERVER endpoints verify transactions.
       setIsProcessing(false);
-      showToast('Order confirmed successfully!');
-      navigate(`/order-confirmation/${newOrder.id}`);
-    }, 1200);
+      setSandboxModalOrder({
+        orderId: order.id,
+        orderNumber: order.orderNumber,
+        gatewayOrderId: gatewayOrderId || '',
+        amount: backendResponse.amount,
+        amountPaise: backendResponse.amountPaise,
+        mockSignatureToken,
+        order,
+      });
+    } catch (err: unknown) {
+      const error = err as Error;
+      setIsProcessing(false);
+      setErrorMsg(error.message || 'An error occurred during payment processing.');
+    }
+  };
+
+  // Sandbox Test Action Handlers (All communicate with real backend verification endpoint)
+  const handleSandboxApprove = async () => {
+    if (!sandboxModalOrder) return;
+    setIsProcessing(true);
+    setErrorMsg('');
+
+    try {
+      const testPaymentId = `pay_test_${Date.now()}`;
+      const verification = await verifyPaymentWithServer({
+        orderId: sandboxModalOrder.orderId,
+        gatewayOrderId: sandboxModalOrder.gatewayOrderId,
+        paymentId: testPaymentId,
+        signature: `sig_test_${Date.now()}`,
+        mockSignatureToken: sandboxModalOrder.mockSignatureToken,
+      });
+
+      if (verification.success && verification.paymentStatus === 'SUCCESS') {
+        syncOrder(verification.order);
+        clearCart();
+        setSandboxModalOrder(null);
+        try {
+          confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 },
+            colors: ['#6E001B', '#FFEDA0', '#FDA256', '#2DA815'],
+          });
+        } catch {
+          // ignore
+        }
+        showToast('Payment verified successfully by server!');
+        navigate(`/order-confirmation/${sandboxModalOrder.orderId}`);
+      } else {
+        setErrorMsg('Server rejected test payment.');
+      }
+    } catch (err: unknown) {
+      const error = err as Error;
+      setErrorMsg(error.message || 'Server verification failed.');
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  const handleSandboxSimulateFailure = async () => {
+    if (!sandboxModalOrder) return;
+    setIsProcessing(true);
+    try {
+      // Send an invalid signature to demonstrate server rejection
+      await verifyPaymentWithServer({
+        orderId: sandboxModalOrder.orderId,
+        gatewayOrderId: sandboxModalOrder.gatewayOrderId,
+        paymentId: 'pay_bad_id',
+        signature: 'INVALID_TAMPERED_SIGNATURE',
+        mockSignatureToken: 'INVALID_TOKEN',
+      });
+    } catch (err: unknown) {
+      const error = err as Error;
+      setErrorMsg(`Server Correctly Rejected Invalid Payment: ${error.message}`);
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  const handleSandboxCancel = async () => {
+    if (!sandboxModalOrder) return;
+    setIsProcessing(true);
+    try {
+      await cancelPaymentOnServer(sandboxModalOrder.orderId, 'User cancelled sandbox payment');
+      syncOrder({ ...sandboxModalOrder.order, paymentStatus: 'CANCELLED' });
+      setSandboxModalOrder(null);
+      setErrorMsg('Payment was cancelled. Order marked as CANCELLED.');
+    } catch (err: unknown) {
+      const error = err as Error;
+      setErrorMsg(error.message);
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  const handleSandboxLeavePending = () => {
+    if (!sandboxModalOrder) return;
+    syncOrder({ ...sandboxModalOrder.order, paymentStatus: 'PENDING' });
+    clearCart();
+    setSandboxModalOrder(null);
+    showToast('Payment session created. Awaiting bank confirmation.', 'info');
+    navigate(`/order-confirmation/${sandboxModalOrder.orderId}`);
   };
 
   return (
@@ -155,21 +363,32 @@ export const CheckoutPage: React.FC = () => {
         <span>/</span>
         <a href="#/cart" onClick={(e) => { e.preventDefault(); navigate('/cart'); }} className="hover:text-brand-maroon">Cart</a>
         <span>/</span>
-        <span className="text-charcoal-900 font-medium">Indian Checkout</span>
+        <span className="text-charcoal-900 font-medium">Secure Checkout</span>
       </nav>
 
-      {/* Demo Mode Notice */}
-      <div className="mb-6 p-4 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 flex items-start gap-2.5">
-        <AlertCircle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-        <div>
-          <strong className="font-semibold">Demo Gateway Mode Active:</strong> You can place a complete test order using UPI, Card, Net Banking, or COD. No real money will be charged. Full Razorpay integration connects seamlessly with your live API credentials.
+      {/* Security Architecture Badge */}
+      <div className="mb-6 p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 flex items-start gap-2.5 shadow-xs">
+        <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+        <div className="space-y-1">
+          <p className="font-bold text-slate-900">
+            Real Server-Side Payment Verification Active
+          </p>
+          <p className="text-slate-600">
+            Orders are only marked as <span className="font-mono bg-emerald-100 text-emerald-800 px-1 py-0.5 rounded font-bold">PAID</span> after cryptographic signature verification and exact amount reconciliation on our backend server. Entering a UPI ID or clicking Pay does not confirm payment.
+          </p>
         </div>
       </div>
 
       {errorMsg && (
-        <div className="mb-6 p-3.5 bg-red-50 border border-red-200 rounded-xl text-xs text-red-700 font-medium flex items-center gap-2">
-          <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
-          <span>{errorMsg}</span>
+        <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-xs text-red-800 font-medium flex items-start gap-2.5">
+          <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+          <div className="flex-1">
+            <strong className="block font-bold">Payment Error:</strong>
+            <span>{errorMsg}</span>
+          </div>
+          <button onClick={() => setErrorMsg('')} className="text-red-400 hover:text-red-700">
+            <XCircle className="w-4 h-4" />
+          </button>
         </div>
       )}
 
@@ -305,7 +524,7 @@ export const CheckoutPage: React.FC = () => {
           <div className="bg-white p-6 rounded-2xl border border-surface-border shadow-sm space-y-4">
             <h2 className="font-heading font-bold text-base text-charcoal-900 flex items-center gap-2">
               <span className="w-6 h-6 rounded-full bg-brand-maroon text-white text-xs flex items-center justify-center font-bold">3</span>
-              <span>Select Indian Payment Method</span>
+              <span>Select Payment Method</span>
             </h2>
 
             <div className="space-y-3">
@@ -327,8 +546,8 @@ export const CheckoutPage: React.FC = () => {
                       className="accent-brand-maroon"
                     />
                     <div>
-                      <span className="text-xs font-bold text-charcoal-900 block">UPI (Instant 0% Fee)</span>
-                      <span className="text-[11px] text-charcoal-500">Google Pay, PhonePe, Paytm, BHIM, QR Code</span>
+                      <span className="text-xs font-bold text-charcoal-900 block">UPI (Unified Payments Interface)</span>
+                      <span className="text-[11px] text-charcoal-500">Google Pay, PhonePe, Paytm, BHIM, CRED, QR Code</span>
                     </div>
                   </div>
                   <QrCode className="w-5 h-5 text-brand-maroon" />
@@ -336,21 +555,21 @@ export const CheckoutPage: React.FC = () => {
 
                 {paymentMethod === 'upi' && (
                   <div className="mt-3 pt-3 border-t border-brand-maroon/20 pl-7 space-y-2 text-xs">
-                    <div className="flex gap-2">
-                      <input
-                        type="text"
-                        placeholder="Enter your UPI ID (e.g. name@upi)"
-                        value={upiVpa}
-                        onChange={(e) => setUpiVpa(e.target.value)}
-                        className="flex-1 px-3 py-1.5 border border-surface-border rounded-md bg-white focus:outline-none focus:border-brand-maroon"
-                      />
-                      <span className="px-2.5 py-1.5 bg-brand-gold text-black font-semibold rounded-md text-[11px] flex items-center">
-                        Verified
+                    <div className="p-2.5 bg-amber-50 border border-amber-200 rounded-lg text-amber-900 text-[11px] flex items-start gap-1.5">
+                      <HelpCircle className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
+                      <span>
+                        <strong>Real Payment Process:</strong> When you click "Proceed to Pay", the secure payment gateway will open. You can scan dynamic QR code or authorize via your UPI app. Entering a UPI ID here is optional and merely prefills the gateway. Money is only transferred when authorized by you in your UPI app.
                       </span>
                     </div>
-                    <span className="text-[11px] text-charcoal-500 block">
-                      Or scan dynamic QR code on the next screen from any UPI app.
-                    </span>
+                    <div>
+                      <input
+                        type="text"
+                        placeholder="Optional UPI ID (e.g. yourname@okhdfcbank)"
+                        value={upiVpa}
+                        onChange={(e) => setUpiVpa(e.target.value)}
+                        className="w-full px-3 py-1.5 border border-surface-border rounded-md bg-white focus:outline-none focus:border-brand-maroon"
+                      />
+                    </div>
                   </div>
                 )}
               </label>
@@ -382,9 +601,12 @@ export const CheckoutPage: React.FC = () => {
 
                 {paymentMethod === 'card' && (
                   <div className="mt-3 pt-3 border-t border-brand-maroon/20 pl-7 space-y-2 text-xs">
+                    <p className="text-[11px] text-charcoal-600">
+                      Card payments are securely processed via 256-bit encrypted gateway with bank OTP (3D Secure).
+                    </p>
                     <input
                       type="text"
-                      placeholder="Card Number (e.g. 4111 2222 3333 4444)"
+                      placeholder="Card Number (Optional prefill)"
                       maxLength={19}
                       value={cardNumber}
                       onChange={(e) => setCardNumber(e.target.value)}
@@ -402,7 +624,7 @@ export const CheckoutPage: React.FC = () => {
                       <input
                         type="password"
                         placeholder="CVV"
-                        maxLength={3}
+                        maxLength={4}
                         value={cardCvv}
                         onChange={(e) => setCardCvv(e.target.value)}
                         className="w-full px-3 py-1.5 border border-surface-border rounded-md bg-white focus:outline-none"
@@ -454,7 +676,7 @@ export const CheckoutPage: React.FC = () => {
                   />
                   <div>
                     <span className="text-xs font-bold text-charcoal-900 block">Cash on Delivery (COD)</span>
-                    <span className="text-[11px] text-charcoal-500">Pay cash or UPI upon parcel arrival</span>
+                    <span className="text-[11px] text-charcoal-500">Payment status will remain PENDING until parcel arrival</span>
                   </div>
                 </div>
                 <Truck className="w-5 h-5 text-emerald-600" />
@@ -512,6 +734,9 @@ export const CheckoutPage: React.FC = () => {
               <span>Total Payable</span>
               <span className="text-brand-maroon text-lg">₹{totalAmount.toLocaleString('en-IN')}.00</span>
             </div>
+            <p className="text-[10px] text-charcoal-400">
+              * Exact amount is recalculated and verified authoritatively by server.
+            </p>
           </div>
 
           {/* Place Order CTA */}
@@ -523,12 +748,16 @@ export const CheckoutPage: React.FC = () => {
             {isProcessing ? (
               <span className="flex items-center gap-2">
                 <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                <span>Processing Order...</span>
+                <span>Contacting Secure Gateway...</span>
               </span>
             ) : (
               <>
                 <Lock className="w-4 h-4" />
-                <span>Confirm & Place Order (₹{totalAmount.toLocaleString('en-IN')})</span>
+                <span>
+                  {paymentMethod === 'cod'
+                    ? `Confirm COD Order (₹${totalAmount.toLocaleString('en-IN')})`
+                    : `Proceed to Pay (₹${totalAmount.toLocaleString('en-IN')})`}
+                </span>
               </>
             )}
           </button>
@@ -536,12 +765,110 @@ export const CheckoutPage: React.FC = () => {
           <div className="pt-2 text-center text-[11px] text-charcoal-500 space-y-1">
             <div className="flex items-center justify-center gap-1.5 text-charcoal-700 font-medium">
               <ShieldCheck className="w-4 h-4 text-brand-maroon" />
-              <span>Encrypted SSL 256-Bit Protection Guarantee</span>
+              <span>Encrypted SSL 256-Bit Cryptographic Payment Gateway</span>
             </div>
-            <p>Dispatched with insurance via BlueDart / Delhivery / XpressBees.</p>
+            <p>Direct bank integration via Razorpay UPI, RuPay, Visa, MasterCard.</p>
           </div>
         </div>
       </form>
+
+      {/* DEVELOPER SANDBOX GATEWAY MODAL (Only rendered in Test / Sandbox Mode) */}
+      {sandboxModalOrder && (
+        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-surface-border space-y-5 animate-in fade-in zoom-in-95">
+            <div className="flex items-start justify-between border-b pb-3">
+              <div>
+                <span className="inline-block px-2.5 py-0.5 bg-amber-100 text-amber-900 font-mono text-[10px] font-bold uppercase rounded">
+                  Developer Sandbox Gateway Mode
+                </span>
+                <h3 className="font-heading font-bold text-lg text-charcoal-900 mt-1">
+                  Simulate Real Gateway Authorization
+                </h3>
+              </div>
+              <button
+                onClick={handleSandboxCancel}
+                disabled={isProcessing}
+                className="text-charcoal-400 hover:text-charcoal-700 p-1"
+              >
+                <XCircle className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="bg-surface-muted p-4 rounded-xl text-xs space-y-2">
+              <div className="flex justify-between">
+                <span className="text-charcoal-600">Order Number:</span>
+                <strong className="font-mono text-brand-maroon">{sandboxModalOrder.orderNumber}</strong>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-charcoal-600">Gateway Order ID:</span>
+                <strong className="font-mono text-charcoal-800">{sandboxModalOrder.gatewayOrderId}</strong>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-charcoal-600">Selected Method:</span>
+                <strong className="uppercase text-charcoal-800">{paymentMethod}</strong>
+              </div>
+              <div className="flex justify-between text-sm font-bold pt-2 border-t border-surface-border">
+                <span>Verified Server Total:</span>
+                <span className="text-brand-maroon">₹{sandboxModalOrder.amount.toLocaleString('en-IN')}.00</span>
+              </div>
+            </div>
+
+            <div className="text-xs text-charcoal-600 space-y-2">
+              <p>
+                <strong>Security Architecture Test:</strong> In production, this opens Razorpay's live UPI/Card modal. Here in sandbox mode, you can test how the backend handles different gateway responses:
+              </p>
+            </div>
+
+            <div className="space-y-2.5">
+              {/* Option 1: Legitimate verification */}
+              <button
+                type="button"
+                onClick={handleSandboxApprove}
+                disabled={isProcessing}
+                className="w-full py-3 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-xs flex items-center justify-center gap-2 shadow"
+              >
+                {isProcessing ? (
+                  <span className="animate-spin w-4 h-4 border-2 border-white border-t-transparent rounded-full" />
+                ) : (
+                  <ShieldCheck className="w-4 h-4" />
+                )}
+                <span>1. Complete Payment (Server HMAC Cryptographic Verification)</span>
+              </button>
+
+              {/* Option 2: Tampered / bad signature */}
+              <button
+                type="button"
+                onClick={handleSandboxSimulateFailure}
+                disabled={isProcessing}
+                className="w-full py-2.5 px-4 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 rounded-xl font-semibold text-xs flex items-center justify-center gap-2"
+              >
+                <AlertCircle className="w-4 h-4" />
+                <span>2. Simulate Invalid Signature / Tampering (Test Server Rejection)</span>
+              </button>
+
+              {/* Option 3: Leave as Pending */}
+              <button
+                type="button"
+                onClick={handleSandboxLeavePending}
+                disabled={isProcessing}
+                className="w-full py-2.5 px-4 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 rounded-xl font-semibold text-xs flex items-center justify-center gap-2"
+              >
+                <span>3. Test "Payment Pending" State (Simulate Bank Delayed Confirmation)</span>
+              </button>
+
+              {/* Option 4: Cancel */}
+              <button
+                type="button"
+                onClick={handleSandboxCancel}
+                disabled={isProcessing}
+                className="w-full py-2 px-4 text-charcoal-600 hover:text-charcoal-900 text-xs text-center"
+              >
+                4. Cancel Payment (Marks CANCELLED on Server)
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
