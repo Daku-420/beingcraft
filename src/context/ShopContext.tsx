@@ -87,7 +87,7 @@ const isSystemGenerated = (id?: string): boolean => {
 
 export const ShopProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   // Migration check to ensure clean slate reset
-  const MIGRATION_KEY = 'beingcraft_reset_all_data_v5';
+  const MIGRATION_KEY = 'beingcraft_reset_all_data_v10';
   const hasResetRun = typeof window !== 'undefined' && localStorage.getItem(MIGRATION_KEY) === 'true';
 
   if (typeof window !== 'undefined' && !hasResetRun) {
@@ -108,7 +108,16 @@ export const ShopProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     if (saved) {
       try {
         const parsed: Product[] = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        // Verify that cached catalog is valid, matches the current authentic catalog count,
+        // and does not contain obsolete or broken image paths
+        const hasOutdatedPaths = parsed.some((p) =>
+          !p.images ||
+          p.images.length === 0 ||
+          p.images.some((img) => img.includes('wooden-chakla-belan-set') || !img.includes('/products/'))
+        );
+        if (Array.isArray(parsed) && parsed.length === INITIAL_PRODUCTS.length && !hasOutdatedPaths) {
+          return parsed;
+        }
       } catch (e) {
         console.error(e);
       }

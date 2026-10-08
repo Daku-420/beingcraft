@@ -963,10 +963,9 @@ def scan_products():
             if not image_files:
                 continue
                 
-            # Construct relative image URLs for Vite web serving
-            # Web path: /products/<craft_type>/<folder>/<image_file>
+            import urllib.parse
             image_urls = [
-                f"/products/{craft_type}/{folder}/{img}"
+                urllib.parse.quote(f"/products/{craft_type}/{folder}/{img}", safe='/')
                 for img in image_files
             ]
             

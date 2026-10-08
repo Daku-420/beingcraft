@@ -17,6 +17,7 @@ import {
 import { useShop } from '../context/ShopContext';
 import { ProductCard } from '../components/ProductCard';
 import { BRAND } from '../config/brand';
+import { handleImageError, getSafeImageUrl } from '../utils/imageHelper';
 
 interface ProductDetailPageProps {
   slug: string;
@@ -164,8 +165,9 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug }) =>
         <div className="lg:col-span-7 space-y-4">
           <div className="relative aspect-square sm:aspect-[4/3] rounded-2xl overflow-hidden bg-surface-muted border border-surface-border shadow-md">
             <img
-              src={product.images[activeImageIndex] || product.images[0]}
+              src={getSafeImageUrl(product.images?.[activeImageIndex] || product.images?.[0])}
               alt={product.name}
+              onError={handleImageError}
               className="w-full h-full object-cover object-center transition-all duration-300"
             />
 
@@ -207,7 +209,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug }) =>
                       : 'border-surface-border hover:border-brand-maroon/40'
                   }`}
                 >
-                  <img src={img} alt="" className="w-full h-full object-cover" />
+                  <img src={getSafeImageUrl(img)} alt="" onError={handleImageError} className="w-full h-full object-cover" />
                 </button>
               ))}
             </div>
@@ -823,8 +825,9 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug }) =>
         <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-surface-border p-3 flex items-center justify-between gap-3 shadow-2xl animate-in slide-in-from-bottom-2 duration-200">
           <div className="flex items-center gap-2.5 min-w-0 flex-1">
             <img
-              src={product.images[0]}
+              src={getSafeImageUrl(product.images?.[0])}
               alt={product.name}
+              onError={handleImageError}
               className="w-11 h-11 rounded-lg object-cover border border-surface-border shrink-0"
             />
             <div className="min-w-0">

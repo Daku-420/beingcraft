@@ -17,6 +17,7 @@ import {
 import { useShop } from '../context/ShopContext';
 import { fetchOrderPaymentStatus, type OrderStatusResponse } from '../services/paymentApi';
 import type { Order } from '../types';
+import { handleImageError, getSafeImageUrl } from '../utils/imageHelper';
 
 interface OrderConfirmationPageProps {
   orderId: string;
@@ -422,8 +423,9 @@ export const OrderConfirmationPage: React.FC<OrderConfirmationPageProps> = ({ or
             <div key={idx} className="flex items-center justify-between gap-4 pt-3 first:pt-0">
               <div className="flex items-center gap-3">
                 <img
-                  src={item.productImage}
+                  src={getSafeImageUrl(item.productImage)}
                   alt={item.productName}
+                  onError={handleImageError}
                   className="w-14 h-14 object-cover rounded-lg border border-surface-border shrink-0"
                 />
                 <div>

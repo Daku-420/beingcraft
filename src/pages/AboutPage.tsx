@@ -2,6 +2,7 @@ import React from 'react';
 import { Sparkles, ShieldCheck, Heart, ArrowRight } from 'lucide-react';
 import { BRAND } from '../config/brand';
 import { useShop } from '../context/ShopContext';
+import { handleImageError } from '../utils/imageHelper';
 
 export const AboutPage: React.FC = () => {
   const { navigate } = useShop();
@@ -44,6 +45,7 @@ export const AboutPage: React.FC = () => {
           <img
             src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=800&q=80"
             alt="Artisan sculpting brass idol"
+            onError={handleImageError}
             className="w-full h-80 object-cover"
           />
         </div>

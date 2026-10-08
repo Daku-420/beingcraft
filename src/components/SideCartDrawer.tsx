@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { BRAND } from '../config/brand';
+import { handleImageError, getSafeImageUrl } from '../utils/imageHelper';
 
 export const SideCartDrawer: React.FC = () => {
   const {
@@ -146,8 +147,9 @@ export const SideCartDrawer: React.FC = () => {
                 return (
                   <div key={`${item.product.id}-${item.selectedVariant?.id || 'default'}`} className="py-4 flex gap-3.5 first:pt-0">
                     <img
-                      src={item.product.images[0]}
+                      src={getSafeImageUrl(item.product.images?.[0])}
                       alt={item.product.name}
+                      onError={handleImageError}
                       className="w-20 h-20 object-cover rounded-lg border border-surface-border shrink-0 cursor-pointer"
                       onClick={() => {
                         setIsCartDrawerOpen(false);

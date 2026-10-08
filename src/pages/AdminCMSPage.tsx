@@ -32,6 +32,7 @@ import {
 import { useShop } from '../context/ShopContext';
 import type { Product, ProductCategory } from '../types';
 import { CATEGORIES } from '../data/products';
+import { handleImageError, getSafeImageUrl } from '../utils/imageHelper';
 
 export const AdminCMSPage: React.FC = () => {
   const {
@@ -1082,8 +1083,9 @@ export const AdminCMSPage: React.FC = () => {
                       <tr key={p.id} className="hover:bg-surface-muted/40 transition-colors">
                         <td className="p-3.5">
                           <img
-                            src={p.images?.[0] || 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=400&q=80'}
+                            src={getSafeImageUrl(p.images?.[0])}
                             alt={p.name}
+                            onError={handleImageError}
                             className="w-12 h-12 rounded-lg object-cover border border-surface-border shrink-0 shadow-sm"
                           />
                         </td>
@@ -1765,8 +1767,9 @@ export const AdminCMSPage: React.FC = () => {
                           className="group relative rounded-xl overflow-hidden border-2 border-surface-border bg-charcoal-900 aspect-square shadow-sm"
                         >
                           <img
-                            src={img}
+                            src={getSafeImageUrl(img)}
                             alt=""
+                            onError={handleImageError}
                             className="w-full h-full object-cover"
                           />
                           {idx === 0 && (
@@ -2059,8 +2062,9 @@ export const AdminCMSPage: React.FC = () => {
                   <div className="rounded-xl overflow-hidden border border-surface-border bg-white shadow-sm flex flex-col">
                     <div className="relative aspect-[4/5] bg-charcoal-900 overflow-hidden">
                       <img
-                        src={images[0] || 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=400&q=80'}
+                        src={getSafeImageUrl(images[0])}
                         alt="Preview"
+                        onError={handleImageError}
                         className="w-full h-full object-cover"
                       />
                       {bestseller && (
@@ -2303,8 +2307,9 @@ export const AdminCMSPage: React.FC = () => {
                       <div key={i} className="flex items-center justify-between text-charcoal-800">
                         <div className="flex items-center gap-2">
                           <img
-                            src={it.productImage}
+                            src={getSafeImageUrl(it.productImage)}
                             alt={it.productName}
+                            onError={handleImageError}
                             className="w-8 h-8 rounded object-cover border"
                           />
                           <span>

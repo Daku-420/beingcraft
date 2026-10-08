@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Search, X, ArrowRight, Tag } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
+import { handleImageError, getSafeImageUrl } from '../utils/imageHelper';
 
 export const SearchModal: React.FC = () => {
   const { isSearchOpen, setIsSearchOpen, products, navigate } = useShop();
@@ -130,8 +131,9 @@ export const SearchModal: React.FC = () => {
                   className="flex items-center gap-3.5 p-2.5 rounded-xl hover:bg-surface-muted cursor-pointer transition-colors group"
                 >
                   <img
-                    src={product.images[0]}
+                    src={getSafeImageUrl(product.images?.[0])}
                     alt={product.name}
+                    onError={handleImageError}
                     className="w-14 h-14 object-cover rounded-lg border border-surface-border group-hover:scale-105 transition-transform shrink-0"
                   />
                   <div className="flex-1 min-w-0">

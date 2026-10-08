@@ -22,6 +22,7 @@ import {
 } from '../data/products';
 import { ProductCard } from '../components/ProductCard';
 import { BRAND } from '../config/brand';
+import { handleImageError, getSafeImageUrl } from '../utils/imageHelper';
 
 export const HomePage: React.FC = () => {
   const { products, navigate, showToast } = useShop();
@@ -132,8 +133,9 @@ export const HomePage: React.FC = () => {
             {products.length > 0 ? (
               <div className="relative mx-auto max-w-sm rounded-2xl overflow-hidden shadow-2xl border-2 border-brand-gold/40 bg-white/5 backdrop-blur-md p-3 group">
                 <img
-                  src={products[0].images?.[0] || 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80'}
+                  src={getSafeImageUrl(products[0]?.images?.[0])}
                   alt={products[0].name}
+                  onError={handleImageError}
                   className="w-full aspect-[4/5] object-cover rounded-xl group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-charcoal-900/95 backdrop-blur-md border border-brand-gold/30 text-white shadow-2xl">
@@ -269,9 +271,10 @@ export const HomePage: React.FC = () => {
               className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 bg-charcoal-900 cursor-pointer flex flex-col justify-end aspect-[4/5] sm:aspect-[3/4]"
             >
               <img
-                src={cat.image}
+                src={getSafeImageUrl(cat.image)}
                 alt={cat.name}
                 loading="lazy"
+                onError={handleImageError}
                 className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
@@ -445,9 +448,10 @@ export const HomePage: React.FC = () => {
               <div className={`lg:col-span-6 ${idx % 2 === 1 ? 'lg:order-1' : ''}`}>
                 <div className="relative rounded-2xl overflow-hidden shadow-xl border border-surface-border aspect-[16/10] group">
                   <img
-                    src={story.image}
+                    src={getSafeImageUrl(story.image)}
                     alt={story.title}
                     loading="lazy"
+                    onError={handleImageError}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
@@ -575,12 +579,14 @@ export const HomePage: React.FC = () => {
                 src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80"
                 alt="Artisan sculpting idol"
                 loading="lazy"
+                onError={handleImageError}
                 className="rounded-2xl object-cover w-full h-56 sm:h-64 shadow-2xl border border-white/10"
               />
               <img
                 src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80"
                 alt="Ayurvedic Kansa beating"
                 loading="lazy"
+                onError={handleImageError}
                 className="rounded-2xl object-cover w-full h-40 sm:h-48 shadow-2xl border border-white/10"
               />
             </div>
@@ -589,12 +595,14 @@ export const HomePage: React.FC = () => {
                 src="https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&w=600&q=80"
                 alt="Hand-carved woodwork finishing"
                 loading="lazy"
+                onError={handleImageError}
                 className="rounded-2xl object-cover w-full h-40 sm:h-48 shadow-2xl border border-white/10"
               />
               <img
                 src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80"
                 alt="Brass finishing details"
                 loading="lazy"
+                onError={handleImageError}
                 className="rounded-2xl object-cover w-full h-56 sm:h-64 shadow-2xl border border-white/10"
               />
             </div>
@@ -625,9 +633,10 @@ export const HomePage: React.FC = () => {
             >
               <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-surface-border group-hover:border-brand-maroon transition-colors mb-3">
                 <img
-                  src={mat.image}
+                  src={getSafeImageUrl(mat.image)}
                   alt={mat.label}
                   loading="lazy"
+                  onError={handleImageError}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
@@ -710,9 +719,10 @@ export const HomePage: React.FC = () => {
             >
               <div className="aspect-[4/3] overflow-hidden bg-surface-muted">
                 <img
-                  src={occ.image}
+                  src={getSafeImageUrl(occ.image)}
                   alt={occ.title}
                   loading="lazy"
+                  onError={handleImageError}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
@@ -859,9 +869,10 @@ export const HomePage: React.FC = () => {
           ].map((item, i) => (
             <div key={i} className="group relative aspect-square rounded-xl overflow-hidden shadow-sm">
               <img
-                src={item.img}
+                src={getSafeImageUrl(item.img)}
                 alt={item.label}
                 loading="lazy"
+                onError={handleImageError}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-brand-maroon/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-2 text-center">

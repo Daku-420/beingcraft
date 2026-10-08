@@ -13,6 +13,7 @@ import {
 import confetti from 'canvas-confetti';
 import { useShop } from '../context/ShopContext';
 import type { PaymentMethod, ShippingAddress, Order } from '../types';
+import { handleImageError, getSafeImageUrl } from '../utils/imageHelper';
 import { BRAND } from '../config/brand';
 import {
   createBackendOrder,
@@ -697,8 +698,9 @@ export const CheckoutPage: React.FC = () => {
             {cart.map((item) => (
               <div key={item.product.id} className="pt-3 first:pt-0 flex items-center gap-3">
                 <img
-                  src={item.product.images[0]}
+                  src={getSafeImageUrl(item.product.images?.[0])}
                   alt={item.product.name}
+                  onError={handleImageError}
                   className="w-12 h-12 rounded-lg object-cover border border-surface-border shrink-0"
                 />
                 <div className="flex-1 min-w-0">

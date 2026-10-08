@@ -12,6 +12,7 @@ import {
   RotateCcw
 } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
+import { handleImageError, getSafeImageUrl } from '../utils/imageHelper';
 
 export const QuickViewModal: React.FC = () => {
   const {
@@ -92,8 +93,9 @@ export const QuickViewModal: React.FC = () => {
             <div className="p-4 sm:p-6 bg-surface-muted/50 flex flex-col justify-between border-b md:border-b-0 md:border-r border-surface-border">
               <div className="relative aspect-square rounded-xl overflow-hidden bg-white shadow-sm border border-surface-border">
                 <img
-                  src={product.images[activeImageIndex] || product.images[0]}
+                  src={getSafeImageUrl(product.images?.[activeImageIndex] || product.images?.[0])}
                   alt={product.name}
+                  onError={handleImageError}
                   className="w-full h-full object-cover object-center"
                 />
 
@@ -106,7 +108,7 @@ export const QuickViewModal: React.FC = () => {
               </div>
 
               {/* Thumbnails */}
-              {product.images.length > 1 && (
+              {product.images?.length > 1 && (
                 <div className="flex gap-2.5 mt-4 overflow-x-auto pb-1">
                   {product.images.map((img, idx) => (
                     <button
@@ -118,7 +120,7 @@ export const QuickViewModal: React.FC = () => {
                           : 'border-surface-border hover:border-brand-maroon/40'
                       }`}
                     >
-                      <img src={img} alt="" className="w-full h-full object-cover" />
+                      <img src={getSafeImageUrl(img)} alt="" onError={handleImageError} className="w-full h-full object-cover" />
                     </button>
                   ))}
                 </div>

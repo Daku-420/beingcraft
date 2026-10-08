@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { BRAND } from '../config/brand';
+import { handleImageError, getSafeImageUrl } from '../utils/imageHelper';
 
 export const CartPage: React.FC = () => {
   const {
@@ -123,8 +124,9 @@ export const CartPage: React.FC = () => {
             return (
               <div key={`${item.product.id}-${item.selectedVariant?.id || 'def'}`} className="py-5 flex flex-col sm:flex-row gap-4 first:pt-0">
                 <img
-                  src={item.product.images[0]}
+                  src={getSafeImageUrl(item.product.images?.[0])}
                   alt={item.product.name}
+                  onError={handleImageError}
                   className="w-24 h-24 object-cover rounded-xl border border-surface-border shrink-0 cursor-pointer"
                   onClick={() => navigate(`/product/${item.product.slug}`)}
                 />

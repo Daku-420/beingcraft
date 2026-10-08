@@ -15,7 +15,7 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     slug: 'home-decor',
     tagline: 'Objects that give your space a story',
     description: 'Hand-beaten tree of life wall art, ornate jharokha mirrors, and evocative artisanal centerpieces.',
-    image: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80',
+    image: '/products/metal%20crafts/Radha%20Krishna%20under%20a%20Kalpavriksha%20Tree%20Statue/01.jpg',
     subcategories: ['Wall Décor', 'Table Décor', 'Sculptures', 'Decorative Objects'],
   },
   {
@@ -23,7 +23,7 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     slug: 'wood-crafts',
     tagline: 'Natural textures shaped by skilled hands',
     description: 'Aged Sheesham and reclaimed Teak meticulously hand-carved by hereditary Indian woodworkers.',
-    image: 'https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&w=800&q=80',
+    image: '/products/wood%20crafts/handcrafted%20traditional%20wooden%20Buddha%20head%20statue/01.jpg',
     subcategories: ['Wooden Décor', 'Sculptures', 'Utility & Storage', 'Wooden Art', 'Trays & Boxes'],
   },
   {
@@ -31,7 +31,7 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     slug: 'brass-and-metal',
     tagline: 'Heritage metalwork with enduring character',
     description: 'Lost-wax cast virgin brass idols, ancient dhokra bell metal, and patinated antique accents.',
-    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80',
+    image: '/products/metal%20crafts/Round%20Cutwork%20Brass%20Diya%20set%20of%203/01.jpg',
     subcategories: ['Brass Décor', 'Brass Idols', 'Antique Metal', 'Vintage Pieces', 'Pooja Essentials'],
   },
   {
@@ -39,7 +39,7 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     slug: 'dining-and-kitchen',
     tagline: 'Pure heirloom dining and ritual serving',
     description: 'Ayurvedic pure Kansa bronze thalis, hand-hammered pure copper vessels, and brass spice chests.',
-    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80',
+    image: '/products/wood%20crafts/handcrafted%20round%20wooden%20tree%20bark%20serving%20platter/20.1.jpg',
     subcategories: ['Serving Pieces', 'Trays', 'Bowls', 'Kitchen Décor', 'Dining Accessories'],
   }
 ];
@@ -139,81 +139,32 @@ export const MATERIALS_LIST = [
 
 export const CATEGORIES: { name: ProductCategory; slug: string; description: string; image: string; itemCount: number }[] = [
   {
-    name: 'Wood Craft',
-    slug: 'wood-craft',
-    description: 'Natural textures shaped by skilled hands. Sheesham & teak carved decor, trays, and boxes.',
-    image: '/products/wooden-chakla-belan-set/6.1.jpg',
-    itemCount: 15,
+    name: 'Home Decor',
+    slug: 'home-decor',
+    description: 'Objects that give your space a story. Tree of life wall art, tabletop accents and jharokhas.',
+    image: '/products/metal%20crafts/Radha%20Krishna%20under%20a%20Kalpavriksha%20Tree%20Statue/01.jpg',
+    itemCount: 13,
   },
   {
-    name: 'Stone Craft',
-    slug: 'stone-craft',
-    description: 'Timeless forms carved in stone. White Makrana marble inlay, soapstone jali and sculptures.',
-    image: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80',
-    itemCount: 0,
+    name: 'Wood Crafts',
+    slug: 'wood-crafts',
+    description: 'Natural textures shaped by skilled hands. Sheesham & teak carved decor, trays, and boxes.',
+    image: '/products/wood%20crafts/Coconut%20Shell%20Wristlet%20Wallet/01.jpg',
+    itemCount: 12,
   },
   {
     name: 'Brass & Metal',
     slug: 'brass-and-metal',
     description: 'Heritage metalwork with enduring character. Solid brass idols, peacock urlis, and curios.',
-    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80',
-    itemCount: 0,
-  },
-  {
-    name: 'Home Decor',
-    slug: 'home-decor',
-    description: 'Objects that give your space a story. Tree of life wall art, tabletop accents and jharokhas.',
-    image: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&q=80',
-    itemCount: 0,
+    image: '/products/metal%20crafts/Round%20Cutwork%20Brass%20Diya%20set%20of%203/01.jpg',
+    itemCount: 17,
   },
   {
     name: 'Dining & Kitchen',
-    slug: 'dining-kitchen',
+    slug: 'dining-and-kitchen',
     description: 'Pure heirloom dining. Ayurvedic Kansa bronze dinnerware, hammered copper jugs, and spice boxes.',
-    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80',
-    itemCount: 0,
-  },
-  {
-    name: 'Pooja Essentials & Idols',
-    slug: 'pooja-essentials-idols',
-    description: 'Hand-carved brass Ganesha, Nataraja, Radha Krishna, and ritual bell sets.',
-    image: 'https://images.unsplash.com/photo-1582738411706-bfc8e691d1c2?auto=format&fit=crop&w=600&q=80',
-    itemCount: 0,
-  },
-  {
-    name: 'Vintage Collection',
-    slug: 'vintage-collection',
-    description: 'Pocket watches, heirloom compasses, brass telescope models, and retro curios.',
-    image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80',
-    itemCount: 0,
-  },
-  {
-    name: 'Candle Holders & Diyas',
-    slug: 'candle-holders-diyas',
-    description: 'Carved brass peacock diyas, akhand deepaks, and contemporary metal candelabras.',
-    image: 'https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=600&q=80',
-    itemCount: 0,
-  },
-  {
-    name: 'Decorative Trays & Urli',
-    slug: 'decorative-trays-urli',
-    description: 'Floating flower urlis, etched brass serving platters, and footed center bowls.',
-    image: 'https://images.unsplash.com/photo-1517816743773-6e0fd518b4a6?auto=format&fit=crop&w=600&q=80',
-    itemCount: 0,
-  },
-  {
-    name: 'Gifting',
-    slug: 'gifting',
-    description: 'Curated brass festive gift boxes, shubh labh door hangings, and antique curios.',
-    image: 'https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=600&q=80',
-    itemCount: 0,
-  },
-  {
-    name: 'Accessories',
-    slug: 'accessories',
-    description: 'Utility essentials, traditional toys, handcrafted bags & purses, and lifestyle accents.',
-    image: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80',
-    itemCount: 0,
+    image: '/products/wood%20crafts/handcrafted%20round%20wooden%20tree%20bark%20serving%20platter/20.1.jpg',
+    itemCount: 17,
   }
 ];
 
@@ -262,13 +213,13 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/Coconut Shell Wristlet Wallet/01.jpg",
-      "/products/wood crafts/Coconut Shell Wristlet Wallet/02.jpg",
-      "/products/wood crafts/Coconut Shell Wristlet Wallet/03.jpg",
-      "/products/wood crafts/Coconut Shell Wristlet Wallet/04.jpg",
-      "/products/wood crafts/Coconut Shell Wristlet Wallet/05.jpg",
-      "/products/wood crafts/Coconut Shell Wristlet Wallet/06.jpg",
-      "/products/wood crafts/Coconut Shell Wristlet Wallet/07.jpg"
+      "/products/wood%20crafts/Coconut%20Shell%20Wristlet%20Wallet/01.jpg",
+      "/products/wood%20crafts/Coconut%20Shell%20Wristlet%20Wallet/02.jpg",
+      "/products/wood%20crafts/Coconut%20Shell%20Wristlet%20Wallet/03.jpg",
+      "/products/wood%20crafts/Coconut%20Shell%20Wristlet%20Wallet/04.jpg",
+      "/products/wood%20crafts/Coconut%20Shell%20Wristlet%20Wallet/05.jpg",
+      "/products/wood%20crafts/Coconut%20Shell%20Wristlet%20Wallet/06.jpg",
+      "/products/wood%20crafts/Coconut%20Shell%20Wristlet%20Wallet/07.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -343,18 +294,18 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/Diabetes Control Glass made from Jamun wood/12.1.jpg",
-      "/products/wood crafts/Diabetes Control Glass made from Jamun wood/12.2.jpg",
-      "/products/wood crafts/Diabetes Control Glass made from Jamun wood/12.3.jpg",
-      "/products/wood crafts/Diabetes Control Glass made from Jamun wood/12.4.jpg",
-      "/products/wood crafts/Diabetes Control Glass made from Jamun wood/12.5.jpg",
-      "/products/wood crafts/Diabetes Control Glass made from Jamun wood/61-iAPnQogL._SX679_.jpg",
-      "/products/wood crafts/Diabetes Control Glass made from Jamun wood/612TV1vF70L._SX679_.jpg",
-      "/products/wood crafts/Diabetes Control Glass made from Jamun wood/61aqWxVSlNL._SX679_.jpg",
-      "/products/wood crafts/Diabetes Control Glass made from Jamun wood/7149HwFE2fL._SX679_.jpg",
-      "/products/wood crafts/Diabetes Control Glass made from Jamun wood/71ccfSaQaHL._SX679_.jpg",
-      "/products/wood crafts/Diabetes Control Glass made from Jamun wood/71lO33IgH3L._SX679_.jpg",
-      "/products/wood crafts/Diabetes Control Glass made from Jamun wood/71mCQlpk++L._SL1500_.jpg"
+      "/products/wood%20crafts/Diabetes%20Control%20Glass%20made%20from%20Jamun%20wood/12.1.jpg",
+      "/products/wood%20crafts/Diabetes%20Control%20Glass%20made%20from%20Jamun%20wood/12.2.jpg",
+      "/products/wood%20crafts/Diabetes%20Control%20Glass%20made%20from%20Jamun%20wood/12.3.jpg",
+      "/products/wood%20crafts/Diabetes%20Control%20Glass%20made%20from%20Jamun%20wood/12.4.jpg",
+      "/products/wood%20crafts/Diabetes%20Control%20Glass%20made%20from%20Jamun%20wood/12.5.jpg",
+      "/products/wood%20crafts/Diabetes%20Control%20Glass%20made%20from%20Jamun%20wood/61-iAPnQogL._SX679_.jpg",
+      "/products/wood%20crafts/Diabetes%20Control%20Glass%20made%20from%20Jamun%20wood/612TV1vF70L._SX679_.jpg",
+      "/products/wood%20crafts/Diabetes%20Control%20Glass%20made%20from%20Jamun%20wood/61aqWxVSlNL._SX679_.jpg",
+      "/products/wood%20crafts/Diabetes%20Control%20Glass%20made%20from%20Jamun%20wood/7149HwFE2fL._SX679_.jpg",
+      "/products/wood%20crafts/Diabetes%20Control%20Glass%20made%20from%20Jamun%20wood/71ccfSaQaHL._SX679_.jpg",
+      "/products/wood%20crafts/Diabetes%20Control%20Glass%20made%20from%20Jamun%20wood/71lO33IgH3L._SX679_.jpg",
+      "/products/wood%20crafts/Diabetes%20Control%20Glass%20made%20from%20Jamun%20wood/71mCQlpk%2B%2BL._SL1500_.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -428,16 +379,16 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/Geometric Wooden Handle Stainless Steel Mug/10.1.jpg",
-      "/products/wood crafts/Geometric Wooden Handle Stainless Steel Mug/10.10.jpg",
-      "/products/wood crafts/Geometric Wooden Handle Stainless Steel Mug/10.2.jpg",
-      "/products/wood crafts/Geometric Wooden Handle Stainless Steel Mug/10.3.jpg",
-      "/products/wood crafts/Geometric Wooden Handle Stainless Steel Mug/10.4.jpg",
-      "/products/wood crafts/Geometric Wooden Handle Stainless Steel Mug/10.5.jpg",
-      "/products/wood crafts/Geometric Wooden Handle Stainless Steel Mug/10.6.jpg",
-      "/products/wood crafts/Geometric Wooden Handle Stainless Steel Mug/10.7.jpg",
-      "/products/wood crafts/Geometric Wooden Handle Stainless Steel Mug/10.8.jpg",
-      "/products/wood crafts/Geometric Wooden Handle Stainless Steel Mug/10.9.jpg"
+      "/products/wood%20crafts/Geometric%20Wooden%20Handle%20Stainless%20Steel%20Mug/10.1.jpg",
+      "/products/wood%20crafts/Geometric%20Wooden%20Handle%20Stainless%20Steel%20Mug/10.10.jpg",
+      "/products/wood%20crafts/Geometric%20Wooden%20Handle%20Stainless%20Steel%20Mug/10.2.jpg",
+      "/products/wood%20crafts/Geometric%20Wooden%20Handle%20Stainless%20Steel%20Mug/10.3.jpg",
+      "/products/wood%20crafts/Geometric%20Wooden%20Handle%20Stainless%20Steel%20Mug/10.4.jpg",
+      "/products/wood%20crafts/Geometric%20Wooden%20Handle%20Stainless%20Steel%20Mug/10.5.jpg",
+      "/products/wood%20crafts/Geometric%20Wooden%20Handle%20Stainless%20Steel%20Mug/10.6.jpg",
+      "/products/wood%20crafts/Geometric%20Wooden%20Handle%20Stainless%20Steel%20Mug/10.7.jpg",
+      "/products/wood%20crafts/Geometric%20Wooden%20Handle%20Stainless%20Steel%20Mug/10.8.jpg",
+      "/products/wood%20crafts/Geometric%20Wooden%20Handle%20Stainless%20Steel%20Mug/10.9.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -511,14 +462,14 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/Good Morning Engraved Wooden Mug/15.1.jpg",
-      "/products/wood crafts/Good Morning Engraved Wooden Mug/15.2.jpg",
-      "/products/wood crafts/Good Morning Engraved Wooden Mug/15.3.jpg",
-      "/products/wood crafts/Good Morning Engraved Wooden Mug/15.4.jpg",
-      "/products/wood crafts/Good Morning Engraved Wooden Mug/15.5.png",
-      "/products/wood crafts/Good Morning Engraved Wooden Mug/15.6.png",
-      "/products/wood crafts/Good Morning Engraved Wooden Mug/15.7.png",
-      "/products/wood crafts/Good Morning Engraved Wooden Mug/15.8.jpg"
+      "/products/wood%20crafts/Good%20Morning%20Engraved%20Wooden%20Mug/15.1.jpg",
+      "/products/wood%20crafts/Good%20Morning%20Engraved%20Wooden%20Mug/15.2.jpg",
+      "/products/wood%20crafts/Good%20Morning%20Engraved%20Wooden%20Mug/15.3.jpg",
+      "/products/wood%20crafts/Good%20Morning%20Engraved%20Wooden%20Mug/15.4.jpg",
+      "/products/wood%20crafts/Good%20Morning%20Engraved%20Wooden%20Mug/15.5.png",
+      "/products/wood%20crafts/Good%20Morning%20Engraved%20Wooden%20Mug/15.6.png",
+      "/products/wood%20crafts/Good%20Morning%20Engraved%20Wooden%20Mug/15.7.png",
+      "/products/wood%20crafts/Good%20Morning%20Engraved%20Wooden%20Mug/15.8.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -592,10 +543,10 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/Handcrafted Wooden Hair Comb Set/5.1.png",
-      "/products/wood crafts/Handcrafted Wooden Hair Comb Set/5.2.png",
-      "/products/wood crafts/Handcrafted Wooden Hair Comb Set/5.3.jpg",
-      "/products/wood crafts/Handcrafted Wooden Hair Comb Set/5.5.jpg"
+      "/products/wood%20crafts/Handcrafted%20Wooden%20Hair%20Comb%20Set/5.1.png",
+      "/products/wood%20crafts/Handcrafted%20Wooden%20Hair%20Comb%20Set/5.2.png",
+      "/products/wood%20crafts/Handcrafted%20Wooden%20Hair%20Comb%20Set/5.3.jpg",
+      "/products/wood%20crafts/Handcrafted%20Wooden%20Hair%20Comb%20Set/5.5.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -669,11 +620,11 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/LAVAUX DESIGNS Acacia wood small bowl se/8.1.jpg",
-      "/products/wood crafts/LAVAUX DESIGNS Acacia wood small bowl se/8.2.jpg",
-      "/products/wood crafts/LAVAUX DESIGNS Acacia wood small bowl se/8.3.jpg",
-      "/products/wood crafts/LAVAUX DESIGNS Acacia wood small bowl se/8.4.jpg",
-      "/products/wood crafts/LAVAUX DESIGNS Acacia wood small bowl se/8.5.jpg"
+      "/products/wood%20crafts/LAVAUX%20DESIGNS%20Acacia%20wood%20small%20bowl%20se/8.1.jpg",
+      "/products/wood%20crafts/LAVAUX%20DESIGNS%20Acacia%20wood%20small%20bowl%20se/8.2.jpg",
+      "/products/wood%20crafts/LAVAUX%20DESIGNS%20Acacia%20wood%20small%20bowl%20se/8.3.jpg",
+      "/products/wood%20crafts/LAVAUX%20DESIGNS%20Acacia%20wood%20small%20bowl%20se/8.4.jpg",
+      "/products/wood%20crafts/LAVAUX%20DESIGNS%20Acacia%20wood%20small%20bowl%20se/8.5.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -747,19 +698,19 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/Traditional Wooden Catapult/04.jpg",
-      "/products/wood crafts/Traditional Wooden Catapult/2.0.jpg",
-      "/products/wood crafts/Traditional Wooden Catapult/2.1.jpg",
-      "/products/wood crafts/Traditional Wooden Catapult/2.2.jpg",
-      "/products/wood crafts/Traditional Wooden Catapult/2.3.jpg",
-      "/products/wood crafts/Traditional Wooden Catapult/2.4.jpg",
-      "/products/wood crafts/Traditional Wooden Catapult/2.5.jpg",
-      "/products/wood crafts/Traditional Wooden Catapult/2.6.jpg",
-      "/products/wood crafts/Traditional Wooden Catapult/2.7.jpg",
-      "/products/wood crafts/Traditional Wooden Catapult/2.8.jpg",
-      "/products/wood crafts/Traditional Wooden Catapult/31qB4FnnjxL.jpg",
-      "/products/wood crafts/Traditional Wooden Catapult/41NGCoxKeFL.jpg",
-      "/products/wood crafts/Traditional Wooden Catapult/41hOa8vLl2L.jpg"
+      "/products/wood%20crafts/Traditional%20Wooden%20Catapult/04.jpg",
+      "/products/wood%20crafts/Traditional%20Wooden%20Catapult/2.0.jpg",
+      "/products/wood%20crafts/Traditional%20Wooden%20Catapult/2.1.jpg",
+      "/products/wood%20crafts/Traditional%20Wooden%20Catapult/2.2.jpg",
+      "/products/wood%20crafts/Traditional%20Wooden%20Catapult/2.3.jpg",
+      "/products/wood%20crafts/Traditional%20Wooden%20Catapult/2.4.jpg",
+      "/products/wood%20crafts/Traditional%20Wooden%20Catapult/2.5.jpg",
+      "/products/wood%20crafts/Traditional%20Wooden%20Catapult/2.6.jpg",
+      "/products/wood%20crafts/Traditional%20Wooden%20Catapult/2.7.jpg",
+      "/products/wood%20crafts/Traditional%20Wooden%20Catapult/2.8.jpg",
+      "/products/wood%20crafts/Traditional%20Wooden%20Catapult/31qB4FnnjxL.jpg",
+      "/products/wood%20crafts/Traditional%20Wooden%20Catapult/41NGCoxKeFL.jpg",
+      "/products/wood%20crafts/Traditional%20Wooden%20Catapult/41hOa8vLl2L.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -834,13 +785,13 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/Vintage Ornate Pocket Watch/4.1.jpg",
-      "/products/wood crafts/Vintage Ornate Pocket Watch/4.2.jpg",
-      "/products/wood crafts/Vintage Ornate Pocket Watch/4.3.jpg",
-      "/products/wood crafts/Vintage Ornate Pocket Watch/4.4.jpg",
-      "/products/wood crafts/Vintage Ornate Pocket Watch/4.5.jpg",
-      "/products/wood crafts/Vintage Ornate Pocket Watch/4.6.jpg",
-      "/products/wood crafts/Vintage Ornate Pocket Watch/4.7.jpg"
+      "/products/wood%20crafts/Vintage%20Ornate%20Pocket%20Watch/4.1.jpg",
+      "/products/wood%20crafts/Vintage%20Ornate%20Pocket%20Watch/4.2.jpg",
+      "/products/wood%20crafts/Vintage%20Ornate%20Pocket%20Watch/4.3.jpg",
+      "/products/wood%20crafts/Vintage%20Ornate%20Pocket%20Watch/4.4.jpg",
+      "/products/wood%20crafts/Vintage%20Ornate%20Pocket%20Watch/4.5.jpg",
+      "/products/wood%20crafts/Vintage%20Ornate%20Pocket%20Watch/4.6.jpg",
+      "/products/wood%20crafts/Vintage%20Ornate%20Pocket%20Watch/4.7.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -915,13 +866,13 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/Vintage Textured Pocket Watch/5.1.jpg",
-      "/products/wood crafts/Vintage Textured Pocket Watch/5.2.jpg",
-      "/products/wood crafts/Vintage Textured Pocket Watch/5.3.jpg",
-      "/products/wood crafts/Vintage Textured Pocket Watch/5.4.jpg",
-      "/products/wood crafts/Vintage Textured Pocket Watch/5.5.jpg",
-      "/products/wood crafts/Vintage Textured Pocket Watch/5.6.jpg",
-      "/products/wood crafts/Vintage Textured Pocket Watch/5.7.jpg"
+      "/products/wood%20crafts/Vintage%20Textured%20Pocket%20Watch/5.1.jpg",
+      "/products/wood%20crafts/Vintage%20Textured%20Pocket%20Watch/5.2.jpg",
+      "/products/wood%20crafts/Vintage%20Textured%20Pocket%20Watch/5.3.jpg",
+      "/products/wood%20crafts/Vintage%20Textured%20Pocket%20Watch/5.4.jpg",
+      "/products/wood%20crafts/Vintage%20Textured%20Pocket%20Watch/5.5.jpg",
+      "/products/wood%20crafts/Vintage%20Textured%20Pocket%20Watch/5.6.jpg",
+      "/products/wood%20crafts/Vintage%20Textured%20Pocket%20Watch/5.7.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -996,11 +947,11 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/handcrafted 6-piece wooden tea coaster set with a matching/01.jpg",
-      "/products/wood crafts/handcrafted 6-piece wooden tea coaster set with a matching/02.jpg",
-      "/products/wood crafts/handcrafted 6-piece wooden tea coaster set with a matching/03.jpg",
-      "/products/wood crafts/handcrafted 6-piece wooden tea coaster set with a matching/04.jpg",
-      "/products/wood crafts/handcrafted 6-piece wooden tea coaster set with a matching/05.jpg"
+      "/products/wood%20crafts/handcrafted%206-piece%20wooden%20tea%20coaster%20set%20with%20a%20matching/01.jpg",
+      "/products/wood%20crafts/handcrafted%206-piece%20wooden%20tea%20coaster%20set%20with%20a%20matching/02.jpg",
+      "/products/wood%20crafts/handcrafted%206-piece%20wooden%20tea%20coaster%20set%20with%20a%20matching/03.jpg",
+      "/products/wood%20crafts/handcrafted%206-piece%20wooden%20tea%20coaster%20set%20with%20a%20matching/04.jpg",
+      "/products/wood%20crafts/handcrafted%206-piece%20wooden%20tea%20coaster%20set%20with%20a%20matching/05.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -1075,15 +1026,15 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/handcrafted 7-piece premium wooden spatula and cooking spoon set/01. Palta Turner.jpg",
-      "/products/wood crafts/handcrafted 7-piece premium wooden spatula and cooking spoon set/02. Long Handle Frying Spoon.jpg",
-      "/products/wood crafts/handcrafted 7-piece premium wooden spatula and cooking spoon set/03. Kadchi.jpg",
-      "/products/wood crafts/handcrafted 7-piece premium wooden spatula and cooking spoon set/04. Rice Serving Spoon.jpg",
-      "/products/wood crafts/handcrafted 7-piece premium wooden spatula and cooking spoon set/05. Slotted Spoon.jpg",
-      "/products/wood crafts/handcrafted 7-piece premium wooden spatula and cooking spoon set/06. Spatula.jpg",
-      "/products/wood crafts/handcrafted 7-piece premium wooden spatula and cooking spoon set/07. Strainer Spoon.jpg",
-      "/products/wood crafts/handcrafted 7-piece premium wooden spatula and cooking spoon set/All Set With Details.jpg",
-      "/products/wood crafts/handcrafted 7-piece premium wooden spatula and cooking spoon set/All Set.jpg"
+      "/products/wood%20crafts/handcrafted%207-piece%20premium%20wooden%20spatula%20and%20cooking%20spoon%20set/01.%20Palta%20Turner.jpg",
+      "/products/wood%20crafts/handcrafted%207-piece%20premium%20wooden%20spatula%20and%20cooking%20spoon%20set/02.%20Long%20Handle%20Frying%20Spoon.jpg",
+      "/products/wood%20crafts/handcrafted%207-piece%20premium%20wooden%20spatula%20and%20cooking%20spoon%20set/03.%20Kadchi.jpg",
+      "/products/wood%20crafts/handcrafted%207-piece%20premium%20wooden%20spatula%20and%20cooking%20spoon%20set/04.%20Rice%20Serving%20Spoon.jpg",
+      "/products/wood%20crafts/handcrafted%207-piece%20premium%20wooden%20spatula%20and%20cooking%20spoon%20set/05.%20Slotted%20Spoon.jpg",
+      "/products/wood%20crafts/handcrafted%207-piece%20premium%20wooden%20spatula%20and%20cooking%20spoon%20set/06.%20Spatula.jpg",
+      "/products/wood%20crafts/handcrafted%207-piece%20premium%20wooden%20spatula%20and%20cooking%20spoon%20set/07.%20Strainer%20Spoon.jpg",
+      "/products/wood%20crafts/handcrafted%207-piece%20premium%20wooden%20spatula%20and%20cooking%20spoon%20set/All%20Set%20With%20Details.jpg",
+      "/products/wood%20crafts/handcrafted%207-piece%20premium%20wooden%20spatula%20and%20cooking%20spoon%20set/All%20Set.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -1157,8 +1108,8 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/handcrafted dual-tone wooden Tic-Tac-Toe board game/32.1.jpg",
-      "/products/wood crafts/handcrafted dual-tone wooden Tic-Tac-Toe board game/4inch-xox-game.jpeg"
+      "/products/wood%20crafts/handcrafted%20dual-tone%20wooden%20Tic-Tac-Toe%20board%20game/32.1.jpg",
+      "/products/wood%20crafts/handcrafted%20dual-tone%20wooden%20Tic-Tac-Toe%20board%20game/4inch-xox-game.jpeg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -1232,10 +1183,10 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/handcrafted flat wooden cooking spatula/01.jpg",
-      "/products/wood crafts/handcrafted flat wooden cooking spatula/02.jpg",
-      "/products/wood crafts/handcrafted flat wooden cooking spatula/03.jpg",
-      "/products/wood crafts/handcrafted flat wooden cooking spatula/04.jpg"
+      "/products/wood%20crafts/handcrafted%20flat%20wooden%20cooking%20spatula/01.jpg",
+      "/products/wood%20crafts/handcrafted%20flat%20wooden%20cooking%20spatula/02.jpg",
+      "/products/wood%20crafts/handcrafted%20flat%20wooden%20cooking%20spatula/03.jpg",
+      "/products/wood%20crafts/handcrafted%20flat%20wooden%20cooking%20spatula/04.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -1310,10 +1261,10 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/handcrafted premium Sheesham wood serving bowl set/7.1.jpg",
-      "/products/wood crafts/handcrafted premium Sheesham wood serving bowl set/7.2.jpg",
-      "/products/wood crafts/handcrafted premium Sheesham wood serving bowl set/7.3.jpg",
-      "/products/wood crafts/handcrafted premium Sheesham wood serving bowl set/7.4.jpg"
+      "/products/wood%20crafts/handcrafted%20premium%20Sheesham%20wood%20serving%20bowl%20set/7.1.jpg",
+      "/products/wood%20crafts/handcrafted%20premium%20Sheesham%20wood%20serving%20bowl%20set/7.2.jpg",
+      "/products/wood%20crafts/handcrafted%20premium%20Sheesham%20wood%20serving%20bowl%20set/7.3.jpg",
+      "/products/wood%20crafts/handcrafted%20premium%20Sheesham%20wood%20serving%20bowl%20set/7.4.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -1387,11 +1338,11 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/handcrafted premium wooden cutwork serving tray/01.jpg",
-      "/products/wood crafts/handcrafted premium wooden cutwork serving tray/02.jpg",
-      "/products/wood crafts/handcrafted premium wooden cutwork serving tray/03.jpg",
-      "/products/wood crafts/handcrafted premium wooden cutwork serving tray/04.jpg",
-      "/products/wood crafts/handcrafted premium wooden cutwork serving tray/05.jpg"
+      "/products/wood%20crafts/handcrafted%20premium%20wooden%20cutwork%20serving%20tray/01.jpg",
+      "/products/wood%20crafts/handcrafted%20premium%20wooden%20cutwork%20serving%20tray/02.jpg",
+      "/products/wood%20crafts/handcrafted%20premium%20wooden%20cutwork%20serving%20tray/03.jpg",
+      "/products/wood%20crafts/handcrafted%20premium%20wooden%20cutwork%20serving%20tray/04.jpg",
+      "/products/wood%20crafts/handcrafted%20premium%20wooden%20cutwork%20serving%20tray/05.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -1465,9 +1416,9 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/handcrafted premium wooden serving tray/01.jpg",
-      "/products/wood crafts/handcrafted premium wooden serving tray/02.jpg",
-      "/products/wood crafts/handcrafted premium wooden serving tray/03.jpg"
+      "/products/wood%20crafts/handcrafted%20premium%20wooden%20serving%20tray/01.jpg",
+      "/products/wood%20crafts/handcrafted%20premium%20wooden%20serving%20tray/02.jpg",
+      "/products/wood%20crafts/handcrafted%20premium%20wooden%20serving%20tray/03.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -1542,13 +1493,13 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/handcrafted round wooden tree bark serving platter/20.1.jpg",
-      "/products/wood crafts/handcrafted round wooden tree bark serving platter/20.2.jpg",
-      "/products/wood crafts/handcrafted round wooden tree bark serving platter/20.3.png",
-      "/products/wood crafts/handcrafted round wooden tree bark serving platter/20.4.jpg",
-      "/products/wood crafts/handcrafted round wooden tree bark serving platter/20.5.jpg",
-      "/products/wood crafts/handcrafted round wooden tree bark serving platter/20.6.jpg",
-      "/products/wood crafts/handcrafted round wooden tree bark serving platter/20.7.png"
+      "/products/wood%20crafts/handcrafted%20round%20wooden%20tree%20bark%20serving%20platter/20.1.jpg",
+      "/products/wood%20crafts/handcrafted%20round%20wooden%20tree%20bark%20serving%20platter/20.2.jpg",
+      "/products/wood%20crafts/handcrafted%20round%20wooden%20tree%20bark%20serving%20platter/20.3.png",
+      "/products/wood%20crafts/handcrafted%20round%20wooden%20tree%20bark%20serving%20platter/20.4.jpg",
+      "/products/wood%20crafts/handcrafted%20round%20wooden%20tree%20bark%20serving%20platter/20.5.jpg",
+      "/products/wood%20crafts/handcrafted%20round%20wooden%20tree%20bark%20serving%20platter/20.6.jpg",
+      "/products/wood%20crafts/handcrafted%20round%20wooden%20tree%20bark%20serving%20platter/20.7.png"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -1623,13 +1574,13 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/handcrafted traditional Viking-style wooden beer mug/01.jpg",
-      "/products/wood crafts/handcrafted traditional Viking-style wooden beer mug/02.jpg",
-      "/products/wood crafts/handcrafted traditional Viking-style wooden beer mug/03.jpg",
-      "/products/wood crafts/handcrafted traditional Viking-style wooden beer mug/04.jpg",
-      "/products/wood crafts/handcrafted traditional Viking-style wooden beer mug/05.jpg",
-      "/products/wood crafts/handcrafted traditional Viking-style wooden beer mug/06.jpg",
-      "/products/wood crafts/handcrafted traditional Viking-style wooden beer mug/07.jpg"
+      "/products/wood%20crafts/handcrafted%20traditional%20Viking-style%20wooden%20beer%20mug/01.jpg",
+      "/products/wood%20crafts/handcrafted%20traditional%20Viking-style%20wooden%20beer%20mug/02.jpg",
+      "/products/wood%20crafts/handcrafted%20traditional%20Viking-style%20wooden%20beer%20mug/03.jpg",
+      "/products/wood%20crafts/handcrafted%20traditional%20Viking-style%20wooden%20beer%20mug/04.jpg",
+      "/products/wood%20crafts/handcrafted%20traditional%20Viking-style%20wooden%20beer%20mug/05.jpg",
+      "/products/wood%20crafts/handcrafted%20traditional%20Viking-style%20wooden%20beer%20mug/06.jpg",
+      "/products/wood%20crafts/handcrafted%20traditional%20Viking-style%20wooden%20beer%20mug/07.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -1703,11 +1654,11 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/handcrafted traditional wooden Buddha head statue/01.jpg",
-      "/products/wood crafts/handcrafted traditional wooden Buddha head statue/02.jpg",
-      "/products/wood crafts/handcrafted traditional wooden Buddha head statue/03.jpg",
-      "/products/wood crafts/handcrafted traditional wooden Buddha head statue/04.jpg",
-      "/products/wood crafts/handcrafted traditional wooden Buddha head statue/05.jpg"
+      "/products/wood%20crafts/handcrafted%20traditional%20wooden%20Buddha%20head%20statue/01.jpg",
+      "/products/wood%20crafts/handcrafted%20traditional%20wooden%20Buddha%20head%20statue/02.jpg",
+      "/products/wood%20crafts/handcrafted%20traditional%20wooden%20Buddha%20head%20statue/03.jpg",
+      "/products/wood%20crafts/handcrafted%20traditional%20wooden%20Buddha%20head%20statue/04.jpg",
+      "/products/wood%20crafts/handcrafted%20traditional%20wooden%20Buddha%20head%20statue/05.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -1782,21 +1733,21 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/01.jpg",
-      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/02.webp",
-      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/03.jpg",
-      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/04.jpg",
-      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/05.jpg",
-      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/06.jpg",
-      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/07.jpg",
-      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/08.webp",
-      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/09.jpg",
-      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/10.jpg",
-      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/11.jpg",
-      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/11.webp",
-      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/12.webp",
-      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/13.jpg",
-      "/products/wood crafts/handcrafted traditional wooden coffin incense burner box/Vaaree-Assured-v6.png"
+      "/products/wood%20crafts/handcrafted%20traditional%20wooden%20coffin%20incense%20burner%20box/01.jpg",
+      "/products/wood%20crafts/handcrafted%20traditional%20wooden%20coffin%20incense%20burner%20box/02.webp",
+      "/products/wood%20crafts/handcrafted%20traditional%20wooden%20coffin%20incense%20burner%20box/03.jpg",
+      "/products/wood%20crafts/handcrafted%20traditional%20wooden%20coffin%20incense%20burner%20box/04.jpg",
+      "/products/wood%20crafts/handcrafted%20traditional%20wooden%20coffin%20incense%20burner%20box/05.jpg",
+      "/products/wood%20crafts/handcrafted%20traditional%20wooden%20coffin%20incense%20burner%20box/06.jpg",
+      "/products/wood%20crafts/handcrafted%20traditional%20wooden%20coffin%20incense%20burner%20box/07.jpg",
+      "/products/wood%20crafts/handcrafted%20traditional%20wooden%20coffin%20incense%20burner%20box/08.webp",
+      "/products/wood%20crafts/handcrafted%20traditional%20wooden%20coffin%20incense%20burner%20box/09.jpg",
+      "/products/wood%20crafts/handcrafted%20traditional%20wooden%20coffin%20incense%20burner%20box/10.jpg",
+      "/products/wood%20crafts/handcrafted%20traditional%20wooden%20coffin%20incense%20burner%20box/11.jpg",
+      "/products/wood%20crafts/handcrafted%20traditional%20wooden%20coffin%20incense%20burner%20box/11.webp",
+      "/products/wood%20crafts/handcrafted%20traditional%20wooden%20coffin%20incense%20burner%20box/12.webp",
+      "/products/wood%20crafts/handcrafted%20traditional%20wooden%20coffin%20incense%20burner%20box/13.jpg",
+      "/products/wood%20crafts/handcrafted%20traditional%20wooden%20coffin%20incense%20burner%20box/Vaaree-Assured-v6.png"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -1870,13 +1821,13 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/handcrafted wooden Ashok Stambh/19.1.jpg",
-      "/products/wood crafts/handcrafted wooden Ashok Stambh/19.2.jpg",
-      "/products/wood crafts/handcrafted wooden Ashok Stambh/19.3.jpg",
-      "/products/wood crafts/handcrafted wooden Ashok Stambh/19.4.jpg",
-      "/products/wood crafts/handcrafted wooden Ashok Stambh/19.5.jpg",
-      "/products/wood crafts/handcrafted wooden Ashok Stambh/19.6.jpg",
-      "/products/wood crafts/handcrafted wooden Ashok Stambh/19.7.jpg"
+      "/products/wood%20crafts/handcrafted%20wooden%20Ashok%20Stambh/19.1.jpg",
+      "/products/wood%20crafts/handcrafted%20wooden%20Ashok%20Stambh/19.2.jpg",
+      "/products/wood%20crafts/handcrafted%20wooden%20Ashok%20Stambh/19.3.jpg",
+      "/products/wood%20crafts/handcrafted%20wooden%20Ashok%20Stambh/19.4.jpg",
+      "/products/wood%20crafts/handcrafted%20wooden%20Ashok%20Stambh/19.5.jpg",
+      "/products/wood%20crafts/handcrafted%20wooden%20Ashok%20Stambh/19.6.jpg",
+      "/products/wood%20crafts/handcrafted%20wooden%20Ashok%20Stambh/19.7.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -1950,13 +1901,13 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/handcrafted wooden cartoon ladybug yo-yo spinner toy/01.jpg",
-      "/products/wood crafts/handcrafted wooden cartoon ladybug yo-yo spinner toy/02.jpg",
-      "/products/wood crafts/handcrafted wooden cartoon ladybug yo-yo spinner toy/03.jpg",
-      "/products/wood crafts/handcrafted wooden cartoon ladybug yo-yo spinner toy/04.jpg",
-      "/products/wood crafts/handcrafted wooden cartoon ladybug yo-yo spinner toy/05.jpg",
-      "/products/wood crafts/handcrafted wooden cartoon ladybug yo-yo spinner toy/06.jpg",
-      "/products/wood crafts/handcrafted wooden cartoon ladybug yo-yo spinner toy/07.jpg"
+      "/products/wood%20crafts/handcrafted%20wooden%20cartoon%20ladybug%20yo-yo%20spinner%20toy/01.jpg",
+      "/products/wood%20crafts/handcrafted%20wooden%20cartoon%20ladybug%20yo-yo%20spinner%20toy/02.jpg",
+      "/products/wood%20crafts/handcrafted%20wooden%20cartoon%20ladybug%20yo-yo%20spinner%20toy/03.jpg",
+      "/products/wood%20crafts/handcrafted%20wooden%20cartoon%20ladybug%20yo-yo%20spinner%20toy/04.jpg",
+      "/products/wood%20crafts/handcrafted%20wooden%20cartoon%20ladybug%20yo-yo%20spinner%20toy/05.jpg",
+      "/products/wood%20crafts/handcrafted%20wooden%20cartoon%20ladybug%20yo-yo%20spinner%20toy/06.jpg",
+      "/products/wood%20crafts/handcrafted%20wooden%20cartoon%20ladybug%20yo-yo%20spinner%20toy/07.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -2031,12 +1982,12 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/handcrafted wooden chapati box/21.1.jpg",
-      "/products/wood crafts/handcrafted wooden chapati box/21.2.jpg",
-      "/products/wood crafts/handcrafted wooden chapati box/21.3.jpg",
-      "/products/wood crafts/handcrafted wooden chapati box/21.4.jpg",
-      "/products/wood crafts/handcrafted wooden chapati box/21.5.jpg",
-      "/products/wood crafts/handcrafted wooden chapati box/homifi-wooden-chapto-handmade-chapati-box-roti-hot-case-chapati-box-casserole-serving-food-for-dinig-table-kitchen-tableware-product-images-orvpvrdbqaf-p605698743-0-202310220441.jpg"
+      "/products/wood%20crafts/handcrafted%20wooden%20chapati%20box/21.1.jpg",
+      "/products/wood%20crafts/handcrafted%20wooden%20chapati%20box/21.2.jpg",
+      "/products/wood%20crafts/handcrafted%20wooden%20chapati%20box/21.3.jpg",
+      "/products/wood%20crafts/handcrafted%20wooden%20chapati%20box/21.4.jpg",
+      "/products/wood%20crafts/handcrafted%20wooden%20chapati%20box/21.5.jpg",
+      "/products/wood%20crafts/handcrafted%20wooden%20chapati%20box/homifi-wooden-chapto-handmade-chapati-box-roti-hot-case-chapati-box-casserole-serving-food-for-dinig-table-kitchen-tableware-product-images-orvpvrdbqaf-p605698743-0-202310220441.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -2110,10 +2061,10 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/handcrafted wooden morning walking rule/23.1.jpg",
-      "/products/wood crafts/handcrafted wooden morning walking rule/23.2.jpg",
-      "/products/wood crafts/handcrafted wooden morning walking rule/23.3.jpg",
-      "/products/wood crafts/handcrafted wooden morning walking rule/23.4.jpg"
+      "/products/wood%20crafts/handcrafted%20wooden%20morning%20walking%20rule/23.1.jpg",
+      "/products/wood%20crafts/handcrafted%20wooden%20morning%20walking%20rule/23.2.jpg",
+      "/products/wood%20crafts/handcrafted%20wooden%20morning%20walking%20rule/23.3.jpg",
+      "/products/wood%20crafts/handcrafted%20wooden%20morning%20walking%20rule/23.4.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -2187,10 +2138,10 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/handcrafted wooden morning walking ruler/22.1.jpg",
-      "/products/wood crafts/handcrafted wooden morning walking ruler/22.2.jpg",
-      "/products/wood crafts/handcrafted wooden morning walking ruler/22.3.jpg",
-      "/products/wood crafts/handcrafted wooden morning walking ruler/22.4.jpg"
+      "/products/wood%20crafts/handcrafted%20wooden%20morning%20walking%20ruler/22.1.jpg",
+      "/products/wood%20crafts/handcrafted%20wooden%20morning%20walking%20ruler/22.2.jpg",
+      "/products/wood%20crafts/handcrafted%20wooden%20morning%20walking%20ruler/22.3.jpg",
+      "/products/wood%20crafts/handcrafted%20wooden%20morning%20walking%20ruler/22.4.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -2265,9 +2216,9 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/handcrafted wooden mortar and pestle set/11.1.jpg",
-      "/products/wood crafts/handcrafted wooden mortar and pestle set/11.2.jpg",
-      "/products/wood crafts/handcrafted wooden mortar and pestle set/11.3.jpg"
+      "/products/wood%20crafts/handcrafted%20wooden%20mortar%20and%20pestle%20set/11.1.jpg",
+      "/products/wood%20crafts/handcrafted%20wooden%20mortar%20and%20pestle%20set/11.2.jpg",
+      "/products/wood%20crafts/handcrafted%20wooden%20mortar%20and%20pestle%20set/11.3.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -2341,9 +2292,9 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/handcrafted wooden nesting bowl set with floral inlay work/9.1.jpg",
-      "/products/wood crafts/handcrafted wooden nesting bowl set with floral inlay work/9.2.jpg",
-      "/products/wood crafts/handcrafted wooden nesting bowl set with floral inlay work/9.3.jpg"
+      "/products/wood%20crafts/handcrafted%20wooden%20nesting%20bowl%20set%20with%20floral%20inlay%20work/9.1.jpg",
+      "/products/wood%20crafts/handcrafted%20wooden%20nesting%20bowl%20set%20with%20floral%20inlay%20work/9.2.jpg",
+      "/products/wood%20crafts/handcrafted%20wooden%20nesting%20bowl%20set%20with%20floral%20inlay%20work/9.3.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -2417,8 +2368,8 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/handcrafted wooden pyramid incense box burner/14.2.jpg",
-      "/products/wood crafts/handcrafted wooden pyramid incense box burner/14.3.jpg"
+      "/products/wood%20crafts/handcrafted%20wooden%20pyramid%20incense%20box%20burner/14.2.jpg",
+      "/products/wood%20crafts/handcrafted%20wooden%20pyramid%20incense%20box%20burner/14.3.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -2493,14 +2444,14 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/india taj mahal pocket watch/2.1.jpg",
-      "/products/wood crafts/india taj mahal pocket watch/2.2.jpg",
-      "/products/wood crafts/india taj mahal pocket watch/2.3.jpg",
-      "/products/wood crafts/india taj mahal pocket watch/2.4.jpg",
-      "/products/wood crafts/india taj mahal pocket watch/2.5.jpg",
-      "/products/wood crafts/india taj mahal pocket watch/2.6.jpg",
-      "/products/wood crafts/india taj mahal pocket watch/2.7.jpg",
-      "/products/wood crafts/india taj mahal pocket watch/2.8.jpg"
+      "/products/wood%20crafts/india%20taj%20mahal%20pocket%20watch/2.1.jpg",
+      "/products/wood%20crafts/india%20taj%20mahal%20pocket%20watch/2.2.jpg",
+      "/products/wood%20crafts/india%20taj%20mahal%20pocket%20watch/2.3.jpg",
+      "/products/wood%20crafts/india%20taj%20mahal%20pocket%20watch/2.4.jpg",
+      "/products/wood%20crafts/india%20taj%20mahal%20pocket%20watch/2.5.jpg",
+      "/products/wood%20crafts/india%20taj%20mahal%20pocket%20watch/2.6.jpg",
+      "/products/wood%20crafts/india%20taj%20mahal%20pocket%20watch/2.7.jpg",
+      "/products/wood%20crafts/india%20taj%20mahal%20pocket%20watch/2.8.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -2575,14 +2526,14 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/ladakh motorcycle pocket watch/3.1.jpg",
-      "/products/wood crafts/ladakh motorcycle pocket watch/3.2.jpg",
-      "/products/wood crafts/ladakh motorcycle pocket watch/W1.jpg",
-      "/products/wood crafts/ladakh motorcycle pocket watch/W2.jpg",
-      "/products/wood crafts/ladakh motorcycle pocket watch/W3.jpg",
-      "/products/wood crafts/ladakh motorcycle pocket watch/W4.jpg",
-      "/products/wood crafts/ladakh motorcycle pocket watch/W5.jpg",
-      "/products/wood crafts/ladakh motorcycle pocket watch/W6.jpg"
+      "/products/wood%20crafts/ladakh%20motorcycle%20pocket%20watch/3.1.jpg",
+      "/products/wood%20crafts/ladakh%20motorcycle%20pocket%20watch/3.2.jpg",
+      "/products/wood%20crafts/ladakh%20motorcycle%20pocket%20watch/W1.jpg",
+      "/products/wood%20crafts/ladakh%20motorcycle%20pocket%20watch/W2.jpg",
+      "/products/wood%20crafts/ladakh%20motorcycle%20pocket%20watch/W3.jpg",
+      "/products/wood%20crafts/ladakh%20motorcycle%20pocket%20watch/W4.jpg",
+      "/products/wood%20crafts/ladakh%20motorcycle%20pocket%20watch/W5.jpg",
+      "/products/wood%20crafts/ladakh%20motorcycle%20pocket%20watch/W6.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -2657,14 +2608,14 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/stylish anchor pocket watch/1.1.jpg",
-      "/products/wood crafts/stylish anchor pocket watch/1.3.jpg",
-      "/products/wood crafts/stylish anchor pocket watch/1.5.jpg",
-      "/products/wood crafts/stylish anchor pocket watch/1.6.jpg",
-      "/products/wood crafts/stylish anchor pocket watch/W1.jpg",
-      "/products/wood crafts/stylish anchor pocket watch/W4.jpg",
-      "/products/wood crafts/stylish anchor pocket watch/W5.jpg",
-      "/products/wood crafts/stylish anchor pocket watch/W6.jpg"
+      "/products/wood%20crafts/stylish%20anchor%20pocket%20watch/1.1.jpg",
+      "/products/wood%20crafts/stylish%20anchor%20pocket%20watch/1.3.jpg",
+      "/products/wood%20crafts/stylish%20anchor%20pocket%20watch/1.5.jpg",
+      "/products/wood%20crafts/stylish%20anchor%20pocket%20watch/1.6.jpg",
+      "/products/wood%20crafts/stylish%20anchor%20pocket%20watch/W1.jpg",
+      "/products/wood%20crafts/stylish%20anchor%20pocket%20watch/W4.jpg",
+      "/products/wood%20crafts/stylish%20anchor%20pocket%20watch/W5.jpg",
+      "/products/wood%20crafts/stylish%20anchor%20pocket%20watch/W6.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -2739,10 +2690,10 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/traditional Indian handcrafted wooden Chakla Belan set/6.1.jpg",
-      "/products/wood crafts/traditional Indian handcrafted wooden Chakla Belan set/6.2.jpg",
-      "/products/wood crafts/traditional Indian handcrafted wooden Chakla Belan set/6.3.jpg",
-      "/products/wood crafts/traditional Indian handcrafted wooden Chakla Belan set/71IdCTzhppL.jpg"
+      "/products/wood%20crafts/traditional%20Indian%20handcrafted%20wooden%20Chakla%20Belan%20set/6.1.jpg",
+      "/products/wood%20crafts/traditional%20Indian%20handcrafted%20wooden%20Chakla%20Belan%20set/6.2.jpg",
+      "/products/wood%20crafts/traditional%20Indian%20handcrafted%20wooden%20Chakla%20Belan%20set/6.3.jpg",
+      "/products/wood%20crafts/traditional%20Indian%20handcrafted%20wooden%20Chakla%20Belan%20set/71IdCTzhppL.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -2817,10 +2768,10 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood crafts/traditional Indian wooden rolling pin/3.1.jpg",
-      "/products/wood crafts/traditional Indian wooden rolling pin/3.2.jpg",
-      "/products/wood crafts/traditional Indian wooden rolling pin/3.3.jpg",
-      "/products/wood crafts/traditional Indian wooden rolling pin/3.4.jpg"
+      "/products/wood%20crafts/traditional%20Indian%20wooden%20rolling%20pin/3.1.jpg",
+      "/products/wood%20crafts/traditional%20Indian%20wooden%20rolling%20pin/3.2.jpg",
+      "/products/wood%20crafts/traditional%20Indian%20wooden%20rolling%20pin/3.3.jpg",
+      "/products/wood%20crafts/traditional%20Indian%20wooden%20rolling%20pin/3.4.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -2895,11 +2846,11 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/metal crafts/Antique Lord Krishna Flute Diya Stand/01.jpg",
-      "/products/metal crafts/Antique Lord Krishna Flute Diya Stand/02.jpeg",
-      "/products/metal crafts/Antique Lord Krishna Flute Diya Stand/03.jpeg",
-      "/products/metal crafts/Antique Lord Krishna Flute Diya Stand/04.jpg",
-      "/products/metal crafts/Antique Lord Krishna Flute Diya Stand/05.png"
+      "/products/metal%20crafts/Antique%20Lord%20Krishna%20Flute%20Diya%20Stand/01.jpg",
+      "/products/metal%20crafts/Antique%20Lord%20Krishna%20Flute%20Diya%20Stand/02.jpeg",
+      "/products/metal%20crafts/Antique%20Lord%20Krishna%20Flute%20Diya%20Stand/03.jpeg",
+      "/products/metal%20crafts/Antique%20Lord%20Krishna%20Flute%20Diya%20Stand/04.jpg",
+      "/products/metal%20crafts/Antique%20Lord%20Krishna%20Flute%20Diya%20Stand/05.png"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -2973,11 +2924,11 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/metal crafts/Antique Silver Peacock Panchmukhi Diya Stand/01.jpg",
-      "/products/metal crafts/Antique Silver Peacock Panchmukhi Diya Stand/02.jpg",
-      "/products/metal crafts/Antique Silver Peacock Panchmukhi Diya Stand/03.jpg",
-      "/products/metal crafts/Antique Silver Peacock Panchmukhi Diya Stand/04.jpg",
-      "/products/metal crafts/Antique Silver Peacock Panchmukhi Diya Stand/05.jpg"
+      "/products/metal%20crafts/Antique%20Silver%20Peacock%20Panchmukhi%20Diya%20Stand/01.jpg",
+      "/products/metal%20crafts/Antique%20Silver%20Peacock%20Panchmukhi%20Diya%20Stand/02.jpg",
+      "/products/metal%20crafts/Antique%20Silver%20Peacock%20Panchmukhi%20Diya%20Stand/03.jpg",
+      "/products/metal%20crafts/Antique%20Silver%20Peacock%20Panchmukhi%20Diya%20Stand/04.jpg",
+      "/products/metal%20crafts/Antique%20Silver%20Peacock%20Panchmukhi%20Diya%20Stand/05.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -3051,12 +3002,12 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/metal crafts/Dancing Lord Ganesha Panchmukhi Diya Stand/01.jpg",
-      "/products/metal crafts/Dancing Lord Ganesha Panchmukhi Diya Stand/02.jpg",
-      "/products/metal crafts/Dancing Lord Ganesha Panchmukhi Diya Stand/03.jpg",
-      "/products/metal crafts/Dancing Lord Ganesha Panchmukhi Diya Stand/04.jpg",
-      "/products/metal crafts/Dancing Lord Ganesha Panchmukhi Diya Stand/05.jpg",
-      "/products/metal crafts/Dancing Lord Ganesha Panchmukhi Diya Stand/06.jpg"
+      "/products/metal%20crafts/Dancing%20Lord%20Ganesha%20Panchmukhi%20Diya%20Stand/01.jpg",
+      "/products/metal%20crafts/Dancing%20Lord%20Ganesha%20Panchmukhi%20Diya%20Stand/02.jpg",
+      "/products/metal%20crafts/Dancing%20Lord%20Ganesha%20Panchmukhi%20Diya%20Stand/03.jpg",
+      "/products/metal%20crafts/Dancing%20Lord%20Ganesha%20Panchmukhi%20Diya%20Stand/04.jpg",
+      "/products/metal%20crafts/Dancing%20Lord%20Ganesha%20Panchmukhi%20Diya%20Stand/05.jpg",
+      "/products/metal%20crafts/Dancing%20Lord%20Ganesha%20Panchmukhi%20Diya%20Stand/06.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -3130,11 +3081,11 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/metal crafts/Hand-Painted Brass Lotus Diya  set of 3/01.jpg",
-      "/products/metal crafts/Hand-Painted Brass Lotus Diya  set of 3/02.jpg",
-      "/products/metal crafts/Hand-Painted Brass Lotus Diya  set of 3/03.jpg",
-      "/products/metal crafts/Hand-Painted Brass Lotus Diya  set of 3/04.jpg",
-      "/products/metal crafts/Hand-Painted Brass Lotus Diya  set of 3/05.jpg"
+      "/products/metal%20crafts/Hand-Painted%20Brass%20Lotus%20Diya%20%20set%20of%203/01.jpg",
+      "/products/metal%20crafts/Hand-Painted%20Brass%20Lotus%20Diya%20%20set%20of%203/02.jpg",
+      "/products/metal%20crafts/Hand-Painted%20Brass%20Lotus%20Diya%20%20set%20of%203/03.jpg",
+      "/products/metal%20crafts/Hand-Painted%20Brass%20Lotus%20Diya%20%20set%20of%203/04.jpg",
+      "/products/metal%20crafts/Hand-Painted%20Brass%20Lotus%20Diya%20%20set%20of%203/05.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -3208,12 +3159,12 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/metal crafts/Hand-Painted Red Brass Lotus Diya  set of 3/01.jpg",
-      "/products/metal crafts/Hand-Painted Red Brass Lotus Diya  set of 3/02.jpg",
-      "/products/metal crafts/Hand-Painted Red Brass Lotus Diya  set of 3/03.jpg",
-      "/products/metal crafts/Hand-Painted Red Brass Lotus Diya  set of 3/04.jpg",
-      "/products/metal crafts/Hand-Painted Red Brass Lotus Diya  set of 3/05.jpg",
-      "/products/metal crafts/Hand-Painted Red Brass Lotus Diya  set of 3/06.jpg"
+      "/products/metal%20crafts/Hand-Painted%20Red%20Brass%20Lotus%20Diya%20%20set%20of%203/01.jpg",
+      "/products/metal%20crafts/Hand-Painted%20Red%20Brass%20Lotus%20Diya%20%20set%20of%203/02.jpg",
+      "/products/metal%20crafts/Hand-Painted%20Red%20Brass%20Lotus%20Diya%20%20set%20of%203/03.jpg",
+      "/products/metal%20crafts/Hand-Painted%20Red%20Brass%20Lotus%20Diya%20%20set%20of%203/04.jpg",
+      "/products/metal%20crafts/Hand-Painted%20Red%20Brass%20Lotus%20Diya%20%20set%20of%203/05.jpg",
+      "/products/metal%20crafts/Hand-Painted%20Red%20Brass%20Lotus%20Diya%20%20set%20of%203/06.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -3287,11 +3238,11 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/metal crafts/Hexagonal Cutwork Brass Diya  set of 3/01.jpg",
-      "/products/metal crafts/Hexagonal Cutwork Brass Diya  set of 3/02.jpg",
-      "/products/metal crafts/Hexagonal Cutwork Brass Diya  set of 3/03.jpg",
-      "/products/metal crafts/Hexagonal Cutwork Brass Diya  set of 3/04.jpg",
-      "/products/metal crafts/Hexagonal Cutwork Brass Diya  set of 3/05.jpg"
+      "/products/metal%20crafts/Hexagonal%20Cutwork%20Brass%20Diya%20%20set%20of%203/01.jpg",
+      "/products/metal%20crafts/Hexagonal%20Cutwork%20Brass%20Diya%20%20set%20of%203/02.jpg",
+      "/products/metal%20crafts/Hexagonal%20Cutwork%20Brass%20Diya%20%20set%20of%203/03.jpg",
+      "/products/metal%20crafts/Hexagonal%20Cutwork%20Brass%20Diya%20%20set%20of%203/04.jpg",
+      "/products/metal%20crafts/Hexagonal%20Cutwork%20Brass%20Diya%20%20set%20of%203/05.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -3365,11 +3316,11 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/metal crafts/Kamal Deepam  Kamala Diya/01.jpg",
-      "/products/metal crafts/Kamal Deepam  Kamala Diya/02.jpg",
-      "/products/metal crafts/Kamal Deepam  Kamala Diya/03.jpg",
-      "/products/metal crafts/Kamal Deepam  Kamala Diya/04.jpg",
-      "/products/metal crafts/Kamal Deepam  Kamala Diya/05.jpg"
+      "/products/metal%20crafts/Kamal%20Deepam%20%20Kamala%20Diya/01.jpg",
+      "/products/metal%20crafts/Kamal%20Deepam%20%20Kamala%20Diya/02.jpg",
+      "/products/metal%20crafts/Kamal%20Deepam%20%20Kamala%20Diya/03.jpg",
+      "/products/metal%20crafts/Kamal%20Deepam%20%20Kamala%20Diya/04.jpg",
+      "/products/metal%20crafts/Kamal%20Deepam%20%20Kamala%20Diya/05.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -3443,12 +3394,12 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/metal crafts/Lotus  Star Leaf Cutwork Brass Diya  set of 3/01.jpg",
-      "/products/metal crafts/Lotus  Star Leaf Cutwork Brass Diya  set of 3/02.jpg",
-      "/products/metal crafts/Lotus  Star Leaf Cutwork Brass Diya  set of 3/03.jpg",
-      "/products/metal crafts/Lotus  Star Leaf Cutwork Brass Diya  set of 3/04.jpg",
-      "/products/metal crafts/Lotus  Star Leaf Cutwork Brass Diya  set of 3/05.jpg",
-      "/products/metal crafts/Lotus  Star Leaf Cutwork Brass Diya  set of 3/06.jpg"
+      "/products/metal%20crafts/Lotus%20%20Star%20Leaf%20Cutwork%20Brass%20Diya%20%20set%20of%203/01.jpg",
+      "/products/metal%20crafts/Lotus%20%20Star%20Leaf%20Cutwork%20Brass%20Diya%20%20set%20of%203/02.jpg",
+      "/products/metal%20crafts/Lotus%20%20Star%20Leaf%20Cutwork%20Brass%20Diya%20%20set%20of%203/03.jpg",
+      "/products/metal%20crafts/Lotus%20%20Star%20Leaf%20Cutwork%20Brass%20Diya%20%20set%20of%203/04.jpg",
+      "/products/metal%20crafts/Lotus%20%20Star%20Leaf%20Cutwork%20Brass%20Diya%20%20set%20of%203/05.jpg",
+      "/products/metal%20crafts/Lotus%20%20Star%20Leaf%20Cutwork%20Brass%20Diya%20%20set%20of%203/06.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -3522,12 +3473,12 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/metal crafts/Lotus Base Brass Kapoor Dani/01.jpg",
-      "/products/metal crafts/Lotus Base Brass Kapoor Dani/02.jpg",
-      "/products/metal crafts/Lotus Base Brass Kapoor Dani/03.jpg",
-      "/products/metal crafts/Lotus Base Brass Kapoor Dani/04.jpg",
-      "/products/metal crafts/Lotus Base Brass Kapoor Dani/06.jpg",
-      "/products/metal crafts/Lotus Base Brass Kapoor Dani/07.jpg"
+      "/products/metal%20crafts/Lotus%20Base%20Brass%20Kapoor%20Dani/01.jpg",
+      "/products/metal%20crafts/Lotus%20Base%20Brass%20Kapoor%20Dani/02.jpg",
+      "/products/metal%20crafts/Lotus%20Base%20Brass%20Kapoor%20Dani/03.jpg",
+      "/products/metal%20crafts/Lotus%20Base%20Brass%20Kapoor%20Dani/04.jpg",
+      "/products/metal%20crafts/Lotus%20Base%20Brass%20Kapoor%20Dani/06.jpg",
+      "/products/metal%20crafts/Lotus%20Base%20Brass%20Kapoor%20Dani/07.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -3601,12 +3552,12 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/metal crafts/Metal Lord Krishna Playing Flute under a Kalpavriksha Tree statue/01.jpg",
-      "/products/metal crafts/Metal Lord Krishna Playing Flute under a Kalpavriksha Tree statue/02.jpg",
-      "/products/metal crafts/Metal Lord Krishna Playing Flute under a Kalpavriksha Tree statue/03.jpg",
-      "/products/metal crafts/Metal Lord Krishna Playing Flute under a Kalpavriksha Tree statue/04.jpg",
-      "/products/metal crafts/Metal Lord Krishna Playing Flute under a Kalpavriksha Tree statue/05.jpg",
-      "/products/metal crafts/Metal Lord Krishna Playing Flute under a Kalpavriksha Tree statue/06.jpeg"
+      "/products/metal%20crafts/Metal%20Lord%20Krishna%20Playing%20Flute%20under%20a%20Kalpavriksha%20Tree%20statue/01.jpg",
+      "/products/metal%20crafts/Metal%20Lord%20Krishna%20Playing%20Flute%20under%20a%20Kalpavriksha%20Tree%20statue/02.jpg",
+      "/products/metal%20crafts/Metal%20Lord%20Krishna%20Playing%20Flute%20under%20a%20Kalpavriksha%20Tree%20statue/03.jpg",
+      "/products/metal%20crafts/Metal%20Lord%20Krishna%20Playing%20Flute%20under%20a%20Kalpavriksha%20Tree%20statue/04.jpg",
+      "/products/metal%20crafts/Metal%20Lord%20Krishna%20Playing%20Flute%20under%20a%20Kalpavriksha%20Tree%20statue/05.jpg",
+      "/products/metal%20crafts/Metal%20Lord%20Krishna%20Playing%20Flute%20under%20a%20Kalpavriksha%20Tree%20statue/06.jpeg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -3680,11 +3631,11 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/metal crafts/Modern Handcrafted Ganesha on Rocking Chair Idol/01.jpg",
-      "/products/metal crafts/Modern Handcrafted Ganesha on Rocking Chair Idol/02.jpg",
-      "/products/metal crafts/Modern Handcrafted Ganesha on Rocking Chair Idol/03.jpg",
-      "/products/metal crafts/Modern Handcrafted Ganesha on Rocking Chair Idol/04.jpg",
-      "/products/metal crafts/Modern Handcrafted Ganesha on Rocking Chair Idol/05.jpg"
+      "/products/metal%20crafts/Modern%20Handcrafted%20Ganesha%20on%20Rocking%20Chair%20Idol/01.jpg",
+      "/products/metal%20crafts/Modern%20Handcrafted%20Ganesha%20on%20Rocking%20Chair%20Idol/02.jpg",
+      "/products/metal%20crafts/Modern%20Handcrafted%20Ganesha%20on%20Rocking%20Chair%20Idol/03.jpg",
+      "/products/metal%20crafts/Modern%20Handcrafted%20Ganesha%20on%20Rocking%20Chair%20Idol/04.jpg",
+      "/products/metal%20crafts/Modern%20Handcrafted%20Ganesha%20on%20Rocking%20Chair%20Idol/05.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -3758,14 +3709,14 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/metal crafts/Modern Handcrafted Pagdi Ganesha Metal Idol/01.jpg",
-      "/products/metal crafts/Modern Handcrafted Pagdi Ganesha Metal Idol/02.jpg",
-      "/products/metal crafts/Modern Handcrafted Pagdi Ganesha Metal Idol/03.jpg",
-      "/products/metal crafts/Modern Handcrafted Pagdi Ganesha Metal Idol/04.jpg",
-      "/products/metal crafts/Modern Handcrafted Pagdi Ganesha Metal Idol/05.jpg",
-      "/products/metal crafts/Modern Handcrafted Pagdi Ganesha Metal Idol/06.jpg",
-      "/products/metal crafts/Modern Handcrafted Pagdi Ganesha Metal Idol/07.jpg",
-      "/products/metal crafts/Modern Handcrafted Pagdi Ganesha Metal Idol/08.jpg"
+      "/products/metal%20crafts/Modern%20Handcrafted%20Pagdi%20Ganesha%20Metal%20Idol/01.jpg",
+      "/products/metal%20crafts/Modern%20Handcrafted%20Pagdi%20Ganesha%20Metal%20Idol/02.jpg",
+      "/products/metal%20crafts/Modern%20Handcrafted%20Pagdi%20Ganesha%20Metal%20Idol/03.jpg",
+      "/products/metal%20crafts/Modern%20Handcrafted%20Pagdi%20Ganesha%20Metal%20Idol/04.jpg",
+      "/products/metal%20crafts/Modern%20Handcrafted%20Pagdi%20Ganesha%20Metal%20Idol/05.jpg",
+      "/products/metal%20crafts/Modern%20Handcrafted%20Pagdi%20Ganesha%20Metal%20Idol/06.jpg",
+      "/products/metal%20crafts/Modern%20Handcrafted%20Pagdi%20Ganesha%20Metal%20Idol/07.jpg",
+      "/products/metal%20crafts/Modern%20Handcrafted%20Pagdi%20Ganesha%20Metal%20Idol/08.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -3839,12 +3790,12 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/metal crafts/Oxidized Metal Elephant Singhasan with Chatra/01.jpg",
-      "/products/metal crafts/Oxidized Metal Elephant Singhasan with Chatra/02.jpg",
-      "/products/metal crafts/Oxidized Metal Elephant Singhasan with Chatra/03.jpg",
-      "/products/metal crafts/Oxidized Metal Elephant Singhasan with Chatra/04.jpg",
-      "/products/metal crafts/Oxidized Metal Elephant Singhasan with Chatra/05.jpeg",
-      "/products/metal crafts/Oxidized Metal Elephant Singhasan with Chatra/05.jpg"
+      "/products/metal%20crafts/Oxidized%20Metal%20Elephant%20Singhasan%20with%20Chatra/01.jpg",
+      "/products/metal%20crafts/Oxidized%20Metal%20Elephant%20Singhasan%20with%20Chatra/02.jpg",
+      "/products/metal%20crafts/Oxidized%20Metal%20Elephant%20Singhasan%20with%20Chatra/03.jpg",
+      "/products/metal%20crafts/Oxidized%20Metal%20Elephant%20Singhasan%20with%20Chatra/04.jpg",
+      "/products/metal%20crafts/Oxidized%20Metal%20Elephant%20Singhasan%20with%20Chatra/05.jpeg",
+      "/products/metal%20crafts/Oxidized%20Metal%20Elephant%20Singhasan%20with%20Chatra/05.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -3918,11 +3869,11 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/metal crafts/Radha Krishna under a Kalpavriksha Tree Statue/01.jpg",
-      "/products/metal crafts/Radha Krishna under a Kalpavriksha Tree Statue/02.jpg",
-      "/products/metal crafts/Radha Krishna under a Kalpavriksha Tree Statue/03.jpg",
-      "/products/metal crafts/Radha Krishna under a Kalpavriksha Tree Statue/04.jpg",
-      "/products/metal crafts/Radha Krishna under a Kalpavriksha Tree Statue/05.jpg"
+      "/products/metal%20crafts/Radha%20Krishna%20under%20a%20Kalpavriksha%20Tree%20Statue/01.jpg",
+      "/products/metal%20crafts/Radha%20Krishna%20under%20a%20Kalpavriksha%20Tree%20Statue/02.jpg",
+      "/products/metal%20crafts/Radha%20Krishna%20under%20a%20Kalpavriksha%20Tree%20Statue/03.jpg",
+      "/products/metal%20crafts/Radha%20Krishna%20under%20a%20Kalpavriksha%20Tree%20Statue/04.jpg",
+      "/products/metal%20crafts/Radha%20Krishna%20under%20a%20Kalpavriksha%20Tree%20Statue/05.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -3996,10 +3947,10 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/metal crafts/Rose Gold Metallic Leaf Tealight Holder/01.jpg",
-      "/products/metal crafts/Rose Gold Metallic Leaf Tealight Holder/02.jpg",
-      "/products/metal crafts/Rose Gold Metallic Leaf Tealight Holder/03.jpg",
-      "/products/metal crafts/Rose Gold Metallic Leaf Tealight Holder/04.jpg"
+      "/products/metal%20crafts/Rose%20Gold%20Metallic%20Leaf%20Tealight%20Holder/01.jpg",
+      "/products/metal%20crafts/Rose%20Gold%20Metallic%20Leaf%20Tealight%20Holder/02.jpg",
+      "/products/metal%20crafts/Rose%20Gold%20Metallic%20Leaf%20Tealight%20Holder/03.jpg",
+      "/products/metal%20crafts/Rose%20Gold%20Metallic%20Leaf%20Tealight%20Holder/04.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -4074,11 +4025,11 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/metal crafts/Round Cutwork Brass Diya set of 3/01.jpg",
-      "/products/metal crafts/Round Cutwork Brass Diya set of 3/02.jpg",
-      "/products/metal crafts/Round Cutwork Brass Diya set of 3/03.jpg",
-      "/products/metal crafts/Round Cutwork Brass Diya set of 3/04.jpg",
-      "/products/metal crafts/Round Cutwork Brass Diya set of 3/05.jpg"
+      "/products/metal%20crafts/Round%20Cutwork%20Brass%20Diya%20set%20of%203/01.jpg",
+      "/products/metal%20crafts/Round%20Cutwork%20Brass%20Diya%20set%20of%203/02.jpg",
+      "/products/metal%20crafts/Round%20Cutwork%20Brass%20Diya%20set%20of%203/03.jpg",
+      "/products/metal%20crafts/Round%20Cutwork%20Brass%20Diya%20set%20of%203/04.jpg",
+      "/products/metal%20crafts/Round%20Cutwork%20Brass%20Diya%20set%20of%203/05.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -4152,11 +4103,11 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/metal crafts/Set of 3 Star Leaf Cutwork Brass Diyas/01.jpg",
-      "/products/metal crafts/Set of 3 Star Leaf Cutwork Brass Diyas/02.jpg",
-      "/products/metal crafts/Set of 3 Star Leaf Cutwork Brass Diyas/03.jpg",
-      "/products/metal crafts/Set of 3 Star Leaf Cutwork Brass Diyas/04.jpg",
-      "/products/metal crafts/Set of 3 Star Leaf Cutwork Brass Diyas/06.jpg"
+      "/products/metal%20crafts/Set%20of%203%20Star%20Leaf%20Cutwork%20Brass%20Diyas/01.jpg",
+      "/products/metal%20crafts/Set%20of%203%20Star%20Leaf%20Cutwork%20Brass%20Diyas/02.jpg",
+      "/products/metal%20crafts/Set%20of%203%20Star%20Leaf%20Cutwork%20Brass%20Diyas/03.jpg",
+      "/products/metal%20crafts/Set%20of%203%20Star%20Leaf%20Cutwork%20Brass%20Diyas/04.jpg",
+      "/products/metal%20crafts/Set%20of%203%20Star%20Leaf%20Cutwork%20Brass%20Diyas/06.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -4230,11 +4181,11 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/metal crafts/Square Cutwork Brass Diya  set of 3/01.jpg",
-      "/products/metal crafts/Square Cutwork Brass Diya  set of 3/02.jpg",
-      "/products/metal crafts/Square Cutwork Brass Diya  set of 3/03.jpg",
-      "/products/metal crafts/Square Cutwork Brass Diya  set of 3/04.jpg",
-      "/products/metal crafts/Square Cutwork Brass Diya  set of 3/05.jpg"
+      "/products/metal%20crafts/Square%20Cutwork%20Brass%20Diya%20%20set%20of%203/01.jpg",
+      "/products/metal%20crafts/Square%20Cutwork%20Brass%20Diya%20%20set%20of%203/02.jpg",
+      "/products/metal%20crafts/Square%20Cutwork%20Brass%20Diya%20%20set%20of%203/03.jpg",
+      "/products/metal%20crafts/Square%20Cutwork%20Brass%20Diya%20%20set%20of%203/04.jpg",
+      "/products/metal%20crafts/Square%20Cutwork%20Brass%20Diya%20%20set%20of%203/05.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -4308,16 +4259,16 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/metal crafts/Sun Dial Pooja Diya  set of 3/01.jpg",
-      "/products/metal crafts/Sun Dial Pooja Diya  set of 3/02.jpg",
-      "/products/metal crafts/Sun Dial Pooja Diya  set of 3/03.jpg",
-      "/products/metal crafts/Sun Dial Pooja Diya  set of 3/04.jpg",
-      "/products/metal crafts/Sun Dial Pooja Diya  set of 3/05.jpg",
-      "/products/metal crafts/Sun Dial Pooja Diya  set of 3/06.jpg",
-      "/products/metal crafts/Sun Dial Pooja Diya  set of 3/07.jpg",
-      "/products/metal crafts/Sun Dial Pooja Diya  set of 3/08.jpg",
-      "/products/metal crafts/Sun Dial Pooja Diya  set of 3/09.jpg",
-      "/products/metal crafts/Sun Dial Pooja Diya  set of 3/10.jpg"
+      "/products/metal%20crafts/Sun%20Dial%20Pooja%20Diya%20%20set%20of%203/01.jpg",
+      "/products/metal%20crafts/Sun%20Dial%20Pooja%20Diya%20%20set%20of%203/02.jpg",
+      "/products/metal%20crafts/Sun%20Dial%20Pooja%20Diya%20%20set%20of%203/03.jpg",
+      "/products/metal%20crafts/Sun%20Dial%20Pooja%20Diya%20%20set%20of%203/04.jpg",
+      "/products/metal%20crafts/Sun%20Dial%20Pooja%20Diya%20%20set%20of%203/05.jpg",
+      "/products/metal%20crafts/Sun%20Dial%20Pooja%20Diya%20%20set%20of%203/06.jpg",
+      "/products/metal%20crafts/Sun%20Dial%20Pooja%20Diya%20%20set%20of%203/07.jpg",
+      "/products/metal%20crafts/Sun%20Dial%20Pooja%20Diya%20%20set%20of%203/08.jpg",
+      "/products/metal%20crafts/Sun%20Dial%20Pooja%20Diya%20%20set%20of%203/09.jpg",
+      "/products/metal%20crafts/Sun%20Dial%20Pooja%20Diya%20%20set%20of%203/10.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -4391,15 +4342,15 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/metal crafts/The Azure Bloom Diya set of 4/01.jpg",
-      "/products/metal crafts/The Azure Bloom Diya set of 4/02.jpeg",
-      "/products/metal crafts/The Azure Bloom Diya set of 4/03.jpeg",
-      "/products/metal crafts/The Azure Bloom Diya set of 4/04.jpg",
-      "/products/metal crafts/The Azure Bloom Diya set of 4/05.jpg",
-      "/products/metal crafts/The Azure Bloom Diya set of 4/06.jpg",
-      "/products/metal crafts/The Azure Bloom Diya set of 4/08.jpg",
-      "/products/metal crafts/The Azure Bloom Diya set of 4/09.jpg",
-      "/products/metal crafts/The Azure Bloom Diya set of 4/10.jpg"
+      "/products/metal%20crafts/The%20Azure%20Bloom%20Diya%20set%20of%204/01.jpg",
+      "/products/metal%20crafts/The%20Azure%20Bloom%20Diya%20set%20of%204/02.jpeg",
+      "/products/metal%20crafts/The%20Azure%20Bloom%20Diya%20set%20of%204/03.jpeg",
+      "/products/metal%20crafts/The%20Azure%20Bloom%20Diya%20set%20of%204/04.jpg",
+      "/products/metal%20crafts/The%20Azure%20Bloom%20Diya%20set%20of%204/05.jpg",
+      "/products/metal%20crafts/The%20Azure%20Bloom%20Diya%20set%20of%204/06.jpg",
+      "/products/metal%20crafts/The%20Azure%20Bloom%20Diya%20set%20of%204/08.jpg",
+      "/products/metal%20crafts/The%20Azure%20Bloom%20Diya%20set%20of%204/09.jpg",
+      "/products/metal%20crafts/The%20Azure%20Bloom%20Diya%20set%20of%204/10.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -4473,13 +4424,13 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/metal crafts/Traditional Brass Shankh Diya set of 3/01.jpg",
-      "/products/metal crafts/Traditional Brass Shankh Diya set of 3/02.jpg",
-      "/products/metal crafts/Traditional Brass Shankh Diya set of 3/03.jpg",
-      "/products/metal crafts/Traditional Brass Shankh Diya set of 3/04.jpg",
-      "/products/metal crafts/Traditional Brass Shankh Diya set of 3/05.jpg",
-      "/products/metal crafts/Traditional Brass Shankh Diya set of 3/06.jpg",
-      "/products/metal crafts/Traditional Brass Shankh Diya set of 3/07.jpg"
+      "/products/metal%20crafts/Traditional%20Brass%20Shankh%20Diya%20set%20of%203/01.jpg",
+      "/products/metal%20crafts/Traditional%20Brass%20Shankh%20Diya%20set%20of%203/02.jpg",
+      "/products/metal%20crafts/Traditional%20Brass%20Shankh%20Diya%20set%20of%203/03.jpg",
+      "/products/metal%20crafts/Traditional%20Brass%20Shankh%20Diya%20set%20of%203/04.jpg",
+      "/products/metal%20crafts/Traditional%20Brass%20Shankh%20Diya%20set%20of%203/05.jpg",
+      "/products/metal%20crafts/Traditional%20Brass%20Shankh%20Diya%20set%20of%203/06.jpg",
+      "/products/metal%20crafts/Traditional%20Brass%20Shankh%20Diya%20set%20of%203/07.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -4553,12 +4504,12 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/metal crafts/Traditional Brass Sudarshana Chakra Diya  set of 3/01.jpg",
-      "/products/metal crafts/Traditional Brass Sudarshana Chakra Diya  set of 3/02.jpg",
-      "/products/metal crafts/Traditional Brass Sudarshana Chakra Diya  set of 3/03.jpg",
-      "/products/metal crafts/Traditional Brass Sudarshana Chakra Diya  set of 3/04.jpg",
-      "/products/metal crafts/Traditional Brass Sudarshana Chakra Diya  set of 3/05.jpg",
-      "/products/metal crafts/Traditional Brass Sudarshana Chakra Diya  set of 3/06.jpg"
+      "/products/metal%20crafts/Traditional%20Brass%20Sudarshana%20Chakra%20Diya%20%20set%20of%203/01.jpg",
+      "/products/metal%20crafts/Traditional%20Brass%20Sudarshana%20Chakra%20Diya%20%20set%20of%203/02.jpg",
+      "/products/metal%20crafts/Traditional%20Brass%20Sudarshana%20Chakra%20Diya%20%20set%20of%203/03.jpg",
+      "/products/metal%20crafts/Traditional%20Brass%20Sudarshana%20Chakra%20Diya%20%20set%20of%203/04.jpg",
+      "/products/metal%20crafts/Traditional%20Brass%20Sudarshana%20Chakra%20Diya%20%20set%20of%203/05.jpg",
+      "/products/metal%20crafts/Traditional%20Brass%20Sudarshana%20Chakra%20Diya%20%20set%20of%203/06.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -4632,12 +4583,12 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/metal crafts/Vastu Brass Tortoise on a Glass Plate/01.jpg",
-      "/products/metal crafts/Vastu Brass Tortoise on a Glass Plate/02.jpg",
-      "/products/metal crafts/Vastu Brass Tortoise on a Glass Plate/03.jpg",
-      "/products/metal crafts/Vastu Brass Tortoise on a Glass Plate/04.jpg",
-      "/products/metal crafts/Vastu Brass Tortoise on a Glass Plate/05.jpg",
-      "/products/metal crafts/Vastu Brass Tortoise on a Glass Plate/06.jpg"
+      "/products/metal%20crafts/Vastu%20Brass%20Tortoise%20on%20a%20Glass%20Plate/01.jpg",
+      "/products/metal%20crafts/Vastu%20Brass%20Tortoise%20on%20a%20Glass%20Plate/02.jpg",
+      "/products/metal%20crafts/Vastu%20Brass%20Tortoise%20on%20a%20Glass%20Plate/03.jpg",
+      "/products/metal%20crafts/Vastu%20Brass%20Tortoise%20on%20a%20Glass%20Plate/04.jpg",
+      "/products/metal%20crafts/Vastu%20Brass%20Tortoise%20on%20a%20Glass%20Plate/05.jpg",
+      "/products/metal%20crafts/Vastu%20Brass%20Tortoise%20on%20a%20Glass%20Plate/06.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -4711,14 +4662,14 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/metal crafts/Zen chime or shop entry bell/01.jpg",
-      "/products/metal crafts/Zen chime or shop entry bell/02.jpg",
-      "/products/metal crafts/Zen chime or shop entry bell/03.jpeg",
-      "/products/metal crafts/Zen chime or shop entry bell/04.jpg",
-      "/products/metal crafts/Zen chime or shop entry bell/05.jpg",
-      "/products/metal crafts/Zen chime or shop entry bell/06.jpeg",
-      "/products/metal crafts/Zen chime or shop entry bell/07.jpg",
-      "/products/metal crafts/Zen chime or shop entry bell/09.jpg"
+      "/products/metal%20crafts/Zen%20chime%20or%20shop%20entry%20bell/01.jpg",
+      "/products/metal%20crafts/Zen%20chime%20or%20shop%20entry%20bell/02.jpg",
+      "/products/metal%20crafts/Zen%20chime%20or%20shop%20entry%20bell/03.jpeg",
+      "/products/metal%20crafts/Zen%20chime%20or%20shop%20entry%20bell/04.jpg",
+      "/products/metal%20crafts/Zen%20chime%20or%20shop%20entry%20bell/05.jpg",
+      "/products/metal%20crafts/Zen%20chime%20or%20shop%20entry%20bell/06.jpeg",
+      "/products/metal%20crafts/Zen%20chime%20or%20shop%20entry%20bell/07.jpg",
+      "/products/metal%20crafts/Zen%20chime%20or%20shop%20entry%20bell/09.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -4792,12 +4743,12 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/metal crafts/eCraftIndia Loving Golden Swan Couple Figurine/01.jpg",
-      "/products/metal crafts/eCraftIndia Loving Golden Swan Couple Figurine/02.jpg",
-      "/products/metal crafts/eCraftIndia Loving Golden Swan Couple Figurine/03.jpg",
-      "/products/metal crafts/eCraftIndia Loving Golden Swan Couple Figurine/04.jpg",
-      "/products/metal crafts/eCraftIndia Loving Golden Swan Couple Figurine/05.jpg",
-      "/products/metal crafts/eCraftIndia Loving Golden Swan Couple Figurine/06.jpg"
+      "/products/metal%20crafts/eCraftIndia%20Loving%20Golden%20Swan%20Couple%20Figurine/01.jpg",
+      "/products/metal%20crafts/eCraftIndia%20Loving%20Golden%20Swan%20Couple%20Figurine/02.jpg",
+      "/products/metal%20crafts/eCraftIndia%20Loving%20Golden%20Swan%20Couple%20Figurine/03.jpg",
+      "/products/metal%20crafts/eCraftIndia%20Loving%20Golden%20Swan%20Couple%20Figurine/04.jpg",
+      "/products/metal%20crafts/eCraftIndia%20Loving%20Golden%20Swan%20Couple%20Figurine/05.jpg",
+      "/products/metal%20crafts/eCraftIndia%20Loving%20Golden%20Swan%20Couple%20Figurine/06.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
@@ -4872,12 +4823,12 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/metal crafts/eSplanade Brass Ganesha Wall Hanging Deepak with Bells/01.jpg",
-      "/products/metal crafts/eSplanade Brass Ganesha Wall Hanging Deepak with Bells/02.jpg",
-      "/products/metal crafts/eSplanade Brass Ganesha Wall Hanging Deepak with Bells/03.jpg",
-      "/products/metal crafts/eSplanade Brass Ganesha Wall Hanging Deepak with Bells/04.jpeg",
-      "/products/metal crafts/eSplanade Brass Ganesha Wall Hanging Deepak with Bells/05.jpeg",
-      "/products/metal crafts/eSplanade Brass Ganesha Wall Hanging Deepak with Bells/06.jpg"
+      "/products/metal%20crafts/eSplanade%20Brass%20Ganesha%20Wall%20Hanging%20Deepak%20with%20Bells/01.jpg",
+      "/products/metal%20crafts/eSplanade%20Brass%20Ganesha%20Wall%20Hanging%20Deepak%20with%20Bells/02.jpg",
+      "/products/metal%20crafts/eSplanade%20Brass%20Ganesha%20Wall%20Hanging%20Deepak%20with%20Bells/03.jpg",
+      "/products/metal%20crafts/eSplanade%20Brass%20Ganesha%20Wall%20Hanging%20Deepak%20with%20Bells/04.jpeg",
+      "/products/metal%20crafts/eSplanade%20Brass%20Ganesha%20Wall%20Hanging%20Deepak%20with%20Bells/05.jpeg",
+      "/products/metal%20crafts/eSplanade%20Brass%20Ganesha%20Wall%20Hanging%20Deepak%20with%20Bells/06.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",

@@ -2,6 +2,7 @@ import React from 'react';
 import { ShoppingBag, Heart, Star, Eye } from 'lucide-react';
 import type { Product } from '../types';
 import { useShop } from '../context/ShopContext';
+import { handleImageError, getSafeImageUrl } from '../utils/imageHelper';
 
 interface ProductCardProps {
   product: Product;
@@ -43,18 +44,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       {/* 1. Thumbnail Container */}
       <div className="relative aspect-[4/5] bg-surface-muted overflow-hidden">
         <img
-          src={product.images[0]}
+          src={getSafeImageUrl(product.images?.[0])}
           alt={product.name}
           loading="lazy"
+          onError={handleImageError}
           className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
         />
 
         {/* Secondary image hover swap if available */}
-        {product.images.length > 1 && (
+        {product.images?.length > 1 && (
           <img
-            src={product.images[1]}
+            src={getSafeImageUrl(product.images?.[1])}
             alt={product.name}
             loading="lazy"
+            onError={handleImageError}
             className="w-full h-full object-cover object-center absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out"
           />
         )}
