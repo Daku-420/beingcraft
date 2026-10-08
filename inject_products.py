@@ -962,7 +962,12 @@ def scan_products():
             ]
             if not image_files:
                 continue
-                
+
+            # Prioritize lifestyle/preview photo for Buddha statue
+            if "buddha head statue" in folder.lower() and "04.jpg" in image_files:
+                image_files = [f for f in image_files if f != "04.jpg" and f != "01.jpg"]
+                image_files = ["04.jpg"] + image_files + (["01.jpg"] if os.path.exists(os.path.join(folder_path, "01.jpg")) else [])
+
             import urllib.parse
             image_urls = [
                 urllib.parse.quote(f"/products/{craft_type}/{folder}/{img}", safe='/')

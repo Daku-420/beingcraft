@@ -87,7 +87,7 @@ const isSystemGenerated = (id?: string): boolean => {
 
 export const ShopProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   // Migration check to ensure clean slate reset
-  const MIGRATION_KEY = 'beingcraft_reset_all_data_v10';
+  const MIGRATION_KEY = 'beingcraft_reset_all_data_v11';
   const hasResetRun = typeof window !== 'undefined' && localStorage.getItem(MIGRATION_KEY) === 'true';
 
   if (typeof window !== 'undefined' && !hasResetRun) {

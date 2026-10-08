@@ -23,7 +23,7 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     slug: 'wood-crafts',
     tagline: 'Natural textures shaped by skilled hands',
     description: 'Aged Sheesham and reclaimed Teak meticulously hand-carved by hereditary Indian woodworkers.',
-    image: '/products/wood%20crafts/handcrafted%20traditional%20wooden%20Buddha%20head%20statue/01.jpg',
+    image: '/products/wood%20crafts/handcrafted%20traditional%20wooden%20Buddha%20head%20statue/04.jpg',
     subcategories: ['Wooden Décor', 'Sculptures', 'Utility & Storage', 'Wooden Art', 'Trays & Boxes'],
   },
   {
@@ -49,7 +49,7 @@ export const EDITORIAL_STORIES = [
     title: 'THE BEAUTY OF WOOD',
     subtitle: 'Seasoned Grain & Generational Carving',
     description: 'From the heartlands of Saharanpur and Shekhawati, master wood turners shape seasoned Indian Sheesham and reclaimed Teak using heirloom chisels. Every grain variation tells of decades weathered under the Indian sun.',
-    image: '/products/wood%20crafts/handcrafted%20traditional%20wooden%20Buddha%20head%20statue/01.jpg',
+    image: '/products/wood%20crafts/handcrafted%20traditional%20wooden%20Buddha%20head%20statue/04.jpg',
     link: '/shop?category=Wood%20Crafts',
     cta: 'Explore Wood Crafts'
   },
@@ -1648,11 +1648,11 @@ export const INITIAL_PRODUCTS: Product[] = [
       "beingcraft"
     ],
     "images": [
-      "/products/wood%20crafts/handcrafted%20traditional%20wooden%20Buddha%20head%20statue/01.jpg",
+      "/products/wood%20crafts/handcrafted%20traditional%20wooden%20Buddha%20head%20statue/04.jpg",
       "/products/wood%20crafts/handcrafted%20traditional%20wooden%20Buddha%20head%20statue/02.jpg",
       "/products/wood%20crafts/handcrafted%20traditional%20wooden%20Buddha%20head%20statue/03.jpg",
-      "/products/wood%20crafts/handcrafted%20traditional%20wooden%20Buddha%20head%20statue/04.jpg",
-      "/products/wood%20crafts/handcrafted%20traditional%20wooden%20Buddha%20head%20statue/05.jpg"
+      "/products/wood%20crafts/handcrafted%20traditional%20wooden%20Buddha%20head%20statue/05.jpg",
+      "/products/wood%20crafts/handcrafted%20traditional%20wooden%20Buddha%20head%20statue/01.jpg"
     ],
     "careInstructions": [
       "Wipe gently with a soft dry cotton cloth to preserve sheen.",
