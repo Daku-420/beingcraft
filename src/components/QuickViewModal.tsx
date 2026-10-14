@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { handleImageError, getSafeImageUrl } from '../utils/imageHelper';
+import { ProductWatermark } from './ProductWatermark';
 
 export const QuickViewModal: React.FC = () => {
   const {
@@ -105,6 +106,9 @@ export const QuickViewModal: React.FC = () => {
                     {product.badge}
                   </span>
                 )}
+
+                {/* Brand Watermark Overlay */}
+                <ProductWatermark />
               </div>
 
               {/* Thumbnails */}

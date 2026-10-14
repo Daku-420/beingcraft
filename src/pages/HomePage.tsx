@@ -24,6 +24,7 @@ import {
 import { ProductCard } from '../components/ProductCard';
 import { BRAND } from '../config/brand';
 import { handleImageError, getSafeImageUrl } from '../utils/imageHelper';
+import { ProductWatermark } from '../components/ProductWatermark';
 
 export const HomePage: React.FC = () => {
   const { products, navigate, showToast } = useShop();
@@ -197,6 +198,9 @@ export const HomePage: React.FC = () => {
                     </div>
                   ))}
 
+                  {/* Brand Watermark Overlay */}
+                  <ProductWatermark />
+
                   {/* Gentle gradient vignette */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/30 pointer-events-none" />
 
@@ -206,8 +210,8 @@ export const HomePage: React.FC = () => {
                     <span>{activeProduct.category}</span>
                   </div>
 
-                  {/* Slideshow Progress / Navigation Dots */}
-                  <div className="absolute top-3 right-3 flex items-center gap-1.5 z-20 bg-charcoal-900/85 backdrop-blur-md px-2.5 py-1.5 rounded-full border border-white/10">
+                  {/* Slideshow Progress / Navigation Dots - positioned neatly below watermark */}
+                  <div className="absolute top-11 right-3 sm:top-12 sm:right-3 flex items-center gap-1.5 z-20 bg-charcoal-900/85 backdrop-blur-md px-2.5 py-1.5 rounded-full border border-white/10">
                     {heroShowcaseProducts.map((_, i) => (
                       <button
                         key={i}

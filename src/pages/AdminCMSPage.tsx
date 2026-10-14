@@ -33,6 +33,7 @@ import { useShop } from '../context/ShopContext';
 import type { Product, ProductCategory } from '../types';
 import { CATEGORIES } from '../data/products';
 import { handleImageError, getSafeImageUrl } from '../utils/imageHelper';
+import { ProductWatermark } from '../components/ProductWatermark';
 
 export const AdminCMSPage: React.FC = () => {
   const {
@@ -2067,13 +2068,14 @@ export const AdminCMSPage: React.FC = () => {
                         onError={handleImageError}
                         className="w-full h-full object-cover"
                       />
+                      <ProductWatermark />
                       {bestseller && (
-                        <span className="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-brand-maroon text-white font-bold text-[9px] shadow">
+                        <span className="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-brand-maroon text-white font-bold text-[9px] shadow z-10">
                           Bestseller
                         </span>
                       )}
                       {newArrival && !bestseller && (
-                        <span className="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-brand-gold text-black font-bold text-[9px] shadow">
+                        <span className="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-brand-gold text-black font-bold text-[9px] shadow z-10">
                           New Season
                         </span>
                       )}

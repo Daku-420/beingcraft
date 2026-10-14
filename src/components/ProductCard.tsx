@@ -3,6 +3,7 @@ import { ShoppingBag, Heart, Star, Eye } from 'lucide-react';
 import type { Product } from '../types';
 import { useShop } from '../context/ShopContext';
 import { handleImageError, getSafeImageUrl } from '../utils/imageHelper';
+import { ProductWatermark } from './ProductWatermark';
 
 interface ProductCardProps {
   product: Product;
@@ -62,10 +63,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           />
         )}
 
+        {/* Brand Watermark Overlay */}
+        <ProductWatermark />
+
         {/* Badge (NEW, BESTSELLER, HANDCRAFTED, LIMITED, or Sale!) */}
         {badgeText && (
           <span
-            className={`absolute top-3 left-3 text-white text-[10px] sm:text-[11px] font-bold px-2.5 py-0.5 rounded-full shadow-sm uppercase tracking-wide ${
+            className={`absolute top-3 left-3 text-white text-[10px] sm:text-[11px] font-bold px-2.5 py-0.5 rounded-full shadow-sm uppercase tracking-wide z-10 ${
               badgeText === 'NEW'
                 ? 'bg-emerald-700'
                 : badgeText === 'BESTSELLER'
@@ -81,10 +85,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </span>
         )}
 
-        {/* Wishlist Heart Button */}
+        {/* Wishlist Heart Button - positioned neatly under watermark */}
         <button
           onClick={handleWishlist}
-          className={`absolute top-3 right-3 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 z-10 ${
+          className={`absolute top-11 right-3 sm:top-12 sm:right-3 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 z-20 ${
             isWishlisted
               ? 'bg-red-50 text-red-600 shadow'
               : 'bg-white/85 backdrop-blur-sm text-charcoal-700 hover:text-brand-maroon hover:bg-white shadow-sm'

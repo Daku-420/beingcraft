@@ -18,6 +18,7 @@ import { useShop } from '../context/ShopContext';
 import { ProductCard } from '../components/ProductCard';
 import { BRAND } from '../config/brand';
 import { handleImageError, getSafeImageUrl } from '../utils/imageHelper';
+import { ProductWatermark } from '../components/ProductWatermark';
 
 interface ProductDetailPageProps {
   slug: string;
@@ -171,6 +172,9 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug }) =>
               className="w-full h-full object-cover object-center transition-all duration-300"
             />
 
+            {/* Brand Watermark Overlay */}
+            <ProductWatermark sizeVariant="large" />
+
             {/* Badges */}
             <div className="absolute top-4 left-4 flex flex-col gap-1.5 z-10">
               {product.badge && (
@@ -188,7 +192,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug }) =>
             {/* Share button */}
             <button
               onClick={handleShare}
-              className="absolute top-4 right-4 p-2.5 rounded-full bg-white/90 hover:bg-white text-charcoal-700 hover:text-brand-maroon shadow-md transition-colors"
+              className="absolute bottom-4 right-4 p-2.5 rounded-full bg-white/90 hover:bg-white text-charcoal-700 hover:text-brand-maroon shadow-md transition-colors z-20"
               title="Share Product"
               aria-label="Share"
             >
