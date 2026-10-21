@@ -343,8 +343,59 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. TRUST / VALUE STRIP */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 sm:-mt-12 relative z-10">
+      {/* 2. SHOP BY CATEGORY (Editorial Large Photography Tiles) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16">
+        <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
+          <span className="text-xs font-bold uppercase tracking-widest text-brand-maroon">
+            Curated Craft Pillars
+          </span>
+          <h2 className="font-heading font-bold text-2xl sm:text-4xl text-charcoal-900">
+            Shop by Craft Discipline
+          </h2>
+          <p className="text-xs sm:text-sm text-charcoal-600">
+            Every category represents an authentic Indian material tradition preserved by hereditary masters.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          {TAXONOMY_CATEGORIES.map((cat) => (
+            <div
+              key={cat.slug}
+              onClick={() => navigate(`/shop?category=${encodeURIComponent(cat.name)}`)}
+              className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 bg-charcoal-900 cursor-pointer flex flex-col justify-end aspect-[4/5] sm:aspect-[3/4]"
+            >
+              <img
+                src={getSafeImageUrl(cat.image)}
+                alt={cat.name}
+                loading="lazy"
+                onError={handleImageError}
+                className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+
+              <div className="relative p-6 sm:p-7 space-y-2 text-white">
+                <span className="text-[10px] uppercase font-bold text-brand-gold tracking-widest block">
+                  Artisan Guild Craft
+                </span>
+                <h3 className="font-heading font-bold text-xl sm:text-2xl text-white group-hover:text-brand-gold transition-colors">
+                  {cat.name}
+                </h3>
+                <p className="text-xs text-white/80 font-light leading-relaxed line-clamp-2">
+                  “{cat.tagline}”
+                </p>
+
+                <div className="pt-2 flex items-center gap-1.5 text-xs font-bold text-brand-gold group-hover:translate-x-1 transition-transform">
+                  <span>Explore Collection</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 3. TRUST / VALUE STRIP */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 relative z-10">
         <div className="bg-white rounded-2xl shadow-xl border border-surface-border p-6 sm:p-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
           <div className="flex flex-col items-center gap-2">
             <div className="w-10 h-10 rounded-full bg-brand-maroon-subtle flex items-center justify-center text-brand-maroon">
@@ -393,57 +444,6 @@ export const HomePage: React.FC = () => {
             <h4 className="font-heading font-bold text-xs sm:text-sm text-charcoal-900">Easy Returns</h4>
             <p className="text-[11px] text-charcoal-500">7-day replacement</p>
           </div>
-        </div>
-      </section>
-
-      {/* 3. SHOP BY CATEGORY (Editorial Large Photography Tiles) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
-          <span className="text-xs font-bold uppercase tracking-widest text-brand-maroon">
-            Curated Craft Pillars
-          </span>
-          <h2 className="font-heading font-bold text-2xl sm:text-4xl text-charcoal-900">
-            Shop by Craft Discipline
-          </h2>
-          <p className="text-xs sm:text-sm text-charcoal-600">
-            Every category represents an authentic Indian material tradition preserved by hereditary masters.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-          {TAXONOMY_CATEGORIES.map((cat) => (
-            <div
-              key={cat.slug}
-              onClick={() => navigate(`/shop?category=${encodeURIComponent(cat.name)}`)}
-              className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 bg-charcoal-900 cursor-pointer flex flex-col justify-end aspect-[4/5] sm:aspect-[3/4]"
-            >
-              <img
-                src={getSafeImageUrl(cat.image)}
-                alt={cat.name}
-                loading="lazy"
-                onError={handleImageError}
-                className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
-
-              <div className="relative p-6 sm:p-7 space-y-2 text-white">
-                <span className="text-[10px] uppercase font-bold text-brand-gold tracking-widest block">
-                  Artisan Guild Craft
-                </span>
-                <h3 className="font-heading font-bold text-xl sm:text-2xl text-white group-hover:text-brand-gold transition-colors">
-                  {cat.name}
-                </h3>
-                <p className="text-xs text-white/80 font-light leading-relaxed line-clamp-2">
-                  “{cat.tagline}”
-                </p>
-
-                <div className="pt-2 flex items-center gap-1.5 text-xs font-bold text-brand-gold group-hover:translate-x-1 transition-transform">
-                  <span>Explore Collection</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </div>
-              </div>
-            </div>
-          ))}
         </div>
       </section>
 
