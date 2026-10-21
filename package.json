@@ -36,5 +36,9 @@
     "tsx": "^4.23.15",
     "typescript": "~6.0.2",
     "vite": "^8.3.0"
+  },
+  "allowScripts": {
+    "esbuild": true,
+    "esbuild@0.28.2": true
   }
 }
