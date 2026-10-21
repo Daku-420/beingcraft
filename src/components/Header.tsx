@@ -102,7 +102,7 @@ export const Header: React.FC = () => {
               className="flex items-center group py-1"
               aria-label="BeingCraft Home"
             >
-              <BrandLogo className="h-8 sm:h-9 w-auto max-w-[145px] sm:max-w-[165px] group-hover:scale-105" />
+              <BrandLogo className="h-9 sm:h-10 w-auto max-w-[170px] sm:max-w-[195px] group-hover:scale-105" />
             </a>
           </div>
 
@@ -117,7 +117,7 @@ export const Header: React.FC = () => {
               className="flex items-center group py-1"
               aria-label="BeingCraft Home"
             >
-              <BrandLogo className="h-10 xl:h-11 w-auto max-w-[210px] xl:max-w-[235px] group-hover:scale-[1.03] filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
+              <BrandLogo className="h-11 md:h-12 xl:h-13 w-auto max-w-[240px] xl:max-w-[270px] group-hover:scale-[1.03] filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
             </a>
           </div>
 
@@ -271,7 +271,7 @@ export const Header: React.FC = () => {
               {/* Drawer Header */}
               <div className="bg-brand-maroon text-white p-4 flex items-center justify-between border-b border-brand-gold/20">
                 <div className="flex items-center py-0.5">
-                  <BrandLogo className="h-8 w-auto max-w-[160px]" />
+                  <BrandLogo className="h-9 w-auto max-w-[180px]" />
                 </div>
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
