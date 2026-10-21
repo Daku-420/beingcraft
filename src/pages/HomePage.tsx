@@ -25,6 +25,7 @@ import { ProductCard } from '../components/ProductCard';
 import { BRAND } from '../config/brand';
 import { handleImageError, getSafeImageUrl } from '../utils/imageHelper';
 import { ProductWatermark } from '../components/ProductWatermark';
+import { HeroHeritageBackground } from '../components/HeroHeritageBackground';
 
 export const HomePage: React.FC = () => {
   const { products, navigate, showToast } = useShop();
@@ -106,16 +107,9 @@ export const HomePage: React.FC = () => {
   return (
     <div className="space-y-16 sm:space-y-24 pb-20">
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-[580px] lg:min-h-[640px] flex items-center bg-[#1A0307] text-white overflow-hidden border-b border-brand-gold/20">
-        {/* Subtle Textured Background Overlay */}
-        <div
-          className="absolute inset-0 opacity-15 mix-blend-overlay bg-cover bg-center"
-          style={{
-            backgroundImage:
-              'url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1800&q=80")',
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
+      <section className="relative min-h-[580px] lg:min-h-[640px] flex items-center bg-[#100304] text-white overflow-hidden border-b border-brand-gold/20">
+        {/* Midnight Burgundy & Gold Heritage Background System */}
+        <HeroHeritageBackground />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
@@ -172,12 +166,23 @@ export const HomePage: React.FC = () => {
           {/* Hero Showcase Card / Auto-playing Slideshow */}
           <div className="lg:col-span-5 hidden lg:block">
             {heroShowcaseProducts.length > 0 && activeProduct ? (
-              <div
-                onMouseEnter={() => setIsSlidePaused(true)}
-                onMouseLeave={() => setIsSlidePaused(false)}
-                onClick={() => navigate(`/product/${activeProduct.slug}`)}
-                className="relative mx-auto max-w-sm rounded-2xl overflow-hidden shadow-2xl border-2 border-brand-gold/40 bg-white/5 backdrop-blur-md p-3 group cursor-pointer transition-all duration-300 hover:border-brand-gold hover:shadow-brand-gold/20"
-              >
+              <div className="relative mx-auto max-w-sm group">
+                {/* Restrained Warm Golden Ambient Glow behind product card to complement brass & wood */}
+                <div
+                  className="absolute -inset-4 sm:-inset-6 lg:-inset-8 rounded-[2.5rem] pointer-events-none opacity-75 group-hover:opacity-100 transition-opacity duration-700"
+                  style={{
+                    background:
+                      'radial-gradient(ellipse at center, rgba(212, 175, 55, 0.26) 0%, rgba(184, 115, 51, 0.14) 40%, rgba(49, 3, 13, 0.05) 65%, transparent 75%)',
+                    filter: 'blur(32px)',
+                  }}
+                />
+
+                <div
+                  onMouseEnter={() => setIsSlidePaused(true)}
+                  onMouseLeave={() => setIsSlidePaused(false)}
+                  onClick={() => navigate(`/product/${activeProduct.slug}`)}
+                  className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-brand-gold/40 bg-white/5 backdrop-blur-md p-3 cursor-pointer transition-all duration-300 hover:border-brand-gold hover:shadow-brand-gold/30"
+                >
                 {/* Image Aspect Frame with Smooth Cross-fade */}
                 <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-charcoal-900">
                   {heroShowcaseProducts.map((prod, idx) => (
@@ -287,36 +292,49 @@ export const HomePage: React.FC = () => {
                   </div>
                 </div>
               </div>
-            ) : (
-              <div className="relative mx-auto max-w-sm rounded-2xl overflow-hidden shadow-2xl border-2 border-brand-gold/40 bg-white/5 backdrop-blur-md p-3 group">
-                <img
-                  src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80"
-                  alt="BeingCraft Indian Handicrafts"
-                  className="w-full aspect-[4/5] object-cover rounded-xl group-hover:scale-105 transition-transform duration-700"
+            </div>
+          ) : (
+              <div className="relative mx-auto max-w-sm group">
+                {/* Restrained Warm Golden Ambient Glow behind fallback card */}
+                <div
+                  className="absolute -inset-4 sm:-inset-6 lg:-inset-8 rounded-[2.5rem] pointer-events-none opacity-75 group-hover:opacity-100 transition-opacity duration-700"
+                  style={{
+                    background:
+                      'radial-gradient(ellipse at center, rgba(212, 175, 55, 0.26) 0%, rgba(184, 115, 51, 0.14) 40%, rgba(49, 3, 13, 0.05) 65%, transparent 75%)',
+                    filter: 'blur(32px)',
+                  }}
                 />
-                <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-charcoal-900/95 backdrop-blur-md border border-brand-gold/30 text-white shadow-2xl">
-                  <span className="text-[10px] uppercase font-bold text-brand-gold tracking-widest block">
-                    Authentic Artisan Sanctuary
-                  </span>
-                  <h4 className="font-heading font-semibold text-sm mt-0.5 line-clamp-1">
-                    Timeless Indian Handicrafts
-                  </h4>
-                  <p className="text-[11px] text-white/70 mt-1 line-clamp-2">
-                    Pure virgin brass, hand-carved Sheesham & Makrana marble inlays.
-                  </p>
-                  <div className="flex items-center justify-between mt-2 pt-2 border-t border-white/10">
-                    <button
-                      onClick={() => navigate('/about')}
-                      className="text-xs font-semibold text-brand-gold hover:text-white flex items-center gap-1"
-                    >
-                      Our Story <ChevronRight className="w-3 h-3" />
-                    </button>
-                    <button
-                      onClick={() => navigate('/admin')}
-                      className="text-[11px] font-semibold text-white/80 hover:text-white underline"
-                    >
-                      Admin Panel
-                    </button>
+
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-brand-gold/40 bg-white/5 backdrop-blur-md p-3">
+                  <img
+                    src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80"
+                    alt="BeingCraft Indian Handicrafts"
+                    className="w-full aspect-[4/5] object-cover rounded-xl group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-charcoal-900/95 backdrop-blur-md border border-brand-gold/30 text-white shadow-2xl">
+                    <span className="text-[10px] uppercase font-bold text-brand-gold tracking-widest block">
+                      Authentic Artisan Sanctuary
+                    </span>
+                    <h4 className="font-heading font-semibold text-sm mt-0.5 line-clamp-1">
+                      Timeless Indian Handicrafts
+                    </h4>
+                    <p className="text-[11px] text-white/70 mt-1 line-clamp-2">
+                      Pure virgin brass, hand-carved Sheesham & Makrana marble inlays.
+                    </p>
+                    <div className="flex items-center justify-between mt-2 pt-2 border-t border-white/10">
+                      <button
+                        onClick={() => navigate('/about')}
+                        className="text-xs font-semibold text-brand-gold hover:text-white flex items-center gap-1"
+                      >
+                        Our Story <ChevronRight className="w-3 h-3" />
+                      </button>
+                      <button
+                        onClick={() => navigate('/admin')}
+                        className="text-[11px] font-semibold text-white/80 hover:text-white underline"
+                      >
+                        Admin Panel
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
