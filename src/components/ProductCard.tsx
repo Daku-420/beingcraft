@@ -1,5 +1,5 @@
-import React from 'react';
-import { ShoppingBag, Heart, Star, Eye } from 'lucide-react';
+import React, { useState } from 'react';
+import { ShoppingBag, Heart, Star, Eye, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import type { Product } from '../types';
 import { useShop } from '../context/ShopContext';
 import { handleImageError, getSafeImageUrl } from '../utils/imageHelper';
@@ -12,6 +12,10 @@ interface ProductCardProps {
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { addToCart, toggleWishlist, isInWishlist, navigate, setQuickViewProduct } = useShop();
   const isWishlisted = isInWishlist(product.id);
+
+  const images = product.images && product.images.length > 0 ? product.images : [];
+  const [activePhotoIndex, setActivePhotoIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleCardClick = () => {
     navigate(`/product/${product.slug}`);
@@ -32,36 +36,70 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     toggleWishlist(product.id);
   };
 
+  const handlePrevPhoto = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setActivePhotoIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const handleNextPhoto = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setActivePhotoIndex((prev) => (prev + 1) % images.length);
+  };
+
   const hasDiscount = product.originalPrice > product.price;
 
   // Determine badge to display
   const badgeText = product.badge || (hasDiscount ? 'Sale!' : null);
 
+  // When hovered, bring out the best photo (index 1 if available, or user-selected angle)
+  const currentDisplayIndex = isHovered ? activePhotoIndex : 0;
+
   return (
     <div
       onClick={handleCardClick}
-      className="group relative bg-white rounded-xl overflow-hidden border border-surface-border hover:border-brand-maroon/30 hover:shadow-card-hover transition-all duration-300 flex flex-col cursor-pointer"
+      onMouseEnter={() => {
+        setIsHovered(true);
+        if (images.length > 1) {
+          // Bring out the best photo (index 1 is the hero lifestyle / detail angle)
+          setActivePhotoIndex(1);
+        }
+      }}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        setActivePhotoIndex(0);
+      }}
+      className="group relative bg-white rounded-2xl overflow-hidden border border-surface-border hover:border-brand-maroon/40 hover:shadow-2xl hover:shadow-brand-maroon/15 transition-all duration-300 ease-out hover:-translate-y-2 hover:scale-[1.015] flex flex-col cursor-pointer"
     >
       {/* 1. Thumbnail Container */}
       <div className="relative aspect-[4/5] bg-surface-muted overflow-hidden">
-        <img
-          src={getSafeImageUrl(product.images?.[0])}
-          alt={product.name}
-          loading="lazy"
-          onError={handleImageError}
-          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
-        />
-
-        {/* Secondary image hover swap if available */}
-        {product.images?.length > 1 && (
+        {/* Render base image and cross-fade to active/best photo on hover with pop-up zoom */}
+        {images.length > 0 ? (
+          images.map((imgUrl, idx) => (
+            <img
+              key={idx}
+              src={getSafeImageUrl(imgUrl)}
+              alt={`${product.name} - View ${idx + 1}`}
+              loading="lazy"
+              onError={handleImageError}
+              className={`w-full h-full object-cover object-center absolute inset-0 transition-all duration-500 ease-out ${
+                idx === currentDisplayIndex
+                  ? 'opacity-100 scale-100 group-hover:scale-110'
+                  : 'opacity-0 scale-95 pointer-events-none'
+              }`}
+            />
+          ))
+        ) : (
           <img
-            src={getSafeImageUrl(product.images?.[1])}
+            src={getSafeImageUrl(undefined)}
             alt={product.name}
             loading="lazy"
             onError={handleImageError}
-            className="w-full h-full object-cover object-center absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out"
+            className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500 ease-out"
           />
         )}
+
+        {/* Soft Ambient Vignette on hover to accentuate craftsmanship */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
         {/* Brand Watermark Overlay */}
         <ProductWatermark />
@@ -85,6 +123,64 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </span>
         )}
 
+        {/* "Best View" Floating Pill Tag on Hover */}
+        {images.length > 1 && (
+          <div className="absolute bottom-3 left-3 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-20 pointer-events-none">
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-charcoal-900/90 backdrop-blur-md border border-brand-gold/40 text-brand-gold text-[10px] font-bold tracking-wider uppercase shadow-lg">
+              <Sparkles className="w-3 h-3 fill-brand-gold text-brand-gold" />
+              <span>{activePhotoIndex === 1 ? 'Best View' : `Angle ${activePhotoIndex + 1}/${images.length}`}</span>
+            </span>
+          </div>
+        )}
+
+        {/* Interactive Multi-photo Dots indicator on Hover */}
+        {images.length > 1 && (
+          <div className="absolute bottom-3 left-0 right-0 flex items-center justify-center gap-1 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-24">
+            {images.slice(0, 5).map((_, dotIdx) => (
+              <button
+                key={dotIdx}
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActivePhotoIndex(dotIdx);
+                }}
+                onMouseEnter={(e) => {
+                  e.stopPropagation();
+                  setActivePhotoIndex(dotIdx);
+                }}
+                className={`h-1.5 rounded-full transition-all duration-200 ${
+                  dotIdx === activePhotoIndex
+                    ? 'w-4 bg-brand-gold shadow'
+                    : 'w-1.5 bg-white/60 hover:bg-white'
+                }`}
+                aria-label={`Switch to angle ${dotIdx + 1}`}
+              />
+            ))}
+          </div>
+        )}
+
+        {/* Manual Chevrons for multi-photo navigation on Hover */}
+        {images.length > 1 && (
+          <>
+            <button
+              type="button"
+              onClick={handlePrevPhoto}
+              className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-charcoal-900/80 hover:bg-brand-gold text-white hover:text-black flex items-center justify-center backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-200 z-20 shadow-md border border-white/20 active:scale-90"
+              aria-label="Previous photo"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <button
+              type="button"
+              onClick={handleNextPhoto}
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-charcoal-900/80 hover:bg-brand-gold text-white hover:text-black flex items-center justify-center backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-200 z-20 shadow-md border border-white/20 active:scale-90"
+              aria-label="Next photo"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </>
+        )}
+
         {/* Wishlist Heart Button - positioned neatly under watermark */}
         <button
           onClick={handleWishlist}
@@ -99,7 +195,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </button>
 
         {/* Floating Quick Action Buttons on Hover */}
-        <div className="absolute bottom-3 right-3 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-10">
+        <div className="absolute bottom-3 right-3 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-20">
           {/* Quick View Button */}
           <div className="relative group/view">
             <button
