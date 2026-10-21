@@ -17,8 +17,10 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
   variant = 'banner',
   alt = 'BeingCraft - A UNIT OF UK YATRA',
 }) => {
-  // Default to the official banner asset matching the user's exact uploaded brand identity
-  const src = variant === 'transparent' ? '/beingcraft-logo.svg' : '/beingcraft-logo.png';
+  // Use official SVG brand assets
+  const src = variant === 'transparent'
+    ? '/beingcraft-logo-transparent.svg'
+    : '/beingcraft-logo.svg';
 
   return (
     <img
