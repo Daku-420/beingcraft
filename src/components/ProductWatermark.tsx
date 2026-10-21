@@ -94,7 +94,7 @@ export const ProductWatermark: React.FC<ProductWatermarkProps> = ({
           alt={cfg.altText}
           loading="lazy"
           className="w-full h-auto object-contain filter drop-shadow-[0_1px_2px_rgba(0,0,0,0.85)] drop-shadow-[0_2px_5px_rgba(0,0,0,0.45)]"
-          style={{ aspectRatio: '1400 / 370' }}
+          style={{ aspectRatio: '1937 / 479' }}
         />
       </div>
     </div>

@@ -30,7 +30,7 @@ export interface WatermarkConfig {
 
 export const DEFAULT_WATERMARK_CONFIG: WatermarkConfig = {
   enabled: true,
-  logoSrc: '/beingcraft-watermark.webp',
+  logoSrc: '/beingcraft-logo.svg',
   altText: 'BeingCraft - A UNIT OF UK YATRA',
   position: 'top-right',
   opacity: 0.96, // 96% opacity - highly readable against all backgrounds

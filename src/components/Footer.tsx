@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { FacebookIcon, InstagramIcon, YoutubeIcon } from './SocialIcons';
 import { BRAND } from '../config/brand';
+import { BrandLogo } from './BrandLogo';
 import { useShop } from '../context/ShopContext';
 
 export const Footer: React.FC = () => {
@@ -77,14 +78,18 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Col 1: Brand Info */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-full bg-brand-gold flex items-center justify-center text-brand-maroon font-bold">
-                <Sparkles className="w-5 h-5 text-brand-maroon fill-brand-maroon" />
-              </div>
-              <span className="font-heading font-bold text-2xl text-white uppercase tracking-wider">
-                {BRAND.name}
-              </span>
-            </div>
+            <a
+              href="#/"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="inline-block group"
+              aria-label="BeingCraft Home"
+            >
+              <BrandLogo className="h-11 md:h-12 w-auto max-w-[220px] group-hover:scale-105 filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
+            </a>
             <p className="text-sm text-white/70 leading-relaxed max-w-sm">
               Dedicated to reviving and showcasing India's exquisite legacy of handcrafted metalcraft.
               From sacred temple brass idols and intricate peacock urlis to nostalgic vintage timepieces,

@@ -7,11 +7,10 @@ import {
   X,
   ChevronDown,
   ShieldCheck,
-  Sparkles,
   Settings
 } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
-import { BRAND } from '../config/brand';
+import { BrandLogo } from './BrandLogo';
 
 export const Header: React.FC = () => {
   const {
@@ -100,14 +99,10 @@ export const Header: React.FC = () => {
                 e.preventDefault();
                 handleNav('/');
               }}
-              className="flex items-center gap-2 group"
+              className="flex items-center group py-1"
+              aria-label="BeingCraft Home"
             >
-              <div className="w-8 h-8 rounded-full bg-brand-gold flex items-center justify-center text-brand-maroon shadow-sm">
-                <Sparkles className="w-4 h-4 text-brand-maroon fill-brand-maroon" />
-              </div>
-              <span className="font-heading font-extrabold text-lg tracking-wider text-white uppercase">
-                {BRAND.name}
-              </span>
+              <BrandLogo className="h-8 sm:h-9 w-auto max-w-[145px] sm:max-w-[165px] group-hover:scale-105" />
             </a>
           </div>
 
@@ -119,20 +114,10 @@ export const Header: React.FC = () => {
                 e.preventDefault();
                 handleNav('/');
               }}
-              className="flex items-center gap-3 group"
+              className="flex items-center group py-1"
+              aria-label="BeingCraft Home"
             >
-              <div className="w-10 h-10 rounded-full bg-brand-gold flex items-center justify-center text-brand-maroon shadow-md group-hover:scale-105 transition-transform">
-                <Sparkles className="w-5 h-5 text-brand-maroon fill-brand-maroon" />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-heading font-extrabold text-2xl tracking-wider text-white uppercase flex items-center gap-1">
-                  {BRAND.name}
-                  <span className="text-brand-gold text-lg font-normal">.</span>
-                </span>
-                <span className="text-[10px] tracking-[0.25em] text-brand-gold uppercase -mt-1 font-semibold">
-                  Handcrafted Heritage
-                </span>
-              </div>
+              <BrandLogo className="h-10 xl:h-11 w-auto max-w-[210px] xl:max-w-[235px] group-hover:scale-[1.03] filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
             </a>
           </div>
 
@@ -285,18 +270,8 @@ export const Header: React.FC = () => {
             <div>
               {/* Drawer Header */}
               <div className="bg-brand-maroon text-white p-4 flex items-center justify-between border-b border-brand-gold/20">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full bg-brand-gold flex items-center justify-center text-brand-maroon font-bold shadow">
-                    <Sparkles className="w-4 h-4 text-brand-maroon fill-brand-maroon" />
-                  </div>
-                  <div>
-                    <span className="font-heading font-extrabold text-base tracking-wider block">
-                      {BRAND.name}
-                    </span>
-                    <span className="text-[9px] uppercase tracking-widest text-brand-gold font-light block">
-                      Handcrafted Heritage
-                    </span>
-                  </div>
+                <div className="flex items-center py-0.5">
+                  <BrandLogo className="h-8 w-auto max-w-[160px]" />
                 </div>
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
