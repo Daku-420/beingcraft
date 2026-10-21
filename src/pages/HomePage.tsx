@@ -113,7 +113,7 @@ export const HomePage: React.FC = () => {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-gold/15 border border-brand-gold/30 text-brand-gold text-xs font-semibold tracking-wider uppercase">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-charcoal-900/60 backdrop-blur-md border border-brand-gold/40 text-brand-gold text-xs font-semibold tracking-wider uppercase shadow-sm">
               <Sparkles className="w-3.5 h-3.5" />
               <span>HANDCRAFTED HERITAGE • TIMELESS INDIAN ARTISTRY</span>
             </div>
@@ -141,7 +141,7 @@ export const HomePage: React.FC = () => {
 
               <button
                 onClick={() => navigate('/about')}
-                className="inline-flex items-center justify-center font-medium transition-all duration-200 rounded-full px-7 py-3.5 border-2 border-white/80 text-white hover:bg-white hover:text-brand-maroon text-sm sm:text-base shadow-sm active:scale-95"
+                className="inline-flex items-center justify-center font-medium transition-all duration-200 rounded-full px-7 py-3.5 border-2 border-white/70 bg-black/30 backdrop-blur-sm text-white hover:bg-white hover:text-brand-maroon text-sm sm:text-base shadow-sm active:scale-95"
               >
                 EXPLORE OUR CRAFT
               </button>
