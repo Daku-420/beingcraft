@@ -209,8 +209,6 @@ export const INITIAL_PRODUCTS: Product[] = [
     "images": [
       "/products/wood%20crafts/Coconut%20Shell%20Wristlet%20Wallet/01.jpg",
       "/products/wood%20crafts/Coconut%20Shell%20Wristlet%20Wallet/02.jpg",
-      "/products/wood%20crafts/Coconut%20Shell%20Wristlet%20Wallet/03.jpg",
-      "/products/wood%20crafts/Coconut%20Shell%20Wristlet%20Wallet/04.jpg",
       "/products/wood%20crafts/Coconut%20Shell%20Wristlet%20Wallet/05.jpg",
       "/products/wood%20crafts/Coconut%20Shell%20Wristlet%20Wallet/06.jpg",
       "/products/wood%20crafts/Coconut%20Shell%20Wristlet%20Wallet/07.jpg"

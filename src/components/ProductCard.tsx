@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { ShoppingBag, Heart, Star, Eye, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import type { Product } from '../types';
 import { useShop } from '../context/ShopContext';
@@ -13,9 +13,26 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { addToCart, toggleWishlist, isInWishlist, navigate, setQuickViewProduct } = useShop();
   const isWishlisted = isInWishlist(product.id);
 
-  const images = product.images && product.images.length > 0 ? product.images : [];
+  // Filter out any technical dimension/diagram images to always show aesthetic craft photos
+  const images = useMemo(() => {
+    const list = product.images && product.images.length > 0 ? product.images : [];
+    const filtered = list.filter((img) => {
+      const lower = img.toLowerCase();
+      return (
+        !lower.includes('dimension') &&
+        !lower.includes('diagram') &&
+        !lower.includes('measurement') &&
+        !lower.includes('size-chart')
+      );
+    });
+    return filtered.length > 0 ? filtered : list;
+  }, [product.images]);
+
   const [activePhotoIndex, setActivePhotoIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+
+  // Best photo index (picks the first rich lifestyle angle)
+  const bestPhotoIndex = images.length > 1 ? 1 : 0;
 
   const handleCardClick = () => {
     navigate(`/product/${product.slug}`);
@@ -60,8 +77,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       onMouseEnter={() => {
         setIsHovered(true);
         if (images.length > 1) {
-          // Bring out the best photo (index 1 is the hero lifestyle / detail angle)
-          setActivePhotoIndex(1);
+          // Bring out the best aesthetic craft photo
+          setActivePhotoIndex(bestPhotoIndex);
         }
       }}
       onMouseLeave={() => {
@@ -128,7 +145,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <div className="absolute bottom-3 left-3 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-20 pointer-events-none">
             <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-charcoal-900/90 backdrop-blur-md border border-brand-gold/40 text-brand-gold text-[10px] font-bold tracking-wider uppercase shadow-lg">
               <Sparkles className="w-3 h-3 fill-brand-gold text-brand-gold" />
-              <span>{activePhotoIndex === 1 ? 'Best View' : `Angle ${activePhotoIndex + 1}/${images.length}`}</span>
+              <span>{activePhotoIndex === bestPhotoIndex ? 'Best View' : `Angle ${activePhotoIndex + 1}/${images.length}`}</span>
             </span>
           </div>
         )}
