@@ -88,7 +88,7 @@ export const Footer: React.FC = () => {
               className="inline-block group"
               aria-label="BeingCraft Home"
             >
-              <BrandLogo className="h-14 md:h-16 w-auto max-w-[280px] md:max-w-[320px] rounded-lg border border-brand-gold/30 shadow-md group-hover:scale-105" />
+              <BrandLogo className="h-14 md:h-16 w-auto max-w-[280px] md:max-w-[320px] drop-shadow-md group-hover:scale-105" />
             </a>
             <p className="text-sm text-white/70 leading-relaxed max-w-sm">
               Dedicated to reviving and showcasing India's exquisite legacy of handcrafted metalcraft.

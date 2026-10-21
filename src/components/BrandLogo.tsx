@@ -17,7 +17,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
   variant = 'banner',
   alt = 'BeingCraft - A UNIT OF UK YATRA',
 }) => {
-  // Use official SVG brand assets
+  // Use official transparent SVG brand assets
   const src = variant === 'transparent'
     ? '/beingcraft-logo-transparent.svg'
     : '/beingcraft-logo.svg';
@@ -27,7 +27,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
       src={src}
       alt={alt}
       loading="eager"
-      className={`object-contain rounded-md transition-transform duration-300 select-none ${className}`}
+      className={`object-contain transition-transform duration-300 select-none ${className}`}
       onError={(e) => {
         const target = e.currentTarget;
         if (!target.src.includes('beingcraft-logo.png')) {
